@@ -1,0 +1,229 @@
+import { FacultyMember, Testimonial } from '../types';
+
+export const FOUNDER_INFO = {
+  name: "Dr. Sourav Banerjee",
+  title: "Founder & Academic Director",
+  credentials: "M.Sc. (Gold Medalist), Ph.D. in Applied Sciences, Ex-Professor & Senior Olympiad Mentor (22+ Years Experience)",
+  quote: "“Education is not the amount of information that is put into your brain and runs riot there, undigested all your life. We must have life-building, man-making, character-making assimilation of ideas.”",
+  tagline: "Inspired by the fearless spirit of Swami Vivekananda (fondly called 'Biley' in his childhood)",
+  messageParagraphs: [
+    "Welcome to Biley Academy. When we laid the cornerstone of this institution, we had one singular conviction: every child is born with an innate spark of genius, waiting to be ignited by the right catalyst of conceptual clarity, compassionate mentorship, and rigorous practice.",
+    "Named in reverence to the childhood name of Swami Vivekananda—'Biley'—our academy embodies the values of fearless inquiry, unshakeable self-confidence, and a relentless pursuit of knowledge. We do not believe in superficial rote memorization. Whether a student is in Class 1 discovering the joy of numbers and language, or in Class 12 mastering electrodynamics and organic mechanisms for competitive entrances, our pedagogy focuses on building bedrock foundations.",
+    "In an era where education is too often commercialized, Biley Academy remains an authentic sanctuary of learning. With personalized batch sizes, continuous diagnostic assessments, state-of-the-art computer and science practical labs, and round-the-clock doubt clinics, we walk with every student at every step of their academic journey.",
+    "I invite parents and aspiring scholars to experience the Biley difference. Let us join hands to shape not just board toppers and future scientists, but confident, compassionate, and visionary leaders for tomorrow."
+  ]
+};
+
+export const MISSION_VISION = {
+  mission: {
+    title: "Our Mission",
+    subtitle: "Empowering Minds Through Conceptual Mastery & Character",
+    points: [
+      "Deliver rigorous, concept-centric classroom coaching tailored to the developmental stages from Class 1 through Class 12.",
+      "Demystify complex subjects—Mathematics, Physical Sciences, Biological Sciences, Computer Programming, and English—through active visualization and lab practicals.",
+      "Nurture analytical thinking and problem-solving resilience so students thrive in school board exams, Olympiads, and national competitive benchmarks (JEE / NEET / WBJEE / CUET).",
+      "Maintain accessible, transparent mentorship where every student receives tailored attention regardless of their starting academic proficiency."
+    ]
+  },
+  vision: {
+    title: "Our Vision",
+    subtitle: "A Benchmark of Pedagogical Excellence in Eastern India & Beyond",
+    points: [
+      "To be recognized as the most trusted educational ecosystem that bridges foundational schooling with high-stakes competitive entrance readiness.",
+      "To foster an environment where intellectual curiosity is celebrated, scientific temper is cultivated, and moral integrity is seamlessly woven into education.",
+      "To empower every young scholar to realize their fullest cognitive potential and emerge as innovative problem-solvers in science, technology, medicine, and humanistic fields."
+    ]
+  },
+  coreValues: [
+    {
+      title: "Conceptual Clarity First",
+      desc: "We prioritize understanding the 'why' and 'how' before applying formulas. No rote learning.",
+      icon: "Lightbulb"
+    },
+    {
+      title: "Individual Mentorship",
+      desc: "Small batch sizes with personalized tracking, 1-on-1 doubt resolution, and parent-teacher synergy.",
+      icon: "Users"
+    },
+    {
+      title: "Hands-on Practical Labs",
+      desc: "Fully equipped Physics, Chemistry, Biology, and Computer Labs for real experiential mastery.",
+      icon: "FlaskConical"
+    },
+    {
+      title: "Character & Discipline",
+      desc: "Instilling punctuality, scientific temper, ethical leadership, and resilience inspired by Swami Vivekananda.",
+      icon: "Award"
+    }
+  ]
+};
+
+export const FACULTY_MEMBERS: FacultyMember[] = [
+  {
+    id: "fac-1",
+    name: "Dr. Sourav Banerjee",
+    role: "Head of Physics & Competitive Wing",
+    subjects: ["Physics (Class 11-12)", "Physical Science (Class 9-10)"],
+    qualification: "M.Sc. Physics, Ph.D., Ex-Senior Faculty",
+    experience: "22+ Years",
+    bio: "Renowned for making electrodynamics and mechanics intuitive through live physical demos and mathematical rigor.",
+    avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80",
+    achievement: "Mentored 180+ IITians and top 100 Board Rankers"
+  },
+  {
+    id: "fac-2",
+    name: "Prof. Aniruddha Roy",
+    role: "Senior Faculty - Mathematics",
+    subjects: ["Mathematics (Class 9-12)", "Higher Secondary Calculus"],
+    qualification: "M.Sc. Pure Mathematics, ISI Associate",
+    experience: "18+ Years",
+    bio: "Master of Calculus, Trigonometry and Coordinate Geometry; famous for his rapid mental shortcuts and Olympiad problem sets.",
+    avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80",
+    achievement: "Author of 3 best-selling Board Mathematics guides"
+  },
+  {
+    id: "fac-3",
+    name: "Dr. Malabika Dasgupta",
+    role: "Senior Faculty - Biological Sciences",
+    subjects: ["Biology (Class 5-12)", "NEET Zoology & Botany"],
+    qualification: "M.Sc. Zoology, Ph.D. in Genetics (CSIR-NET JRF)",
+    experience: "15+ Years",
+    bio: "Brings cell biology and genetics alive through 3D diagram workshops and line-by-line NCERT mastery.",
+    avatarUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80",
+    achievement: "Produced NEET 355/360 scorers in consecutive years"
+  },
+  {
+    id: "fac-4",
+    name: "Prof. Tathagata Ghosh",
+    role: "Senior Faculty - Chemistry",
+    subjects: ["Chemistry (Class 9-12)", "Organic Reaction Mechanisms"],
+    qualification: "M.Tech Chemical Sciences, GATE Topper",
+    experience: "14+ Years",
+    bio: "Makes complex organic mechanisms and inorganic crystal fields crystal clear with visual electron flow models.",
+    avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80",
+    achievement: "Over 90% students score 90+ in Board Chemistry"
+  },
+  {
+    id: "fac-5",
+    name: "Shreya Sen",
+    role: "Lead - Computer Science & Coding Wing",
+    subjects: ["Computer Science (Class 1-12)", "Python, Java & Web Design"],
+    qualification: "B.Tech Computer Science (Jadavpur University)",
+    experience: "10+ Years",
+    bio: "Passionate technologist teaching programming from Scratch block coding in primary classes to OOPs, SQL and DSA in Class 12.",
+    avatarUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80",
+    achievement: "Guided students to win National Coding Olympiads"
+  },
+  {
+    id: "fac-6",
+    name: "Debolina Mukherjee",
+    role: "Faculty - English Language & Literature",
+    subjects: ["English (Class 1-12)", "Grammar, Comprehension & Public Speaking"],
+    qualification: "M.A. English (Calcutta University), Cambridge CELTA",
+    experience: "12+ Years",
+    bio: "Specialist in transforming students' expressive writing, grammar precision, and confident English elocution.",
+    avatarUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=80",
+    achievement: "Average English Board score of 94.6% across batches"
+  }
+];
+
+export const ACADEMY_STATS = [
+  { label: "Years of Academic Heritage", value: "15+", sub: "Since 2011" },
+  { label: "Students Mentored", value: "4,500+", sub: "Class 1 to 12" },
+  { label: "Board Exam 90%+ Scorers", value: "96.4%", sub: "CBSE / ICSE / WB" },
+  { label: "Olympiad & Entrance Selections", value: "850+", sub: "JEE, NEET, NTSE" }
+];
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    id: "t-1",
+    studentName: "Sneha Chatterjee",
+    gradeOrAchievement: "Class 12 Board Topper (98.2%) & JEE Ranker",
+    year: "Batch 2025",
+    quote: "Biley Academy transformed my approach to Physics and Math. Dr. Sourav sir's conceptual derivations made even the toughest problems effortless during board exams and entrances.",
+    scoreOrRank: "98.2% Board | JEE Adv Rank 1420",
+    rating: 5
+  },
+  {
+    id: "t-2",
+    studentName: "Aditya Bhattacharya",
+    parentName: "Sanjib Bhattacharya (Parent)",
+    gradeOrAchievement: "Class 10 Board (97.6%)",
+    year: "Batch 2025",
+    quote: "My son joined Biley Academy in Class 6. The foundational training in Science, Biology, and Computer Science built immense confidence. The regular parent-teacher reports kept us completely informed.",
+    scoreOrRank: "97.6% ICSE Board",
+    rating: 5
+  },
+  {
+    id: "t-3",
+    studentName: "Riya Roychowdhury",
+    gradeOrAchievement: "NEET Top Scorer (685/720)",
+    year: "Batch 2024",
+    quote: "The Biology line-by-line NCERT workshops by Dr. Malabika ma'am and weekly chemistry mock drills gave me the precision needed to crack NEET in my very first attempt.",
+    scoreOrRank: "NEET 685/720 | Med College Kol",
+    rating: 5
+  },
+  {
+    id: "t-4",
+    studentName: "Prithwiraj Saha",
+    gradeOrAchievement: "Class 4 Primary Math & Science Olympiad Gold",
+    year: "Batch 2025",
+    quote: "I love the computer lab and the fun math games at Biley Academy! Shreya ma'am taught me how to make games in Scratch coding and math puzzles.",
+    scoreOrRank: "Olympiad Gold Medalist",
+    rating: 5
+  }
+];
+
+export const FAQS = [
+  {
+    q: "What makes Biley Academy unique compared to other coaching institutes?",
+    a: "Unlike typical commercial coaching centers with crowded 100+ student batches, Biley Academy maintains small, focused batches (maximum 15-20 students). We provide individual attention, dedicated hands-on science and computer labs, weekly mock test analytics, and personalized 1-on-1 doubt clearing sessions inspired by the holistic mentorship of Swami Vivekananda."
+  },
+  {
+    q: "Do you teach students from all major education boards?",
+    a: "Yes! Our curriculum is tailored for CBSE, ICSE / ISC, and West Bengal State Board (WBBSE / WBCHSE) syllabi, alongside foundation programs for competitive benchmarks like Science/Math Olympiads, NTSE, JEE Main & Advanced, and NEET-UG."
+  },
+  {
+    q: "How are classes structured for primary grades (Class 1 to 4)?",
+    a: "Primary classes focus on joyous, interactive learning without overwhelming pressure. We combine phonics, mental math abacus techniques, touch-and-learn computing (Scratch/Tux Paint), and live curiosity-driven science experiments."
+  },
+  {
+    q: "Are laboratory practicals included in the coaching?",
+    a: "Absolutely. We have full-fledged in-house laboratories for Physics, Chemistry, Biology, and Computer Science/Application. Every student from Class 5 upwards participates in hands-on experiments, microscope slide preparations, and live coding sessions."
+  },
+  {
+    q: "How can I enroll or book a free trial demo class?",
+    a: "You can use our online Admission / Demo Booking form on this website, call our admissions helpline (+91 98300 24567), or visit our campus directly between 10:00 AM and 8:00 PM Monday through Saturday."
+  }
+];
+
+export const BATCH_TIMINGS = [
+  {
+    category: "Primary Foundation (Class 1 - 4)",
+    schedule: "Monday, Wednesday & Friday",
+    timings: "3:30 PM – 5:30 PM",
+    subjects: "English, Mathematics, Computer, Science",
+    batchSize: "Max 12 students per batch"
+  },
+  {
+    category: "Upper Primary (Class 5 - 8)",
+    schedule: "Tuesday, Thursday & Saturday",
+    timings: "4:00 PM – 6:45 PM",
+    subjects: "Math, Science, Biology, English, Computer Science",
+    batchSize: "Max 16 students per batch"
+  },
+  {
+    category: "Secondary (Class 9 & 10 Board Special)",
+    schedule: "Monday to Saturday (6 Days)",
+    timings: "4:30 PM – 7:45 PM",
+    subjects: "Math, Physics-Chemistry, Biology, English, Computer Science / App",
+    batchSize: "Max 18 students per batch + Sunday Mock Tests"
+  },
+  {
+    category: "Higher Secondary (Class 11 & 12 Board + Entrance)",
+    schedule: "Monday to Saturday (6 Days)",
+    timings: "3:00 PM – 8:30 PM (Flexible Stream Slots)",
+    subjects: "Math, Physics, Chemistry, Biology, English, Computer Science / App",
+    batchSize: "Max 20 students + Weekly All-India Level Diagnostic Tests"
+  }
+];

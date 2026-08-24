@@ -1,0 +1,6 @@
+{
+  "name": "Biley Academy",
+  "description": "Educational coaching institute portal for Biley Academy with Class 1-12 curriculum, interactive student progress dashboard, official 2026-27 admission notice banner, campus photo gallery, and AI doubt solver.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
