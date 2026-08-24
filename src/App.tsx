@@ -15,6 +15,7 @@ import { AdmissionSection } from './components/AdmissionSection';
 import { ContactSection } from './components/ContactSection';
 import { GallerySection } from './components/GallerySection';
 import { OfficialAdmissionBanner } from './components/OfficialAdmissionBanner';
+import { NoticeTickerBar } from './components/NoticeTickerBar';
 import { Footer } from './components/Footer';
 import { GradeCategory, SubjectCurriculum } from './types';
 import { SubjectModal } from './components/SubjectModal';
@@ -55,12 +56,19 @@ function AcademyApp() {
         onOpenDemoModal={() => handleOpenInquiry()}
       />
 
+      {/* Real-time Scrolling Announcement Ticker Bar */}
+      <NoticeTickerBar 
+        onOpenInquiry={handleOpenInquiry}
+        onJumpToNotices={() => handleNavigate('hero')}
+      />
+
       {/* Main Content Sections */}
       <main>
         <Hero 
           onSelectCategory={handleSelectCategory}
           onOpenDemoModal={() => handleOpenInquiry()}
           onJumpToAiTutor={() => handleNavigate('ai-tutor')}
+          onOpenInquiry={handleOpenInquiry}
         />
 
         {/* Official 2026-27 Admission Banner Spotlight */}

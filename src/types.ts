@@ -133,3 +133,21 @@ export interface GalleryItem {
   isFeaturedBanner?: boolean;
 }
 
+export type NoticeCategory = 'all' | 'admission' | 'examination' | 'news';
+
+export interface NoticeItem {
+  id: string;
+  title: string;
+  category: 'admission' | 'examination' | 'news';
+  categoryLabel: string;
+  date: string;
+  description: string;
+  badge?: string;
+  isNew?: boolean;
+  isUrgent?: boolean;
+  targetClass?: string;
+  attachmentName?: string;
+  actionText?: string;
+  details?: string[];
+}
+

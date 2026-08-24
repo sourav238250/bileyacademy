@@ -13,7 +13,8 @@ import {
   Clock,
   MessageSquare,
   BarChart3,
-  Image as ImageIcon
+  Image as ImageIcon,
+  Bell
 } from 'lucide-react';
 import { Logo } from './Logo';
 import { ThemeToggle } from './ThemeToggle';
@@ -28,6 +29,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate, onOpe
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
+    { id: 'hero', label: 'Noticeboard', icon: Bell, badge: 'Live' },
     { id: 'about', label: 'About Us', icon: BookOpen },
     { id: 'mission-vision', label: 'Mission & Vision', icon: Award },
     { id: 'founder', label: 'Founder Message', icon: GraduationCap },
