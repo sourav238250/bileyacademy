@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { 
-  Sparkles, 
   BookOpen, 
-  GraduationCap, 
   FlaskConical, 
   Calculator, 
   Laptop, 
@@ -17,7 +15,6 @@ import {
   Search, 
   ChevronRight, 
   Download,
-  Filter,
   FileCheck2,
   BarChart3
 } from 'lucide-react';
@@ -25,6 +22,7 @@ import { GRADE_CATEGORIES, ALL_GRADES_DATA } from '../data/curriculumData';
 import { GradeCategory, SubjectCurriculum } from '../types';
 import { SubjectModal } from './SubjectModal';
 import { getCompletedChapterKeys, calculateSubjectMetric, calculateGradeOverallProgress } from '../utils/progressStore';
+import { useLanguage } from '../context/LanguageContext';
 
 interface CurriculumSectionProps {
   selectedCategory: GradeCategory;
@@ -42,6 +40,7 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
   const [selectedSubject, setSelectedSubject] = useState<SubjectCurriculum | null>(null);
   const [activeGradeIndex, setActiveGradeIndex] = useState<number>(0);
   const [searchQuery, setSearchQuery] = useState('');
+  const { isBengali, t } = useLanguage();
 
   // Icon mapping
   const getSubjectIcon = (iconName: string) => {
@@ -81,13 +80,13 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center space-x-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-3.5 py-1 text-xs font-bold text-amber-400 mb-3">
             <Layers className="w-3.5 h-3.5" />
-            <span>Academic Syllabi & Progression</span>
+            <span>{t('curriculumBadge')}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-serif tracking-tight">
-            Complete Course Curriculum
+            {t('curriculumHeading')}
           </h2>
           <p className="text-slate-400 mt-2 text-sm sm:text-base leading-relaxed">
-            Detailed, chapter-by-chapter course breakdowns across all four developmental tiers from <strong>Class 1 to Class 12</strong>.
+            {t('curriculumSubtitle')}
           </p>
         </div>
 
@@ -149,10 +148,12 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
                 <span className="bg-amber-500/20 text-amber-400 border border-amber-500/30 text-xs font-bold px-2.5 py-0.5 rounded-full">
                   {currentGrade.gradeLabel}
                 </span>
-                <span className="text-xs text-slate-400">Target Age: {currentGrade.ageGroup}</span>
+                <span className="text-xs text-slate-400">
+                  {isBengali ? 'বয়সসীমা:' : 'Target Age:'} {currentGrade.ageGroup}
+                </span>
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-white font-serif mt-1">
-                Academic Focus: {currentGrade.academicFocus}
+                {isBengali ? 'অ্যাকাডেমিক ফোকাস:' : 'Academic Focus:'} {currentGrade.academicFocus}
               </h3>
             </div>
 
@@ -162,7 +163,7 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
                 <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
-                  placeholder="Search subject or chapter..."
+                  placeholder={isBengali ? 'বিষয় বা অধ্যায় খুঁজুন...' : 'Search subject or chapter...'}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-9 pr-3 py-2 text-xs bg-slate-950 border border-slate-700 rounded-xl text-slate-200 focus:outline-none focus:border-amber-400 transition-colors"
@@ -175,7 +176,7 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
                   className="px-3.5 py-2 rounded-xl text-xs font-bold bg-amber-500/10 hover:bg-amber-500 text-amber-400 hover:text-slate-950 border border-amber-500/30 transition-all shrink-0 flex items-center space-x-1.5"
                 >
                   <BarChart3 className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">Track Progress</span>
+                  <span className="hidden sm:inline">{isBengali ? 'অগ্রগতি দেখুন' : 'Track Progress'}</span>
                 </button>
               )}
             </div>
@@ -186,10 +187,12 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
             <div className="flex items-center justify-between text-xs mb-1.5">
               <span className="font-bold text-slate-300 flex items-center space-x-1.5">
                 <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                <span>{currentGrade.gradeLabel} Syllabus Completion Status:</span>
+                <span>
+                  {currentGrade.gradeLabel} {isBengali ? 'সিলেবাস অগ্রগতি অবস্থা:' : 'Syllabus Completion Status:'}
+                </span>
               </span>
               <span className="font-mono font-bold text-amber-400">
-                {gradeOverallMetric.overallPercentage}% Completed ({gradeOverallMetric.completedChapters}/{gradeOverallMetric.totalChapters} Modules)
+                {gradeOverallMetric.overallPercentage}% {isBengali ? 'সম্পন্ন' : 'Completed'} ({gradeOverallMetric.completedChapters}/{gradeOverallMetric.totalChapters} {isBengali ? 'মডিউল' : 'Modules'})
               </span>
             </div>
             <div className="w-full bg-slate-950 rounded-full h-2.5 p-0.5 border border-slate-800 overflow-hidden">
@@ -204,17 +207,17 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
           <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-300">
             <div className="flex items-center space-x-2">
               <Clock className="w-4 h-4 text-amber-400" />
-              <span><strong>Weekly Timing:</strong> {currentGrade.weeklySchedulePreview.days} ({currentGrade.weeklySchedulePreview.timings})</span>
+              <span><strong>{isBengali ? 'সাপ্তাহিক সময়সূচী:' : 'Weekly Timing:'}</strong> {currentGrade.weeklySchedulePreview.days} ({currentGrade.weeklySchedulePreview.timings})</span>
             </div>
             <div className="flex items-center space-x-2">
               <FileCheck2 className="w-4 h-4 text-emerald-400" />
-              <span><strong>Mode:</strong> {currentGrade.weeklySchedulePreview.mode}</span>
+              <span><strong>{isBengali ? 'মোড:' : 'Mode:'}</strong> {currentGrade.weeklySchedulePreview.mode}</span>
             </div>
             <button
               onClick={() => onOpenInquiry()}
               className="font-bold text-amber-400 hover:text-amber-300 underline"
             >
-              Request Custom Subject Combo →
+              {isBengali ? 'কাস্টম সাবজেক্ট কম্বিনেশন অনুরোধ করুন →' : 'Request Custom Subject Combo →'}
             </button>
           </div>
         </div>
@@ -242,7 +245,7 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
                         {subject.code}
                       </span>
                       <div className="text-[11px] text-amber-400/90 font-semibold mt-1">
-                        {subject.weeklyHours} Hrs / Week
+                        {subject.weeklyHours} {isBengali ? 'ঘণ্টা / সপ্তাহ' : 'Hrs / Week'}
                       </div>
                     </div>
                   </div>
@@ -258,7 +261,9 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
                   {/* Subject Progress Bar */}
                   <div className="mt-4 pt-3 border-t border-slate-800">
                     <div className="flex items-center justify-between text-[11px] mb-1">
-                      <span className="text-slate-400 font-medium">Curriculum Progress</span>
+                      <span className="text-slate-400 font-medium">
+                        {isBengali ? 'সিলেবাস অগ্রগতি' : 'Curriculum Progress'}
+                      </span>
                       <span className="font-bold text-amber-400 font-mono">{subjMetric.percentage}%</span>
                     </div>
                     <div className="w-full bg-slate-950 rounded-full h-2 border border-slate-800/80 overflow-hidden">
@@ -274,7 +279,7 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
                       />
                     </div>
                     <div className="flex items-center justify-between text-[10px] text-slate-500 mt-1">
-                      <span>{subjMetric.completedChapters} of {subjMetric.totalChapters} Chapters</span>
+                      <span>{subjMetric.completedChapters} of {subjMetric.totalChapters} {isBengali ? 'অধ্যায়' : 'Chapters'}</span>
                       <span>{subjMetric.status}</span>
                     </div>
                   </div>
@@ -282,7 +287,7 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
                   {/* Syllabus Preview Snippets */}
                   <div className="mt-3 pt-3 border-t border-slate-800 space-y-2">
                     <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                      Core Modules ({subject.keyChapters.length}):
+                      {isBengali ? 'মূল অধ্যায়সমূহ' : 'Core Modules'} ({subject.keyChapters.length}):
                     </div>
                     <div className="space-y-1.5">
                       {subject.keyChapters.slice(0, 3).map((chapter, cIdx) => {
@@ -304,7 +309,7 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
                   {subject.practicalAvailable && (
                     <div className="mt-4 inline-flex items-center space-x-1.5 text-[11px] font-medium text-emerald-400 bg-emerald-950/40 border border-emerald-500/30 px-2.5 py-1 rounded-lg">
                       <FlaskConical className="w-3.5 h-3.5" />
-                      <span>Includes In-House Practical Lab Sessions</span>
+                      <span>{isBengali ? 'বাস্তব প্র্যাক্টিক্যাল ল্যাব সেশন অন্তর্ভুক্ত' : 'Includes In-House Practical Lab Sessions'}</span>
                     </div>
                   )}
                 </div>
@@ -316,7 +321,7 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
                     onClick={() => setSelectedSubject(subject)}
                     className="text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center space-x-1"
                   >
-                    <span>Inspect Full Syllabus</span>
+                    <span>{isBengali ? 'সম্পূর্ণ সিলেবাস দেখুন' : 'Inspect Full Syllabus'}</span>
                     <ChevronRight className="w-4 h-4" />
                   </button>
 
@@ -324,7 +329,7 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
                     onClick={() => onOpenInquiry(subject.name)}
                     className="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-slate-200 transition-colors"
                   >
-                    Enroll Subject
+                    {isBengali ? 'ভর্তি হন' : 'Enroll Subject'}
                   </button>
                 </div>
               </div>
@@ -340,10 +345,10 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
             </div>
             <div>
               <h4 className="text-base font-bold text-white">
-                Download Official Biley Academy Academic Prospectus 2026-27
+                {isBengali ? 'বিলে অ্যাকাডেমির অফিসিয়াল প্রসপেক্টাস ২০২৬-২৭' : 'Download Official Biley Academy Academic Prospectus 2026-27'}
               </h4>
               <p className="text-xs text-slate-400">
-                Complete syllabus for Class 1 to 12, fee schedule, scholarship criteria & faculty guidelines.
+                {isBengali ? 'ক্লাস ১ থেকে ১২ এর সিলেবাস, স্কলারশিপ ও অনুষদের সম্পূর্ণ নির্দেশিকা।' : 'Complete syllabus for Class 1 to 12, fee schedule, scholarship criteria & faculty guidelines.'}
               </p>
             </div>
           </div>
@@ -353,7 +358,7 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
             className="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 transition-colors shrink-0 shadow-md flex items-center space-x-2"
           >
             <Download className="w-4 h-4" />
-            <span>Print / Save Prospectus</span>
+            <span>{isBengali ? 'প্রিন্ট / সেভ প্রসপেক্টাস' : 'Print / Save Prospectus'}</span>
           </button>
         </div>
 
@@ -374,3 +379,4 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
     </section>
   );
 };
+

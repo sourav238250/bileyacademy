@@ -21,6 +21,7 @@ import {
 import { ACADEMY_NOTICES } from '../data/noticesData';
 import { NoticeCategory, NoticeItem } from '../types';
 import { NoticeDetailModal } from './NoticeDetailModal';
+import { useLanguage } from '../context/LanguageContext';
 
 interface NoticeBoardWidgetProps {
   onOpenInquiry?: (context?: string) => void;
@@ -31,6 +32,7 @@ export const NoticeBoardWidget: React.FC<NoticeBoardWidgetProps> = ({
   onOpenInquiry,
   className = ''
 }) => {
+  const { isBengali } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState<NoticeCategory>('all');
   const [isAutoScrolling, setIsAutoScrolling] = useState<boolean>(true);
   const [activeNoticeModal, setActiveNoticeModal] = useState<NoticeItem | null>(null);
@@ -123,13 +125,13 @@ export const NoticeBoardWidget: React.FC<NoticeBoardWidgetProps> = ({
           </div>
           <div>
             <h2 className="text-sm sm:text-base font-bold text-slate-100 flex items-center gap-1.5 font-serif">
-              <span>Notice & Announcements</span>
+              <span>{isBengali ? 'নোটিস ও গুরুত্বপূর্ণ ঘোষণা' : 'Notice & Announcements'}</span>
               <span className="text-[10px] font-sans font-black bg-amber-500 text-slate-950 px-1.5 py-0.2 rounded uppercase">
-                LIVE
+                {isBengali ? 'লাইভ' : 'LIVE'}
               </span>
             </h2>
             <p className="text-[11px] text-slate-400">
-              Admissions • Examination Timetables • Official Circulars
+              {isBengali ? 'ভর্তি • পরীক্ষার সময়সূচি • অফিসিয়াল বিজ্ঞপ্তি' : 'Admissions • Examination Timetables • Official Circulars'}
             </p>
           </div>
         </div>
@@ -143,11 +145,11 @@ export const NoticeBoardWidget: React.FC<NoticeBoardWidgetProps> = ({
                 ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:bg-amber-500/30' 
                 : 'bg-slate-800 text-slate-400 hover:text-slate-200 border border-slate-700'
             }`}
-            title={isAutoScrolling ? 'Pause Auto-Scroll' : 'Resume Auto-Scroll'}
+            title={isAutoScrolling ? (isBengali ? 'স্ক্রোল থামান' : 'Pause Auto-Scroll') : (isBengali ? 'স্ক্রোল চালু করুন' : 'Resume Auto-Scroll')}
             aria-label={isAutoScrolling ? 'Pause auto scrolling' : 'Resume auto scrolling'}
           >
             {isAutoScrolling ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-            <span className="text-[10px] hidden xs:inline">{isAutoScrolling ? 'Auto-Scrolling' : 'Paused'}</span>
+            <span className="text-[10px] hidden xs:inline">{isAutoScrolling ? (isBengali ? 'স্ক্রোল চালু' : 'Auto-Scrolling') : (isBengali ? 'থামানো আছে' : 'Paused')}</span>
           </button>
 
           <div className="flex flex-col space-y-0.5">
@@ -182,7 +184,7 @@ export const NoticeBoardWidget: React.FC<NoticeBoardWidgetProps> = ({
                 : 'bg-slate-900 text-slate-400 hover:text-slate-200 hover:bg-slate-800'
             }`}
           >
-            All Notices ({ACADEMY_NOTICES.length})
+            {isBengali ? 'সকল নোটিস' : 'All Notices'} ({ACADEMY_NOTICES.length})
           </button>
 
           <button
@@ -193,7 +195,7 @@ export const NoticeBoardWidget: React.FC<NoticeBoardWidgetProps> = ({
                 : 'bg-slate-900 text-slate-400 hover:text-emerald-300 hover:bg-slate-800'
             }`}
           >
-            Admissions ({ACADEMY_NOTICES.filter(i => i.category === 'admission').length})
+            {isBengali ? 'ভর্তি' : 'Admissions'} ({ACADEMY_NOTICES.filter(i => i.category === 'admission').length})
           </button>
 
           <button
@@ -204,7 +206,7 @@ export const NoticeBoardWidget: React.FC<NoticeBoardWidgetProps> = ({
                 : 'bg-slate-900 text-slate-400 hover:text-amber-300 hover:bg-slate-800'
             }`}
           >
-            Exams ({ACADEMY_NOTICES.filter(i => i.category === 'examination').length})
+            {isBengali ? 'পরীক্ষা' : 'Exams'} ({ACADEMY_NOTICES.filter(i => i.category === 'examination').length})
           </button>
 
           <button
@@ -215,7 +217,7 @@ export const NoticeBoardWidget: React.FC<NoticeBoardWidgetProps> = ({
                 : 'bg-slate-900 text-slate-400 hover:text-blue-300 hover:bg-slate-800'
             }`}
           >
-            News ({ACADEMY_NOTICES.filter(i => i.category === 'news').length})
+            {isBengali ? 'সংবাদ' : 'News'} ({ACADEMY_NOTICES.filter(i => i.category === 'news').length})
           </button>
         </div>
       </div>
@@ -286,7 +288,7 @@ export const NoticeBoardWidget: React.FC<NoticeBoardWidgetProps> = ({
               )}
 
               <span className="text-amber-400 font-bold flex items-center space-x-1 group-hover:underline">
-                <span>View Notice</span>
+                <span>{isBengali ? 'বিজ্ঞপ্তি দেখুন' : 'View Notice'}</span>
                 <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
               </span>
             </div>
@@ -296,7 +298,7 @@ export const NoticeBoardWidget: React.FC<NoticeBoardWidgetProps> = ({
 
         {filteredNotices.length === 0 && (
           <div className="text-center py-8 text-slate-400">
-            <p className="text-xs">No notices currently matching this filter.</p>
+            <p className="text-xs">{isBengali ? 'কোনো নোটিস পাওয়া যায়নি।' : 'No notices currently matching this filter.'}</p>
           </div>
         )}
 
@@ -306,7 +308,7 @@ export const NoticeBoardWidget: React.FC<NoticeBoardWidgetProps> = ({
       <div className="p-3 bg-slate-950 border-t border-slate-800 flex flex-wrap items-center justify-between gap-2 text-xs">
         <div className="flex items-center space-x-1.5 text-slate-400 text-[11px]">
           <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-          <span className="truncate">Hover on list to pause auto-scrolling</span>
+          <span className="truncate">{isBengali ? 'স্ক্রোল থামাতে নোটিসের উপর মাউস রাখুন' : 'Hover on list to pause auto-scrolling'}</span>
         </div>
 
         {onOpenInquiry && (
@@ -314,7 +316,7 @@ export const NoticeBoardWidget: React.FC<NoticeBoardWidgetProps> = ({
             onClick={() => onOpenInquiry('Admission Inquiry from Noticeboard')}
             className="px-3 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-[11px] transition-colors shadow-sm"
           >
-            Apply for Admission
+            {isBengali ? 'ভর্তির আবেদন করুন' : 'Apply for Admission'}
           </button>
         )}
       </div>

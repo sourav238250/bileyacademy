@@ -5,9 +5,7 @@ import {
   CheckCircle2, 
   GraduationCap, 
   FlaskConical, 
-  Laptop, 
   BookOpen, 
-  Calculator, 
   Award,
   Flame,
   Bot,
@@ -17,6 +15,7 @@ import {
 import { Logo } from './Logo';
 import { ACADEMY_STATS } from '../data/academyData';
 import { NoticeBoardWidget } from './NoticeBoardWidget';
+import { useLanguage } from '../context/LanguageContext';
 
 interface HeroProps {
   onSelectCategory: (category: 'primary' | 'upper_primary' | 'secondary' | 'higher_secondary') => void;
@@ -32,6 +31,7 @@ export const Hero: React.FC<HeroProps> = ({
   onOpenInquiry 
 }) => {
   const [rightPanelTab, setRightPanelTab] = useState<'notices' | 'grades'>('notices');
+  const { isBengali, t, translations } = useLanguage();
 
   return (
     <section id="hero" className="relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white pt-8 pb-14 lg:pt-12 lg:pb-20 border-b border-slate-800">
@@ -50,60 +50,58 @@ export const Hero: React.FC<HeroProps> = ({
                 <Logo size="sm" />
                 <div className="text-left">
                   <span className="text-xs font-black font-serif text-white tracking-wide block">
-                    BILEY ACADEMY
+                    {t('academyName', 'BILEY ACADEMY')}
                   </span>
                   <span className="text-[10px] text-amber-400 font-bold tracking-widest block uppercase">
-                    SINCE 2026
+                    {t('sinceYear', 'SINCE 2026')}
                   </span>
                 </div>
               </div>
               
               <div className="inline-flex items-center space-x-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-3.5 py-1 text-xs font-semibold text-amber-300">
                 <Flame className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
-                <span>Awakening Potential • Inspired by Swami Vivekananda</span>
+                <span>{t('heroBadge', 'Awakening Potential • Inspired by Swami Vivekananda')}</span>
               </div>
             </div>
 
             {/* Main Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight leading-[1.15] font-serif">
-              Mastery in Every Subject from <br className="hidden sm:inline" />
+              {t('heroHeadlinePrefix', 'Mastery in Every Subject from')} <br className="hidden sm:inline" />
               <span className="bg-gradient-to-r from-amber-400 via-amber-300 to-orange-400 bg-clip-text text-transparent">
-                Class 1 to Class 12
+                {t('heroHeadlineHighlight', 'Class 1 to Class 12')}
               </span>
             </h1>
 
             {/* Subtitle */}
             <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              <strong>Biley Academy</strong> delivers structured, concept-first coaching across 
-              <strong> English, Mathematics, Science, Biology, Physics, Chemistry, and Computer Science / Application</strong> in Jamna, Pingla. 
-              Offline foundations for primary grades and Hybrid JEE/NEET orientation for secondary & higher secondary.
+              {t('heroSubtitle')}
             </p>
 
             {/* Key Value Checks */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-1 text-left max-w-xl mx-auto lg:mx-0">
               <div className="flex items-center space-x-2 text-xs sm:text-sm text-slate-200">
                 <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>Small Batches (15-18)</span>
+                <span>{t('heroCheck1', 'Small Batches (15-18)')}</span>
               </div>
               <div className="flex items-center space-x-2 text-xs sm:text-sm text-slate-200">
                 <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>Hands-on Science Labs</span>
+                <span>{t('heroCheck2', 'Hands-on Science Labs')}</span>
               </div>
               <div className="flex items-center space-x-2 text-xs sm:text-sm text-slate-200">
                 <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>Weekly Mock Tests</span>
+                <span>{t('heroCheck3', 'Weekly Mock Tests')}</span>
               </div>
               <div className="flex items-center space-x-2 text-xs sm:text-sm text-slate-200">
                 <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>1-on-1 Doubt Clearing</span>
+                <span>{t('heroCheck4', '1-on-1 Doubt Clearing')}</span>
               </div>
               <div className="flex items-center space-x-2 text-xs sm:text-sm text-slate-200">
                 <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>CBSE / ICSE / WB</span>
+                <span>{t('heroCheck5', 'Computer Practical Labs')}</span>
               </div>
               <div className="flex items-center space-x-2 text-xs sm:text-sm text-slate-200">
                 <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>JEE & NEET Tricks</span>
+                <span>{t('heroCheck6', 'Parent Monthly Progress')}</span>
               </div>
             </div>
 
@@ -114,7 +112,7 @@ export const Hero: React.FC<HeroProps> = ({
                 onClick={onOpenDemoModal}
                 className="px-5 py-3 rounded-xl font-bold text-xs sm:text-sm bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 shadow-xl shadow-amber-500/25 hover:shadow-amber-500/40 hover:-translate-y-0.5 transition-all flex items-center space-x-2"
               >
-                <span>Book 2 Free Demo Classes</span>
+                <span>{t('heroCtaEnroll', 'Book 2 Free Demo Classes')}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
@@ -124,7 +122,7 @@ export const Hero: React.FC<HeroProps> = ({
                 className="px-4 py-3 rounded-xl font-semibold text-xs sm:text-sm bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-500/30 hover:border-amber-400 transition-all flex items-center space-x-2 shadow-sm"
               >
                 <Bot className="w-4 h-4 text-amber-400" />
-                <span>Ask AI Doubt Solver</span>
+                <span>{t('heroCtaAiTutor', 'Ask AI Doubt Solver')}</span>
               </button>
             </div>
           </div>
@@ -143,7 +141,7 @@ export const Hero: React.FC<HeroProps> = ({
                 }`}
               >
                 <Bell className="w-3.5 h-3.5" />
-                <span>Notice & News (Live)</span>
+                <span>{t('heroTabNotices', 'Notice & News (Live)')}</span>
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               </button>
 
@@ -156,7 +154,7 @@ export const Hero: React.FC<HeroProps> = ({
                 }`}
               >
                 <Layers className="w-3.5 h-3.5" />
-                <span>Grade Curriculums</span>
+                <span>{t('heroTabGrades', 'Grade Curriculums')}</span>
               </button>
             </div>
 
@@ -170,12 +168,12 @@ export const Hero: React.FC<HeroProps> = ({
                   <div>
                     <h2 className="text-sm sm:text-base font-bold text-white flex items-center space-x-2">
                       <Sparkles className="w-4 h-4 text-amber-400" />
-                      <span>Explore Grade Curriculums</span>
+                      <span>{isBengali ? 'শ্রেণিভিত্তিক পাঠ্যক্রম অন্বেষণ' : 'Explore Grade Curriculums'}</span>
                     </h2>
-                    <p className="text-[11px] text-slate-400">Select an academic level to inspect detailed syllabus:</p>
+                    <p className="text-[11px] text-slate-400">{t('heroSelectGradeHelp')}</p>
                   </div>
                   <span className="text-[10px] bg-slate-800 text-amber-300 font-bold px-2 py-0.5 rounded-md border border-slate-700">
-                    4 Tiers
+                    {isBengali ? '৪টি পর্যায়' : '4 Tiers'}
                   </span>
                 </div>
 
@@ -194,11 +192,11 @@ export const Hero: React.FC<HeroProps> = ({
                       <div>
                         <div className="flex items-center space-x-1.5">
                           <h3 className="text-xs sm:text-sm font-bold text-white group-hover:text-amber-300">
-                            Class 1 to 4 (Primary)
+                            {isBengali ? 'ক্লাস ১ থেকে ৪ (প্রাথমিক)' : 'Class 1 to 4 (Primary)'}
                           </h3>
-                          <span className="text-[9px] text-amber-400 bg-amber-500/10 px-1 rounded">Foundation</span>
+                          <span className="text-[9px] text-amber-400 bg-amber-500/10 px-1 rounded">{isBengali ? 'ভিত্তি' : 'Foundation'}</span>
                         </div>
-                        <p className="text-[11px] text-slate-400">English • Math • Computer • Science</p>
+                        <p className="text-[11px] text-slate-400">{isBengali ? 'ইংরেজি • গণিত • কম্পিউটার • বিজ্ঞান' : 'English • Math • Computer • Science'}</p>
                       </div>
                     </div>
                     <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-amber-400 group-hover:translate-x-1 transition-all" />
@@ -217,11 +215,11 @@ export const Hero: React.FC<HeroProps> = ({
                       <div>
                         <div className="flex items-center space-x-1.5">
                           <h3 className="text-xs sm:text-sm font-bold text-white group-hover:text-emerald-300">
-                            Class 5 to 8 (Upper Primary)
+                            {isBengali ? 'ক্লাস ৫ থেকে ৮ (উচ্চ প্রাথমিক)' : 'Class 5 to 8 (Upper Primary)'}
                           </h3>
-                          <span className="text-[9px] text-emerald-400 bg-emerald-500/10 px-1 rounded">Middle</span>
+                          <span className="text-[9px] text-emerald-400 bg-emerald-500/10 px-1 rounded">{isBengali ? 'মিডল' : 'Middle'}</span>
                         </div>
-                        <p className="text-[11px] text-slate-400">Math • Science • Biology • English • Comp</p>
+                        <p className="text-[11px] text-slate-400">{isBengali ? 'গণিত • বিজ্ঞান • জীবনবিজ্ঞান • ইংরেজি • কম্পিউটার' : 'Math • Science • Biology • English • Comp'}</p>
                       </div>
                     </div>
                     <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-1 transition-all" />
@@ -240,11 +238,11 @@ export const Hero: React.FC<HeroProps> = ({
                       <div>
                         <div className="flex items-center space-x-1.5">
                           <h3 className="text-xs sm:text-sm font-bold text-white group-hover:text-blue-300">
-                            Class 9 & 10 (Secondary)
+                            {isBengali ? 'ক্লাস ৯ ও ১০ (মাধ্যমিক)' : 'Class 9 & 10 (Secondary)'}
                           </h3>
-                          <span className="text-[9px] text-blue-400 bg-blue-500/10 px-1 rounded">Board Target</span>
+                          <span className="text-[9px] text-blue-400 bg-blue-500/10 px-1 rounded">{isBengali ? 'বোর্ড লক্ষ্য' : 'Board Target'}</span>
                         </div>
-                        <p className="text-[11px] text-slate-400">Math • Science (Phy/Chem) • Bio • Eng • CS</p>
+                        <p className="text-[11px] text-slate-400">{isBengali ? 'গণিত • বিজ্ঞান (পদার্থ/রসায়ন) • জীব • ইং • সিএস' : 'Math • Science (Phy/Chem) • Bio • Eng • CS'}</p>
                       </div>
                     </div>
                     <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-blue-400 group-hover:translate-x-1 transition-all" />
@@ -263,11 +261,11 @@ export const Hero: React.FC<HeroProps> = ({
                       <div>
                         <div className="flex items-center space-x-1.5">
                           <h3 className="text-xs sm:text-sm font-bold text-white group-hover:text-indigo-300">
-                            Class 11 & 12 (Higher Secondary)
+                            {isBengali ? 'ক্লাস ১১ ও ১২ (উচ্চ মাধ্যমিক)' : 'Class 11 & 12 (Higher Secondary)'}
                           </h3>
-                          <span className="text-[9px] text-indigo-400 bg-indigo-500/10 px-1 rounded">Board + JEE</span>
+                          <span className="text-[9px] text-indigo-400 bg-indigo-500/10 px-1 rounded">{isBengali ? 'বোর্ড + JEE' : 'Board + JEE'}</span>
                         </div>
-                        <p className="text-[11px] text-slate-400">Math • Physics • Chem • Bio • Eng • CS/CA</p>
+                        <p className="text-[11px] text-slate-400">{isBengali ? 'গণিত • পদার্থ • রসায়ন • জীব • ইং • সিএস/সিএ' : 'Math • Physics • Chem • Bio • Eng • CS/CA'}</p>
                       </div>
                     </div>
                     <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-indigo-400 group-hover:translate-x-1 transition-all" />
@@ -277,7 +275,7 @@ export const Hero: React.FC<HeroProps> = ({
                 <div className="mt-3 p-2 rounded-lg bg-slate-950 border border-slate-800 flex items-center justify-between text-[11px] text-slate-300">
                   <span className="flex items-center space-x-1 text-amber-400 font-medium">
                     <Award className="w-3 h-3" />
-                    <span>Personalized 1-on-1 Guidance</span>
+                    <span>{isBengali ? 'ব্যক্তিগত ১-অন-১ নির্দেশনা' : 'Personalized 1-on-1 Guidance'}</span>
                   </span>
                   <span className="text-slate-400">CBSE • ICSE • WB</span>
                 </div>
@@ -290,21 +288,56 @@ export const Hero: React.FC<HeroProps> = ({
 
         {/* Dynamic Statistics Bar */}
         <div className="mt-10 sm:mt-14 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-5 border-t border-slate-800/80 pt-6">
-          {ACADEMY_STATS.map((stat, idx) => (
-            <div key={idx} className="p-3.5 rounded-xl bg-slate-900/50 border border-slate-800/60 text-center">
-              <div className="text-2xl sm:text-3xl font-black text-amber-400 font-serif">
-                {stat.value}
-              </div>
-              <div className="text-xs sm:text-sm font-bold text-slate-200 mt-0.5">
-                {stat.label}
-              </div>
-              <div className="text-[10px] text-slate-400">
-                {stat.sub}
-              </div>
+          <div className="p-3.5 rounded-xl bg-slate-900/50 border border-slate-800/60 text-center">
+            <div className="text-2xl sm:text-3xl font-black text-amber-400 font-serif">
+              {translations.statStudents}
             </div>
-          ))}
+            <div className="text-xs sm:text-sm font-bold text-slate-200 mt-0.5">
+              {translations.statStudentsLabel}
+            </div>
+            <div className="text-[10px] text-slate-400">
+              {isBengali ? 'ক্লাস ১ থেকে ১২ পর্যন্ত' : 'Class 1 to 12 Academic Range'}
+            </div>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-slate-900/50 border border-slate-800/60 text-center">
+            <div className="text-2xl sm:text-3xl font-black text-amber-400 font-serif">
+              {translations.statSuccess}
+            </div>
+            <div className="text-xs sm:text-sm font-bold text-slate-200 mt-0.5">
+              {translations.statSuccessLabel}
+            </div>
+            <div className="text-[10px] text-slate-400">
+              {isBengali ? 'বোর্ড পরীক্ষায় ৮০%+ নম্বর' : 'Scored 80%+ in Final Exams'}
+            </div>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-slate-900/50 border border-slate-800/60 text-center">
+            <div className="text-2xl sm:text-3xl font-black text-amber-400 font-serif">
+              {translations.statFaculty}
+            </div>
+            <div className="text-xs sm:text-sm font-bold text-slate-200 mt-0.5">
+              {translations.statFacultyLabel}
+            </div>
+            <div className="text-[10px] text-slate-400">
+              {isBengali ? 'অভিজ্ঞ শিক্ষক ও গবেষক' : 'Subject Specialists & Researchers'}
+            </div>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-slate-900/50 border border-slate-800/60 text-center">
+            <div className="text-2xl sm:text-3xl font-black text-amber-400 font-serif">
+              {translations.statBatchSize}
+            </div>
+            <div className="text-xs sm:text-sm font-bold text-slate-200 mt-0.5">
+              {translations.statBatchSizeLabel}
+            </div>
+            <div className="text-[10px] text-slate-400">
+              {isBengali ? 'ব্যক্তিগত মনযোগের নিশ্চয়তা' : 'Guaranteed Individual Focus'}
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 };
+

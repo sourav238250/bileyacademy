@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   Quote, 
   GraduationCap, 
@@ -6,20 +6,35 @@ import {
   Sparkles, 
   CheckCircle2, 
   Flame, 
-  BookOpen,
   FileText,
   Users,
   Presentation,
-  Compass,
   Briefcase,
   Layers
 } from 'lucide-react';
 import { Logo } from './Logo';
 import { FOUNDER_INFO } from '../data/academyData';
 import souravDindaImg from '../assets/images/sourav_dinda_color_portrait_1787657237922.jpg';
+import { useLanguage } from '../context/LanguageContext';
 
 export const FounderMessageSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'message' | 'credentials'>('message');
+  const { isBengali, t } = useLanguage();
+
+  const founderName = isBengali ? 'সৌরভ দিন্দা' : FOUNDER_INFO.name;
+  const founderTitle = isBengali ? 'প্রতিষ্ঠাতা ও অ্যাকাডেমিক ডিরেক্টর, বিলে অ্যাকাডেমি' : FOUNDER_INFO.title;
+  const founderExperience = isBengali ? '১৫+ বছরের শিক্ষকতা ও গবেষণার অভিজ্ঞতা' : FOUNDER_INFO.experience;
+
+  const messageParagraphs = isBengali ? [
+    "বিলে অ্যাকাডেমির স্বপ্ন নিহিত এক গভীর সত্যের মধ্যে: প্রতিটি শিক্ষার্থীর মধ্যে রয়েছে অপার সম্ভাবনা ও অনন্য মেধা। যখন শিশুরা কেবল মুখস্থবিদ্যার মাধ্যমে শেখে, তখন তারা শেখার আসল আনন্দ হারিয়ে ফেলে। স্বামী বিবেকানন্দের নির্ভীক অনুসন্ধিৎসা এবং চরিত্রের আদর্শ আমাদের অ্যাকাডেমির প্রতিটি পাঠদানকে চালিত করে।",
+    "আমরা ক্লাস ১ থেকে শুরু করে ক্লাস ১২ পর্যন্ত প্রতিটি স্তরে মৌলিক ধারণাগত স্পষ্টতা (Conceptual Clarity) নিশ্চিত করি। গণিতের সূত্র হোক কিংবা পদার্থবিদ্যার জটিল নিয়ম বা কম্পিউটারের অ্যালগরিদম — সবই হাতে-কলমে প্র্যাক্টিক্যাল পরীক্ষা ও বাস্তব উদাহরণের মাধ্যমে শেখানো হয়।",
+    "আমি ব্যক্তিগতভাবে প্রতিটি ব্যাচের অগ্রগতি পর্যবেক্ষণ করি, শিক্ষার্থীদের আত্মবিশ্বাস জোগাই এবং তাদের বোর্ড পরীক্ষা ও এন্ট্রান্স পরীক্ষার সর্বোচ্চ সাফল্যের জন্য প্রস্তুত করি। বিলে অ্যাকাডেমিতে আপনার সন্তানকে স্বাগত জানাই।"
+  ] : FOUNDER_INFO.messageParagraphs;
+
+  const qualifications = isBengali ? [
+    "এম.ফিল (কম্পিউটার সায়েন্স) — শীর্ষ গ্রেড গবেষণা",
+    "এম.সি.এস. (কম্পিউটার সায়েন্স মাস্টার্স) — বিশেষ কৃতিত্ব",
+    "বি.এসসি. (কম্পিউটার সায়েন্স অনার্স, গণিত ও পদার্থবিদ্যা)"
+  ] : FOUNDER_INFO.qualifications;
 
   return (
     <section id="founder" className="py-16 sm:py-20 bg-slate-900 text-slate-100 border-b border-slate-800 relative overflow-hidden">
@@ -33,13 +48,13 @@ export const FounderMessageSection: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center space-x-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-3.5 py-1 text-xs font-bold text-amber-400 mb-3">
             <GraduationCap className="w-3.5 h-3.5" />
-            <span>Academic Leadership & Founder Desk</span>
+            <span>{t('founderBadge')}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-serif tracking-tight">
-            Founder & Academic Director's Message
+            {t('founderHeading')}
           </h2>
           <p className="text-slate-400 mt-2 text-sm sm:text-base">
-            {FOUNDER_INFO.tagline}
+            {t('founderTagline')}
           </p>
         </div>
 
@@ -64,31 +79,31 @@ export const FounderMessageSection: React.FC = () => {
                   />
                 </div>
                 <div className="absolute -bottom-2.5 right-1/2 translate-x-1/2 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 text-[11px] font-black px-3.5 py-0.5 rounded-full uppercase tracking-wider shadow-lg whitespace-nowrap">
-                  Founder & Academic Director
+                  {isBengali ? 'প্রতিষ্ঠাতা ও অ্যাকাডেমিক ডিরেক্টর' : 'Founder & Academic Director'}
                 </div>
               </div>
 
               <h3 className="text-2xl font-black text-white font-serif mt-3">
-                {FOUNDER_INFO.name}
+                {founderName}
               </h3>
               <p className="text-xs sm:text-sm text-amber-400 font-bold mt-1">
-                {FOUNDER_INFO.title}
+                {founderTitle}
               </p>
               
               {/* Experience Badge */}
               <div className="inline-flex items-center space-x-1.5 bg-slate-900 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-semibold text-amber-300 mt-2">
                 <Briefcase className="w-3.5 h-3.5 text-amber-400" />
-                <span>{FOUNDER_INFO.experience}</span>
+                <span>{founderExperience}</span>
               </div>
 
               {/* Qualifications Container */}
               <div className="mt-5 pt-4 border-t border-slate-800/80 text-left space-y-2.5">
                 <div className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center space-x-1.5 mb-1">
                   <GraduationCap className="w-4 h-4 text-amber-400" />
-                  <span>Academic Qualifications</span>
+                  <span>{isBengali ? 'শিক্ষাগত যোগ্যতা' : 'Academic Qualifications'}</span>
                 </div>
                 
-                {FOUNDER_INFO.qualifications.map((qual, qIdx) => (
+                {qualifications.map((qual, qIdx) => (
                   <div key={qIdx} className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 flex items-start space-x-2.5">
                     <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                     <span className="text-xs text-slate-200 font-medium leading-snug">
@@ -102,51 +117,51 @@ export const FounderMessageSection: React.FC = () => {
               <div className="mt-5 pt-4 border-t border-slate-800 text-left">
                 <div className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center space-x-1.5 mb-3">
                   <Award className="w-4 h-4 text-amber-400" />
-                  <span>Scholastic & Research Credentials</span>
+                  <span>{isBengali ? 'গবেষণা ও শিক্ষাক্ষেত্রে কৃতিত্ব' : 'Scholastic & Research Credentials'}</span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <div className="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
                     <div className="flex items-center space-x-1.5 text-amber-400 font-black text-sm">
                       <FileText className="w-3.5 h-3.5" />
-                      <span>6</span>
+                      <span>৬টি</span>
                     </div>
-                    <div className="text-[11px] text-slate-300 font-medium mt-0.5">Research Publications</div>
-                    <div className="text-[10px] text-slate-400">Journals & Conferences</div>
+                    <div className="text-[11px] text-slate-300 font-medium mt-0.5">{isBengali ? 'গবেষণা পত্র' : 'Research Publications'}</div>
+                    <div className="text-[10px] text-slate-400">{isBengali ? 'জার্নাল ও কনফারেন্স' : 'Journals & Conferences'}</div>
                   </div>
 
                   <div className="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
                     <div className="flex items-center space-x-1.5 text-emerald-400 font-black text-sm">
                       <Users className="w-3.5 h-3.5" />
-                      <span>100</span>
+                      <span>১০০+</span>
                     </div>
-                    <div className="text-[11px] text-slate-300 font-medium mt-0.5">Project Guidance</div>
-                    <div className="text-[10px] text-slate-400">Graduate Level</div>
+                    <div className="text-[11px] text-slate-300 font-medium mt-0.5">{isBengali ? 'প্রজেক্ট গাইডেন্স' : 'Project Guidance'}</div>
+                    <div className="text-[10px] text-slate-400">{isBengali ? 'স্নাতক স্তর' : 'Graduate Level'}</div>
                   </div>
 
                   <div className="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
                     <div className="flex items-center space-x-1.5 text-indigo-400 font-black text-sm">
                       <Presentation className="w-3.5 h-3.5" />
-                      <span>2</span>
+                      <span>২টি</span>
                     </div>
-                    <div className="text-[11px] text-slate-300 font-medium mt-0.5">FDPs Attended</div>
-                    <div className="text-[10px] text-slate-400">Faculty Development</div>
+                    <div className="text-[11px] text-slate-300 font-medium mt-0.5">{isBengali ? 'FDP প্রশিক্ষণ' : 'FDPs Attended'}</div>
+                    <div className="text-[10px] text-slate-400">{isBengali ? 'অনুষদ উন্নয়ন' : 'Faculty Development'}</div>
                   </div>
 
                   <div className="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800/80">
                     <div className="flex items-center space-x-1.5 text-cyan-400 font-black text-sm">
                       <Layers className="w-3.5 h-3.5" />
-                      <span>6</span>
+                      <span>৬টি</span>
                     </div>
-                    <div className="text-[11px] text-slate-300 font-medium mt-0.5">Workshops</div>
-                    <div className="text-[10px] text-slate-400">Active Participation</div>
+                    <div className="text-[11px] text-slate-300 font-medium mt-0.5">{isBengali ? 'ওয়ার্কশপ' : 'Workshops'}</div>
+                    <div className="text-[10px] text-slate-400">{isBengali ? 'সক্রিয় অংশগ্রহণ' : 'Active Participation'}</div>
                   </div>
                 </div>
 
                 <div className="mt-2 p-2.5 rounded-xl bg-slate-900/60 border border-slate-800/80 flex items-center justify-between text-xs">
-                  <span className="text-slate-300 font-medium">Conference Organized:</span>
+                  <span className="text-slate-300 font-medium">{isBengali ? 'কনফারেন্স পরিচালনা:' : 'Conference Organized:'}</span>
                   <span className="text-amber-400 font-black bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
-                    1 (Lead Convener)
+                    {isBengali ? '১ (প্রধান আহ্বায়ক)' : '1 (Lead Convener)'}
                   </span>
                 </div>
               </div>
@@ -157,9 +172,9 @@ export const FounderMessageSection: React.FC = () => {
             <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs leading-relaxed shadow-md">
               <div className="flex items-center space-x-1.5 font-bold text-amber-300 mb-1">
                 <Flame className="w-3.5 h-3.5" />
-                <span>Our Guiding Philosophy:</span>
+                <span>{isBengali ? 'আমাদের পথপ্রদর্শক দর্শন:' : 'Our Guiding Philosophy:'}</span>
               </div>
-              "Education is the manifestation of the perfection already in man." — Swami Vivekananda (Biley)
+              "{t('aboutQuote')}" — {t('aboutQuoteAuthor')}
             </div>
           </div>
 
@@ -172,10 +187,10 @@ export const FounderMessageSection: React.FC = () => {
                 <Quote className="w-9 h-9 text-amber-400 shrink-0 opacity-80" />
                 <div>
                   <p className="text-sm sm:text-base font-serif italic text-amber-200 leading-relaxed">
-                    {FOUNDER_INFO.quote}
+                    "{t('aboutQuote')}"
                   </p>
                   <span className="block text-xs text-amber-400/90 font-bold mt-2 text-right">
-                    — Swami Vivekananda (Biley)
+                    — {t('aboutQuoteAuthor')}
                   </span>
                 </div>
               </div>
@@ -185,10 +200,10 @@ export const FounderMessageSection: React.FC = () => {
             <div className="p-6 sm:p-8 rounded-3xl bg-slate-950 border border-slate-800 space-y-4 text-sm sm:text-base text-slate-300 leading-relaxed shadow-xl">
               <div className="flex items-center space-x-2 text-amber-400 text-xs font-bold uppercase tracking-wider pb-2 border-b border-slate-800">
                 <Sparkles className="w-4 h-4 text-amber-400" />
-                <span>A Message to Parents and Aspiring Scholars</span>
+                <span>{isBengali ? 'অভিভাবক ও শিক্ষার্থী বন্ধুদের প্রতি বার্তা' : 'A Message to Parents and Aspiring Scholars'}</span>
               </div>
 
-              {FOUNDER_INFO.messageParagraphs.map((paragraph, index) => (
+              {messageParagraphs.map((paragraph, index) => (
                 <p key={index} className="text-justify leading-relaxed">
                   {paragraph}
                 </p>
@@ -200,10 +215,10 @@ export const FounderMessageSection: React.FC = () => {
                   <Logo size="sm" />
                   <div>
                     <div className="font-serif italic text-amber-400 font-bold text-lg">
-                      {FOUNDER_INFO.name}
+                      {founderName}
                     </div>
                     <div className="text-xs text-slate-400">
-                      Founder & Academic Director, Biley Academy
+                      {founderTitle}
                     </div>
                     <div className="text-[11px] text-slate-500 font-mono mt-0.5">
                       M.Phil (Comp. Sc.), M.C.S., B.Sc. (Comp. Sc., Math & Physics)
@@ -213,7 +228,7 @@ export const FounderMessageSection: React.FC = () => {
 
                 <div className="flex items-center space-x-2 text-xs text-slate-300 bg-slate-900 px-3.5 py-2 rounded-xl border border-slate-800 shadow-sm">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Personalized Academic Counseling</span>
+                  <span>{isBengali ? 'ব্যক্তিগত অ্যাকাডেমিক কাউন্সিলিং' : 'Personalized Academic Counseling'}</span>
                 </div>
               </div>
             </div>
@@ -221,16 +236,28 @@ export const FounderMessageSection: React.FC = () => {
             {/* Three Pillar Foundation Highlight */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
               <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 text-center">
-                <div className="text-amber-400 font-bold text-xs uppercase tracking-wider mb-1">Scientific Temper</div>
-                <div className="text-xs text-slate-400">Hands-on lab experiments & real-world derivation</div>
+                <div className="text-amber-400 font-bold text-xs uppercase tracking-wider mb-1">
+                  {isBengali ? 'বৈজ্ঞানিক অনুসন্ধিৎসা' : 'Scientific Temper'}
+                </div>
+                <div className="text-xs text-slate-400">
+                  {isBengali ? 'হাতে-কলমে ল্যাব পরীক্ষা ও প্রত্যক্ষ উপলব্ধি' : 'Hands-on lab experiments & real-world derivation'}
+                </div>
               </div>
               <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 text-center">
-                <div className="text-emerald-400 font-bold text-xs uppercase tracking-wider mb-1">Computational Logic</div>
-                <div className="text-xs text-slate-400">Algorithmic thinking from Class 1 to Class 12</div>
+                <div className="text-emerald-400 font-bold text-xs uppercase tracking-wider mb-1">
+                  {isBengali ? 'গাণিতিক ও কম্পিউটেশনাল যুক্তি' : 'Computational Logic'}
+                </div>
+                <div className="text-xs text-slate-400">
+                  {isBengali ? 'ক্লাস ১ থেকে ১২ পর্যন্ত অ্যালগরিদমিক চিন্তা' : 'Algorithmic thinking from Class 1 to Class 12'}
+                </div>
               </div>
               <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 text-center">
-                <div className="text-indigo-400 font-bold text-xs uppercase tracking-wider mb-1">Character Building</div>
-                <div className="text-xs text-slate-400">Confidence, ethics & fearless pursuit of excellence</div>
+                <div className="text-indigo-400 font-bold text-xs uppercase tracking-wider mb-1">
+                  {isBengali ? 'চরিত্র ও নৈতিকতা গঠন' : 'Character Building'}
+                </div>
+                <div className="text-xs text-slate-400">
+                  {isBengali ? 'আত্মবিশ্বাস, মানবিকতা ও নির্ভীক মেধা' : 'Confidence, ethics & fearless pursuit of excellence'}
+                </div>
               </div>
             </div>
 
@@ -242,4 +269,5 @@ export const FounderMessageSection: React.FC = () => {
     </section>
   );
 };
+
 

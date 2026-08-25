@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
+import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
@@ -22,6 +23,7 @@ import { SubjectModal } from './components/SubjectModal';
 import { X, Calendar, Sparkles } from 'lucide-react';
 
 function AcademyApp() {
+  const { isBengali, t } = useLanguage();
   const [activeSection, setActiveSection] = useState<string>('hero');
   const [selectedCategory, setSelectedCategory] = useState<GradeCategory>('secondary');
   const [demoModalOpen, setDemoModalOpen] = useState<boolean>(false);
@@ -157,13 +159,13 @@ function AcademyApp() {
             <div className="mb-4">
               <div className="inline-flex items-center space-x-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-3 py-0.5 text-xs font-bold text-amber-400 mb-2">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Priority Admission & Demo Registration</span>
+                <span>{isBengali ? 'অগ্রাধিকারভিত্তিক ভর্তি ও ফ্রি ডেমো বুকিং' : 'Priority Admission & Demo Registration'}</span>
               </div>
               <h3 className="text-2xl font-black text-white font-serif">
-                Book 2 Free Demo Classes at Biley Academy
+                {isBengali ? 'বিলে অ্যাকাডেমিতে ২টি ফ্রি ডেমো ক্লাস বুক করুন' : 'Book 2 Free Demo Classes at Biley Academy'}
               </h3>
               <p className="text-xs text-slate-400 mt-1">
-                Experience our conceptual teaching methodology with no admission obligation.
+                {isBengali ? 'কোনো বাধ্যতামূলক ভর্তি চুক্তি ছাড়াই আমাদের ধারণাগত পাঠদান প্রত্যক্ষ করুন।' : 'Experience our conceptual teaching methodology with no admission obligation.'}
               </p>
             </div>
 
@@ -180,7 +182,9 @@ function AcademyApp() {
 export default function App() {
   return (
     <ThemeProvider>
-      <AcademyApp />
+      <LanguageProvider>
+        <AcademyApp />
+      </LanguageProvider>
     </ThemeProvider>
   );
 }

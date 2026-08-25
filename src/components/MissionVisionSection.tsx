@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { 
   Target, 
   Eye, 
-  Award, 
   CheckCircle2, 
   Lightbulb, 
   Users, 
@@ -11,11 +10,58 @@ import {
   Sparkles
 } from 'lucide-react';
 import { MISSION_VISION } from '../data/academyData';
+import { useLanguage } from '../context/LanguageContext';
 
 export const MissionVisionSection: React.FC = () => {
   const [selectedPillar, setSelectedPillar] = useState<number>(0);
+  const { isBengali, t } = useLanguage();
 
-  const pillarDetails = [
+  const pillarDetails = isBengali ? [
+    {
+      title: "ধারণাগত স্পষ্টতা প্রথম",
+      icon: Lightbulb,
+      color: "amber",
+      desc: "সূত্র প্রয়োগের আগেই 'কেন' এবং 'কীভাবে' শেখা। অন্ধ মুখস্থ নয়।",
+      expandedPoints: [
+        "প্রতিটি সূত্র ও বিজ্ঞানের নিয়ম মূল ভিত্তি থেকে বিশ্লেষণ",
+        "জটিল তত্ত্বের সাথে বাস্তব জীবনের উদাহরণ ও প্রত্যক্ষ প্রয়োগ",
+        "নির্ভয়ে ক্লাসে প্রশ্ন করার উন্মুক্ত পরিবেশ"
+      ]
+    },
+    {
+      title: "ব্যক্তিগত মেন্টরশিপ ও দুর্বলতা চিহ্নিতকরণ",
+      icon: Users,
+      color: "emerald",
+      desc: "ছোট ব্যাচে ব্যক্তিগত মূল্যায়ন, ১-অন-১ ডাউট ক্লিয়ারিং ও নিয়মিত অভিভাবকদের সাথে পর্যালোচনা।",
+      expandedPoints: [
+        "প্রতি ব্যাচে সর্বোচ্চ ১২-১৮ জন শিক্ষার্থী নিশ্চিত করে গভীর মনোযোগ",
+        "সাপ্তাহিক পরীক্ষার ভুল বিশ্লেষণ রিপোর্ট অভিভাবকদের কাছে পাঠানো",
+        "ক্লাসের আগে ও পরে বিশেষ ডাউট সমাধান অধিবেশন"
+      ]
+    },
+    {
+      title: "হাতে-কলমে প্র্যাক্টিক্যাল ল্যাব",
+      icon: FlaskConical,
+      color: "blue",
+      desc: "পদার্থ, রসায়ন, জীববিজ্ঞান এবং কম্পিউটারের বাস্তব প্রয়োগিক শিক্ষার আধুনিক ব্যবস্থা।",
+      expandedPoints: [
+        "আলোকবিদ্যা, বৈদ্যুতিক বর্তনী ও অণুবীক্ষণ যন্ত্রের ওয়ার্কস্টেশন",
+        "পাইথন, জাভা, এসকিউএল ও ওয়েব ডিজাইনের জন্য পৃথক কম্পিউটার টার্মিনাল",
+        "রসায়নের গুণগত পরীক্ষা এবং স্লাইড তৈরির বিশেষ ক্লাস"
+      ]
+    },
+    {
+      title: "চরিত্র গঠন, শৃঙ্খলা ও আত্মবিশ্বাস",
+      icon: ShieldCheck,
+      color: "indigo",
+      desc: "স্বামী বিবেকানন্দের আদর্শে সময়ানুবর্তিতা, নৈতিক মূল্যবোধ ও নির্ভীক মানসিকতা বিকাশ।",
+      expandedPoints: [
+        "বোর্ড ও এন্ট্রান্স পরীক্ষার মানসিক চাপ মোকাবিলার দক্ষতা",
+        "সহযোগিতামূলক মনোভাব ও সততার মূল্যবোধ তৈরি",
+        "সময় ব্যবস্থাপনা ও উদ্বেগহীন রিভিশন রুটিন"
+      ]
+    }
+  ] : [
     {
       title: "Conceptual Clarity First",
       icon: Lightbulb,
@@ -62,6 +108,20 @@ export const MissionVisionSection: React.FC = () => {
     }
   ];
 
+  const missionPoints = isBengali ? [
+    "বিজ্ঞানভিত্তিক ও ধারণাগত পাঠদানের মাধ্যমে মুখস্থের ভয় দূর করা",
+    "ক্লাস ১ থেকে ১২ পর্যন্ত প্রতিটি বিষয়ের জন্য সুবিন্যস্ত মডিউল ও নিয়মিত নোটস",
+    "সাপ্তাহিক ও মাসিক মূল্যায়নের মাধ্যমে প্রতিটি শিক্ষার্থীর ধারাবাহিক অগ্রগতি পর্যবেক্ষণ",
+    "বোর্ড পরীক্ষা (CBSE / ICSE / WBCHSE) এবং JEE/NEET-এর সমন্বিত প্রস্তুতি"
+  ] : MISSION_VISION.mission.points;
+
+  const visionPoints = isBengali ? [
+    "পশ্চিমবঙ্গের অন্যতম অগ্রণী ধারণাগত শিক্ষা কেন্দ্র হিসেবে প্রতিষ্ঠিত হওয়া",
+    "প্রতিটি শিক্ষার্থীকে স্বাবলম্বী চিন্তাবিদ ও আত্মবিশ্বাসী নেতৃত্বে রূপান্তরিত করা",
+    "প্রযুক্তি ও প্রাচীন মূল্যবোধের মেলবন্ধনে মানসম্মত শিক্ষার সুযোগ সৃষ্টি",
+    "ভবিষ্যতের বোর্ড ও সর্বভারতীয় প্রতিযোগিতামূলক পরীক্ষায় সর্বোচ্চ সাফল্য উপহার দেওয়া"
+  ] : MISSION_VISION.vision.points;
+
   return (
     <section id="mission-vision" className="py-16 sm:py-20 bg-slate-950 text-slate-100 border-b border-slate-800 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,13 +130,13 @@ export const MissionVisionSection: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center space-x-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-3.5 py-1 text-xs font-bold text-amber-400 mb-3">
             <Target className="w-3.5 h-3.5" />
-            <span>Guiding Principles</span>
+            <span>{t('missionBadge')}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-serif tracking-tight">
-            Mission & Vision
+            {t('missionHeading')}
           </h2>
           <p className="text-slate-400 mt-3 text-sm sm:text-base leading-relaxed">
-            The philosophical pillars that guide our faculty, curriculum design, and mentorship ethos at Biley Academy.
+            {t('missionSubtitle')}
           </p>
         </div>
 
@@ -92,17 +152,21 @@ export const MissionVisionSection: React.FC = () => {
                 <Target className="w-7 h-7" />
               </div>
               <div>
-                <span className="text-xs font-bold text-amber-400 uppercase tracking-wider">Purpose & Commitment</span>
-                <h3 className="text-2xl font-black text-white font-serif">{MISSION_VISION.mission.title}</h3>
+                <span className="text-xs font-bold text-amber-400 uppercase tracking-wider">
+                  {isBengali ? 'লক্ষ্য ও অঙ্গীকার' : 'Purpose & Commitment'}
+                </span>
+                <h3 className="text-2xl font-black text-white font-serif">
+                  {isBengali ? 'আমাদের লক্ষ্য (Our Mission)' : MISSION_VISION.mission.title}
+                </h3>
               </div>
             </div>
 
             <p className="text-sm font-semibold text-amber-300/90 mb-5">
-              {MISSION_VISION.mission.subtitle}
+              {isBengali ? 'ধারণাগত শিক্ষাদানের মাধ্যমে শিক্ষার্থীদের আত্মবিশ্বাসী ও সফল ব্যক্তিত্ব হিসেবে গড়ে তোলা।' : MISSION_VISION.mission.subtitle}
             </p>
 
             <div className="space-y-3.5">
-              {MISSION_VISION.mission.points.map((point, index) => (
+              {missionPoints.map((point, index) => (
                 <div key={index} className="flex items-start space-x-3 text-xs sm:text-sm text-slate-300">
                   <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                   <span>{point}</span>
@@ -120,17 +184,21 @@ export const MissionVisionSection: React.FC = () => {
                 <Eye className="w-7 h-7" />
               </div>
               <div>
-                <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider">Future Horizon</span>
-                <h3 className="text-2xl font-black text-white font-serif">{MISSION_VISION.vision.title}</h3>
+                <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider">
+                  {isBengali ? 'ভবিষ্যৎ দিগন্ত' : 'Future Horizon'}
+                </span>
+                <h3 className="text-2xl font-black text-white font-serif">
+                  {isBengali ? 'আমাদের রূপকল্প (Our Vision)' : MISSION_VISION.vision.title}
+                </h3>
               </div>
             </div>
 
             <p className="text-sm font-semibold text-indigo-300/90 mb-5">
-              {MISSION_VISION.vision.subtitle}
+              {isBengali ? 'একটি আদর্শ শিক্ষাঙ্গন যা শিক্ষার্থীদের সুপ্ত প্রতিভার পূর্ণ বিকাশ ঘটিয়ে জাতীয় স্তরে নেতৃত্ব দিতে প্রস্তুত করবে।' : MISSION_VISION.vision.subtitle}
             </p>
 
             <div className="space-y-3.5">
-              {MISSION_VISION.vision.points.map((point, index) => (
+              {visionPoints.map((point, index) => (
                 <div key={index} className="flex items-start space-x-3 text-xs sm:text-sm text-slate-300">
                   <CheckCircle2 className="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" />
                   <span>{point}</span>
@@ -145,10 +213,10 @@ export const MissionVisionSection: React.FC = () => {
         <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/60 border border-slate-800">
           <div className="text-center mb-8">
             <h3 className="text-xl sm:text-2xl font-bold text-white font-serif">
-              Our 4 Core Pedagogical Pillars
+              {isBengali ? 'আমাদের ৪টি মূল শিক্ষাদান স্তম্ভ' : 'Our 4 Core Pedagogical Pillars'}
             </h3>
             <p className="text-xs sm:text-sm text-slate-400 mt-1">
-              Click each pillar to explore our classroom methodology:
+              {isBengali ? 'আমাদের ক্লাসরুমের পদ্ধতি দেখতে প্রতিটি স্তম্ভে ক্লিক করুন:' : 'Click each pillar to explore our classroom methodology:'}
             </p>
           </div>
 
@@ -173,7 +241,9 @@ export const MissionVisionSection: React.FC = () => {
                     }`}>
                       <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-[10px] font-bold text-slate-500">Pillar 0{idx + 1}</span>
+                    <span className="text-[10px] font-bold text-slate-500">
+                      {isBengali ? `স্তম্ভ ০${idx + 1}` : `Pillar 0${idx + 1}`}
+                    </span>
                   </div>
                   <div>
                     <h4 className={`text-sm font-bold ${isSelected ? 'text-amber-300' : 'text-slate-200'}`}>
@@ -193,7 +263,7 @@ export const MissionVisionSection: React.FC = () => {
             <div className="flex items-center space-x-3 mb-3">
               <Sparkles className="w-5 h-5 text-amber-400" />
               <h4 className="text-base sm:text-lg font-bold text-white">
-                How we implement: {pillarDetails[selectedPillar].title}
+                {isBengali ? `আমরা কীভাবে বাস্তবায়ন করি: ${pillarDetails[selectedPillar].title}` : `How we implement: ${pillarDetails[selectedPillar].title}`}
               </h4>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2">
@@ -214,3 +284,4 @@ export const MissionVisionSection: React.FC = () => {
     </section>
   );
 };
+

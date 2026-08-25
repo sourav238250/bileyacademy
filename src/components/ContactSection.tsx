@@ -7,9 +7,6 @@ import {
   Send, 
   CheckCircle2, 
   AlertCircle, 
-  MessageSquare, 
-  Sparkles, 
-  Building2, 
   RotateCcw,
   ShieldCheck,
   Headphones
@@ -17,8 +14,11 @@ import {
 import confetti from 'canvas-confetti';
 import { ContactFormData, ContactFormErrors } from '../types';
 import { Logo } from './Logo';
+import { useLanguage } from '../context/LanguageContext';
 
 export const ContactSection: React.FC = () => {
+  const { isBengali, t } = useLanguage();
+
   const [formData, setFormData] = useState<ContactFormData>({
     fullName: '',
     email: '',
@@ -45,25 +45,25 @@ export const ContactSection: React.FC = () => {
     const validationErrors: ContactFormErrors = {};
 
     if (!data.fullName.trim()) {
-      validationErrors.fullName = 'Please enter your full name.';
+      validationErrors.fullName = isBengali ? 'দয়া করে আপনার নাম লিখুন।' : 'Please enter your full name.';
     } else if (data.fullName.trim().length < 2) {
-      validationErrors.fullName = 'Full name must be at least 2 characters.';
+      validationErrors.fullName = isBengali ? 'নাম কমপক্ষে ২ অক্ষরের হতে হবে।' : 'Full name must be at least 2 characters.';
     }
 
     if (!data.email.trim()) {
-      validationErrors.email = 'Email address is required.';
+      validationErrors.email = isBengali ? 'ইমেইল ঠিকানা আবশ্যক।' : 'Email address is required.';
     } else if (!validateEmail(data.email)) {
-      validationErrors.email = 'Please enter a valid email address (e.g. name@example.com).';
+      validationErrors.email = isBengali ? 'দয়া করে একটি সঠিক ইমেইল লিখুন।' : 'Please enter a valid email address (e.g. name@example.com).';
     }
 
     if (data.phone.trim() && !/^[0-9+\s\-()]{7,16}$/.test(data.phone.trim())) {
-      validationErrors.phone = 'Please enter a valid phone number or leave blank.';
+      validationErrors.phone = isBengali ? 'দয়া করে সঠিক ফোন নম্বর প্রদান করুন।' : 'Please enter a valid phone number or leave blank.';
     }
 
     if (!data.message.trim()) {
-      validationErrors.message = 'Please provide details about your inquiry.';
+      validationErrors.message = isBengali ? 'দয়া করে আপনার বার্তার বিবরণ লিখুন।' : 'Please provide details about your inquiry.';
     } else if (data.message.trim().length < 10) {
-      validationErrors.message = 'Message must be at least 10 characters long.';
+      validationErrors.message = isBengali ? 'বার্তা কমপক্ষে ১০ অক্ষরের হতে হবে।' : 'Message must be at least 10 characters long.';
     }
 
     return validationErrors;
@@ -115,7 +115,7 @@ export const ContactSection: React.FC = () => {
 
     if (Object.keys(validationErrors).length > 0) {
       setSubmitStatus('error');
-      setStatusMessage('Please correct the errors in the form before submitting.');
+      setStatusMessage(isBengali ? 'অনুগ্রহ করে ফর্মের ত্রুটিগুলো সংশোধন করে পুনরায় চেষ্টা করুন।' : 'Please correct the errors in the form before submitting.');
       return;
     }
 
@@ -134,7 +134,7 @@ export const ContactSection: React.FC = () => {
 
       if (result.success) {
         setSubmitStatus('success');
-        setStatusMessage(result.message || 'Thank you! Your message has been received.');
+        setStatusMessage(result.message || (isBengali ? 'ধন্যবাদ! আপনার বার্তা গৃহীত হয়েছে।' : 'Thank you! Your message has been received.'));
         setSubmittedData({ ...formData, id: result.contactMessage?.id || `MSG-${Math.floor(1000 + Math.random() * 9000)}` });
         confetti({
           particleCount: 75,
@@ -143,13 +143,13 @@ export const ContactSection: React.FC = () => {
         });
       } else {
         setSubmitStatus('error');
-        setStatusMessage(result.error || 'Failed to submit message. Please try again or call directly.');
+        setStatusMessage(result.error || (isBengali ? 'বার্তা পাঠাতে ব্যর্থ হয়েছে। দয়া করে পুনরায় চেষ্টা করুন বা কল করুন।' : 'Failed to submit message. Please try again or call directly.'));
       }
-    } catch (err) {
+    } catch {
       // Offline fallback handling
       const fallbackId = `MSG-${Math.floor(1000 + Math.random() * 9000)}`;
       setSubmitStatus('success');
-      setStatusMessage('Thank you! Your message has been safely recorded. Our team will contact you shortly.');
+      setStatusMessage(isBengali ? 'ধন্যবাদ! আপনার বার্তা নিরাপদে সংরক্ষিত হয়েছে।' : 'Thank you! Your message has been safely recorded. Our team will contact you shortly.');
       setSubmittedData({ ...formData, id: fallbackId });
       confetti({ particleCount: 50, spread: 50 });
     } finally {
@@ -173,13 +173,13 @@ export const ContactSection: React.FC = () => {
   };
 
   const inquiryTypes = [
-    'General Academic Inquiry',
-    'Fee Structure & Scholarships',
-    'Batch Timings & Seat Availability',
-    'Curriculum & Syllabus Details',
-    'Career & Stream Guidance (Class 10/11/12)',
-    'Parent-Teacher Meeting Request',
-    'Laboratory Facilities & Study Material'
+    { en: 'General Academic Inquiry', bn: 'সাধারণ অ্যাকাডেমিক জিজ্ঞাসা' },
+    { en: 'Fee Structure & Scholarships', bn: 'ফি ও স্কলারশিপ সংক্রান্ত তথ্য' },
+    { en: 'Batch Timings & Seat Availability', bn: 'ব্যাচের সময় ও আসন সংক্রান্ত তথ্য' },
+    { en: 'Curriculum & Syllabus Details', bn: 'পাঠ্যক্রম ও সিলেবাস বিবরণ' },
+    { en: 'Career & Stream Guidance (Class 10/11/12)', bn: 'ক্যারিয়ার ও স্ট্রিম গাইডেন্স (১০ম/১১শ/১২শ শ্রেণি)' },
+    { en: 'Parent-Teacher Meeting Request', bn: 'অভিভাবক-শিক্ষক বৈঠকের অনুরোধ' },
+    { en: 'Laboratory Facilities & Study Material', bn: 'ল্যাবরেটরি ও স্টাডি ম্যাটেরিয়াল' }
   ];
 
   const isEmailValid = touched.email && !errors.email && formData.email.length > 0;
@@ -192,13 +192,13 @@ export const ContactSection: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center space-x-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-3.5 py-1 text-xs font-bold text-amber-400 mb-3">
             <Headphones className="w-3.5 h-3.5" />
-            <span>Direct Communication Channel</span>
+            <span>{t('contactBadge')}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-serif tracking-tight">
-            Contact Us & Quick Inquiry
+            {t('contactHeading')}
           </h2>
           <p className="text-slate-400 mt-2 text-sm sm:text-base leading-relaxed">
-            Have questions about course admissions, fee structures, batch schedules, or individual subject clinics? Send us a message or reach our academic counselors directly.
+            {t('contactSubtitle')}
           </p>
         </div>
 
@@ -213,12 +213,12 @@ export const ContactSection: React.FC = () => {
               <div className="flex items-center space-x-3">
                 <Logo size="md" />
                 <div>
-                  <h3 className="text-lg font-bold text-white font-serif">Biley Academy</h3>
-                  <p className="text-xs text-amber-400 font-semibold">Academic Campus & Counseling Center</p>
+                  <h3 className="text-lg font-bold text-white font-serif">{t('heroTitle')}</h3>
+                  <p className="text-xs text-amber-400 font-semibold">{isBengali ? 'অ্যাকাডেমিক ক্যাম্পাস ও কাউন্সেলিং কেন্দ্র' : 'Academic Campus & Counseling Center'}</p>
                 </div>
               </div>
               <p className="text-xs text-slate-300 leading-relaxed">
-                Dedicated to holistic development, scientific rigor, and individual attention from Class 1 through Class 12.
+                {isBengali ? '১ম থেকে ১২শ শ্রেণির শিক্ষার্থীদের জন্য সার্বিক বিকাশ, বৈজ্ঞানিক শৃঙ্খলা ও ব্যক্তিগত মনোযোগের বিশ্বস্ত প্রতিষ্ঠান।' : 'Dedicated to holistic development, scientific rigor, and individual attention from Class 1 through Class 12.'}
               </p>
             </div>
 
@@ -232,7 +232,7 @@ export const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
-                    Admissions & Academic Helpline
+                    {isBengali ? 'ভর্তি ও অ্যাকাডেমিক হেল্পলাইন' : 'Admissions & Academic Helpline'}
                   </span>
                   <a 
                     href="tel:+919732531730" 
@@ -240,7 +240,7 @@ export const ContactSection: React.FC = () => {
                   >
                     +91 97325 31730
                   </a>
-                  <p className="text-[11px] text-slate-400">Available Daily (8:00 AM – 8:00 PM)</p>
+                  <p className="text-[11px] text-slate-400">{isBengali ? 'প্রতিদিন উপলব্ধ (সকাল ৮টা – রাত ৮টা)' : 'Available Daily (8:00 AM – 8:00 PM)'}</p>
                 </div>
               </div>
 
@@ -251,7 +251,7 @@ export const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
-                    Official Email Communications
+                    {isBengali ? 'অফিসিয়াল ইমেইল যোগাযোগ' : 'Official Email Communications'}
                   </span>
                   <a 
                     href="mailto:contact@bileyacademy.edu.in" 
@@ -259,7 +259,7 @@ export const ContactSection: React.FC = () => {
                   >
                     contact@bileyacademy.edu.in
                   </a>
-                  <p className="text-[11px] text-slate-400">Average response time: within 4 hours</p>
+                  <p className="text-[11px] text-slate-400">{isBengali ? 'গড় প্রতিক্রিয়া সময়: ৪ ঘণ্টার মধ্যে' : 'Average response time: within 4 hours'}</p>
                 </div>
               </div>
 
@@ -270,13 +270,13 @@ export const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
-                    Physical Campus & Center
+                    {isBengali ? 'ক্যাম্পাস ঠিকানা' : 'Physical Campus & Center'}
                   </span>
                   <p className="text-xs text-slate-200 font-medium leading-relaxed">
-                    Jamna, Pingla, Paschim Medinipur, PIN-721140, West Bengal, India
+                    {isBengali ? 'যমুনা, পিংলা, পশ্চিম মেদিনীপুর, পিন-৭২১১৪০, পশ্চিমবঙ্গ' : 'Jamna, Pingla, Paschim Medinipur, PIN-721140, West Bengal, India'}
                   </p>
                   <span className="text-[11px] text-slate-400 block mt-0.5">
-                    Near Jamna Bus Stand • Pingla Block Educational Hub
+                    {isBengali ? 'যমুনা বাস স্ট্যান্ড সংলগ্ন • পিংলা ব্লক শিক্ষাকেন্দ্র' : 'Near Jamna Bus Stand • Pingla Block Educational Hub'}
                   </span>
                 </div>
               </div>
@@ -288,13 +288,13 @@ export const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
-                    Office & Counseling Hours
+                    {isBengali ? 'অফিস ও কাউন্সেলিং সময়' : 'Office & Counseling Hours'}
                   </span>
                   <p className="text-xs text-slate-200 font-medium">
-                    Monday to Saturday: 10:00 AM – 8:00 PM
+                    {isBengali ? 'সোম থেকে শনিবার: সকাল ১০:০০ – রাত ৮:০০' : 'Monday to Saturday: 10:00 AM – 8:00 PM'}
                   </p>
                   <p className="text-[11px] text-slate-400">
-                    Sunday: 9:00 AM – 2:00 PM (Prior Appointment Recommended)
+                    {isBengali ? 'রবিবার: সকাল ৯:০০ – দুপুর ২:০০ (অগ্রিম সময় নেওয়া বাঞ্ছনীয়)' : 'Sunday: 9:00 AM – 2:00 PM (Prior Appointment Recommended)'}
                   </p>
                 </div>
               </div>
@@ -311,15 +311,15 @@ export const ContactSection: React.FC = () => {
                   <div className="flex items-center justify-between pb-5 mb-6 border-b border-slate-800">
                     <div>
                       <h3 className="text-xl font-extrabold text-white font-serif">
-                        Send a Quick Message
+                        {isBengali ? 'একটি বার্তা পাঠান' : 'Send a Quick Message'}
                       </h3>
                       <p className="text-xs text-slate-400 mt-0.5">
-                        Fill out the form below with your email and query for a rapid response.
+                        {isBengali ? 'দ্রুত উত্তরের জন্য নিচের ফর্মটি পূরণ করুন।' : 'Fill out the form below with your email and query for a rapid response.'}
                       </p>
                     </div>
                     <div className="hidden sm:flex items-center space-x-1 text-[11px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full font-bold">
                       <ShieldCheck className="w-3.5 h-3.5" />
-                      <span>Confidential & Secure</span>
+                      <span>{isBengali ? 'গোপনীয় ও নিরাপদ' : 'Confidential & Secure'}</span>
                     </div>
                   </div>
 
@@ -344,7 +344,7 @@ export const ContactSection: React.FC = () => {
                           htmlFor="contact-fullName" 
                           className="block text-xs font-bold uppercase text-slate-300 mb-1.5"
                         >
-                          Your Name <span className="text-amber-400">*</span>
+                          {isBengali ? 'আপনার পুরো নাম' : 'Your Name'} <span className="text-amber-400">*</span>
                         </label>
                         <input
                           id="contact-fullName"
@@ -354,7 +354,7 @@ export const ContactSection: React.FC = () => {
                           value={formData.fullName}
                           onChange={handleChange}
                           onBlur={handleBlur}
-                          placeholder="e.g. Sourav Mukherjee"
+                          placeholder={isBengali ? 'যেমন: সৌরভ মুখার্জি' : 'e.g. Sourav Mukherjee'}
                           className={`w-full bg-slate-950 border text-xs sm:text-sm text-white rounded-xl px-4 py-2.5 focus:outline-none transition-colors ${
                             touched.fullName && errors.fullName
                               ? 'border-rose-500 focus:border-rose-400'
@@ -377,7 +377,7 @@ export const ContactSection: React.FC = () => {
                           htmlFor="contact-phone" 
                           className="block text-xs font-bold uppercase text-slate-300 mb-1.5"
                         >
-                          Phone Number <span className="text-slate-500 font-normal">(Optional)</span>
+                          {isBengali ? 'ফোন নম্বর' : 'Phone Number'} <span className="text-slate-500 font-normal">({isBengali ? 'ঐচ্ছিক' : 'Optional'})</span>
                         </label>
                         <input
                           id="contact-phone"
@@ -410,12 +410,12 @@ export const ContactSection: React.FC = () => {
                           htmlFor="contact-email" 
                           className="block text-xs font-bold uppercase text-slate-300"
                         >
-                          Email Address <span className="text-amber-400">*</span>
+                          {isBengali ? 'ইমেইল ঠিকানা' : 'Email Address'} <span className="text-amber-400">*</span>
                         </label>
                         {isEmailValid && (
                           <span className="text-[11px] text-emerald-400 font-bold flex items-center space-x-1">
                             <CheckCircle2 className="w-3.5 h-3.5" />
-                            <span>Valid Email Format</span>
+                            <span>{isBengali ? 'সঠিক ইমেইল ফরম্যাট' : 'Valid Email Format'}</span>
                           </span>
                         )}
                       </div>
@@ -461,7 +461,7 @@ export const ContactSection: React.FC = () => {
                         htmlFor="contact-inquiryType" 
                         className="block text-xs font-bold uppercase text-slate-300 mb-1.5"
                       >
-                        Inquiry Category <span className="text-amber-400">*</span>
+                        {isBengali ? 'জিজ্ঞাসার ধরন' : 'Inquiry Category'} <span className="text-amber-400">*</span>
                       </label>
                       <select
                         id="contact-inquiryType"
@@ -470,9 +470,9 @@ export const ContactSection: React.FC = () => {
                         onChange={handleChange}
                         className="w-full bg-slate-950 border border-slate-700 text-xs sm:text-sm text-white rounded-xl px-4 py-2.5 focus:outline-none focus:border-amber-400"
                       >
-                        {inquiryTypes.map((type, idx) => (
-                          <option key={idx} value={type}>
-                            {type}
+                        {inquiryTypes.map((item, idx) => (
+                          <option key={idx} value={item.en}>
+                            {isBengali ? item.bn : item.en}
                           </option>
                         ))}
                       </select>
@@ -484,7 +484,7 @@ export const ContactSection: React.FC = () => {
                         htmlFor="contact-message" 
                         className="block text-xs font-bold uppercase text-slate-300 mb-1.5"
                       >
-                        Message / Query Details <span className="text-amber-400">*</span>
+                        {isBengali ? 'বার্তার বিবরণ' : 'Message / Query Details'} <span className="text-amber-400">*</span>
                       </label>
                       <textarea
                         id="contact-message"
@@ -494,7 +494,7 @@ export const ContactSection: React.FC = () => {
                         value={formData.message}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        placeholder="Please describe what information you need regarding class admissions, subjects, or academic guidance..."
+                        placeholder={isBengali ? 'ভর্তি, বিষয় বা শিক্ষাদানের পদ্ধতি সম্পর্কে আপনার প্রশ্ন লিখুন...' : 'Please describe what information you need regarding class admissions, subjects, or academic guidance...'}
                         className={`w-full bg-slate-950 border text-xs sm:text-sm text-white rounded-xl p-3.5 focus:outline-none transition-colors ${
                           touched.message && errors.message
                             ? 'border-rose-500 focus:border-rose-400'
@@ -511,11 +511,11 @@ export const ContactSection: React.FC = () => {
                           </p>
                         ) : (
                           <span className="text-[10px] text-slate-500">
-                            Minimum 10 characters
+                            {isBengali ? 'কমপক্ষে ১০ অক্ষর' : 'Minimum 10 characters'}
                           </span>
                         )}
                         <span className="text-[10px] text-slate-500">
-                          {formData.message.length} chars
+                          {formData.message.length} {isBengali ? 'অক্ষর' : 'chars'}
                         </span>
                       </div>
                     </div>
@@ -529,7 +529,7 @@ export const ContactSection: React.FC = () => {
                         className="w-full py-3.5 rounded-xl font-bold bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 transition-all flex items-center justify-center space-x-2 text-sm disabled:opacity-50"
                       >
                         <Send className="w-4 h-4" />
-                        <span>{isSubmitting ? 'Sending Message...' : 'Send Inquiry Now'}</span>
+                        <span>{isSubmitting ? (isBengali ? 'বার্তা পাঠানো হচ্ছে...' : 'Sending Message...') : (isBengali ? 'এখনই বার্তা পাঠান' : 'Send Inquiry Now')}</span>
                       </button>
                     </div>
 
@@ -544,21 +544,25 @@ export const ContactSection: React.FC = () => {
 
                   <div>
                     <span className="text-xs font-bold text-amber-400 uppercase tracking-widest block">
-                      Inquiry Delivered
+                      {isBengali ? 'বার্তা সফলভাবে পাঠানো হয়েছে' : 'Inquiry Delivered'}
                     </span>
                     <h4 className="text-2xl font-bold text-white font-serif mt-1">
-                      Message Sent Successfully!
+                      {isBengali ? 'আপনার বার্তা গৃহীত হয়েছে!' : 'Message Sent Successfully!'}
                     </h4>
                     <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-md mx-auto leading-relaxed">
-                      Thank you, <strong className="text-white">{submittedData.fullName}</strong>. A copy of your inquiry has been logged under reference <span className="font-mono text-amber-400 font-bold">{submittedData.id}</span>.
+                      {isBengali ? (
+                        <>ধন্যবাদ, <strong className="text-white">{submittedData.fullName}</strong>। আপনার রেফারেন্স আইডি হলো <span className="font-mono text-amber-400 font-bold">{submittedData.id}</span>।</>
+                      ) : (
+                        <>Thank you, <strong className="text-white">{submittedData.fullName}</strong>. A copy of your inquiry has been logged under reference <span className="font-mono text-amber-400 font-bold">{submittedData.id}</span>.</>
+                      )}
                     </p>
                   </div>
 
                   <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 text-left text-xs text-slate-300 space-y-1.5 max-w-md mx-auto">
-                    <p><strong>Registered Email:</strong> <span className="text-amber-300">{submittedData.email}</span></p>
-                    <p><strong>Category:</strong> {submittedData.inquiryType}</p>
+                    <p><strong>{isBengali ? 'রেজিস্টার্ড ইমেইল:' : 'Registered Email:'}</strong> <span className="text-amber-300">{submittedData.email}</span></p>
+                    <p><strong>{isBengali ? 'ক্যাটেগরি:' : 'Category:'}</strong> {submittedData.inquiryType}</p>
                     <p className="text-slate-400 text-[11px] pt-1">
-                      Our academic coordinators will reply directly to your email within standard office hours.
+                      {isBengali ? 'আমাদের অ্যাকাডেমিক সমন্বয়কারী শীঘ্রই আপনার ইমেইলে যোগাযোগ করবেন।' : 'Our academic coordinators will reply directly to your email within standard office hours.'}
                     </p>
                   </div>
 
@@ -569,7 +573,7 @@ export const ContactSection: React.FC = () => {
                       className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold inline-flex items-center space-x-2 transition-colors"
                     >
                       <RotateCcw className="w-3.5 h-3.5" />
-                      <span>Send Another Inquiry</span>
+                      <span>{isBengali ? 'অন্য একটি বার্তা পাঠান' : 'Send Another Inquiry'}</span>
                     </button>
                   </div>
                 </div>
@@ -584,3 +588,4 @@ export const ContactSection: React.FC = () => {
     </section>
   );
 };
+

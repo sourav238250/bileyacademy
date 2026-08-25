@@ -15,6 +15,7 @@ import {
   AlertCircle
 } from 'lucide-react';
 import { NoticeItem } from '../types';
+import { useLanguage } from '../context/LanguageContext';
 
 interface NoticeDetailModalProps {
   notice: NoticeItem | null;
@@ -27,6 +28,7 @@ export const NoticeDetailModal: React.FC<NoticeDetailModalProps> = ({
   onClose,
   onOpenInquiry
 }) => {
+  const { isBengali } = useLanguage();
   if (!notice) return null;
 
   const handleDownloadNotice = () => {
@@ -153,7 +155,7 @@ export const NoticeDetailModal: React.FC<NoticeDetailModalProps> = ({
             <div className="bg-slate-950/80 rounded-2xl p-4 border border-slate-800 space-y-2.5">
               <div className="text-xs font-black text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-amber-400" />
-                <span>Key Details & Instructions</span>
+                <span>{isBengali ? 'গুরুত্বপূর্ণ বিবরণ ও নির্দেশাবলী' : 'Key Details & Instructions'}</span>
               </div>
               <ul className="space-y-2 text-xs sm:text-sm text-slate-300">
                 {notice.details.map((detail, idx) => (
@@ -170,7 +172,7 @@ export const NoticeDetailModal: React.FC<NoticeDetailModalProps> = ({
           <div className="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-between text-xs text-amber-300">
             <div className="flex items-center space-x-2">
               <Sparkles className="w-4 h-4 text-amber-400 flex-shrink-0" />
-              <span>Issued by Academic Directorate, Biley Academy, Jamna</span>
+              <span>{isBengali ? 'অ্যাকাডেমিক ডিরেক্টরেট, বিলে অ্যাকাডেমি, জামনা দ্বারা প্রকাশিত' : 'Issued by Academic Directorate, Biley Academy, Jamna'}</span>
             </div>
             <span className="font-bold text-amber-400">PIN: 721140</span>
           </div>
@@ -185,14 +187,14 @@ export const NoticeDetailModal: React.FC<NoticeDetailModalProps> = ({
             className="flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition-colors"
           >
             <Download className="w-3.5 h-3.5 text-amber-400" />
-            <span>Print Official Circular</span>
+            <span>{isBengali ? 'অফিসিয়াল নোটিস প্রিন্ট করুন' : 'Print Official Circular'}</span>
           </button>
 
           <div className="flex items-center space-x-2">
             <a
               href="tel:+919732531730"
               className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-colors"
-              title="Call Academic Office"
+              title={isBengali ? 'অফিসে কল করুন' : 'Call Academic Office'}
             >
               <Phone className="w-4 h-4 text-amber-400" />
             </a>
@@ -202,7 +204,7 @@ export const NoticeDetailModal: React.FC<NoticeDetailModalProps> = ({
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white transition-colors"
-              title="WhatsApp Inquiry"
+              title={isBengali ? 'হোয়াটসঅ্যাপ অনুসন্ধান' : 'WhatsApp Inquiry'}
             >
               <MessageCircle className="w-4 h-4" />
             </a>
@@ -215,7 +217,7 @@ export const NoticeDetailModal: React.FC<NoticeDetailModalProps> = ({
                 }}
                 className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold shadow-md transition-colors flex items-center space-x-1.5"
               >
-                <span>{notice.actionText || 'Take Action / Inquire'}</span>
+                <span>{notice.actionText ? (isBengali ? (notice.actionText.includes('Admit') || notice.actionText.includes('Apply') ? 'ভর্তির জন্য আবেদন করুন' : 'বিস্তারিত জানুন / আবেদন') : notice.actionText) : (isBengali ? 'আবেদন / যোগাযোগ' : 'Take Action / Inquire')}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             )}
