@@ -5,8 +5,21 @@ import scienceLabImg from '../assets/images/science_lab_session_1787535022909.jp
 import doubtClearingImg from '../assets/images/doubt_clearing_desk_1787535038773.jpg';
 import awardsImg from '../assets/images/academic_awards_day_1787535055311.jpg';
 import swamiVivekanandaImg from '../assets/images/swami_vivekananda_portrait_1787621856392.jpg';
+import souravDindaImg from '../assets/images/sourav_dinda_portrait_1787623811482.jpg';
 
 export const GALLERY_ITEMS: GalleryItem[] = [
+  {
+    id: 'founder-sourav-dinda-portrait',
+    title: 'Mr. Sourav Dinda – Founder & Academic Director',
+    category: 'banner',
+    categoryLabel: 'Founder & Leadership',
+    imageUrl: souravDindaImg,
+    date: 'Academic Leadership',
+    location: 'Biley Academy Director Suite',
+    caption: 'Mr. Sourav Dinda, Founder & Academic Director of Biley Academy. M.Phil (Comp. Sc.), M.C.S., B.Sc. (Comp. Sc. with Math & Physics), bringing 20 years of academic and industry leadership, 6 research publications, and 100+ project mentorships.',
+    tags: ['Mr. Sourav Dinda', 'Founder & Director', 'Academic Leadership', 'Computer Science', '20 Years Experience'],
+    isFeaturedBanner: true
+  },
   {
     id: 'swami-vivekananda-inspiration-portrait',
     title: 'Swami Vivekananda – Guiding Light of Biley Academy',
@@ -82,8 +95,8 @@ export const GALLERY_ITEMS: GalleryItem[] = [
 ];
 
 export const GALLERY_CATEGORIES = [
-  { id: 'all', label: 'All Photos & Banners', count: 6 },
-  { id: 'banner', label: 'Banners & Heritage', count: 2 },
+  { id: 'all', label: 'All Photos & Banners', count: 7 },
+  { id: 'banner', label: 'Leadership & Banners', count: 3 },
   { id: 'classroom', label: 'Classrooms & Learning', count: 1 },
   { id: 'labs', label: 'Science & Computer Labs', count: 1 },
   { id: 'mentorship', label: '1-on-1 Doubt Mentorship', count: 1 },

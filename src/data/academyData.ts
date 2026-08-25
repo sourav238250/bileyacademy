@@ -1,16 +1,43 @@
 import { FacultyMember, Testimonial } from '../types';
+import souravDindaImg from '../assets/images/sourav_dinda_portrait_1787623811482.jpg';
 
 export const FOUNDER_INFO = {
-  name: "Dr. Sourav Banerjee",
+  name: "Mr. Sourav Dinda",
   title: "Founder & Academic Director",
-  credentials: "M.Sc. (Gold Medalist), Ph.D. in Applied Sciences, Ex-Professor & Senior Olympiad Mentor (22+ Years Experience)",
+  shortTitle: "Founder & Academic Director, Biley Academy",
+  imageUrl: souravDindaImg,
+  qualifications: [
+    "Master of Philosophy in Computer Science (M.Phil)",
+    "Master of Computer Science (M.C.S.)",
+    "B.Sc. (Computer Science) with Math and Physics as Minor Paper"
+  ],
+  experience: "20 Years (Academic & Industry)",
+  metrics: [
+    { label: "Total Experience", value: "20 Years", detail: "Academic & Industry Leadership" },
+    { label: "Research Publications", value: "6", detail: "International Journals & Conferences" },
+    { label: "Project Guidance", value: "100+", detail: "Graduate Level Mentorship" },
+    { label: "Workshops & FDPs", value: "8+", detail: "2 FDPs & 6 National Workshops" },
+    { label: "Conferences Organized", value: "1", detail: "Lead Academic Convener" }
+  ],
+  academicDistinctions: [
+    { title: "M.Phil in Computer Science", desc: "Advanced research in computational algorithms and computer science systems." },
+    { title: "Master of Computer Science (M.C.S.)", desc: "Post-graduate specialization in software architectures, data structures, and advanced computing." },
+    { title: "B.Sc. (Computer Science)", desc: "Graduated with Mathematics and Physics as minor papers, bridging pure sciences and computational logic." }
+  ],
+  scholasticProfile: {
+    researchPublications: 6,
+    fdpAttended: 2,
+    conferenceOrganized: 1,
+    workshopParticipation: 6,
+    projectGuidanceGraduate: 100
+  },
   quote: "“Education is not the amount of information that is put into your brain and runs riot there, undigested all your life. We must have life-building, man-making, character-making assimilation of ideas.”",
   tagline: "Inspired by the fearless spirit of Swami Vivekananda (fondly called 'Biley' in his childhood)",
   messageParagraphs: [
     "Welcome to Biley Academy. When we laid the cornerstone of this institution, we had one singular conviction: every child is born with an innate spark of genius, waiting to be ignited by the right catalyst of conceptual clarity, compassionate mentorship, and rigorous practice.",
-    "Named in reverence to the childhood name of Swami Vivekananda—'Biley'—our academy embodies the values of fearless inquiry, unshakeable self-confidence, and a relentless pursuit of knowledge. We do not believe in superficial rote memorization. Whether a student is in Class 1 discovering the joy of numbers and language, or in Class 12 mastering electrodynamics and organic mechanisms for competitive entrances, our pedagogy focuses on building bedrock foundations.",
-    "In an era where education is too often commercialized, Biley Academy remains an authentic sanctuary of learning. With personalized batch sizes, continuous diagnostic assessments, state-of-the-art computer and science practical labs, and round-the-clock doubt clinics, we walk with every student at every step of their academic journey.",
-    "I invite parents and aspiring scholars to experience the Biley difference. Let us join hands to shape not just board toppers and future scientists, but confident, compassionate, and visionary leaders for tomorrow."
+    "Named in reverence to the childhood name of Swami Vivekananda—'Biley'—our academy embodies the values of fearless inquiry, unshakeable self-confidence, and a relentless pursuit of knowledge. We do not believe in superficial rote memorization. Whether a student is in Class 1 discovering the joy of numbers, science, and languages, or in Class 11–12 mastering Computer Science, Mathematics, and Physical Sciences for board exams and engineering/medical entrance pathways, our pedagogy focuses on building bedrock foundations.",
+    "With two decades of blended experience across academia and the technology industry, I believe that modern education must combine timeless human values with analytical and computational problem-solving. At Biley Academy, we equip every learner with state-of-the-art computer labs, hands-on science practicals, intimate batch attention, and dedicated 1-on-1 doubt clearing clinics.",
+    "I invite parents and aspiring scholars to experience the Biley difference. Let us join hands to shape not just board toppers and future innovators, but confident, compassionate, and visionary leaders for tomorrow."
   ]
 };
 
@@ -61,14 +88,14 @@ export const MISSION_VISION = {
 export const FACULTY_MEMBERS: FacultyMember[] = [
   {
     id: "fac-1",
-    name: "Dr. Sourav Banerjee",
-    role: "Head of Physics & Competitive Wing",
-    subjects: ["Physics (Class 11-12)", "Physical Science (Class 9-10)"],
-    qualification: "M.Sc. Physics, Ph.D., Ex-Senior Faculty",
-    experience: "22+ Years",
-    bio: "Renowned for making electrodynamics and mechanics intuitive through live physical demos and mathematical rigor.",
-    avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80",
-    achievement: "Mentored 180+ IITians and top 100 Board Rankers"
+    name: "Mr. Sourav Dinda",
+    role: "Founder & Academic Director (Computer Science & Science Lead)",
+    subjects: ["Computer Science (Class 1-12)", "Python, Java & AI", "Physics & Mathematics (Minor Foundations)"],
+    qualification: "M.Phil (Comp. Sc.), M.C.S., B.Sc. (Comp. Sc. with Math & Physics)",
+    experience: "20 Years (Academic & Industry)",
+    bio: "Visionary educator with 20 years of blended academic and industry leadership, 6 research publications, and 100+ project mentorships.",
+    avatarUrl: souravDindaImg,
+    achievement: "6 Research Papers, 100+ Projects Guided & 20 Yrs Academic Leadership"
   },
   {
     id: "fac-2",
@@ -140,7 +167,7 @@ export const TESTIMONIALS: Testimonial[] = [
     studentName: "Sneha Chatterjee",
     gradeOrAchievement: "Class 12 Board Topper (98.2%) & JEE Ranker",
     year: "Batch 2025",
-    quote: "Biley Academy transformed my approach to Physics and Math. Dr. Sourav sir's conceptual derivations made even the toughest problems effortless during board exams and entrances.",
+    quote: "Biley Academy transformed my approach to Computer Science, Math, and Physics. Mr. Sourav Dinda sir's conceptual derivations and mentorship made even the toughest problems effortless during board exams and entrances.",
     scoreOrRank: "98.2% Board | JEE Adv Rank 1420",
     rating: 5
   },
