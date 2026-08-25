@@ -4,8 +4,21 @@ import classroomImg from '../assets/images/coaching_classroom_1787535006801.jpg'
 import scienceLabImg from '../assets/images/science_lab_session_1787535022909.jpg';
 import doubtClearingImg from '../assets/images/doubt_clearing_desk_1787535038773.jpg';
 import awardsImg from '../assets/images/academic_awards_day_1787535055311.jpg';
+import swamiVivekanandaImg from '../assets/images/swami_vivekananda_portrait_1787621856392.jpg';
 
 export const GALLERY_ITEMS: GalleryItem[] = [
+  {
+    id: 'swami-vivekananda-inspiration-portrait',
+    title: 'Swami Vivekananda – Guiding Light of Biley Academy',
+    category: 'banner',
+    categoryLabel: 'Inspiration & Heritage',
+    imageUrl: swamiVivekanandaImg,
+    date: 'Philosophical Founder',
+    location: 'Biley Academy Central Heritage Sanctum',
+    caption: 'Swami Vivekananda (childhood name "Biley"), the timeless fountain of inspiration whose ideals of fearlessness, character building, scientific logic, and total intellectual awakening shape every classroom at Biley Academy.',
+    tags: ['Swami Vivekananda', 'Heritage', 'Inspiration', 'Biley', 'Motto & Philosophy'],
+    isFeaturedBanner: true
+  },
   {
     id: 'official-admission-banner-2026',
     title: 'Official Academic Admission Banner (2026-27)',
@@ -69,10 +82,11 @@ export const GALLERY_ITEMS: GalleryItem[] = [
 ];
 
 export const GALLERY_CATEGORIES = [
-  { id: 'all', label: 'All Photos & Banners', count: 5 },
-  { id: 'banner', label: 'Official Banners & Notices', count: 1 },
+  { id: 'all', label: 'All Photos & Banners', count: 6 },
+  { id: 'banner', label: 'Banners & Heritage', count: 2 },
   { id: 'classroom', label: 'Classrooms & Learning', count: 1 },
   { id: 'labs', label: 'Science & Computer Labs', count: 1 },
   { id: 'mentorship', label: '1-on-1 Doubt Mentorship', count: 1 },
   { id: 'events', label: 'Events & Felicitations', count: 1 }
 ];
+

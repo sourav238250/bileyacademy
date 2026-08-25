@@ -1,6 +1,6 @@
 {
   "name": "Biley Academy",
-  "description": "Educational coaching institute portal for Biley Academy with Class 1-12 curriculum, live scrolling Admission/Examination Notice & News announcements board, student progress dashboard, official 2026-27 admission banner, and AI doubt solver.",
+  "description": "Educational coaching institute portal for Biley Academy with Swami Vivekananda heritage showcase, Class 1-12 curriculum, live scrolling Admission/Examination Notice & News announcements board, student progress dashboard, official 2026-27 admission banner, and AI doubt solver.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
