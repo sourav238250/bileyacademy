@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import { Logo } from './Logo';
 import { FOUNDER_INFO } from '../data/academyData';
-import souravDindaImg from '../assets/images/sourav_dinda_portrait_1787623811482.jpg';
+import souravDindaImg from '../assets/images/sourav_dinda_color_portrait_1787657237922.jpg';
 
 export const FounderMessageSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'message' | 'credentials'>('message');

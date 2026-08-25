@@ -5,7 +5,7 @@ import scienceLabImg from '../assets/images/science_lab_session_1787535022909.jp
 import doubtClearingImg from '../assets/images/doubt_clearing_desk_1787535038773.jpg';
 import awardsImg from '../assets/images/academic_awards_day_1787535055311.jpg';
 import swamiVivekanandaImg from '../assets/images/swami_vivekananda_portrait_1787621856392.jpg';
-import souravDindaImg from '../assets/images/sourav_dinda_portrait_1787623811482.jpg';
+import souravDindaImg from '../assets/images/sourav_dinda_color_portrait_1787657237922.jpg';
 
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
