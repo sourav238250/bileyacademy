@@ -147,7 +147,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate, onOpe
 
           {/* Action CTA Buttons, Theme Toggle & Language Toggle */}
           <div className="hidden sm:flex items-center space-x-2">
-            <ThemeToggle />
+            <ThemeToggle id="navbar-theme-toggle-desktop" />
             <button
               id="header-cta-schedule"
               onClick={() => handleNavClick('batches')}
@@ -167,7 +167,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate, onOpe
 
           {/* Mobile menu trigger & Controls */}
           <div className="lg:hidden flex items-center space-x-2">
-            <ThemeToggle className="sm:hidden" />
+            <ThemeToggle id="navbar-theme-toggle-mobile" className="sm:hidden" />
             <button
               id="mobile-menu-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -226,7 +226,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate, onOpe
               <span className="text-xs font-bold text-slate-300">
                 {isBengali ? 'থিম / মোড:' : 'Theme Mode:'}
               </span>
-              <ThemeToggle showLabel />
+              <ThemeToggle id="navbar-theme-toggle-drawer" showLabel />
             </div>
             <button
               onClick={() => {
