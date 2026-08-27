@@ -22,7 +22,7 @@ export const SAMPLE_STUDENT_PROFILES: StudentProfile[] = [
     gradeLabel: 'Class 12 (Higher Secondary)',
     batchName: 'Pinnacle Science Super-30 Batch',
     academicYear: '2026 - 2027',
-    targetExam: 'WBCHSE / CBSE Board & JEE Advanced / NEET',
+    targetExam: 'WBCHSE / CBSE Board & JEE Advanced / WBJEE',
     attendanceRate: 98,
     streakDays: 22
   },
@@ -52,31 +52,34 @@ export const SAMPLE_STUDENT_PROFILES: StudentProfile[] = [
   }
 ];
 
-const LOCAL_STORAGE_KEY_PREFIX = 'biley_curriculum_progress_v2_';
+const LOCAL_STORAGE_KEY_PREFIX = 'biley_curriculum_progress_v3_';
 
-// Default initial completed chapters seed to give realistic initial progress
+// Default initial completed chapters seed to reflect real-time academic progression
 const DEFAULT_SEED_PROGRESS: Record<number, string[]> = {
   10: [
-    'c10-math-ch-0', 'c10-math-ch-1', 'c10-math-ch-2',
-    'c10-sci-ch-0', 'c10-sci-ch-1', 'c10-sci-ch-2',
-    'c10-bio-ch-0', 'c10-bio-ch-1',
-    'c10-eng-ch-0', 'c10-eng-ch-1', 'c10-eng-ch-2',
-    'c10-comp-ch-0', 'c10-comp-ch-1'
+    'sec-math-ch-0', 'sec-math-ch-1', 'sec-math-ch-2',
+    'sec-sci-ch-0', 'sec-sci-ch-1', 'sec-sci-ch-2',
+    'sec-bio-ch-0', 'sec-bio-ch-1',
+    'sec-eng-ch-0', 'sec-eng-ch-1', 'sec-eng-ch-2',
+    'sec-comp-ch-0', 'sec-comp-ch-1'
   ],
   12: [
-    'c12-phy-ch-0', 'c12-phy-ch-1', 'c12-phy-ch-2',
-    'c12-chem-ch-0', 'c12-chem-ch-1',
-    'c12-math-ch-0', 'c12-math-ch-1', 'c12-math-ch-2',
-    'c12-bio-ch-0', 'c12-bio-ch-1',
-    'c12-eng-ch-0', 'c12-eng-ch-1',
-    'c12-comp-ch-0', 'c12-comp-ch-1'
+    // MATH-12 (Class 12 Higher Secondary Mathematics): 2 Core Modules Completed
+    'hs-math-ch-0', // Module 1: Differential Calculus & Applications (Completed)
+    'hs-math-ch-1', // Module 2: Integral Calculus & Differential Equations (Completed)
+    // Other Class 12 Core Subjects
+    'hs-phy-ch-0', 'hs-phy-ch-1',
+    'hs-chem-ch-0', 'hs-chem-ch-1',
+    'hs-bio-ch-0', 'hs-bio-ch-1',
+    'hs-eng-ch-0', 'hs-eng-ch-1',
+    'hs-comp-ch-0', 'hs-comp-ch-1'
   ],
   8: [
-    'c8-math-ch-0', 'c8-math-ch-1',
-    'c8-sci-ch-0', 'c8-sci-ch-1',
-    'c8-bio-ch-0',
-    'c8-eng-ch-0', 'c8-eng-ch-1',
-    'c8-comp-ch-0', 'c8-comp-ch-1'
+    'up-math-ch-0', 'up-math-ch-1',
+    'up-sci-ch-0', 'up-sci-ch-1',
+    'up-bio-ch-0',
+    'up-eng-ch-0', 'up-eng-ch-1',
+    'up-comp-ch-0', 'up-comp-ch-1'
   ],
   4: [
     'c4-eng-ch-0', 'c4-eng-ch-1', 'c4-eng-ch-2',

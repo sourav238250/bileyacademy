@@ -50,7 +50,7 @@ export const AdmissionSection: React.FC<AdmissionSectionProps> = ({ initialSubje
     'Class 9 (Secondary)',
     'Class 10 (Secondary Board Special)',
     'Class 11 (Higher Secondary - Science Track)',
-    'Class 12 (Higher Secondary - Board + JEE/NEET)'
+    'Class 12 (Higher Secondary - Board + JEE)'
   ];
 
   const availableSubjectCheckboxes = [

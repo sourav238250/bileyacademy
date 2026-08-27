@@ -7,7 +7,7 @@ export const ACADEMY_NOTICES: NoticeItem[] = [
     category: 'admission',
     categoryLabel: 'Admission Notice',
     date: 'Aug 24, 2026',
-    description: 'Registration open for Offline Primary Batches (Class 1-5) and Hybrid Secondary & Higher Secondary Batches (Class 6-12) with JEE/NEET orientation.',
+    description: 'Registration open for Offline Primary Batches (Class 1-5) and Hybrid Secondary & Higher Secondary Batches (Class 6-12) with Engineering/JEE & Board orientation.',
     badge: 'Admissions 2026',
     isNew: true,
     isUrgent: true,
@@ -17,7 +17,7 @@ export const ACADEMY_NOTICES: NoticeItem[] = [
     details: [
       'Class I–V: All subjects offline comprehensive foundational coaching with activity learning.',
       'Class VI–XII: Specialized offline & online classes for Mathematics, Science (Physics & Chemistry), English, Biology, and Computer Science.',
-      'Special JEE & NEET foundation modules with tricks, speed calculation, and question banks.',
+      'Special Board scoring & JEE foundation modules with tricks, speed calculation, and question banks.',
       'Limited batch strength of 15–18 students per batch for focused individual attention.'
     ]
   },
@@ -73,25 +73,25 @@ export const ACADEMY_NOTICES: NoticeItem[] = [
     attachmentName: 'Lab_Safety_Guidelines.pdf',
     actionText: 'Learn More',
     details: [
-      'Weekly supervised practical experiments mapped directly to CBSE/ICSE/WBCHSE lab syllabi.',
+      'Weekly supervised practical experiments mapped directly to CBSE, WBBSE, and WBCHSE lab syllabi.',
       'Computer laboratory updated with Python and Java programming environments for Class 9–12 Computer Science students.'
     ]
   },
   {
-    id: 'notice-exam-jee-neet-series',
-    title: 'Sunday Super-30 JEE Main & NEET Booster Practice Drills',
+    id: 'notice-exam-jee-series',
+    title: 'Sunday Super-30 JEE Main & Board Booster Practice Drills',
     category: 'examination',
     categoryLabel: 'Examination Notice',
     date: 'Aug 15, 2026',
     description: 'Special timed OMR-based speed drills and shortcut technique sessions every Sunday morning (9:00 AM – 12:00 PM).',
-    badge: 'JEE / NEET Drill',
+    badge: 'JEE & Board Drill',
     isNew: false,
     isUrgent: false,
     targetClass: 'Class 11 & 12 Aspirants',
     attachmentName: 'Sunday_Test_Topics_Matrix.pdf',
     actionText: 'View Drill Topics',
     details: [
-      'Comprehensive coverage of previous 15 years JEE & NEET questions with short-cut tricks.',
+      'Comprehensive coverage of previous 15 years JEE & Board topper questions with short-cut tricks.',
       'Detailed video solution walkthrough and 1-on-1 doubt clearing clinic immediately after tests.'
     ]
   },
@@ -120,6 +120,6 @@ export const NOTICE_TICKER_ITEMS = [
   '📢 First Term Board Simulation Mock Test Series commences next week for Classes 9–12',
   '🏆 B-STAT 2026 Scholarship Exam Registrations Open: Up to 100% Tuition Fee Waivers',
   '🔬 New Experiential STEM & Optics Science Laboratory Open at Jamna Campus',
-  '🎯 Sunday Super-30 JEE Main & NEET Rapid Speed & Tricks Drills every Sunday 9 AM',
+  '🎯 Sunday Super-30 JEE Main & Board Rapid Speed & Tricks Drills every Sunday 9 AM',
   '📍 Campus Location: Jamna, Pingla, Paschim Medinipur - PIN 721140 (Adjacent to Jamna Bus Stand)'
 ];

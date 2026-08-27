@@ -4,9 +4,9 @@ export const GRADE_CATEGORIES = [
   {
     id: 'primary' as const,
     title: 'Primary Foundation',
-    classes: 'Classes 1 to 4',
+    classes: 'Classes 1 to 4 (WBBPE / CBSE)',
     badge: 'Ages 6 - 10',
-    description: 'Nurturing curiosity, logical reasoning, computational thinking, and language fluency through activity-based learning.',
+    description: 'Nurturing curiosity, logical reasoning (WBBPE / CBSE), computational thinking, and language fluency through activity-based learning.',
     icon: 'Sparkles',
     color: 'amber',
     subjectsList: ['English', 'Mathematics', 'Computer', 'Science']
@@ -14,9 +14,9 @@ export const GRADE_CATEGORIES = [
   {
     id: 'upper_primary' as const,
     title: 'Upper Primary',
-    classes: 'Classes 5 to 8',
+    classes: 'Classes 5 to 8 (WBBSE / CBSE)',
     badge: 'Ages 10 - 14',
-    description: 'Transitioning to structured conceptual sciences, algebra, biology, programming, and strong analytical problem solving.',
+    description: 'Transitioning to structured conceptual sciences, algebra, biology, programming (WBBSE / CBSE), and strong analytical problem solving.',
     icon: 'BookOpen',
     color: 'emerald',
     subjectsList: ['Mathematics', 'Science', 'Biology', 'English', 'Computer Science / Application']
@@ -24,9 +24,9 @@ export const GRADE_CATEGORIES = [
   {
     id: 'secondary' as const,
     title: 'Secondary School',
-    classes: 'Classes 9 and 10',
+    classes: 'Classes 9 and 10 (WBBSE / CBSE)',
     badge: 'Ages 14 - 16',
-    description: 'Rigorous Board Exam preparation, in-depth laboratory practicals, Olympiad foundations, and analytical precision.',
+    description: 'Rigorous Board Exam preparation (WBBSE Madhyamik & CBSE), in-depth laboratory practicals, Olympiad foundations, and analytical precision.',
     icon: 'GraduationCap',
     color: 'blue',
     subjectsList: ['Mathematics', 'Science', 'Biology', 'English', 'Computer Science / Application']
@@ -34,9 +34,9 @@ export const GRADE_CATEGORIES = [
   {
     id: 'higher_secondary' as const,
     title: 'Higher Secondary',
-    classes: 'Classes 11 and 12',
+    classes: 'Classes 11 and 12 (WBCHSE / CBSE)',
     badge: 'Ages 16 - 18',
-    description: 'Dual-track mastery for Board Exams (WBCHSE / CBSE / ISC) and competitive entrances (JEE Main/Adv, NEET, WBJEE, Olympiads).',
+    description: 'Dual-track mastery for Board Exams (WBCHSE / CBSE) and competitive entrances (JEE Main/Adv, WBJEE, Olympiads).',
     icon: 'Atom',
     color: 'indigo',
     subjectsList: ['Mathematics', 'Physics', 'Chemistry', 'Biology', 'English', 'Computer Science / Application']
@@ -298,7 +298,7 @@ export const ALL_GRADES_DATA: ClassGradeInfo[] = [
         learningOutcomes: ['Transform active to passive and direct to indirect speech flawlessly', 'Write 250-word analytical essays and formal application letters', 'Analyze literary prose, poetic devices (metaphor, simile, personification)', 'Deliver articulate public speeches and participate in structured debates'],
         keyChapters: [
           { title: 'Advanced Grammar Mechanics', description: 'Clauses (noun, adjective, adverb), Modals, Prepositions, Voice & Narration.', subtopics: ['Rules of reported speech', 'Subject-verb concord exceptions', 'Idioms & phrasal verbs in context'], practicalOrActivity: 'Spotting grammatical errors workshop' },
-          { title: 'Formal Writing & Composition', description: 'Letters to Editor, formal leave applications, notice writing, descriptive essays.', subtopics: ['Standard ICSE/CBSE formats', 'Cohesive paragraph transitions', 'Debate script writing'], practicalOrActivity: 'Publishing articles in Biley Academy Student Journal' },
+          { title: 'Formal Writing & Composition', description: 'Letters to Editor, formal leave applications, notice writing, descriptive essays.', subtopics: ['Standard CBSE & Board formats', 'Cohesive paragraph transitions', 'Debate script writing'], practicalOrActivity: 'Publishing articles in Biley Academy Student Journal' },
           { title: 'Literature & Critical Reading', description: 'Classic short stories, poetry appreciation, character sketch analysis.', subtopics: ['Themes and moral dilemmas', 'Rhyme schemes & literary devices', 'Unseen poetry interpretation'], practicalOrActivity: 'Classroom dramatic reading & character roleplay' }
         ],
         referenceMaterials: ['Wren & Martin High School English Grammar', 'Biley Literary Reader & Composition'],
@@ -333,7 +333,7 @@ export const ALL_GRADES_DATA: ClassGradeInfo[] = [
     gradeLabel: 'Classes 9 & 10 (Secondary Board Preparation)',
     category: 'secondary',
     ageGroup: '14 - 16 Years',
-    academicFocus: '100% Board Exam Target (CBSE/ICSE/WB Madhyamik), Rigorous Physics/Chemistry/Biology Labs, Olympiads & JEE/NEET Base',
+    academicFocus: '100% Board Exam Target (WBBSE Madhyamik & CBSE), Rigorous Physics/Chemistry/Biology Labs, Olympiads & Engineering Foundation',
     weeklySchedulePreview: { days: 'Mon to Sat', timings: '4:30 PM - 7:45 PM', mode: 'Classroom Lectures + Lab + Doubt Clinic' },
     subjects: [
       {
@@ -371,7 +371,7 @@ export const ALL_GRADES_DATA: ClassGradeInfo[] = [
           { title: 'Carbon & Its Compounds (Chemistry)', description: 'Covalent bonding, allotropes of carbon, functional groups (alcohol, aldehyde, ketone, acid), soaps & detergents.', subtopics: ['Esterification and saponification', 'Addition and substitution reactions', 'Micelle formation mechanism'], practicalOrActivity: 'Soap preparation and hard vs soft water cleansing action test' }
         ],
         referenceMaterials: ['Biley Class 10 Science Blueprint', 'Lakhmir Singh Physics & Chemistry Class 10', 'NCERT Science & Exemplar'],
-        examPattern: 'Full Laboratory Practicals, CBSE/ICSE Board Pattern Mocks with Diagram Grading',
+        examPattern: 'Full Laboratory Practicals, CBSE & WBBSE Board Pattern Mocks with Diagram Grading',
         practicalAvailable: true
       },
       {
@@ -408,7 +408,7 @@ export const ALL_GRADES_DATA: ClassGradeInfo[] = [
           { title: 'Creative & Formal Writing Skills', description: 'Formal letter to editor, complaint letters, analytical paragraphs based on data/charts.', subtopics: ['Standard 5-step letter structure', 'Comparative language for chart interpretation', 'Word economy and vocabulary enhancement'], practicalOrActivity: 'Drafting public interest op-eds' },
           { title: 'Literature Masterclasses & Critical Essays', description: 'In-depth analysis of Board prose, poetic devices, character motivations, and themes.', subtopics: ['Irony, imagery, symbolism, alliteration', 'Long-answer character sketches', 'Comparative theme synthesis'], practicalOrActivity: 'Student-led literary debates & board model answer drafting' }
         ],
-        referenceMaterials: ['CBSE/ICSE Prescribed Literature Reader', 'All In One English Language & Literature Class 10', 'Biley Board Scoring Playbook'],
+        referenceMaterials: ['CBSE & Board Prescribed Literature Reader', 'All In One English Language & Literature Class 10', 'Biley Board Scoring Playbook'],
         examPattern: 'Full-length 3-hour Board simulation papers with line-by-line feedback',
         practicalAvailable: false
       },
@@ -427,7 +427,7 @@ export const ALL_GRADES_DATA: ClassGradeInfo[] = [
           { title: 'Array Manipulation & Algorithms', description: 'Single dimensional arrays, multi-dimensional matrices, linear search, bubble sort.', subtopics: ['Array indexing and bounds checking', 'Binary search implementation', 'Matrix addition and transpose'], practicalOrActivity: 'Implementing search & sort visualizer scripts' },
           { title: 'Database Concepts, SQL & Cyber Law', description: 'Relational model, primary keys, SQL DDL & DML statements, IT Act and cyber ethics.', subtopics: ['Creating and updating tables', 'Aggregate functions (COUNT, SUM, AVG)', 'Preventing phishing, cyberbullying, and malware'], practicalOrActivity: 'Database creation and query execution on MySQL terminal' }
         ],
-        referenceMaterials: ['Computer Applications with BlueJ / Python (Sumita Arora)', 'Biley CodeLab 100 Solved Board Programs', 'CBSE/ICSE Class 10 Specimen Bank'],
+        referenceMaterials: ['Computer Applications with Python / Java (Sumita Arora)', 'Biley CodeLab 100 Solved Board Programs', 'CBSE / WBBSE Board Class 10 Specimen Bank'],
         examPattern: 'Computer Lab Practical Exams (Program output verification, dry run tracing, viva voce)',
         practicalAvailable: true
       }
@@ -440,7 +440,7 @@ export const ALL_GRADES_DATA: ClassGradeInfo[] = [
     gradeLabel: 'Classes 11 & 12 (Higher Secondary + Competitive)',
     category: 'higher_secondary',
     ageGroup: '16 - 18 Years',
-    academicFocus: 'Dual-Engine Mastery: 95%+ Board Exams (WBCHSE / CBSE / ISC) + Top Percentile in JEE Main/Adv, NEET-UG, WBJEE, CUET',
+    academicFocus: 'Dual-Engine Mastery: 95%+ Board Exams (WBCHSE / CBSE) + Top Percentile in JEE Main/Adv, WBJEE, CUET',
     weeklySchedulePreview: { days: 'Mon to Sat', timings: '3:00 PM - 8:30 PM', mode: 'Intensive Lectures + Advanced Problem Sessions + Computer Lab' },
     subjects: [
       {
@@ -478,7 +478,7 @@ export const ALL_GRADES_DATA: ClassGradeInfo[] = [
           { title: 'Modern Physics & Semiconductors', description: 'Einstein\'s photoelectric equation, Bohr\'s hydrogen model, binding energy curve, p-n junction diode as rectifier, solar cell, LEDs.', subtopics: ['De Broglie wavelength of matter waves', 'Half-life and radioactive decay law', 'Forward and reverse bias characteristics'], practicalOrActivity: 'V-I characteristics of p-n junction diode & Zener diode voltage regulator lab' }
         ],
         referenceMaterials: ['Concepts of Physics (Vol 1 & 2) by HC Verma', 'NCERT Physics Class 11 & 12', 'Biley Advanced Physics Problem Bank', 'DC Pandey Physics Series'],
-        examPattern: 'Board pattern theory & derivation exams + JEE/NEET speed accuracy tests + Full Lab Viva',
+        examPattern: 'Board pattern theory & derivation exams + JEE speed accuracy tests + Full Lab Viva',
         practicalAvailable: true
       },
       {
@@ -497,7 +497,7 @@ export const ALL_GRADES_DATA: ClassGradeInfo[] = [
           { title: 'Organic Chemistry & Reaction Mechanisms', description: 'Haloalkanes, Alcohols, Phenols, Ethers, Aldehydes, Ketones, Carboxylic acids, Diazonium salts, Biomolecules.', subtopics: ['Reimer-Tiemann and Kolbe reactions', 'Aldol condensation and Cannizzaro mechanisms', 'Carbylamine test and Gabriel phthalimide synthesis'], practicalOrActivity: 'Identification of functional groups (alcohols, aldehydes, carboxylic acids) in organic lab' }
         ],
         referenceMaterials: ['NCERT Chemistry Class 11 & 12', 'OP Tandon Physical & Organic Chemistry', 'MS Chouhan Advanced Problems in Organic Chemistry', 'Biley 500 Must-Do Chemistry Reactions'],
-        examPattern: 'Board Subjective Papers + NEET/JEE Chemistry Rapid-fire Mock Drills + Qualitative Salt Analysis',
+        examPattern: 'Board Subjective Papers + JEE/WBJEE Chemistry Rapid-fire Mock Drills + Qualitative Salt Analysis',
         practicalAvailable: true
       },
       {
@@ -509,14 +509,14 @@ export const ALL_GRADES_DATA: ClassGradeInfo[] = [
         description: 'Reproduction in organisms, Genetics and Evolution, Molecular Basis of Inheritance, Biotechnology (Principles & Applications), Human Health & Disease, Ecology & Environment.',
         weeklyHours: 9,
         totalModules: 16,
-        learningOutcomes: ['Score 350+ / 360 in NEET Biology section and 98%+ in Board Examinations', 'Explain DNA replication, transcription, translation (lac operon model)', 'Detail recombinant DNA technology, PCR, gel electrophoresis, and gene cloning', 'Analyze human immune system (antibodies, T-cells, B-cells, HIV/Cancer pathology)'],
+        learningOutcomes: ['Score 98%+ in Board Biological Sciences Examinations', 'Explain DNA replication, transcription, translation (lac operon model)', 'Detail recombinant DNA technology, PCR, gel electrophoresis, and gene cloning', 'Analyze human immune system (antibodies, T-cells, B-cells, HIV/Cancer pathology)'],
         keyChapters: [
           { title: 'Genetics & Molecular Basis of Inheritance', description: 'Mendelian principles, chromosomal disorders, Griffith & Hershey-Chase experiments, genetic code, Lac Operon, Human Genome Project.', subtopics: ['Sex linkage (Color blindness & Haemophilia)', 'Transcription machinery and RNA splicing', 'DNA fingerprinting methodology'], practicalOrActivity: 'DNA isolation from plant material (papaya/banana) in laboratory' },
           { title: 'Biotechnology: Principles & Applications', description: 'Restriction enzymes, vectors (pBR322), PCR, bioreactors, Bt cotton, gene therapy (ADA deficiency), transgenic animals.', subtopics: ['Selectable markers and insertion inactivation', 'Downstream processing', 'Ethical issues and biopiracy'], practicalOrActivity: 'Agarose gel electrophoresis demonstration and plasmid restriction mapping' },
           { title: 'Human Health, Immunology & Ecology', description: 'Innate & acquired immunity, vaccines, lymphoid organs, cancer vs normal cells, population attributes, biodiversity hotspots.', subtopics: ['Structure of Antibody molecule (IgG, IgA, IgM)', 'Life cycle of Plasmodium (Malaria)', 'Ecological pyramids and loss of biodiversity'], practicalOrActivity: 'Permanent slide observation of stages of mitosis and blastula development' }
         ],
-        referenceMaterials: ['NCERT Biology Class 11 & 12 (Line-by-Line Decode)', 'Trueman\'s Elementary Biology (Vol 1 & 2)', 'Biley NEET Biology 5000+ NCERT Master Question Bank'],
-        examPattern: 'Line-by-line NCERT extract tests, Full-length 3-hour NEET simulations, Board practicals',
+        referenceMaterials: ['NCERT Biology Class 11 & 12 (Line-by-Line Decode)', 'Trueman\'s Elementary Biology (Vol 1 & 2)', 'Biley Biology 5000+ NCERT Master Question Bank'],
+        examPattern: 'Line-by-line NCERT extract tests, Full-length 3-hour Board simulations, Board practicals',
         practicalAvailable: true
       },
       {
@@ -534,7 +534,7 @@ export const ALL_GRADES_DATA: ClassGradeInfo[] = [
           { title: 'Official & Professional Composition', description: 'Job Applications with detailed Curriculum Vitae, Formal Invitations (Cards & Letters), Report Writing on school events.', subtopics: ['Bio-data format with references', 'Tone appropriateness in invitations', 'Fact-based report writing techniques'], practicalOrActivity: 'Simulated job interview resume portfolio drafting' },
           { title: 'Higher Secondary Literature & Poetry Appreciation', description: 'Detailed critical essays on prescribed texts (Flamingo, Vistas), poetic metaphors, psychological character analysis.', subtopics: ['Themes of lost childhood, oppression, and freedom', 'Irony and symbolism in modern poetry', 'Value-based extrapolation questions'], practicalOrActivity: 'Board model answer writing and peer review grading sessions' }
         ],
-        referenceMaterials: ['CBSE/ISC Prescribed Textbooks (Flamingo & Vistas)', 'Biley Class 12 English Board Success Blueprint', 'All In One English Core Class 12'],
+        referenceMaterials: ['CBSE Prescribed Textbooks (Flamingo & Vistas)', 'Biley Class 12 English Board Success Blueprint', 'All In One English Core Class 12'],
         examPattern: 'Full 80-mark Board Mock Exams with word-limit optimization grading',
         practicalAvailable: false
       },
@@ -553,7 +553,7 @@ export const ALL_GRADES_DATA: ClassGradeInfo[] = [
           { title: 'Relational Database & Python Connectivity', description: 'SQL Joins (Equi-Join, Natural Join), Aggregate functions, GROUP BY, HAVING, connecting Python with MySQL database.', subtopics: ['Database cursors and transactions', 'Executing parameterized SQL queries from Python', 'CRUD operations on real-world databases'], practicalOrActivity: 'Developing a full-fledged Library Management Database App with GUI' },
           { title: 'Computer Networks & Cybersecurity', description: 'Network topologies (Star, Bus, Ring, Mesh), OSI vs TCP/IP models, HTTP/HTTPS, DNS, IPv4 vs IPv6, Firewalls, Cryptography, IT Laws.', subtopics: ['Network devices (Hub, Switch, Router, Gateway)', 'Transmission media (Fiber optics vs Coaxial vs Wireless)', 'Cyber safety and data protection guidelines'], practicalOrActivity: 'Network packet tracing and Wi-Fi security audit simulation' }
         ],
-        referenceMaterials: ['Computer Science with Python by Sumita Arora / Preeti Arora', 'Biley Practical Lab Manual & Capstone Project Repository', 'CBSE/ISC Class 12 Previous 10-Year Question Bank'],
+        referenceMaterials: ['Computer Science with Python by Sumita Arora / Preeti Arora', 'Biley Practical Lab Manual & Capstone Project Repository', 'CBSE / WBCHSE Class 12 Previous 10-Year Question Bank'],
         examPattern: 'Full Practical Exam (Coding on system + Project report + SQL queries + Viva Voce)',
         practicalAvailable: true
       }

@@ -40,8 +40,8 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     imageUrl: bannerHeroImg,
     date: 'Academic Year 2026-27',
     location: 'Jamna, Pingla, Paschim Medinipur',
-    caption: 'Official coaching institute notice for Classes 1 to 12. Offline foundational coaching for Classes I-V and Hybrid (Offline/Online) with JEE/NEET orientation for Classes VI-XII.',
-    tags: ['Admissions 2026', 'Official Notice', 'Classes 1-12', 'Offline & Online', 'JEE Oriented'],
+    caption: 'Official coaching institute notice for Classes 1 to 12. Offline foundational coaching for Classes I-V and Hybrid (Offline/Online) with Engineering/JEE & Board orientation for Classes VI-XII.',
+    tags: ['Admissions 2026', 'Official Notice', 'Classes 1-12', 'Offline & Online', 'JEE & Board Oriented'],
     isFeaturedBanner: true
   },
   {

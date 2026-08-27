@@ -34,15 +34,15 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate, onOpe
 
   const navLinks = [
     { id: 'hero', label: t('navNoticeboard', 'Noticeboard'), icon: Bell, badge: isBengali ? 'লাইভ' : 'Live' },
+    { id: 'curriculum', label: t('navCurriculum', 'Curriculum (Cl 1-12)'), icon: Sparkles, badge: t('navAllGrades', 'All Grades') },
+    { id: 'student-dashboard', label: t('navStudentDashboard', 'Student Progress'), icon: BarChart3, badge: t('navTracker', 'Tracker') },
+    { id: 'ai-tutor', label: t('navAiTutor', 'AI Doubt Solver'), icon: Bot, badge: t('navLiveAi', 'Live AI') },
+    { id: 'quiz', label: t('navQuiz', 'Diagnostic Quiz'), icon: HelpCircle },
     { id: 'about', label: t('navAbout', 'About Us'), icon: BookOpen },
     { id: 'mission-vision', label: t('navMissionVision', 'Mission & Vision'), icon: Award },
     { id: 'founder', label: t('navFounder', 'Founder Message'), icon: GraduationCap },
-    { id: 'curriculum', label: t('navCurriculum', 'Curriculum (Cl 1-12)'), icon: Sparkles, badge: t('navAllGrades', 'All Grades') },
-    { id: 'student-dashboard', label: t('navStudentDashboard', 'Student Progress'), icon: BarChart3, badge: t('navTracker', 'Tracker') },
-    { id: 'gallery', label: t('navGallery', 'Campus Gallery'), icon: ImageIcon, badge: isBengali ? 'ছবি' : 'Photos' },
-    { id: 'ai-tutor', label: t('navAiTutor', 'AI Doubt Solver'), icon: Bot, badge: t('navLiveAi', 'Live AI') },
-    { id: 'quiz', label: t('navQuiz', 'Diagnostic Quiz'), icon: HelpCircle },
     { id: 'faculty', label: t('navFaculty', 'Faculty & Results'), icon: Award },
+    { id: 'gallery', label: t('navGallery', 'Campus Gallery'), icon: ImageIcon, badge: isBengali ? 'ছবি' : 'Photos' },
     { id: 'batches', label: t('navBatches', 'Batch Routine'), icon: Clock },
     { id: 'admission', label: t('navAdmission', 'Admissions'), icon: Calendar },
     { id: 'contact', label: t('navContact', 'Contact Us'), icon: MessageSquare }
@@ -63,7 +63,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate, onOpe
               {t('topBannerAdmissions', 'Admissions Open 2026-27')}
             </span>
             <span className="hidden sm:inline font-semibold">
-              {t('topBannerClasses', 'Classes 1 to 12 (CBSE / ICSE / WBCHSE + JEE / NEET)')}
+              {t('topBannerClasses', 'Classes 1 to 12 (CBSE • WBBPE / WBBSE / WBCHSE + JEE / WBJEE)')}
             </span>
           </div>
           

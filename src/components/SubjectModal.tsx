@@ -161,7 +161,7 @@ export const SubjectModal: React.FC<SubjectModalProps> = ({
             </div>
             <div>
               <span className="text-[11px] text-slate-400 uppercase font-semibold">Board Coverage</span>
-              <p className="text-xs font-bold text-indigo-400 mt-0.5">CBSE / ICSE / WBCHSE</p>
+              <p className="text-xs font-bold text-indigo-400 mt-0.5">CBSE • WBBPE / WBBSE / WBCHSE</p>
             </div>
           </div>
 

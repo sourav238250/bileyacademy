@@ -112,7 +112,7 @@ export const MissionVisionSection: React.FC = () => {
     "বিজ্ঞানভিত্তিক ও ধারণাগত পাঠদানের মাধ্যমে মুখস্থের ভয় দূর করা",
     "ক্লাস ১ থেকে ১২ পর্যন্ত প্রতিটি বিষয়ের জন্য সুবিন্যস্ত মডিউল ও নিয়মিত নোটস",
     "সাপ্তাহিক ও মাসিক মূল্যায়নের মাধ্যমে প্রতিটি শিক্ষার্থীর ধারাবাহিক অগ্রগতি পর্যবেক্ষণ",
-    "বোর্ড পরীক্ষা (CBSE / ICSE / WBCHSE) এবং JEE/NEET-এর সমন্বিত প্রস্তুতি"
+    "বোর্ড পরীক্ষা (CBSE, WBBPE, WBBSE ও WBCHSE) এবং JEE/WBJEE-এর সমন্বিত প্রস্তুতি"
   ] : MISSION_VISION.mission.points;
 
   const visionPoints = isBengali ? [

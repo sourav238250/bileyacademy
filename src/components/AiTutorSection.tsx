@@ -117,7 +117,7 @@ Whether you need a step-by-step derivation in Physics/Math, an explanation of ce
                   <option value="Class 5-8 (Upper Primary)">Class 5 to 8 (Upper Primary)</option>
                   <option value="Class 9 (Secondary)">Class 9 (Secondary)</option>
                   <option value="Class 10 (Secondary)">Class 10 (Board Exam Special)</option>
-                  <option value="Class 11 (Higher Secondary)">Class 11 (HS + JEE/NEET)</option>
+                  <option value="Class 11 (Higher Secondary)">Class 11 (HS + JEE)</option>
                   <option value="Class 12 (Higher Secondary)">Class 12 (Board + Competitive)</option>
                 </select>
               </div>

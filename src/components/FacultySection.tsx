@@ -97,7 +97,7 @@ export const FacultySection: React.FC = () => {
               Student & Parent Testimonials
             </h3>
             <p className="text-xs sm:text-sm text-slate-400 mt-1">
-              Hear from our board toppers, NEET rankers, and proud parents.
+              Hear from our board toppers, engineering qualifiers, and proud parents.
             </p>
           </div>
 

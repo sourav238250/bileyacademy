@@ -35,7 +35,7 @@ export const FOUNDER_INFO = {
   tagline: "Inspired by the fearless spirit of Swami Vivekananda (fondly called 'Biley' in his childhood)",
   messageParagraphs: [
     "Welcome to Biley Academy. When we laid the cornerstone of this institution, we had one singular conviction: every child is born with an innate spark of genius, waiting to be ignited by the right catalyst of conceptual clarity, compassionate mentorship, and rigorous practice.",
-    "Named in reverence to the childhood name of Swami Vivekananda—'Biley'—our academy embodies the values of fearless inquiry, unshakeable self-confidence, and a relentless pursuit of knowledge. We do not believe in superficial rote memorization. Whether a student is in Class 1 discovering the joy of numbers, science, and languages, or in Class 11–12 mastering Computer Science, Mathematics, and Physical Sciences for board exams and engineering/medical entrance pathways, our pedagogy focuses on building bedrock foundations.",
+    "Named in reverence to the childhood name of Swami Vivekananda—'Biley'—our academy embodies the values of fearless inquiry, unshakeable self-confidence, and a relentless pursuit of knowledge. We do not believe in superficial rote memorization. Whether a student is in Class 1 discovering the joy of numbers, science, and languages, or in Class 11–12 mastering Computer Science, Mathematics, and Physical Sciences for board exams and engineering/higher secondary pathways, our pedagogy focuses on building bedrock foundations.",
     "With two decades of blended experience across academia and the technology industry, I believe that modern education must combine timeless human values with analytical and computational problem-solving. At Biley Academy, we equip every learner with state-of-the-art computer labs, hands-on science practicals, intimate batch attention, and dedicated 1-on-1 doubt clearing clinics.",
     "I invite parents and aspiring scholars to experience the Biley difference. Let us join hands to shape not just board toppers and future innovators, but confident, compassionate, and visionary leaders for tomorrow."
   ]
@@ -48,7 +48,7 @@ export const MISSION_VISION = {
     points: [
       "Deliver rigorous, concept-centric classroom coaching tailored to the developmental stages from Class 1 through Class 12.",
       "Demystify complex subjects—Mathematics, Physical Sciences, Biological Sciences, Computer Programming, and English—through active visualization and lab practicals.",
-      "Nurture analytical thinking and problem-solving resilience so students thrive in school board exams, Olympiads, and national competitive benchmarks (JEE / NEET / WBJEE / CUET).",
+      "Nurture analytical thinking and problem-solving resilience so students thrive in school board exams, Olympiads, and national competitive benchmarks (JEE / WBJEE / CUET).",
       "Maintain accessible, transparent mentorship where every student receives tailored attention regardless of their starting academic proficiency."
     ]
   },
@@ -58,7 +58,7 @@ export const MISSION_VISION = {
     points: [
       "To be recognized as the most trusted educational ecosystem that bridges foundational schooling with high-stakes competitive entrance readiness.",
       "To foster an environment where intellectual curiosity is celebrated, scientific temper is cultivated, and moral integrity is seamlessly woven into education.",
-      "To empower every young scholar to realize their fullest cognitive potential and emerge as innovative problem-solvers in science, technology, medicine, and humanistic fields."
+      "To empower every young scholar to realize their fullest cognitive potential and emerge as innovative problem-solvers in science, technology, engineering, and humanistic fields."
     ]
   },
   coreValues: [
@@ -112,12 +112,12 @@ export const FACULTY_MEMBERS: FacultyMember[] = [
     id: "fac-3",
     name: "Dr. Malabika Dasgupta",
     role: "Senior Faculty - Biological Sciences",
-    subjects: ["Biology (Class 5-12)", "NEET Zoology & Botany"],
+    subjects: ["Biology (Class 5-12)", "Genetics & Advanced Botany/Zoology"],
     qualification: "M.Sc. Zoology, Ph.D. in Genetics (CSIR-NET JRF)",
     experience: "15+ Years",
     bio: "Brings cell biology and genetics alive through 3D diagram workshops and line-by-line NCERT mastery.",
     avatarUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80",
-    achievement: "Produced NEET 355/360 scorers in consecutive years"
+    achievement: "Consistently producing 95%+ Board Scorers in Biological Sciences"
   },
   {
     id: "fac-4",
@@ -157,8 +157,8 @@ export const FACULTY_MEMBERS: FacultyMember[] = [
 export const ACADEMY_STATS = [
   { label: "Years of Academic Heritage", value: "15+", sub: "Since 2011" },
   { label: "Students Mentored", value: "4,500+", sub: "Class 1 to 12" },
-  { label: "Board Exam 90%+ Scorers", value: "96.4%", sub: "CBSE / ICSE / WB" },
-  { label: "Olympiad & Entrance Selections", value: "850+", sub: "JEE, NEET, NTSE" }
+  { label: "Board Exam 90%+ Scorers", value: "96.4%", sub: "CBSE • WBBSE / WBCHSE" },
+  { label: "Olympiad & Entrance Selections", value: "850+", sub: "JEE, WBJEE, NTSE" }
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
@@ -178,16 +178,16 @@ export const TESTIMONIALS: Testimonial[] = [
     gradeOrAchievement: "Class 10 Board (97.6%)",
     year: "Batch 2025",
     quote: "My son joined Biley Academy in Class 6. The foundational training in Science, Biology, and Computer Science built immense confidence. The regular parent-teacher reports kept us completely informed.",
-    scoreOrRank: "97.6% ICSE Board",
+    scoreOrRank: "97.6% CBSE Board",
     rating: 5
   },
   {
     id: "t-3",
     studentName: "Riya Roychowdhury",
-    gradeOrAchievement: "NEET Top Scorer (685/720)",
+    gradeOrAchievement: "Class 12 Pure Science Topper (98.4%) & WBJEE Ranker",
     year: "Batch 2024",
-    quote: "The Biology line-by-line NCERT workshops by Dr. Malabika ma'am and weekly chemistry mock drills gave me the precision needed to crack NEET in my very first attempt.",
-    scoreOrRank: "NEET 685/720 | Med College Kol",
+    quote: "The Biology line-by-line NCERT workshops by Dr. Malabika ma'am and weekly science mock drills gave me the conceptual precision needed to secure 98.4% in Board exams and top ranks in WBJEE.",
+    scoreOrRank: "98.4% Board | WBJEE Rank 420",
     rating: 5
   },
   {
@@ -208,7 +208,7 @@ export const FAQS = [
   },
   {
     q: "Do you teach students from all major education boards?",
-    a: "Yes! Our curriculum is tailored for CBSE, ICSE / ISC, and West Bengal State Board (WBBSE / WBCHSE) syllabi, alongside foundation programs for competitive benchmarks like Science/Math Olympiads, NTSE, JEE Main & Advanced, and NEET-UG."
+    a: "Yes! Our curriculum is tailored for CBSE and West Bengal State Boards — WBBPE (Primary Class 1-4), WBBSE (Secondary Class 5-10 / Madhyamik), and WBCHSE (Higher Secondary Class 11-12) syllabi, alongside foundation programs for competitive benchmarks like Science/Math Olympiads, NTSE, WBJEE, and JEE Main & Advanced."
   },
   {
     q: "How are classes structured for primary grades (Class 1 to 4)?",

@@ -277,7 +277,7 @@ export const Hero: React.FC<HeroProps> = ({
                     <Award className="w-3 h-3" />
                     <span>{isBengali ? 'ব্যক্তিগত ১-অন-১ নির্দেশনা' : 'Personalized 1-on-1 Guidance'}</span>
                   </span>
-                  <span className="text-slate-400">CBSE • ICSE • WB</span>
+                  <span className="text-slate-400">CBSE • WBBPE • WBBSE • WBCHSE</span>
                 </div>
               </div>
             )}

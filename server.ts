@@ -330,10 +330,10 @@ Student Question: "${question}"
 
 Guidelines:
 1. Provide an inspiring, crystal-clear, pedagogically sound explanation appropriate for the student's grade level.
-2. If it's a primary class (Class 1-4), use simple language, relatable everyday examples, and positive encouragement.
-3. If it's Upper Primary (Class 5-8), explain key logic, definitions, and foundational concepts.
-4. If it's Secondary (Class 9-10), include board exam keywords, structured points, formulas, or code snippets.
-5. If it's Higher Secondary (Class 11-12), provide rigorous, competitive-exam level depth (CBSE/WBCHSE/ISC + JEE/NEET/Olympiad hints where appropriate).
+2. If it's a primary class (Class 1-4, WBBPE / CBSE), use simple language, relatable everyday examples, and positive encouragement.
+3. If it's Upper Primary (Class 5-8, WBBSE / CBSE), explain key logic, definitions, and foundational concepts.
+4. If it's Secondary (Class 9-10, WBBSE Madhyamik / CBSE), include board exam keywords, structured points, formulas, or code snippets.
+5. If it's Higher Secondary (Class 11-12, WBCHSE / CBSE), provide rigorous, competitive-exam level depth (WBCHSE/CBSE + JEE/WBJEE/Olympiad hints where appropriate).
 6. Conclude with a quick 1-sentence "Biley Academy Pro-Tip" for mastery. Keep formatting clean with Markdown.`;
 
       const response = await ai.models.generateContent({

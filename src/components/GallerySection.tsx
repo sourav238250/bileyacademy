@@ -15,7 +15,6 @@ import {
 } from 'lucide-react';
 import { GALLERY_ITEMS, GALLERY_CATEGORIES } from '../data/galleryData';
 import { GalleryCategory, GalleryItem } from '../types';
-import { OfficialAdmissionBanner } from './OfficialAdmissionBanner';
 import { GalleryModal } from './GalleryModal';
 
 interface GallerySectionProps {
@@ -44,8 +43,6 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onOpenInquiry })
     setActiveModalItem(filteredItems[prevIndex]);
   };
 
-  const featuredBannerItem = GALLERY_ITEMS.find(item => item.isFeaturedBanner);
-
   return (
     <section id="gallery" className="py-16 sm:py-24 bg-slate-950 text-slate-100 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -66,31 +63,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onOpenInquiry })
           </p>
         </div>
 
-        {/* 1. Official Admission Banner Spotlight */}
-        <div className="mb-14">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center space-x-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
-              <h3 className="text-lg font-bold text-slate-100">Featured Official Session Banner</h3>
-            </div>
-            {featuredBannerItem && (
-              <button
-                onClick={() => setActiveModalItem(featuredBannerItem)}
-                className="text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center space-x-1 transition-colors"
-              >
-                <span>View Full Photo Details</span>
-                <ChevronRight className="w-3.5 h-3.5" />
-              </button>
-            )}
-          </div>
-
-          <OfficialAdmissionBanner 
-            onOpenInquiry={onOpenInquiry}
-            onEnlarge={() => featuredBannerItem && setActiveModalItem(featuredBannerItem)}
-          />
-        </div>
-
-        {/* 2. Gallery Category Filter Pills */}
+        {/* Gallery Category Filter Pills */}
         <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
           {GALLERY_CATEGORIES.map(category => {
             const isActive = selectedCategory === category.id;

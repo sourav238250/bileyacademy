@@ -72,7 +72,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectCategory }) 
                 <ShieldCheck className="w-3.5 h-3.5" />
                 <span>{isBengali ? 'অনুমোদিত কোচিং ও টেস্টিং সেন্টার' : 'Authorized Coaching & Testing Centre'}</span>
               </div>
-              <p className="text-slate-400">CBSE • ICSE / ISC • WBCHSE / WBBSE • JEE / NEET</p>
+              <p className="text-slate-400">CBSE • WBBPE • WBBSE • WBCHSE • JEE / WBJEE</p>
             </div>
           </div>
 
@@ -123,7 +123,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectCategory }) 
                   }}
                   className="hover:text-amber-400 transition-colors text-left"
                 >
-                  • <strong>{isBengali ? 'উচ্চ মাধ্যমিক (১১শ-১২শ):' : 'Higher Secondary (Class 11-12):'}</strong> {isBengali ? 'বোর্ড + জেইই/নিট' : 'Board + JEE/NEET'}
+                  • <strong>{isBengali ? 'উচ্চ মাধ্যমিক (১১শ-১২শ):' : 'Higher Secondary (Class 11-12):'}</strong> {isBengali ? 'বোর্ড + জেইই' : 'Board + JEE / WBJEE'}
                 </button>
               </li>
             </ul>
