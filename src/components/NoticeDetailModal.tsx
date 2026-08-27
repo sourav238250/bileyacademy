@@ -56,7 +56,7 @@ export const NoticeDetailModal: React.FC<NoticeDetailModalProps> = ({
             <div class="header">
               <div class="logo">BILEY ACADEMY</div>
               <div class="tagline">An Educational Coaching Institute (Since 2026) | "Learn Today, Lead Tomorrow"</div>
-              <div class="ref">Jamna, Pingla, Paschim Medinipur - PIN 721140, W.B. • Helpline: +91 9732531730</div>
+              <div class="ref">Jamna, Pingla, Paschim Medinipur - PIN 721140, W.B. • WhatsApp: +91 9732531730 (WhatsApp Only)</div>
             </div>
             <div class="meta">
               <strong>Category:</strong> ${notice.categoryLabel} &nbsp;|&nbsp; 
@@ -192,21 +192,14 @@ export const NoticeDetailModal: React.FC<NoticeDetailModalProps> = ({
 
           <div className="flex items-center space-x-2">
             <a
-              href="tel:+919732531730"
-              className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-colors"
-              title={isBengali ? 'অফিসে কল করুন' : 'Call Academic Office'}
-            >
-              <Phone className="w-4 h-4 text-amber-400" />
-            </a>
-
-            <a
               href={`https://wa.me/919732531730?text=${encodeURIComponent(`Hello Biley Academy, I have an inquiry regarding notice: "${notice.title}"`)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white transition-colors"
-              title={isBengali ? 'হোয়াটসঅ্যাপ অনুসন্ধান' : 'WhatsApp Inquiry'}
+              className="flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-colors shadow-sm"
+              title={isBengali ? 'হোয়াটসঅ্যাপ অনুসন্ধান (শুধুমাত্র হোয়াটসঅ্যাপ)' : 'WhatsApp Inquiry (WhatsApp Only)'}
             >
               <MessageCircle className="w-4 h-4" />
+              <span>{isBengali ? 'হোয়াটসঅ্যাপ বার্তা' : 'WhatsApp Us'}</span>
             </a>
 
             {onOpenInquiry && (

@@ -116,7 +116,7 @@ export const ACADEMY_NOTICES: NoticeItem[] = [
 ];
 
 export const NOTICE_TICKER_ITEMS = [
-  '⚡ Admissions Active for Classes 1–12 (Academic Session 2026-27) • Call: 9732531730',
+  '⚡ Admissions Active for Classes 1–12 (Academic Session 2026-27) • WhatsApp: 9732531730 (WhatsApp Only)',
   '📢 First Term Board Simulation Mock Test Series commences next week for Classes 9–12',
   '🏆 B-STAT 2026 Scholarship Exam Registrations Open: Up to 100% Tuition Fee Waivers',
   '🔬 New Experiential STEM & Optics Science Laboratory Open at Jamna Campus',

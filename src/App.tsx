@@ -20,7 +20,7 @@ import { NoticeTickerBar } from './components/NoticeTickerBar';
 import { Footer } from './components/Footer';
 import { GradeCategory, SubjectCurriculum } from './types';
 import { SubjectModal } from './components/SubjectModal';
-import { X, Calendar, Sparkles } from 'lucide-react';
+import { X, Calendar, Sparkles, MessageCircle } from 'lucide-react';
 
 function AcademyApp() {
   const { isBengali, t } = useLanguage();
@@ -128,6 +128,36 @@ function AcademyApp() {
         onNavigate={handleNavigate}
         onSelectCategory={handleSelectCategory}
       />
+
+      {/* Persistent Floating WhatsApp Contact Widget (WhatsApp Only) */}
+      <aside 
+        aria-label="WhatsApp Contact"
+        className="fixed bottom-5 right-5 z-40 flex items-center space-x-2 group"
+      >
+        <div className="hidden sm:flex flex-col items-end opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-slate-900/95 backdrop-blur-md border border-emerald-500/40 text-slate-100 px-3 py-1.5 rounded-xl shadow-xl pointer-events-none text-right">
+          <span className="text-xs font-bold text-emerald-400 flex items-center gap-1">
+            <span>{isBengali ? 'হোয়াটসঅ্যাপ মেসেজ করুন' : 'Chat on WhatsApp'}</span>
+            <span className="text-[9px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-1 py-0.2 rounded font-black">
+              {isBengali ? 'শুধুমাত্র হোয়াটসঅ্যাপ' : 'WhatsApp Only'}
+            </span>
+          </span>
+          <span className="text-[11px] text-slate-300 font-mono">+91 97325 31730</span>
+        </div>
+
+        <a
+          href="https://wa.me/919732531730?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20admissions."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative p-3.5 sm:p-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center border-2 border-emerald-400/50"
+          title={isBengali ? 'হোয়াটসঅ্যাপে যোগাযোগ করুন (৯৭৩২৫৩১৭৩০ - শুধুমাত্র হোয়াটসঅ্যাপ)' : 'Contact on WhatsApp: 9732531730 (WhatsApp Only)'}
+        >
+          <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7" />
+          <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-300"></span>
+          </span>
+        </a>
+      </aside>
 
       {/* Inspected Subject Curriculum Modal */}
       {inspectedSubject && (

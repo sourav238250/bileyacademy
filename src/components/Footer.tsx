@@ -5,7 +5,8 @@ import {
   Mail, 
   Clock, 
   ArrowUp,
-  ShieldCheck
+  ShieldCheck,
+  MessageCircle
 } from 'lucide-react';
 import { Logo } from './Logo';
 import { GradeCategory } from '../types';
@@ -203,9 +204,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectCategory }) 
                 </div>
               </div>
               <div className="flex items-center space-x-2.5">
-                <Phone className="w-4 h-4 text-amber-400 shrink-0" />
-                <a href="tel:+919732531730" className="hover:text-amber-400 font-bold text-amber-300">
-                  +91 97325 31730
+                <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0" />
+                <a 
+                  href="https://wa.me/919732531730?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20admissions."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-emerald-300 font-bold text-emerald-400"
+                >
+                  +91 97325 31730 <span className="text-[10px] text-slate-400 font-normal">({isBengali ? 'শুধুমাত্র হোয়াটসঅ্যাপ' : 'WhatsApp Only'})</span>
                 </a>
               </div>
               <div className="flex items-center space-x-2.5">

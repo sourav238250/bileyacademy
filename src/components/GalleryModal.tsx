@@ -10,6 +10,7 @@ import {
   Download, 
   Sparkles,
   Phone,
+  MessageCircle,
   ArrowRight
 } from 'lucide-react';
 import { GalleryItem } from '../types';
@@ -163,11 +164,13 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
               )}
 
               <a
-                href="tel:+919732531730"
-                className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs border border-slate-700 transition-colors flex items-center justify-center gap-1.5"
+                href="https://wa.me/919732531730?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20your%20campus%20programs."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-semibold text-xs border border-emerald-600 transition-colors flex items-center justify-center gap-1.5 shadow-sm"
               >
-                <Phone className="w-3.5 h-3.5 text-amber-400" />
-                <span>Call Center: 9732531730</span>
+                <MessageCircle className="w-3.5 h-3.5" />
+                <span>WhatsApp: 9732531730 (Only)</span>
               </a>
             </div>
 

@@ -12,6 +12,7 @@ import {
   HelpCircle, 
   Clock, 
   MessageSquare, 
+  MessageCircle,
   BarChart3, 
   Image as ImageIcon, 
   Bell 
@@ -70,9 +71,15 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate, onOpe
             <div className="flex items-center">
               <LanguageToggle variant="segmented" />
             </div>
-            <a href="tel:+919732531730" className="flex items-center space-x-1 font-bold hover:underline">
-              <Phone className="w-3.5 h-3.5" />
-              <span>{t('topBannerHelpline', '+91 97325 31730')}</span>
+            <a 
+              href="https://wa.me/919732531730?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20admissions." 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-1 font-bold hover:underline bg-emerald-950/20 px-2 py-0.5 rounded text-emerald-950"
+              title="Chat with us on WhatsApp"
+            >
+              <MessageCircle className="w-3.5 h-3.5" />
+              <span>{t('topBannerHelpline', 'WhatsApp: 9732531730 (WhatsApp Only)')}</span>
             </a>
             <span className="hidden md:inline text-slate-800">|</span>
             <button 
@@ -231,11 +238,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate, onOpe
               {t('topBannerBookDemo', 'Book 2 Free Demo Classes')}
             </button>
             <a
-              href="tel:+919732531730"
-              className="w-full py-2.5 rounded-xl border border-slate-700 text-slate-300 text-sm font-medium flex items-center justify-center space-x-2"
+              href="https://wa.me/919732531730?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20admissions."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-2.5 rounded-xl border border-emerald-600/40 bg-emerald-950/30 text-emerald-300 text-sm font-medium flex items-center justify-center space-x-2 hover:bg-emerald-900/40 transition-colors"
             >
-              <Phone className="w-4 h-4 text-amber-400" />
-              <span>{isBengali ? 'কল করুন: +৯১ ৯৭৩২৫ ৩১৭৩০' : 'Call Helpline: +91 97325 31730'}</span>
+              <MessageCircle className="w-4 h-4 text-emerald-400" />
+              <span>{isBengali ? 'হোয়াটসঅ্যাপ: ৯৭৩২৫৩১৭৩০ (শুধুমাত্র হোয়াটসঅ্যাপ)' : 'WhatsApp: 9732531730 (WhatsApp Only)'}</span>
             </a>
           </div>
         </div>

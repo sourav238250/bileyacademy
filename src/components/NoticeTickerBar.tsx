@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bell, Phone } from 'lucide-react';
+import { Bell, MessageCircle } from 'lucide-react';
 import { NOTICE_TICKER_ITEMS } from '../data/noticesData';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -9,7 +9,7 @@ interface NoticeTickerBarProps {
 }
 
 const BENGALI_NOTICES = [
-  '🎉 ২০২৬-২৭ সেশনের ভর্তি শুরু হয়েছে — ১ম থেকে ১২শ শ্রেণি',
+  '🎉 ২০২৬-২৭ সেশনের ভর্তি শুরু হয়েছে — ১ম থেকে ১২শ শ্রেণি • হোয়াটসঅ্যাপ: ৯৭৩২৫৩১৭৩০',
   '🔬 পদার্থবিদ্যা, রসায়ন ও জীববিদ্যার জন্য আধুনিক প্র্যাক্টিক্যাল ল্যাব সেশন উপলব্ধ',
   '🏆 মেধাভিত্তিক স্কলারশিপ টেস্ট ২০২৬: সর্বোচ্চ ১০০% পর্যন্ত ছাড়',
   '💻 ষষ্ঠ থেকে দ্বাদশ শ্রেণির জন্য প্র্যাকটিক্যাল কোডিং ও পাইথন প্রোগ্রামিং অন্তর্ভুক্ত',
@@ -61,11 +61,14 @@ export const NoticeTickerBar: React.FC<NoticeTickerBarProps> = ({
       {/* Right Quick Action */}
       <div className="hidden sm:flex items-center space-x-2 shrink-0 ml-3 z-10">
         <a
-          href="tel:+919732531730"
-          className="flex items-center space-x-1 text-[11px] font-black bg-slate-950 text-white hover:bg-slate-800 px-2 py-0.5 rounded-full transition-colors"
+          href="https://wa.me/919732531730?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20admissions."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center space-x-1 text-[11px] font-black bg-emerald-950 text-emerald-300 hover:bg-emerald-900 border border-emerald-700/50 px-2 py-0.5 rounded-full transition-colors"
+          title="WhatsApp Contact Only"
         >
-          <Phone className="w-3 h-3 text-amber-400" />
-          <span>9732531730</span>
+          <MessageCircle className="w-3 h-3 text-emerald-400" />
+          <span>WhatsApp: 9732531730</span>
         </a>
       </div>
 

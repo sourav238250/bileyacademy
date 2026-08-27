@@ -9,7 +9,8 @@ import {
   AlertCircle, 
   RotateCcw,
   ShieldCheck,
-  Headphones
+  Headphones,
+  MessageCircle
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { ContactFormData, ContactFormErrors } from '../types';
@@ -225,22 +226,29 @@ export const ContactSection: React.FC = () => {
             {/* Direct Contact Cards */}
             <div className="space-y-3">
               
-              {/* Phone Helpline */}
-              <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 flex items-start space-x-3.5 hover:border-amber-500/40 transition-colors">
-                <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
-                  <Phone className="w-5 h-5" />
+              {/* WhatsApp Contact Only */}
+              <div className="p-4 rounded-2xl bg-emerald-950/20 border border-emerald-500/30 flex items-start space-x-3.5 hover:border-emerald-500/60 transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+                  <MessageCircle className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
-                    {isBengali ? 'ভর্তি ও অ্যাকাডেমিক হেল্পলাইন' : 'Admissions & Academic Helpline'}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider block">
+                      {isBengali ? 'হোয়াটসঅ্যাপ হেল্পলাইন' : 'WhatsApp Contact'}
+                    </span>
+                    <span className="text-[9px] font-black bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-1.5 py-0.2 rounded uppercase">
+                      {isBengali ? 'শুধুমাত্র হোয়াটসঅ্যাপ' : 'WhatsApp Only'}
+                    </span>
+                  </div>
                   <a 
-                    href="tel:+919732531730" 
-                    className="text-sm sm:text-base font-bold text-white hover:text-amber-400 transition-colors block"
+                    href="https://wa.me/919732531730?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20admissions."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm sm:text-base font-bold text-emerald-300 hover:text-emerald-200 transition-colors block mt-0.5"
                   >
                     +91 97325 31730
                   </a>
-                  <p className="text-[11px] text-slate-400">{isBengali ? 'প্রতিদিন উপলব্ধ (সকাল ৮টা – রাত ৮টা)' : 'Available Daily (8:00 AM – 8:00 PM)'}</p>
+                  <p className="text-[11px] text-slate-400">{isBengali ? 'বার্তা পাঠান (সকাল ৮টা – রাত ৮টা) • ভয়েস কল গ্রহণযোগ্য নয়' : 'Send WhatsApp message (8 AM – 8 PM) • No direct voice calls'}</p>
                 </div>
               </div>
 
