@@ -216,8 +216,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectCategory }) 
               </div>
               <div className="flex items-center space-x-2.5">
                 <Mail className="w-4 h-4 text-amber-400 shrink-0" />
-                <a href="mailto:admissions@bileyacademy.edu.in" className="hover:text-amber-400">
-                  admissions@bileyacademy.edu.in
+                <a href="mailto:bileyacademy@gmail.com" className="hover:text-amber-400">
+                  bileyacademy@gmail.com
                 </a>
               </div>
               <div className="flex items-center space-x-2.5">

@@ -41,8 +41,8 @@ export const OfficialAdmissionBanner: React.FC<OfficialAdmissionBannerProps> = (
         await navigator.share({
           title: isBengali ? 'বিলে অ্যাকাডেমি - সরকারি ভর্তি বিজ্ঞপ্তি' : 'Biley Academy - Official Admission Notice',
           text: isBengali 
-            ? 'বিলে অ্যাকাডেমিতে ১ম থেকে ১২শ শ্রেণির ভর্তি চলছে। হোয়াটসঅ্যাপ যোগাযোগ: ৯৭৩২৫৩১৭৩০ (শুধুমাত্র হোয়াটসঅ্যাপ)।' 
-            : 'Admissions open for Classes 1 to 12 at Biley Academy, Jamna, Pingla, Paschim Medinipur. WhatsApp Contact: 9732531730 (WhatsApp Only).',
+            ? 'বিলে অ্যাকাডেমিতে ১ম থেকে ১২শ শ্রেণির ভর্তি চলছে। হোয়াটসঅ্যাপ: ৯৭৩২৫৩১৭৩০ (শুধুমাত্র হোয়াটসঅ্যাপ) • ইমেইল: bileyacademy@gmail.com।' 
+            : 'Admissions open for Classes 1 to 12 at Biley Academy, Jamna, Pingla, Paschim Medinipur. WhatsApp: 9732531730 (WhatsApp Only) • Email: bileyacademy@gmail.com.',
           url: window.location.href,
         });
       } catch (err) {
@@ -54,7 +54,7 @@ export const OfficialAdmissionBanner: React.FC<OfficialAdmissionBannerProps> = (
   };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(`Biley Academy (Since 2026) - An Educational Coaching Institute for Classes I-XII. WhatsApp Contact: +91 9732531730 (WhatsApp Only) | Jamna, Pingla, Paschim Medinipur - 721140, W.B.`);
+    navigator.clipboard.writeText(`Biley Academy (Since 2026) - An Educational Coaching Institute for Classes I-XII. WhatsApp: +91 9732531730 (WhatsApp Only) • Email: bileyacademy@gmail.com | Jamna, Pingla, Paschim Medinipur - 721140, W.B.`);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };

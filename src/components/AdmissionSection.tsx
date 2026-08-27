@@ -272,7 +272,13 @@ export const AdmissionSection: React.FC<AdmissionSectionProps> = ({ initialSubje
               {/* Submit CTA */}
               <div className="pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="text-xs text-slate-400">
-                  ⚡ <strong>{isBengali ? 'বিশেষ দ্রষ্টব্য:' : 'Note:'}</strong> {isBengali ? 'ফ্রি ডেমো ক্লাসে রয়েছে থিওরি ক্লাস, ডাউট ক্লিয়ারিং ও ল্যাব ডেমোনস্ট্রেশন।' : 'Free demo includes classroom lecture, doubt clearing & laboratory demonstration.'}
+                  <div>⚡ <strong>{isBengali ? 'বিশেষ দ্রষ্টব্য:' : 'Note:'}</strong> {isBengali ? 'ফ্রি ডেমো ক্লাসে রয়েছে থিওরি ক্লাস, ডাউট ক্লিয়ারিং ও ল্যাব ডেমোনস্ট্রেশন।' : 'Free demo includes classroom lecture, doubt clearing & laboratory demonstration.'}</div>
+                  <div className="mt-1 text-[11px] text-slate-400">
+                    ✉️ {isBengali ? 'ভর্তি সংক্রান্ত যেকোনো ইমেইল অনুসন্ধান:' : 'Admission & documentation inquiries:'}{' '}
+                    <a href="mailto:bileyacademy@gmail.com?subject=Admission%20Inquiry%20-%20Biley%20Academy" className="text-amber-400 hover:underline font-semibold">
+                      bileyacademy@gmail.com
+                    </a>
+                  </div>
                 </div>
 
                 <button

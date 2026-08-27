@@ -56,7 +56,7 @@ export const NoticeDetailModal: React.FC<NoticeDetailModalProps> = ({
             <div class="header">
               <div class="logo">BILEY ACADEMY</div>
               <div class="tagline">An Educational Coaching Institute (Since 2026) | "Learn Today, Lead Tomorrow"</div>
-              <div class="ref">Jamna, Pingla, Paschim Medinipur - PIN 721140, W.B. • WhatsApp: +91 9732531730 (WhatsApp Only)</div>
+              <div class="ref">Jamna, Pingla, Paschim Medinipur - PIN 721140, W.B. • WhatsApp: +91 9732531730 (WhatsApp Only) • Email: bileyacademy@gmail.com</div>
             </div>
             <div class="meta">
               <strong>Category:</strong> ${notice.categoryLabel} &nbsp;|&nbsp; 
@@ -74,7 +74,7 @@ export const NoticeDetailModal: React.FC<NoticeDetailModalProps> = ({
               </div>
             ` : ''}
             <div class="footer">
-              <p>For inquiries and registrations, visit the Academic Office at Jamna Center or call <strong>+91 97325 31730</strong>.</p>
+              <p>For inquiries and registrations, contact via WhatsApp at <strong>9732531730</strong> or Email <strong>bileyacademy@gmail.com</strong>.</p>
               <p>© 2026 Biley Academy. All Rights Reserved.</p>
             </div>
           </body>

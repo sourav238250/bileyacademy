@@ -10,7 +10,10 @@ import {
   RotateCcw,
   ShieldCheck,
   Headphones,
-  MessageCircle
+  MessageCircle,
+  ExternalLink,
+  Copy,
+  Check
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { ContactFormData, ContactFormErrors } from '../types';
@@ -33,7 +36,8 @@ export const ContactSection: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [statusMessage, setStatusMessage] = useState('');
-  const [submittedData, setSubmittedData] = useState<ContactFormData & { id?: string } | null>(null);
+  const [submittedData, setSubmittedData] = useState<ContactFormData & { id?: string; recipientEmail?: string } | null>(null);
+  const [copiedTranscript, setCopiedTranscript] = useState(false);
 
   // Email Validation Utility
   const validateEmail = (emailStr: string): boolean => {
@@ -135,8 +139,12 @@ export const ContactSection: React.FC = () => {
 
       if (result.success) {
         setSubmitStatus('success');
-        setStatusMessage(result.message || (isBengali ? 'ধন্যবাদ! আপনার বার্তা গৃহীত হয়েছে।' : 'Thank you! Your message has been received.'));
-        setSubmittedData({ ...formData, id: result.contactMessage?.id || `MSG-${Math.floor(1000 + Math.random() * 9000)}` });
+        setStatusMessage(result.message || (isBengali ? 'ধন্যবাদ! আপনার বার্তা গৃহীত হয়েছে এবং bileyacademy@gmail.com-এ পাঠানো হয়েছে।' : 'Thank you! Your message has been received and stored for bileyacademy@gmail.com.'));
+        setSubmittedData({ 
+          ...formData, 
+          id: result.contactMessage?.id || `MSG-${Math.floor(1000 + Math.random() * 9000)}`,
+          recipientEmail: result.recipientEmail || 'bileyacademy@gmail.com'
+        });
         confetti({
           particleCount: 75,
           spread: 60,
@@ -144,14 +152,18 @@ export const ContactSection: React.FC = () => {
         });
       } else {
         setSubmitStatus('error');
-        setStatusMessage(result.error || (isBengali ? 'বার্তা পাঠাতে ব্যর্থ হয়েছে। দয়া করে পুনরায় চেষ্টা করুন বা কল করুন।' : 'Failed to submit message. Please try again or call directly.'));
+        setStatusMessage(result.error || (isBengali ? 'বার্তা পাঠাতে ব্যর্থ হয়েছে। দয়া করে পুনরায় চেষ্টা করুন বা ইমেইল করুন।' : 'Failed to submit message. Please try again or email directly.'));
       }
     } catch {
       // Offline fallback handling
       const fallbackId = `MSG-${Math.floor(1000 + Math.random() * 9000)}`;
       setSubmitStatus('success');
-      setStatusMessage(isBengali ? 'ধন্যবাদ! আপনার বার্তা নিরাপদে সংরক্ষিত হয়েছে।' : 'Thank you! Your message has been safely recorded. Our team will contact you shortly.');
-      setSubmittedData({ ...formData, id: fallbackId });
+      setStatusMessage(isBengali ? 'ধন্যবাদ! আপনার বার্তা নিরাপদে সংরক্ষিত হয়েছে এবং bileyacademy@gmail.com-এ জমা হয়েছে।' : 'Thank you! Your message has been recorded and submitted to bileyacademy@gmail.com.');
+      setSubmittedData({ 
+        ...formData, 
+        id: fallbackId,
+        recipientEmail: 'bileyacademy@gmail.com'
+      });
       confetti({ particleCount: 50, spread: 50 });
     } finally {
       setIsSubmitting(false);
@@ -171,6 +183,22 @@ export const ContactSection: React.FC = () => {
     setSubmitStatus('idle');
     setStatusMessage('');
     setSubmittedData(null);
+    setCopiedTranscript(false);
+  };
+
+  const copyTranscript = () => {
+    if (!submittedData) return;
+    const text = `Biley Academy Quick Message [Ticket: ${submittedData.id}]
+Recipient Email: ${submittedData.recipientEmail || 'bileyacademy@gmail.com'}
+Sender Name: ${submittedData.fullName}
+Sender Email: ${submittedData.email}
+Phone / WhatsApp: ${submittedData.phone || 'N/A'}
+Inquiry Type: ${submittedData.inquiryType}
+Message:
+${submittedData.message}`;
+    navigator.clipboard.writeText(text);
+    setCopiedTranscript(true);
+    setTimeout(() => setCopiedTranscript(false), 2500);
   };
 
   const inquiryTypes = [
@@ -262,12 +290,12 @@ export const ContactSection: React.FC = () => {
                     {isBengali ? 'অফিসিয়াল ইমেইল যোগাযোগ' : 'Official Email Communications'}
                   </span>
                   <a 
-                    href="mailto:contact@bileyacademy.edu.in" 
-                    className="text-sm font-bold text-white hover:text-amber-400 transition-colors block"
+                    href="mailto:bileyacademy@gmail.com?subject=Inquiry%20regarding%20Biley%20Academy" 
+                    className="text-sm font-bold text-amber-300 hover:text-amber-200 transition-colors block"
                   >
-                    contact@bileyacademy.edu.in
+                    bileyacademy@gmail.com
                   </a>
-                  <p className="text-[11px] text-slate-400">{isBengali ? 'গড় প্রতিক্রিয়া সময়: ৪ ঘণ্টার মধ্যে' : 'Average response time: within 4 hours'}</p>
+                  <p className="text-[11px] text-slate-400">{isBengali ? 'ভর্তি ও সাধারণ অনুসন্ধান • প্রতিক্রিয়া সময়: ৪ ঘণ্টার মধ্যে' : 'Admissions & general inquiries • Reply within 4 hours'}</p>
                 </div>
               </div>
 
@@ -316,18 +344,25 @@ export const ContactSection: React.FC = () => {
               
               {!submittedData ? (
                 <div>
-                  <div className="flex items-center justify-between pb-5 mb-6 border-b border-slate-800">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 mb-6 border-b border-slate-800 gap-3">
                     <div>
-                      <h3 className="text-xl font-extrabold text-white font-serif">
-                        {isBengali ? 'একটি বার্তা পাঠান' : 'Send a Quick Message'}
-                      </h3>
-                      <p className="text-xs text-slate-400 mt-0.5">
-                        {isBengali ? 'দ্রুত উত্তরের জন্য নিচের ফর্মটি পূরণ করুন।' : 'Fill out the form below with your email and query for a rapid response.'}
+                      <div className="flex items-center space-x-2">
+                        <h3 className="text-xl font-extrabold text-white font-serif">
+                          {isBengali ? 'একটি বার্তা পাঠান' : 'Send a Quick Message'}
+                        </h3>
+                        <span className="text-[10px] font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded-full font-mono">
+                          bileyacademy@gmail.com
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-400 mt-1">
+                        {isBengali 
+                          ? 'আপনার বার্তা সরাসরি bileyacademy@gmail.com মেইলে জমা হবে ও দ্রুত উত্তর প্রদান করা হবে।' 
+                          : 'Your message will be submitted and stored for bileyacademy@gmail.com for prompt review.'}
                       </p>
                     </div>
-                    <div className="hidden sm:flex items-center space-x-1 text-[11px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full font-bold">
+                    <div className="hidden sm:flex items-center space-x-1 text-[11px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full font-bold self-start">
                       <ShieldCheck className="w-3.5 h-3.5" />
-                      <span>{isBengali ? 'গোপনীয় ও নিরাপদ' : 'Confidential & Secure'}</span>
+                      <span>{isBengali ? 'অফিসিয়াল মেইল ইনটেক' : 'Direct Mail Intake'}</span>
                     </div>
                   </div>
 
@@ -528,6 +563,16 @@ export const ContactSection: React.FC = () => {
                       </div>
                     </div>
 
+                    {/* Destination Mail Indicator Note */}
+                    <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-[11px] text-slate-400 flex items-center justify-between">
+                      <span className="flex items-center gap-1.5">
+                        <Mail className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                        <span>{isBengali ? 'জমা হবে অফিসিয়াল মেইলে:' : 'Submits directly to:'}</span>
+                        <strong className="text-amber-300 font-mono">bileyacademy@gmail.com</strong>
+                      </span>
+                      <span className="text-emerald-400 text-[10px] font-bold">Auto-Logged</span>
+                    </div>
+
                     {/* Submit Button */}
                     <div className="pt-2">
                       <button
@@ -537,7 +582,7 @@ export const ContactSection: React.FC = () => {
                         className="w-full py-3.5 rounded-xl font-bold bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 transition-all flex items-center justify-center space-x-2 text-sm disabled:opacity-50"
                       >
                         <Send className="w-4 h-4" />
-                        <span>{isSubmitting ? (isBengali ? 'বার্তা পাঠানো হচ্ছে...' : 'Sending Message...') : (isBengali ? 'এখনই বার্তা পাঠান' : 'Send Inquiry Now')}</span>
+                        <span>{isSubmitting ? (isBengali ? 'bileyacademy@gmail.com-এ পাঠানো হচ্ছে...' : 'Submitting to bileyacademy@gmail.com...') : (isBengali ? 'এখনই বার্তা পাঠান' : 'Send Quick Message')}</span>
                       </button>
                     </div>
 
@@ -551,37 +596,78 @@ export const ContactSection: React.FC = () => {
                   </div>
 
                   <div>
-                    <span className="text-xs font-bold text-amber-400 uppercase tracking-widest block">
-                      {isBengali ? 'বার্তা সফলভাবে পাঠানো হয়েছে' : 'Inquiry Delivered'}
+                    <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest block">
+                      {isBengali ? 'বার্তা সফলভাবে জমা হয়েছে' : 'Inquiry Stored & Queued'}
                     </span>
                     <h4 className="text-2xl font-bold text-white font-serif mt-1">
-                      {isBengali ? 'আপনার বার্তা গৃহীত হয়েছে!' : 'Message Sent Successfully!'}
+                      {isBengali ? 'আপনার বার্তা গৃহীত হয়েছে!' : 'Message Stored Successfully!'}
                     </h4>
                     <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-md mx-auto leading-relaxed">
                       {isBengali ? (
-                        <>ধন্যবাদ, <strong className="text-white">{submittedData.fullName}</strong>। আপনার রেফারেন্স আইডি হলো <span className="font-mono text-amber-400 font-bold">{submittedData.id}</span>।</>
+                        <>ধন্যবাদ, <strong className="text-white">{submittedData.fullName}</strong>। আপনার বার্তা <strong className="text-amber-400">bileyacademy@gmail.com</strong> মেইলে সংরক্ষিত হয়েছে (রেফারেন্স: <span className="font-mono text-amber-400 font-bold">{submittedData.id}</span>)।</>
                       ) : (
-                        <>Thank you, <strong className="text-white">{submittedData.fullName}</strong>. A copy of your inquiry has been logged under reference <span className="font-mono text-amber-400 font-bold">{submittedData.id}</span>.</>
+                        <>Thank you, <strong className="text-white">{submittedData.fullName}</strong>. Your message has been submitted and stored for <strong className="text-amber-400">bileyacademy@gmail.com</strong> under reference <span className="font-mono text-amber-400 font-bold">{submittedData.id}</span>.</>
                       )}
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 text-left text-xs text-slate-300 space-y-1.5 max-w-md mx-auto">
-                    <p><strong>{isBengali ? 'রেজিস্টার্ড ইমেইল:' : 'Registered Email:'}</strong> <span className="text-amber-300">{submittedData.email}</span></p>
-                    <p><strong>{isBengali ? 'ক্যাটেগরি:' : 'Category:'}</strong> {submittedData.inquiryType}</p>
-                    <p className="text-slate-400 text-[11px] pt-1">
-                      {isBengali ? 'আমাদের অ্যাকাডেমিক সমন্বয়কারী শীঘ্রই আপনার ইমেইলে যোগাযোগ করবেন।' : 'Our academic coordinators will reply directly to your email within standard office hours.'}
-                    </p>
+                  {/* Summary Card */}
+                  <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 text-left text-xs text-slate-300 space-y-2 max-w-md mx-auto">
+                    <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+                      <span className="text-slate-400">{isBengali ? 'গন্তব্য মেইল:' : 'Target Mailbox:'}</span>
+                      <span className="font-mono font-bold text-amber-300">{submittedData.recipientEmail || 'bileyacademy@gmail.com'}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-400">{isBengali ? 'প্রেরক ইমেইল:' : 'Sender Email:'}</span>
+                      <span className="text-white font-medium">{submittedData.email}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-400">{isBengali ? 'জিজ্ঞাসার বিষয়:' : 'Category:'}</span>
+                      <span className="text-white font-medium">{submittedData.inquiryType}</span>
+                    </div>
+                    {submittedData.phone && (
+                      <div className="flex items-center justify-between">
+                        <span className="text-slate-400">{isBengali ? 'ফোন/হোয়াটসঅ্যাপ:' : 'Phone/WhatsApp:'}</span>
+                        <span className="text-white font-medium">{submittedData.phone}</span>
+                      </div>
+                    )}
+                    <div className="pt-1.5 border-t border-slate-800">
+                      <span className="text-[11px] text-slate-400 block mb-1">{isBengali ? 'বার্তার বিবরণ:' : 'Message Content:'}</span>
+                      <p className="text-xs text-slate-200 bg-slate-900 p-2.5 rounded-xl border border-slate-800/80 italic line-clamp-3">
+                        "{submittedData.message}"
+                      </p>
+                    </div>
                   </div>
 
-                  <div className="pt-2">
+                  {/* Action Buttons */}
+                  <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+                    
+                    {/* Open in Mail Client */}
+                    <a
+                      href={`mailto:bileyacademy@gmail.com?subject=${encodeURIComponent(`[Quick Message ${submittedData.id}] ${submittedData.inquiryType} - ${submittedData.fullName}`)}&body=${encodeURIComponent(`Hello Biley Academy,\n\nName: ${submittedData.fullName}\nEmail: ${submittedData.email}\nPhone: ${submittedData.phone || 'N/A'}\nInquiry Category: ${submittedData.inquiryType}\nReference Ticket: ${submittedData.id}\n\nMessage:\n${submittedData.message}\n\nThank you.`)}`}
+                      className="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold inline-flex items-center space-x-1.5 transition-colors shadow-md"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span>{isBengali ? 'ইমেইল অ্যাপে খুলুন (Gmail)' : 'Open in Email Client / Gmail'}</span>
+                    </a>
+
+                    {/* Copy Details */}
+                    <button
+                      onClick={copyTranscript}
+                      className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold inline-flex items-center space-x-1.5 border border-slate-700 transition-colors"
+                    >
+                      {copiedTranscript ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                      <span>{copiedTranscript ? (isBengali ? 'কপি হয়েছে' : 'Copied!') : (isBengali ? 'বিবরণ কপি করুন' : 'Copy Inquiry')}</span>
+                    </button>
+
+                    {/* New Message */}
                     <button
                       id="contact-new-message-btn"
                       onClick={handleReset}
-                      className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold inline-flex items-center space-x-2 transition-colors"
+                      className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-xs font-bold inline-flex items-center space-x-1.5 border border-slate-800 transition-colors"
                     >
                       <RotateCcw className="w-3.5 h-3.5" />
-                      <span>{isBengali ? 'অন্য একটি বার্তা পাঠান' : 'Send Another Inquiry'}</span>
+                      <span>{isBengali ? 'নতুন বার্তা' : 'New Message'}</span>
                     </button>
                   </div>
                 </div>
