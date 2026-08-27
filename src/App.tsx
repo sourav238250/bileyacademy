@@ -83,7 +83,12 @@ function AcademyApp() {
           </div>
         </section>
 
-        {/* Grade Curriculums (Class 1 to 12) */}
+        <AboutSection />
+
+        <MissionVisionSection />
+
+        <FounderMessageSection />
+
         <CurriculumSection 
           selectedCategory={selectedCategory}
           onSelectCategory={setSelectedCategory}
@@ -91,7 +96,6 @@ function AcademyApp() {
           onNavigateToDashboard={() => handleNavigate('student-dashboard')}
         />
 
-        {/* Student Progress Tracker & Curriculum Checkpoints */}
         <StudentDashboardSection 
           onInspectSubject={(subj, gradeLabel) => setInspectedSubject({ subject: subj, gradeLabel })}
           onNavigateToAiTutor={() => handleNavigate('ai-tutor')}
@@ -99,38 +103,23 @@ function AcademyApp() {
           onSelectCategory={handleSelectCategory}
         />
 
-        {/* 24/7 AI Doubt Solver & Concept Clarification */}
         <AiTutorSection />
 
-        {/* Diagnostic Assessment Quiz */}
         <QuizSection />
 
-        {/* Academy Heritage & Inspiration */}
-        <AboutSection />
-
-        {/* Mission, Vision & 4 Pedagogical Pillars */}
-        <MissionVisionSection />
-
-        {/* Founder & Academic Director Message */}
-        <FounderMessageSection />
-
-        {/* Expert Faculty & Testimonials */}
         <FacultySection />
 
         {/* Campus Gallery & Photographic Life */}
         <GallerySection onOpenInquiry={handleOpenInquiry} />
 
-        {/* Batch Timetable & Class Schedules */}
         <BatchScheduleSection 
           onOpenInquiry={() => handleOpenInquiry()}
         />
 
-        {/* Admission Enrollment & Free Demo Booking */}
         <AdmissionSection 
           initialSubject={inquirySubject}
         />
 
-        {/* Physical Campus Location & Contact Details */}
         <ContactSection />
       </main>
 
