@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import fs from "fs";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
@@ -100,7 +101,39 @@ async function startServer() {
   const app = express();
   const PORT = 3000;
 
-  app.use(express.json());
+  app.use(express.json({ limit: "50mb" }));
+  app.use(express.urlencoded({ limit: "50mb", extended: true }));
+
+  // Upload Founder Photo endpoint
+  app.post("/api/upload-founder-photo", (req, res) => {
+    try {
+      const { imageBase64 } = req.body;
+      if (!imageBase64 || typeof imageBase64 !== "string") {
+        return res.status(400).json({ error: "No image payload provided" });
+      }
+
+      const matches = imageBase64.match(/^data:image\/([a-zA-Z0-9]+);base64,(.+)$/);
+      if (matches && matches[2]) {
+        const buffer = Buffer.from(matches[2], "base64");
+        const publicDir = path.join(process.cwd(), "public");
+        if (!fs.existsSync(publicDir)) {
+          fs.mkdirSync(publicDir, { recursive: true });
+        }
+        fs.writeFileSync(path.join(publicDir, "sourav_dinda.jpg"), buffer);
+        fs.writeFileSync(path.join(publicDir, "Sourav Dinda.jpeg"), buffer);
+
+        const assetsDir = path.join(process.cwd(), "src", "assets", "images");
+        if (fs.existsSync(assetsDir)) {
+          fs.writeFileSync(path.join(assetsDir, "sourav_dinda_photo_1788237199819.jpg"), buffer);
+        }
+      }
+
+      return res.json({ success: true, message: "Founder photo saved successfully" });
+    } catch (err) {
+      console.error("Error saving founder photo:", err);
+      return res.status(500).json({ error: "Failed to save image" });
+    }
+  });
 
   // API Routes
   app.get("/api/health", (_req, res) => {

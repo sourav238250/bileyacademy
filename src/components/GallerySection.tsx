@@ -17,18 +17,27 @@ import { GALLERY_ITEMS, GALLERY_CATEGORIES } from '../data/galleryData';
 import { GalleryCategory, GalleryItem } from '../types';
 import { OfficialAdmissionBanner } from './OfficialAdmissionBanner';
 import { GalleryModal } from './GalleryModal';
+import { useFounderPhoto } from '../utils/founderPhotoStore';
 
 interface GallerySectionProps {
   onOpenInquiry?: (context?: string) => void;
 }
 
 export const GallerySection: React.FC<GallerySectionProps> = ({ onOpenInquiry }) => {
+  const { photoUrl: founderPhoto } = useFounderPhoto();
   const [selectedCategory, setSelectedCategory] = useState<GalleryCategory>('all');
   const [activeModalItem, setActiveModalItem] = useState<GalleryItem | null>(null);
 
+  const itemsWithLiveFounderPhoto = GALLERY_ITEMS.map(item => {
+    if (item.id === 'gallery-founder') {
+      return { ...item, imageUrl: founderPhoto };
+    }
+    return item;
+  });
+
   const filteredItems = selectedCategory === 'all'
-    ? GALLERY_ITEMS
-    : GALLERY_ITEMS.filter(item => item.category === selectedCategory);
+    ? itemsWithLiveFounderPhoto
+    : itemsWithLiveFounderPhoto.filter(item => item.category === selectedCategory);
 
   const handleNext = () => {
     if (!activeModalItem) return;

@@ -9,8 +9,10 @@ import {
   Sparkles 
 } from 'lucide-react';
 import { FACULTY_MEMBERS, TESTIMONIALS } from '../data/academyData';
+import { useFounderPhoto } from '../utils/founderPhotoStore';
 
 export const FacultySection: React.FC = () => {
+  const { photoUrl: founderPhoto } = useFounderPhoto();
   return (
     <section id="faculty" className="py-16 sm:py-24 bg-slate-900 text-slate-100 border-b border-slate-800 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,7 +44,7 @@ export const FacultySection: React.FC = () => {
                 <div className="flex items-start space-x-4 mb-4">
                   <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-amber-500/40 p-0.5 bg-slate-900 shrink-0">
                     <img 
-                      src={mentor.avatarUrl} 
+                      src={mentor.id === 'mentor-1' ? founderPhoto : mentor.avatarUrl} 
                       alt={mentor.name}
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover rounded-xl"
