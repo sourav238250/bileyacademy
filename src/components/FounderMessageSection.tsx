@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { 
   Quote, 
   GraduationCap, 
@@ -10,49 +10,15 @@ import {
   Users,
   Presentation,
   Briefcase,
-  Layers,
-  Camera,
-  Upload,
-  RotateCcw
+  Layers
 } from 'lucide-react';
 import { Logo } from './Logo';
 import { FOUNDER_INFO } from '../data/academyData';
+import souravDindaImg from '../assets/images/sourav_dinda_photo_1788237199819.jpg';
 import { useLanguage } from '../context/LanguageContext';
-import { useFounderPhoto } from '../utils/founderPhotoStore';
 
 export const FounderMessageSection: React.FC = () => {
   const { isBengali, t } = useLanguage();
-  const { photoUrl, setPhoto, resetPhoto, isCustomPhoto } = useFounderPhoto();
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const [isUploading, setIsUploading] = useState(false);
-  const [uploadSuccess, setUploadSuccess] = useState(false);
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    if (!file.type.startsWith('image/')) {
-      alert(isBengali ? 'অনুগ্রহ করে একটি ছবি ফাইল নির্বাচন করুন' : 'Please select a valid image file');
-      return;
-    }
-
-    setIsUploading(true);
-    const reader = new FileReader();
-    reader.onload = async (event) => {
-      const dataUrl = event.target?.result as string;
-      if (dataUrl) {
-        await setPhoto(dataUrl);
-        setUploadSuccess(true);
-        setTimeout(() => setUploadSuccess(false), 3000);
-      }
-      setIsUploading(false);
-    };
-    reader.onerror = () => {
-      setIsUploading(false);
-      alert('Failed to read image file');
-    };
-    reader.readAsDataURL(file);
-  };
 
   const founderName = isBengali ? 'সৌরভ দিন্দা' : FOUNDER_INFO.name;
   const founderTitle = isBengali ? 'প্রতিষ্ঠাতা ও অ্যাকাডেমিক ডিরেক্টর, বিলে অ্যাকাডেমি' : FOUNDER_INFO.title;
@@ -102,77 +68,20 @@ export const FounderMessageSection: React.FC = () => {
               {/* Top ambient glow */}
               <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-amber-500/10 to-transparent pointer-events-none" />
 
-              {/* Hidden file input for uploading genuine portrait */}
-              <input 
-                type="file" 
-                ref={fileInputRef}
-                onChange={handleFileChange}
-                accept="image/*"
-                className="hidden"
-                id="founder-photo-file-input"
-              />
-
               {/* Portrait Photo */}
-              <div className="relative inline-block mb-4 mt-2 group">
-                <div className="w-44 h-52 sm:w-48 sm:h-56 rounded-2xl overflow-hidden mx-auto border-2 border-amber-400 shadow-2xl p-1 bg-slate-900 relative">
+              <div className="relative inline-block mb-4 mt-2">
+                <div className="w-44 h-52 sm:w-48 sm:h-56 rounded-2xl overflow-hidden mx-auto border-2 border-amber-400 shadow-2xl p-1 bg-slate-900">
                   <img 
-                    src={photoUrl} 
+                    src={souravDindaImg} 
                     alt={FOUNDER_INFO.name}
                     referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover object-top rounded-xl transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="w-full h-full object-cover object-top rounded-xl"
                   />
-
-                  {/* Upload overlay hover button */}
-                  <div 
-                    onClick={() => fileInputRef.current?.click()}
-                    className="absolute inset-0 bg-slate-950/70 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col items-center justify-center cursor-pointer rounded-xl text-amber-400 p-2 text-center"
-                    title={isBengali ? 'আসল ছবি আপলোড / পরিবর্তন করুন' : 'Click to Upload Authentic Photo'}
-                  >
-                    <Camera className="w-7 h-7 mb-1.5 animate-bounce" />
-                    <span className="text-[11px] font-bold text-white leading-tight">
-                      {isBengali ? 'আসল ছবি নির্বাচন করুন' : 'Upload / Change Photo'}
-                    </span>
-                    <span className="text-[9px] text-slate-300 mt-0.5">
-                      {isBengali ? '(জেপিজি / পিএনজি)' : '(JPG / PNG)'}
-                    </span>
-                  </div>
                 </div>
-
                 <div className="absolute -bottom-2.5 right-1/2 translate-x-1/2 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 text-[11px] font-black px-3.5 py-0.5 rounded-full uppercase tracking-wider shadow-lg whitespace-nowrap">
                   {isBengali ? 'প্রতিষ্ঠাতা ও অ্যাকাডেমিক ডিরেক্টর' : 'Founder & Academic Director'}
                 </div>
               </div>
-
-              {/* Photo Upload Actions Toolbar */}
-              <div className="flex items-center justify-center gap-2 mt-1 mb-2">
-                <button
-                  type="button"
-                  onClick={() => fileInputRef.current?.click()}
-                  disabled={isUploading}
-                  className="inline-flex items-center space-x-1.5 text-[11px] font-bold px-3 py-1 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 transition-all cursor-pointer"
-                >
-                  <Upload className="w-3.5 h-3.5" />
-                  <span>{isUploading ? (isBengali ? 'আপলোড হচ্ছে...' : 'Uploading...') : (isBengali ? 'ছবি পরিবর্তন করুন' : 'Change Photo')}</span>
-                </button>
-
-                {isCustomPhoto && (
-                  <button
-                    type="button"
-                    onClick={resetPhoto}
-                    title={isBengali ? 'ডিফল্ট ছবিতে ফিরুন' : 'Reset to Default'}
-                    className="inline-flex items-center space-x-1 text-[11px] font-semibold px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all cursor-pointer"
-                  >
-                    <RotateCcw className="w-3 h-3" />
-                    <span>{isBengali ? 'রিসেট' : 'Reset'}</span>
-                  </button>
-                )}
-              </div>
-
-              {uploadSuccess && (
-                <div className="text-[11px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 rounded-lg py-1 px-2 my-1 animate-pulse">
-                  {isBengali ? '✓ ছবি সফলভাবে আপডেট করা হয়েছে' : '✓ Photo updated successfully!'}
-                </div>
-              )}
 
               <h3 className="text-2xl font-black text-white font-serif mt-3">
                 {founderName}
