@@ -7,24 +7,48 @@ export const SAMPLE_STUDENT_PROFILES: StudentProfile[] = [
     name: 'Aarav Sharma',
     rollNumber: 'BA-2026-X042',
     gradeNumber: 10,
-    gradeLabel: 'Class 10 (Secondary School)',
+    gradeLabel: 'Class 10 (WBBSE Madhyamik & CBSE)',
     batchName: 'Achievers Secondary Morning Batch',
     academicYear: '2026 - 2027',
-    targetExam: 'Board Exams & NTSE / Science Olympiad',
+    targetExam: 'WBBSE Madhyamik / CBSE Board & NTSE',
     attendanceRate: 96,
     streakDays: 14
+  },
+  {
+    id: 'std-6',
+    name: 'Debjit Mukherjee',
+    rollNumber: 'BA-2026-IX025',
+    gradeNumber: 9,
+    gradeLabel: 'Class 9 (WBBSE & CBSE Foundation)',
+    batchName: 'Secondary Milestone Evening Batch',
+    academicYear: '2026 - 2027',
+    targetExam: 'WBBSE Summative Evaluations & Junior Olympiad',
+    attendanceRate: 95,
+    streakDays: 11
   },
   {
     id: 'std-2',
     name: 'Ananya Sen',
     rollNumber: 'BA-2026-XII018',
     gradeNumber: 12,
-    gradeLabel: 'Class 12 (Higher Secondary)',
+    gradeLabel: 'Class 12 (WBCHSE & CBSE Board)',
     batchName: 'Pinnacle Science Super-30 Batch',
     academicYear: '2026 - 2027',
     targetExam: 'WBCHSE / CBSE Board & JEE Advanced / WBJEE',
     attendanceRate: 98,
     streakDays: 22
+  },
+  {
+    id: 'std-7',
+    name: 'Sayan Banerjee',
+    rollNumber: 'BA-2026-XI009',
+    gradeNumber: 11,
+    gradeLabel: 'Class 11 (WBCHSE & CBSE HS)',
+    batchName: 'Ascent Higher Secondary Batch',
+    academicYear: '2026 - 2027',
+    targetExam: 'WBCHSE Semester Exams & JEE / NEET Foundation',
+    attendanceRate: 97,
+    streakDays: 19
   },
   {
     id: 'std-3',
@@ -37,6 +61,18 @@ export const SAMPLE_STUDENT_PROFILES: StudentProfile[] = [
     targetExam: 'School Summative Exams & Junior Olympiad',
     attendanceRate: 94,
     streakDays: 9
+  },
+  {
+    id: 'std-5',
+    name: 'Souvik Mondal',
+    rollNumber: 'BA-2026-V031',
+    gradeNumber: 5,
+    gradeLabel: 'Class 5 (WBBSE - West Bengal Board)',
+    batchName: 'WBBSE Class 5 Amar Ganit & Science Batch',
+    academicYear: '2026 - 2027',
+    targetExam: 'WBBSE Summative Evaluations & Math Olympiad',
+    attendanceRate: 97,
+    streakDays: 16
   },
   {
     id: 'std-4',
@@ -57,29 +93,64 @@ const LOCAL_STORAGE_KEY_PREFIX = 'biley_curriculum_progress_v3_';
 // Default initial completed chapters seed to reflect real-time academic progression
 const DEFAULT_SEED_PROGRESS: Record<number, string[]> = {
   10: [
-    'sec-math-ch-0', 'sec-math-ch-1', 'sec-math-ch-2',
-    'sec-sci-ch-0', 'sec-sci-ch-1', 'sec-sci-ch-2',
-    'sec-bio-ch-0', 'sec-bio-ch-1',
-    'sec-eng-ch-0', 'sec-eng-ch-1', 'sec-eng-ch-2',
-    'sec-comp-ch-0', 'sec-comp-ch-1'
+    'c10-math-ch-0', 'c10-math-ch-1',
+    'c10-sci-ch-0', 'c10-sci-ch-1',
+    'c10-bio-ch-0', 'c10-bio-ch-1',
+    'c10-eng-ch-0', 'c10-eng-ch-1',
+    'c10-comp-ch-0', 'c10-comp-ch-1'
+  ],
+  9: [
+    'c9-math-ch-0', 'c9-math-ch-1',
+    'c9-sci-ch-0', 'c9-sci-ch-1',
+    'c9-bio-ch-0', 'c9-bio-ch-1',
+    'c9-eng-ch-0', 'c9-eng-ch-1',
+    'c9-comp-ch-0', 'c9-comp-ch-1'
   ],
   12: [
-    // MATH-12 (Class 12 Higher Secondary Mathematics): 2 Core Modules Completed
-    'hs-math-ch-0', // Module 1: Differential Calculus & Applications (Completed)
-    'hs-math-ch-1', // Module 2: Integral Calculus & Differential Equations (Completed)
-    // Other Class 12 Core Subjects
-    'hs-phy-ch-0', 'hs-phy-ch-1',
-    'hs-chem-ch-0', 'hs-chem-ch-1',
-    'hs-bio-ch-0', 'hs-bio-ch-1',
-    'hs-eng-ch-0', 'hs-eng-ch-1',
-    'hs-comp-ch-0', 'hs-comp-ch-1'
+    'c12-math-ch-0',
+    'c12-phy-ch-0',
+    'c12-chem-ch-0',
+    'c12-bio-ch-0',
+    'c12-eng-ch-0',
+    'c12-coma-ch-0',
+    'c12-coms-ch-0'
+  ],
+  11: [
+    'c11-math-ch-0',
+    'c11-phy-ch-0',
+    'c11-chem-ch-0',
+    'c11-bio-ch-0',
+    'c11-eng-ch-0',
+    'c11-coma-ch-0',
+    'c11-coms-ch-0'
   ],
   8: [
-    'up-math-ch-0', 'up-math-ch-1',
-    'up-sci-ch-0', 'up-sci-ch-1',
-    'up-bio-ch-0',
-    'up-eng-ch-0', 'up-eng-ch-1',
-    'up-comp-ch-0', 'up-comp-ch-1'
+    'c8-math-ch-0', 'c8-math-ch-1',
+    'c8-sci-ch-0', 'c8-sci-ch-1',
+    'c8-bio-ch-0', 'c8-bio-ch-1',
+    'c8-eng-ch-0', 'c8-eng-ch-1',
+    'c8-comp-ch-0', 'c8-comp-ch-1'
+  ],
+  7: [
+    'c7-math-ch-0', 'c7-math-ch-1',
+    'c7-sci-ch-0', 'c7-sci-ch-1',
+    'c7-bio-ch-0', 'c7-bio-ch-1',
+    'c7-eng-ch-0', 'c7-eng-ch-1',
+    'c7-comp-ch-0'
+  ],
+  6: [
+    'c6-math-ch-0', 'c6-math-ch-1',
+    'c6-sci-ch-0', 'c6-sci-ch-1',
+    'c6-bio-ch-0',
+    'c6-eng-ch-0', 'c6-eng-ch-1',
+    'c6-comp-ch-0'
+  ],
+  5: [
+    'c5-math-ch-0', 'c5-math-ch-1', 'c5-math-ch-2',
+    'c5-sci-ch-0', 'c5-sci-ch-1',
+    'c5-bio-ch-0', 'c5-bio-ch-1',
+    'c5-eng-ch-0', 'c5-eng-ch-1',
+    'c5-comp-ch-0'
   ],
   4: [
     'c4-eng-ch-0', 'c4-eng-ch-1', 'c4-eng-ch-2',

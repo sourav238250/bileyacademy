@@ -140,6 +140,38 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
           })}
         </div>
 
+        {/* Multi-Grade Sub-Selector Pills if category contains multiple grades */}
+        {filteredGrades.length > 1 && (
+          <div className="flex flex-wrap items-center gap-2 mb-6 bg-slate-900/90 p-2 rounded-2xl border border-slate-800">
+            <span className="text-xs font-bold text-slate-400 px-2 py-1 flex items-center space-x-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+              <span>{isBengali ? 'শ্রেণি নির্বাচন:' : 'Select Target Class:'}</span>
+            </span>
+            <div className="flex flex-wrap gap-2">
+              {filteredGrades.map((grade, idx) => {
+                const isGradeActive = (activeGradeIndex === idx) || (!filteredGrades[activeGradeIndex] && idx === 0);
+                return (
+                  <button
+                    key={grade.gradeNumber}
+                    id={`grade-pill-${grade.gradeNumber}`}
+                    onClick={() => {
+                      setActiveGradeIndex(idx);
+                      setSearchQuery('');
+                    }}
+                    className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 ${
+                      isGradeActive
+                        ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20 font-black'
+                        : 'bg-slate-950 text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800'
+                    }`}
+                  >
+                    <span>{grade.gradeLabel}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
         {/* Selected Tier Banner & Filter Toolbar */}
         <div className="bg-slate-900 rounded-3xl border border-slate-800 p-6 mb-8 shadow-xl">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
