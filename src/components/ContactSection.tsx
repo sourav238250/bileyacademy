@@ -21,8 +21,13 @@ import { Logo } from './Logo';
 import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
 import { submitContactMessageToFirestore } from '../lib/firestoreService';
+import { Inbox } from 'lucide-react';
 
-export const ContactSection: React.FC = () => {
+interface ContactSectionProps {
+  onOpenInbox?: () => void;
+}
+
+export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenInbox }) => {
   const { isBengali, t } = useLanguage();
 
   const [formData, setFormData] = useState<ContactFormData>({
@@ -645,34 +650,58 @@ ${submittedData.message}`;
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+                  <div className="flex flex-wrap items-center justify-center gap-2.5 pt-2">
                     
-                    {/* Open in Mail Client */}
+                    {/* Open in Gmail Web */}
                     <a
-                      href={`mailto:bileyacademy@gmail.com?subject=${encodeURIComponent(`[Quick Message ${submittedData.id}] ${submittedData.inquiryType} - ${submittedData.fullName}`)}&body=${encodeURIComponent(`Hello Biley Academy,\n\nName: ${submittedData.fullName}\nEmail: ${submittedData.email}\nPhone: ${submittedData.phone || 'N/A'}\nInquiry Category: ${submittedData.inquiryType}\nReference Ticket: ${submittedData.id}\n\nMessage:\n${submittedData.message}\n\nThank you.`)}`}
-                      className="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold inline-flex items-center space-x-1.5 transition-colors shadow-md"
+                      href={`https://mail.google.com/mail/?view=cm&fs=1&to=bileyacademy@gmail.com&su=${encodeURIComponent(`[Quick Message ${submittedData.id}] ${submittedData.inquiryType} - ${submittedData.fullName}`)}&body=${encodeURIComponent(`Hello Biley Academy,\n\nName: ${submittedData.fullName}\nEmail: ${submittedData.email}\nPhone: ${submittedData.phone || 'N/A'}\nInquiry Category: ${submittedData.inquiryType}\nReference Ticket: ${submittedData.id}\n\nMessage:\n${submittedData.message}\n\nThank you.`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 text-xs font-bold inline-flex items-center space-x-1.5 transition-all shadow-md"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
-                      <span>{isBengali ? 'ইমেইল অ্যাপে খুলুন (Gmail)' : 'Open in Email Client / Gmail'}</span>
+                      <span>{isBengali ? 'জিমেইলে পাঠান (Gmail Web)' : 'Send via Gmail Web'}</span>
                     </a>
+
+                    {/* WhatsApp */}
+                    <a
+                      href={`https://wa.me/919732531730?text=${encodeURIComponent(`Hello Biley Academy,\n*Ticket:* ${submittedData.id}\n*Name:* ${submittedData.fullName}\n*Email:* ${submittedData.email}\n*Phone:* ${submittedData.phone || 'N/A'}\n*Subject:* ${submittedData.inquiryType}\n*Message:* ${submittedData.message}`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold inline-flex items-center space-x-1.5 transition-colors shadow-md"
+                    >
+                      <MessageCircle className="w-3.5 h-3.5" />
+                      <span>{isBengali ? 'হোয়াটসঅ্যাপে পাঠান' : 'WhatsApp Directly'}</span>
+                    </a>
+
+                    {/* View in Inquiries Inbox if available */}
+                    {onOpenInbox && (
+                      <button
+                        onClick={onOpenInbox}
+                        className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 text-xs font-bold inline-flex items-center space-x-1.5 border border-amber-500/30 transition-colors"
+                      >
+                        <Inbox className="w-3.5 h-3.5 text-amber-400" />
+                        <span>{isBengali ? 'ইনবক্সে দেখুন' : 'View in Mailbox Feed'}</span>
+                      </button>
+                    )}
 
                     {/* Copy Details */}
                     <button
                       onClick={copyTranscript}
-                      className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold inline-flex items-center space-x-1.5 border border-slate-700 transition-colors"
+                      className="px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold inline-flex items-center space-x-1.5 border border-slate-700 transition-colors"
                     >
                       {copiedTranscript ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                      <span>{copiedTranscript ? (isBengali ? 'কপি হয়েছে' : 'Copied!') : (isBengali ? 'বিবরণ কপি করুন' : 'Copy Inquiry')}</span>
+                      <span>{copiedTranscript ? (isBengali ? 'কপি হয়েছে' : 'Copied!') : (isBengali ? 'কপি করুন' : 'Copy')}</span>
                     </button>
 
                     {/* New Message */}
                     <button
                       id="contact-new-message-btn"
                       onClick={handleReset}
-                      className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-xs font-bold inline-flex items-center space-x-1.5 border border-slate-800 transition-colors"
+                      className="px-3.5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-xs font-bold inline-flex items-center space-x-1.5 border border-slate-800 transition-colors"
                     >
                       <RotateCcw className="w-3.5 h-3.5" />
-                      <span>{isBengali ? 'নতুন বার্তা' : 'New Message'}</span>
+                      <span>{isBengali ? 'নতুন বার্তা' : 'New'}</span>
                     </button>
                   </div>
                 </div>

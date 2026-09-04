@@ -19,15 +19,17 @@ import { GallerySection } from './components/GallerySection';
 import { OfficialAdmissionBanner } from './components/OfficialAdmissionBanner';
 import { NoticeTickerBar } from './components/NoticeTickerBar';
 import { Footer } from './components/Footer';
+import { InquiriesInboxModal } from './components/InquiriesInboxModal';
 import { GradeCategory, SubjectCurriculum } from './types';
 import { SubjectModal } from './components/SubjectModal';
-import { X, Calendar, Sparkles, MessageCircle } from 'lucide-react';
+import { X, Calendar, Sparkles, MessageCircle, Inbox } from 'lucide-react';
 
 function AcademyApp() {
   const { isBengali, t } = useLanguage();
   const [activeSection, setActiveSection] = useState<string>('hero');
   const [selectedCategory, setSelectedCategory] = useState<GradeCategory>('secondary');
   const [demoModalOpen, setDemoModalOpen] = useState<boolean>(false);
+  const [inboxModalOpen, setInboxModalOpen] = useState<boolean>(false);
   const [inquirySubject, setInquirySubject] = useState<string | undefined>(undefined);
   const [inspectedSubject, setInspectedSubject] = useState<{ subject: SubjectCurriculum; gradeLabel: string } | null>(null);
 
@@ -57,6 +59,7 @@ function AcademyApp() {
         activeSection={activeSection}
         onNavigate={handleNavigate}
         onOpenDemoModal={() => handleOpenInquiry()}
+        onOpenInbox={() => setInboxModalOpen(true)}
       />
 
       {/* Real-time Scrolling Announcement Ticker Bar */}
@@ -121,13 +124,22 @@ function AcademyApp() {
           initialSubject={inquirySubject}
         />
 
-        <ContactSection />
+        <ContactSection 
+          onOpenInbox={() => setInboxModalOpen(true)}
+        />
       </main>
 
       {/* Footer */}
       <Footer 
         onNavigate={handleNavigate}
         onSelectCategory={handleSelectCategory}
+        onOpenInbox={() => setInboxModalOpen(true)}
+      />
+
+      {/* Inquiries & Official Mailbox Inbox Modal */}
+      <InquiriesInboxModal 
+        isOpen={inboxModalOpen}
+        onClose={() => setInboxModalOpen(false)}
       />
 
       {/* Persistent Floating WhatsApp Contact Widget (WhatsApp Only) */}

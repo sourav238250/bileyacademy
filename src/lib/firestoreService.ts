@@ -180,3 +180,91 @@ export const saveAiDoubtToFirestore = async (
     return null;
   }
 };
+
+// 6. Admin / Faculty Realtime Inquiries & Messages Feed
+export interface SavedAdmissionInquiryDoc extends AdmissionInquiry {
+  id: string;
+  userId?: string;
+  status?: string;
+  source?: string;
+  createdAt?: any;
+}
+
+export interface SavedContactMessageDoc extends ContactFormData {
+  id: string;
+  userId?: string;
+  status?: string;
+  createdAt?: any;
+}
+
+export const fetchAllAdmissionInquiries = async (): Promise<SavedAdmissionInquiryDoc[]> => {
+  try {
+    const colRef = collection(db, 'admission_inquiries');
+    const q = query(colRef, orderBy('createdAt', 'desc'), limit(50));
+    const snap = await getDocs(q);
+    return snap.docs.map(d => ({
+      id: d.id,
+      ...d.data()
+    })) as SavedAdmissionInquiryDoc[];
+  } catch (error) {
+    console.error('Error fetching all inquiries:', error);
+    return [];
+  }
+};
+
+export const fetchAllContactMessages = async (): Promise<SavedContactMessageDoc[]> => {
+  try {
+    const colRef = collection(db, 'contact_messages');
+    const q = query(colRef, orderBy('createdAt', 'desc'), limit(50));
+    const snap = await getDocs(q);
+    return snap.docs.map(d => ({
+      id: d.id,
+      ...d.data()
+    })) as SavedContactMessageDoc[];
+  } catch (error) {
+    console.error('Error fetching all contact messages:', error);
+    return [];
+  }
+};
+
+export const subscribeAdmissionInquiries = (
+  callback: (inquiries: SavedAdmissionInquiryDoc[]) => void
+) => {
+  try {
+    const colRef = collection(db, 'admission_inquiries');
+    const q = query(colRef, orderBy('createdAt', 'desc'), limit(50));
+    return onSnapshot(q, (snap) => {
+      const docs = snap.docs.map(d => ({
+        id: d.id,
+        ...d.data()
+      })) as SavedAdmissionInquiryDoc[];
+      callback(docs);
+    }, (err) => {
+      console.warn('Inquiries subscription notice:', err);
+    });
+  } catch (e) {
+    console.warn('Failed to subscribe to admission inquiries:', e);
+    return () => {};
+  }
+};
+
+export const subscribeContactMessages = (
+  callback: (messages: SavedContactMessageDoc[]) => void
+) => {
+  try {
+    const colRef = collection(db, 'contact_messages');
+    const q = query(colRef, orderBy('createdAt', 'desc'), limit(50));
+    return onSnapshot(q, (snap) => {
+      const docs = snap.docs.map(d => ({
+        id: d.id,
+        ...d.data()
+      })) as SavedContactMessageDoc[];
+      callback(docs);
+    }, (err) => {
+      console.warn('Contact messages subscription notice:', err);
+    });
+  } catch (e) {
+    console.warn('Failed to subscribe to contact messages:', e);
+    return () => {};
+  }
+};

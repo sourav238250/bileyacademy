@@ -9,7 +9,11 @@ import {
   GraduationCap, 
   Target, 
   Printer, 
-  ShieldCheck 
+  ShieldCheck,
+  ExternalLink,
+  MessageCircle,
+  Copy,
+  Check
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { Logo } from './Logo';
@@ -346,20 +350,40 @@ export const AdmissionSection: React.FC<AdmissionSectionProps> = ({ initialSubje
               </div>
 
               {/* Actions */}
-              <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+              <div className="flex flex-wrap items-center justify-center gap-2.5 pt-2">
+                <a
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=bileyacademy@gmail.com&su=${encodeURIComponent(`[Admission Application ${submittedInquiry.id}] ${submittedInquiry.studentName} - ${submittedInquiry.gradeLevel}`)}&body=${encodeURIComponent(`Hello Biley Academy Admission Desk,\n\nToken ID: ${submittedInquiry.id}\nStudent Name: ${submittedInquiry.studentName}\nParent/Guardian: ${submittedInquiry.parentName || 'N/A'}\nGrade Level: ${submittedInquiry.gradeLevel}\nSubjects: ${submittedInquiry.subjects.join(', ')}\nPhone: ${submittedInquiry.phone}\nEmail: ${submittedInquiry.email || 'N/A'}\nTarget Goal: ${submittedInquiry.targetGoal}\n\nPlease confirm our demo class slot.\n\nThank you.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 text-xs font-bold flex items-center space-x-1.5 transition-all shadow-md"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>{isBengali ? 'জিমেইলে পাঠান (bileyacademy@gmail.com)' : 'Send to Academy via Gmail Web'}</span>
+                </a>
+
+                <a
+                  href={`https://wa.me/919732531730?text=${encodeURIComponent(`Hello Biley Academy,\n*Admission Token:* ${submittedInquiry.id}\n*Student:* ${submittedInquiry.studentName}\n*Class:* ${submittedInquiry.gradeLevel}\n*Subjects:* ${submittedInquiry.subjects.join(', ')}\n*Phone:* ${submittedInquiry.phone}\n*Goal:* ${submittedInquiry.targetGoal}`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center space-x-1.5 transition-colors shadow-md"
+                >
+                  <MessageCircle className="w-3.5 h-3.5" />
+                  <span>{isBengali ? 'হোয়াটসঅ্যাপে বুকিং নিশ্চিত করুন' : 'WhatsApp Token to Academy'}</span>
+                </a>
+
                 <button
                   onClick={() => window.print()}
-                  className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold flex items-center space-x-1.5 transition-colors"
+                  className="px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold flex items-center space-x-1.5 border border-slate-700 transition-colors"
                 >
-                  <Printer className="w-4 h-4" />
-                  <span>{isBengali ? 'স্লিপ প্রিন্ট করুন' : 'Print Admission Slip'}</span>
+                  <Printer className="w-3.5 h-3.5" />
+                  <span>{isBengali ? 'প্রিন্ট' : 'Print Slip'}</span>
                 </button>
 
                 <button
                   onClick={() => setSubmittedInquiry(null)}
-                  className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold transition-colors"
+                  className="px-3.5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-xs font-bold border border-slate-800 transition-colors"
                 >
-                  {isBengali ? 'আরেকটি আবেদন করুন' : 'Submit Another Application'}
+                  {isBengali ? 'নতুন আবেদন' : 'New Application'}
                 </button>
               </div>
             </div>

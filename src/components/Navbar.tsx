@@ -15,7 +15,8 @@ import {
   MessageCircle,
   BarChart3, 
   Image as ImageIcon, 
-  Bell 
+  Bell,
+  Inbox
 } from 'lucide-react';
 import { Logo } from './Logo';
 import { ThemeToggle } from './ThemeToggle';
@@ -27,9 +28,15 @@ interface NavbarProps {
   activeSection: string;
   onNavigate: (sectionId: string) => void;
   onOpenDemoModal: () => void;
+  onOpenInbox?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate, onOpenDemoModal }) => {
+export const Navbar: React.FC<NavbarProps> = ({ 
+  activeSection, 
+  onNavigate, 
+  onOpenDemoModal,
+  onOpenInbox 
+}) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isBengali, t } = useLanguage();
 
@@ -72,6 +79,16 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate, onOpe
             <div className="flex items-center">
               <LanguageToggle variant="segmented" />
             </div>
+            {onOpenInbox && (
+              <button
+                onClick={onOpenInbox}
+                className="hidden lg:inline-flex items-center space-x-1 font-bold bg-slate-950/20 hover:bg-slate-950/40 text-slate-950 px-2.5 py-0.5 rounded transition-colors text-xs"
+                title="View stored inquiries sent to bileyacademy@gmail.com"
+              >
+                <Inbox className="w-3.5 h-3.5" />
+                <span>{isBengali ? 'ইনবক্স ফিড' : 'Mailbox Feed'}</span>
+              </button>
+            )}
             <a 
               href="https://wa.me/919732531730?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20admissions." 
               target="_blank"
@@ -231,6 +248,18 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate, onOpe
               </span>
               <ThemeToggle id="navbar-theme-toggle-drawer" showLabel />
             </div>
+            {onOpenInbox && (
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenInbox();
+                }}
+                className="w-full py-2.5 rounded-xl border border-amber-500/40 bg-amber-500/10 text-amber-300 text-sm font-bold flex items-center justify-center space-x-2 hover:bg-amber-500/20 transition-colors"
+              >
+                <Inbox className="w-4 h-4 text-amber-400" />
+                <span>{isBengali ? 'অফিসিয়াল ইনবক্স ও মেসেজ লগ' : 'Academy Mailbox & Inquiries Feed'}</span>
+              </button>
+            )}
             <button
               onClick={() => {
                 setMobileMenuOpen(false);

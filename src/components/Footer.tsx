@@ -15,9 +15,10 @@ import { useLanguage } from '../context/LanguageContext';
 interface FooterProps {
   onNavigate: (sectionId: string) => void;
   onSelectCategory: (category: GradeCategory) => void;
+  onOpenInbox?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectCategory }) => {
+export const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectCategory, onOpenInbox }) => {
   const { isBengali, t } = useLanguage();
 
   const scrollToTop = () => {
@@ -185,6 +186,16 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectCategory }) 
                   {t('navContact')}
                 </button>
               </li>
+              {onOpenInbox && (
+                <li>
+                  <button 
+                    onClick={onOpenInbox} 
+                    className="text-amber-400 hover:text-amber-300 transition-colors font-bold flex items-center space-x-1"
+                  >
+                    <span>📬 {isBengali ? 'অফিসিয়াল ইনবক্স ফিড' : 'Academy Mailbox Feed'}</span>
+                  </button>
+                </li>
+              )}
             </ul>
           </div>
 
