@@ -19,6 +19,8 @@ import confetti from 'canvas-confetti';
 import { ContactFormData, ContactFormErrors } from '../types';
 import { Logo } from './Logo';
 import { useLanguage } from '../context/LanguageContext';
+import { useAuth } from '../context/AuthContext';
+import { submitContactMessageToFirestore } from '../lib/firestoreService';
 
 export const ContactSection: React.FC = () => {
   const { isBengali, t } = useLanguage();
@@ -129,6 +131,9 @@ export const ContactSection: React.FC = () => {
     setStatusMessage('');
 
     try {
+      // Direct Firestore database save
+      await submitContactMessageToFirestore(formData);
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

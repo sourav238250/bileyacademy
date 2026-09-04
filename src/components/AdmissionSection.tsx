@@ -15,6 +15,8 @@ import confetti from 'canvas-confetti';
 import { Logo } from './Logo';
 import { AdmissionInquiry } from '../types';
 import { useLanguage } from '../context/LanguageContext';
+import { useAuth } from '../context/AuthContext';
+import { submitAdmissionInquiryToFirestore } from '../lib/firestoreService';
 
 interface AdmissionSectionProps {
   initialSubject?: string;
@@ -22,14 +24,15 @@ interface AdmissionSectionProps {
 
 export const AdmissionSection: React.FC<AdmissionSectionProps> = ({ initialSubject }) => {
   const { isBengali, t } = useLanguage();
+  const { currentUser, userProfile } = useAuth();
 
   const [formData, setFormData] = useState<AdmissionInquiry>({
-    studentName: '',
+    studentName: currentUser?.displayName || '',
     parentName: '',
-    gradeLevel: 'Class 10 (Secondary)',
+    gradeLevel: userProfile?.selectedGrade ? `Class ${userProfile.selectedGrade}` : 'Class 10 (Secondary)',
     subjects: initialSubject ? [initialSubject] : ['Mathematics', 'Science (Physical)'],
     phone: '',
-    email: '',
+    email: currentUser?.email || '',
     targetGoal: '95%+ in Board Exam + Foundation Olympiads',
     preferredBatchTime: 'Evening Batch (4:30 PM - 7:30 PM)'
   });
@@ -84,6 +87,9 @@ export const AdmissionSection: React.FC<AdmissionSectionProps> = ({ initialSubje
     setLoading(true);
 
     try {
+      // Save directly to Firestore database for cloud persistence
+      await submitAdmissionInquiryToFirestore(formData, currentUser?.uid);
+
       const res = await fetch('/api/inquiries', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

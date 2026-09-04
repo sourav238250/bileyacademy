@@ -20,6 +20,7 @@ import {
 import { Logo } from './Logo';
 import { ThemeToggle } from './ThemeToggle';
 import { LanguageToggle } from './LanguageToggle';
+import { AuthButton } from './AuthButton';
 import { useLanguage } from '../context/LanguageContext';
 
 interface NavbarProps {
@@ -145,9 +146,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate, onOpe
             })}
           </nav>
 
-          {/* Action CTA Buttons, Theme Toggle & Language Toggle */}
+          {/* Action CTA Buttons, Auth, Theme Toggle & Language Toggle */}
           <div className="hidden sm:flex items-center space-x-2">
             <ThemeToggle id="navbar-theme-toggle-desktop" />
+            <AuthButton />
             <button
               id="header-cta-schedule"
               onClick={() => handleNavClick('batches')}
@@ -167,6 +169,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate, onOpe
 
           {/* Mobile menu trigger & Controls */}
           <div className="lg:hidden flex items-center space-x-2">
+            <AuthButton />
             <ThemeToggle id="navbar-theme-toggle-mobile" className="sm:hidden" />
             <button
               id="mobile-menu-btn"

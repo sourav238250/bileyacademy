@@ -16,8 +16,12 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { QuizQuestion } from '../types';
+import { useAuth } from '../context/AuthContext';
+import { saveQuizAttemptToFirestore } from '../lib/firestoreService';
+import { CloudCheck } from 'lucide-react';
 
 export const QuizSection: React.FC = () => {
+  const { currentUser } = useAuth();
   const [selectedTier, setSelectedTier] = useState<'primary' | 'upper_primary' | 'secondary' | 'higher_secondary'>('secondary');
   const [selectedSubject, setSelectedSubject] = useState('Mathematics');
   const [currentQIndex, setCurrentQIndex] = useState(0);
@@ -25,6 +29,7 @@ export const QuizSection: React.FC = () => {
   const [score, setScore] = useState(0);
   const [isAnswered, setIsAnswered] = useState(false);
   const [quizFinished, setQuizFinished] = useState(false);
+  const [dbSaved, setDbSaved] = useState(false);
 
   // Curated Diagnostic Question Banks for all grades and subjects
   const QUESTION_BANKS: Record<string, QuizQuestion[]> = {
@@ -172,7 +177,7 @@ export const QuizSection: React.FC = () => {
     }
   };
 
-  const handleNextQuestion = () => {
+  const handleNextQuestion = async () => {
     if (currentQIndex < questions.length - 1) {
       setCurrentQIndex((prev) => prev + 1);
       setSelectedOption(null);
@@ -184,6 +189,24 @@ export const QuizSection: React.FC = () => {
         spread: 70,
         origin: { y: 0.6 }
       });
+
+      // Save to Firestore if user is authenticated or guest
+      try {
+        const pct = Math.round((score / questions.length) * 100);
+        await saveQuizAttemptToFirestore({
+          userId: currentUser?.uid || 'guest',
+          userEmail: currentUser?.email || undefined,
+          userName: currentUser?.displayName || undefined,
+          tier: selectedTier,
+          subject: selectedSubject,
+          score,
+          totalQuestions: questions.length,
+          percentage: pct
+        });
+        setDbSaved(true);
+      } catch (e) {
+        console.error('Failed to save quiz attempt in Firestore:', e);
+      }
     }
   };
 
@@ -193,6 +216,7 @@ export const QuizSection: React.FC = () => {
     setIsAnswered(false);
     setScore(0);
     setQuizFinished(false);
+    setDbSaved(false);
   };
 
   return (

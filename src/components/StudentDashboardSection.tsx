@@ -42,6 +42,9 @@ import {
   calculateSubjectMetric,
   isChapterCompleted
 } from '../utils/progressStore';
+import { useAuth } from '../context/AuthContext';
+import { syncStudentProgressToFirestore, fetchStudentProgressFromFirestore } from '../lib/firestoreService';
+import { Cloud, CloudCheck, CloudOff, ShieldCheck } from 'lucide-react';
 import { Logo } from './Logo';
 
 interface StudentDashboardSectionProps {
@@ -57,19 +60,41 @@ export const StudentDashboardSection: React.FC<StudentDashboardSectionProps> = (
   onNavigateToQuiz,
   onSelectCategory
 }) => {
+  const { currentUser, userProfile, signInWithGoogle } = useAuth();
   const [selectedStudentIndex, setSelectedStudentIndex] = useState<number>(0);
   const [activeGradeNumber, setActiveGradeNumber] = useState<number>(10);
   const [completedKeys, setCompletedKeys] = useState<string[]>([]);
   const [expandedSubjectId, setExpandedSubjectId] = useState<string | null>(null);
   const [filterSubject, setFilterSubject] = useState<string>('all');
+  const [syncStatus, setSyncStatus] = useState<'synced' | 'saving' | 'offline'>('synced');
 
-  const currentStudent = SAMPLE_STUDENT_PROFILES[selectedStudentIndex];
+  const currentStudent = SAMPLE_STUDENT_PROFILES[selectedStudentIndex] || SAMPLE_STUDENT_PROFILES[0];
 
-  // Load progress for active grade
+  // Load progress from Firestore or LocalStorage for active grade
   useEffect(() => {
-    const keys = getCompletedChapterKeys(activeGradeNumber);
-    setCompletedKeys(keys);
-  }, [activeGradeNumber]);
+    let isMounted = true;
+    const loadProgress = async () => {
+      if (currentUser) {
+        setSyncStatus('saving');
+        const cloudKeys = await fetchStudentProgressFromFirestore(currentUser.uid, activeGradeNumber);
+        if (isMounted) {
+          if (cloudKeys !== null) {
+            setCompletedKeys(cloudKeys);
+            saveCompletedChapterKeys(activeGradeNumber, cloudKeys);
+            setSyncStatus('synced');
+            return;
+          }
+        }
+      }
+      const localKeys = getCompletedChapterKeys(activeGradeNumber);
+      if (isMounted) {
+        setCompletedKeys(localKeys);
+        setSyncStatus(currentUser ? 'synced' : 'offline');
+      }
+    };
+    loadProgress();
+    return () => { isMounted = false; };
+  }, [activeGradeNumber, currentUser]);
 
   // Current Grade Data
   const currentGradeData = ALL_GRADES_DATA.find(g => g.gradeNumber === activeGradeNumber) || ALL_GRADES_DATA[9]; // fallback Class 10
@@ -78,13 +103,19 @@ export const StudentDashboardSection: React.FC<StudentDashboardSectionProps> = (
   const overallProgress = calculateGradeOverallProgress(currentGradeData, completedKeys);
 
   // Handle Chapter Toggle
-  const handleToggleChapter = (subjectId: string, chapterIndex: number) => {
+  const handleToggleChapter = async (subjectId: string, chapterIndex: number) => {
     const { keys, isNowCompleted } = toggleChapterCompletionState(
       activeGradeNumber,
       subjectId,
       chapterIndex
     );
     setCompletedKeys([...keys]);
+
+    if (currentUser) {
+      setSyncStatus('saving');
+      await syncStudentProgressToFirestore(currentUser.uid, activeGradeNumber, keys);
+      setSyncStatus('synced');
+    }
 
     if (isNowCompleted) {
       confetti({
@@ -96,7 +127,7 @@ export const StudentDashboardSection: React.FC<StudentDashboardSectionProps> = (
   };
 
   // Mark all chapters of a subject as complete
-  const handleCompleteAllForSubject = (subject: SubjectCurriculum) => {
+  const handleCompleteAllForSubject = async (subject: SubjectCurriculum) => {
     const newKeys = [...completedKeys];
     subject.keyChapters.forEach((_, idx) => {
       const key = `${subject.id}-ch-${idx}`;
@@ -106,13 +137,23 @@ export const StudentDashboardSection: React.FC<StudentDashboardSectionProps> = (
     });
     setCompletedKeys(newKeys);
     saveCompletedChapterKeys(activeGradeNumber, newKeys);
+    if (currentUser) {
+      setSyncStatus('saving');
+      await syncStudentProgressToFirestore(currentUser.uid, activeGradeNumber, newKeys);
+      setSyncStatus('synced');
+    }
     confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
   };
 
   // Reset progress for this class
-  const handleResetClassProgress = () => {
+  const handleResetClassProgress = async () => {
     setCompletedKeys([]);
     saveCompletedChapterKeys(activeGradeNumber, []);
+    if (currentUser) {
+      setSyncStatus('saving');
+      await syncStudentProgressToFirestore(currentUser.uid, activeGradeNumber, []);
+      setSyncStatus('synced');
+    }
   };
 
   // Quick switch student profile
@@ -170,22 +211,40 @@ export const StudentDashboardSection: React.FC<StudentDashboardSectionProps> = (
             {/* Student Info Card */}
             <div className="flex items-start sm:items-center space-x-4">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 p-0.5 shadow-lg shrink-0">
-                <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
-                  <GraduationCap className="w-7 h-7 text-amber-400" />
+                <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center overflow-hidden">
+                  {currentUser?.photoURL ? (
+                    <img src={currentUser.photoURL} alt="User Avatar" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  ) : (
+                    <GraduationCap className="w-7 h-7 text-amber-400" />
+                  )}
                 </div>
               </div>
               <div>
                 <div className="flex flex-wrap items-center gap-2">
                   <h3 className="text-xl font-black text-white font-serif">
-                    {currentStudent.name}
+                    {currentUser ? (currentUser.displayName || 'Authenticated Scholar') : currentStudent.name}
                   </h3>
                   <span className="bg-amber-500/20 text-amber-400 border border-amber-500/30 text-[11px] font-bold px-2 py-0.5 rounded-full font-mono">
-                    {currentStudent.rollNumber}
+                    {currentUser ? `UID: ${currentUser.uid.slice(0, 8)}` : currentStudent.rollNumber}
                   </span>
                   <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[11px] font-bold px-2 py-0.5 rounded-full flex items-center space-x-1">
                     <Flame className="w-3 h-3" />
-                    <span>{currentStudent.streakDays}-Day Study Streak</span>
+                    <span>{currentUser ? 'Active Cloud Progress' : `${currentStudent.streakDays}-Day Study Streak`}</span>
                   </span>
+                  {currentUser ? (
+                    <span className="bg-blue-500/20 text-blue-300 border border-blue-500/30 text-[11px] font-bold px-2 py-0.5 rounded-full flex items-center space-x-1">
+                      <CloudCheck className="w-3 h-3 text-blue-400" />
+                      <span>{syncStatus === 'saving' ? 'Saving to Firestore...' : 'Synced to Firestore DB'}</span>
+                    </span>
+                  ) : (
+                    <button
+                      onClick={signInWithGoogle}
+                      className="bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[11px] font-bold px-2 py-0.5 rounded-full flex items-center space-x-1 transition-colors"
+                    >
+                      <CloudOff className="w-3 h-3" />
+                      <span>Sign in to save cloud progress</span>
+                    </button>
+                  )}
                 </div>
                 <p className="text-xs text-slate-400 mt-1">
                   <strong>Batch:</strong> {currentStudent.batchName} • <strong>Target:</strong> {currentStudent.targetExam}

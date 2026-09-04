@@ -13,7 +13,12 @@ import {
   Code
 } from 'lucide-react';
 
+import confetti from 'canvas-confetti';
+import { useAuth } from '../context/AuthContext';
+import { saveAiDoubtToFirestore } from '../lib/firestoreService';
+
 export const AiTutorSection: React.FC = () => {
+  const { currentUser, userProfile } = useAuth();
   const [selectedGrade, setSelectedGrade] = useState('Class 10 (Secondary)');
   const [selectedSubject, setSelectedSubject] = useState('Science (Physics/Chemistry)');
   const [questionInput, setQuestionInput] = useState('');
@@ -61,9 +66,26 @@ Whether you need a step-by-step derivation in Physics/Math, an explanation of ce
       });
       const data = await res.json();
       
+      const answerText = data.answer || "Thank you for asking! Remember: consistent conceptual practice builds lasting mastery.";
+
+      // Record question & answer to Firestore database
+      try {
+        await saveAiDoubtToFirestore({
+          userId: currentUser?.uid || 'guest',
+          userEmail: currentUser?.email || undefined,
+          userName: currentUser?.displayName || undefined,
+          grade: selectedGrade,
+          subject: selectedSubject,
+          question: query,
+          answer: answerText
+        });
+      } catch (dbErr) {
+        console.warn('Could not record AI doubt to Firestore:', dbErr);
+      }
+
       const tutorMsg = {
         sender: 'tutor' as const,
-        text: data.answer || "Thank you for asking! Remember: consistent conceptual practice builds lasting mastery.",
+        text: answerText,
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
       setConversation((prev) => [...prev, tutorMsg]);

@@ -1,0 +1,57 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // User profiles & settings (private to the user)
+    match /users/{userId} {
+      allow read: if isOwner(userId);
+      allow create, update: if isOwner(userId);
+      allow delete: if isOwner(userId);
+    }
+
+    // Student curriculum progress & analytics
+    match /student_progress/{progressDocId} {
+      // Document ID is formatted as {userId}_{gradeNumber} or custom student ID
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated();
+    }
+
+    // Diagnostic quiz score submissions and history
+    match /quiz_attempts/{attemptId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update, delete: if isAuthenticated() && resource.data.userId == request.auth.uid;
+    }
+
+    // AI Tutor query logs & bookmarks
+    match /ai_tutor_history/{historyId} {
+      allow read, write: if isAuthenticated() && (resource == null || resource.data.userId == request.auth.uid);
+    }
+
+    // Admission inquiries & Callbacks (Public can create, authenticated users/admins can read)
+    match /admission_inquiries/{inquiryId} {
+      allow create: if true;
+      allow read, update, delete: if isAuthenticated();
+    }
+
+    // Contact messages (Public can create, authenticated users/admins can read)
+    match /contact_messages/{messageId} {
+      allow create: if true;
+      allow read, update, delete: if isAuthenticated();
+    }
+
+    // Default rule for other collections
+    match /{document=**} {
+      allow read, write: if isAuthenticated();
+    }
+  }
+}
