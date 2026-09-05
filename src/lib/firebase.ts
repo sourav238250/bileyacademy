@@ -16,4 +16,15 @@ googleProvider.setCustomParameters({
 // Initialize Cloud Firestore database with the configured database ID
 export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
 
+// Validate connection to Firestore on initialization
+if (typeof window !== 'undefined') {
+  import('firebase/firestore').then(({ doc, getDocFromServer }) => {
+    getDocFromServer(doc(db, '_connection_test', 'status')).catch((error) => {
+      if (error instanceof Error && error.message.includes('the client is offline')) {
+        console.warn('Firebase Firestore is operating in offline-cached mode.');
+      }
+    });
+  });
+}
+
 export default app;

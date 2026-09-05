@@ -1,0 +1,128 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Authenticated user profile and enrollment details",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "email": { "type": "string", "description": "User email address" },
+        "displayName": { "type": "string", "description": "Student or Guardian full name" },
+        "photoURL": { "type": "string", "description": "Avatar image URL" },
+        "selectedGrade": { "type": "number", "description": "Enrolled or active Class number (1-12)" },
+        "targetExam": { "type": "string", "description": "Target exam goal" },
+        "createdAt": { "type": "string", "description": "Account registration timestamp" },
+        "updatedAt": { "type": "string", "description": "Last profile update timestamp" }
+      },
+      "required": ["uid", "email"]
+    },
+    "StudentProgress": {
+      "title": "StudentProgress",
+      "description": "Progress tracking for a student within a specific grade curriculum",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Firebase Auth UID" },
+        "gradeNumber": { "type": "number", "description": "Academic grade (Class 1 to 12)" },
+        "completedChapterKeys": {
+          "type": "array",
+          "description": "List of completed chapter keys (e.g. math-ch-0)"
+        },
+        "updatedAt": { "type": "string", "description": "Last timestamp progress was synced" }
+      },
+      "required": ["userId", "gradeNumber", "completedChapterKeys"]
+    },
+    "QuizAttempt": {
+      "title": "QuizAttempt",
+      "description": "Diagnostic test submission record",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "User UID or guest" },
+        "userEmail": { "type": "string", "description": "User email if authenticated" },
+        "userName": { "type": "string", "description": "User name if authenticated" },
+        "tier": { "type": "string", "description": "Academic tier (primary, upper_primary, secondary, higher_secondary)" },
+        "subject": { "type": "string", "description": "Subject name" },
+        "score": { "type": "number", "description": "Total score achieved" },
+        "totalQuestions": { "type": "number", "description": "Total question count" },
+        "percentage": { "type": "number", "description": "Calculated score percentage" },
+        "timestamp": { "type": "string", "description": "Submission ISO timestamp" }
+      },
+      "required": ["userId", "tier", "subject", "score", "totalQuestions"]
+    },
+    "AdmissionInquiry": {
+      "title": "AdmissionInquiry",
+      "description": "Admission and Demo class booking inquiry",
+      "type": "object",
+      "properties": {
+        "studentName": { "type": "string", "description": "Student full name" },
+        "parentName": { "type": "string", "description": "Guardian or parent name" },
+        "gradeLevel": { "type": "string", "description": "Enrolling Class" },
+        "subjects": { "type": "array", "description": "Selected subjects" },
+        "phone": { "type": "string", "description": "Contact phone number" },
+        "email": { "type": "string", "description": "Contact email address" },
+        "targetGoal": { "type": "string", "description": "Target board or exam goal" },
+        "preferredBatchTime": { "type": "string", "description": "Preferred study batch timing" },
+        "userId": { "type": "string", "description": "User UID if signed in" },
+        "status": { "type": "string", "description": "Inquiry review status" },
+        "createdAt": { "type": "string", "description": "Submission ISO timestamp" }
+      },
+      "required": ["studentName", "gradeLevel", "subjects", "phone"]
+    },
+    "ContactMessage": {
+      "title": "ContactMessage",
+      "description": "General inquiry or support message from the contact form",
+      "type": "object",
+      "properties": {
+        "fullName": { "type": "string", "description": "Sender full name" },
+        "email": { "type": "string", "description": "Sender email" },
+        "phone": { "type": "string", "description": "Sender phone number" },
+        "inquiryType": { "type": "string", "description": "Category of inquiry" },
+        "message": { "type": "string", "description": "Message body" },
+        "status": { "type": "string", "description": "Message handling status" },
+        "createdAt": { "type": "string", "description": "Submission ISO timestamp" }
+      },
+      "required": ["fullName", "email", "inquiryType", "message"]
+    },
+    "AiTutorHistory": {
+      "title": "AiTutorHistory",
+      "description": "AI Tutor doubt and explanation history",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "User UID" },
+        "userEmail": { "type": "string", "description": "User email" },
+        "userName": { "type": "string", "description": "User display name" },
+        "grade": { "type": "string", "description": "Class grade" },
+        "subject": { "type": "string", "description": "Academic subject" },
+        "question": { "type": "string", "description": "Student question text" },
+        "answer": { "type": "string", "description": "AI tutor response text" },
+        "timestamp": { "type": "string", "description": "Query ISO timestamp" }
+      },
+      "required": ["userId", "grade", "subject", "question", "answer"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Authenticated user profile documents"
+    },
+    "/student_progress/{progressDocId}": {
+      "schema": { "$ref": "#/entities/StudentProgress" },
+      "description": "Curriculum chapter completion progress per student and grade"
+    },
+    "/quiz_attempts/{attemptId}": {
+      "schema": { "$ref": "#/entities/QuizAttempt" },
+      "description": "Diagnostic quiz test attempt records"
+    },
+    "/admission_inquiries/{inquiryId}": {
+      "schema": { "$ref": "#/entities/AdmissionInquiry" },
+      "description": "Student admission and demo booking submissions"
+    },
+    "/contact_messages/{messageId}": {
+      "schema": { "$ref": "#/entities/ContactMessage" },
+      "description": "General contact and query messages"
+    },
+    "/ai_tutor_history/{historyId}": {
+      "schema": { "$ref": "#/entities/AiTutorHistory" },
+      "description": "AI Tutor questions and response transcripts"
+    }
+  }
+}
