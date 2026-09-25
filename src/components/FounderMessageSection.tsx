@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { Logo } from './Logo';
 import { FOUNDER_INFO } from '../data/academyData';
-import souravDindaImg from '../assets/images/sourav_dinda_photo_1788237199819.jpg';
+import souravDindaImg from '../assets/images/sourav_dinda_director_official.jpg';
 import { useLanguage } from '../context/LanguageContext';
 
 export const FounderMessageSection: React.FC = () => {
@@ -70,12 +70,12 @@ export const FounderMessageSection: React.FC = () => {
 
               {/* Portrait Photo */}
               <div className="relative inline-block mb-4 mt-2">
-                <div className="w-44 h-52 sm:w-48 sm:h-56 rounded-2xl overflow-hidden mx-auto border-2 border-amber-400 shadow-2xl p-1 bg-slate-900">
+                <div className="w-52 h-64 sm:w-60 sm:h-76 rounded-2xl overflow-hidden mx-auto border-2 border-amber-400 shadow-2xl p-1 bg-slate-900">
                   <img 
                     src={souravDindaImg} 
                     alt={FOUNDER_INFO.name}
                     referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover object-top rounded-xl"
+                    className="w-full h-full object-cover object-center rounded-xl"
                   />
                 </div>
                 <div className="absolute -bottom-2.5 right-1/2 translate-x-1/2 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 text-[11px] font-black px-3.5 py-0.5 rounded-full uppercase tracking-wider shadow-lg whitespace-nowrap">

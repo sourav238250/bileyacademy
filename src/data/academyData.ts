@@ -1,5 +1,5 @@
 import { FacultyMember, Testimonial } from '../types';
-import souravDindaImg from '../assets/images/sourav_dinda_photo_1788237199819.jpg';
+import souravDindaImg from '../assets/images/sourav_dinda_director_official.jpg';
 
 export const FOUNDER_INFO = {
   name: "Mr. Sourav Dinda",
