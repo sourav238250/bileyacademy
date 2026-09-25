@@ -71,12 +71,20 @@ export const FounderMessageSection: React.FC = () => {
               {/* Portrait Photo */}
               <div className="relative inline-block mb-4 mt-2">
                 <div className="w-52 h-64 sm:w-60 sm:h-76 rounded-2xl overflow-hidden mx-auto border-2 border-amber-400 shadow-2xl p-1 bg-slate-900">
-                  <img 
-                    src={souravDindaImg} 
-                    alt={FOUNDER_INFO.name}
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover object-center rounded-xl"
-                  />
+                  {souravDindaImg ? (
+                    <img 
+                      src={souravDindaImg} 
+                      alt={FOUNDER_INFO.name}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover object-top rounded-xl"
+                      onError={(e) => {
+                        // Do not show any dummy/avatar image - keep blank if unavailable
+                        (e.target as HTMLElement).style.display = 'none';
+                      }}
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-slate-900 rounded-xl" />
+                  )}
                 </div>
                 <div className="absolute -bottom-2.5 right-1/2 translate-x-1/2 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 text-[11px] font-black px-3.5 py-0.5 rounded-full uppercase tracking-wider shadow-lg whitespace-nowrap">
                   {isBengali ? 'প্রতিষ্ঠাতা ও অ্যাকাডেমিক ডিরেক্টর' : 'Founder & Academic Director'}

@@ -41,12 +41,19 @@ export const FacultySection: React.FC = () => {
                 {/* Avatar & Experience */}
                 <div className="flex items-start space-x-4 mb-4">
                   <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-amber-500/40 p-0.5 bg-slate-900 shrink-0">
-                    <img 
-                      src={mentor.avatarUrl} 
-                      alt={mentor.name}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover rounded-xl"
-                    />
+                    {mentor.avatarUrl ? (
+                      <img 
+                        src={mentor.avatarUrl} 
+                        alt={mentor.name}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover object-top rounded-xl"
+                        onError={(e) => {
+                          (e.target as HTMLElement).style.display = 'none';
+                        }}
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-slate-800 rounded-xl" />
+                    )}
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-white group-hover:text-amber-300 transition-colors">
