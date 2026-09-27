@@ -251,23 +251,12 @@ export const Footer: React.FC<FooterProps> = ({
 
         {/* Website Live Visitor & Academic Traffic Counter */}
         {stats && onOpenVisitorAnalytics && (
-          <div className="mt-12 pt-8 border-t border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="text-left">
-              <div className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center space-x-2">
-                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>{isBengali ? 'লাইভ ওয়েবসাইট ভিজিটর মেট্রিক্স' : 'Live Website Visitor Telemetry'}</span>
-              </div>
-              <p className="text-[11px] text-slate-400 mt-0.5">
-                {isBengali ? 'রিয়েল-টাইমে মোট পরিদর্শন ও অনন্য শিক্ষার্থীর পরিমাপ' : 'Real-time verified visits & academic traffic analytics'}
-              </p>
-            </div>
-            <div>
-              <VisitorCounterBadge 
-                stats={stats} 
-                onOpenAnalytics={onOpenVisitorAnalytics} 
-                variant="footer" 
-              />
-            </div>
+          <div className="mt-10 pt-8 border-t border-slate-800/80 w-full">
+            <VisitorCounterBadge 
+              stats={stats} 
+              onOpenAnalytics={onOpenVisitorAnalytics} 
+              variant="footer" 
+            />
           </div>
         )}
 

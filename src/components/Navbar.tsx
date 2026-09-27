@@ -23,25 +23,19 @@ import { ThemeToggle } from './ThemeToggle';
 import { LanguageToggle } from './LanguageToggle';
 import { AuthButton } from './AuthButton';
 import { useLanguage } from '../context/LanguageContext';
-import { SiteVisitorStats } from '../types';
-import { VisitorCounterBadge } from './VisitorCounterBadge';
 
 interface NavbarProps {
   activeSection: string;
   onNavigate: (sectionId: string) => void;
   onOpenDemoModal: () => void;
   onOpenInbox?: () => void;
-  stats?: SiteVisitorStats;
-  onOpenVisitorAnalytics?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ 
   activeSection, 
   onNavigate, 
   onOpenDemoModal,
-  onOpenInbox,
-  stats,
-  onOpenVisitorAnalytics
+  onOpenInbox
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isBengali, t } = useLanguage();
@@ -82,13 +76,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
           
           <div className="flex items-center space-x-3 sm:space-x-4">
-            {stats && onOpenVisitorAnalytics && (
-              <VisitorCounterBadge 
-                stats={stats} 
-                onOpenAnalytics={onOpenVisitorAnalytics} 
-                variant="header" 
-              />
-            )}
             <div className="flex items-center">
               <LanguageToggle variant="segmented" />
             </div>

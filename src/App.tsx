@@ -70,8 +70,6 @@ function AcademyApp() {
         onNavigate={handleNavigate}
         onOpenDemoModal={() => handleOpenInquiry()}
         onOpenInbox={() => setInboxModalOpen(true)}
-        stats={visitorStats}
-        onOpenVisitorAnalytics={openVisitorModal}
       />
 
       {/* Real-time Scrolling Announcement Ticker Bar */}
