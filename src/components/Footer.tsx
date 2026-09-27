@@ -9,16 +9,25 @@ import {
   MessageCircle
 } from 'lucide-react';
 import { Logo } from './Logo';
-import { GradeCategory } from '../types';
+import { GradeCategory, SiteVisitorStats } from '../types';
 import { useLanguage } from '../context/LanguageContext';
+import { VisitorCounterBadge } from './VisitorCounterBadge';
 
 interface FooterProps {
   onNavigate: (sectionId: string) => void;
   onSelectCategory: (category: GradeCategory) => void;
   onOpenInbox?: () => void;
+  stats?: SiteVisitorStats;
+  onOpenVisitorAnalytics?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectCategory, onOpenInbox }) => {
+export const Footer: React.FC<FooterProps> = ({ 
+  onNavigate, 
+  onSelectCategory, 
+  onOpenInbox,
+  stats,
+  onOpenVisitorAnalytics
+}) => {
   const { isBengali, t } = useLanguage();
 
   const scrollToTop = () => {
@@ -240,8 +249,30 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectCategory, on
 
         </div>
 
+        {/* Website Live Visitor & Academic Traffic Counter */}
+        {stats && onOpenVisitorAnalytics && (
+          <div className="mt-12 pt-8 border-t border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="text-left">
+              <div className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center space-x-2">
+                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span>{isBengali ? 'লাইভ ওয়েবসাইট ভিজিটর মেট্রিক্স' : 'Live Website Visitor Telemetry'}</span>
+              </div>
+              <p className="text-[11px] text-slate-400 mt-0.5">
+                {isBengali ? 'রিয়েল-টাইমে মোট পরিদর্শন ও অনন্য শিক্ষার্থীর পরিমাপ' : 'Real-time verified visits & academic traffic analytics'}
+              </p>
+            </div>
+            <div>
+              <VisitorCounterBadge 
+                stats={stats} 
+                onOpenAnalytics={onOpenVisitorAnalytics} 
+                variant="footer" 
+              />
+            </div>
+          </div>
+        )}
+
         {/* Bottom copyright */}
-        <div className="mt-12 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+        <div className="mt-8 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
           <p>© {new Date().getFullYear()} Biley Academy. {isBengali ? 'সর্বস্বত্ব সংরক্ষিত। চরিত্র গঠন ও শ্রেষ্ঠত্ব অর্জনে নিবেদিত।' : 'All Rights Reserved. Shaping bright futures with character & excellence.'}</p>
           <button
             onClick={scrollToTop}

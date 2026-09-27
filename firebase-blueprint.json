@@ -97,6 +97,38 @@
         "timestamp": { "type": "string", "description": "Query ISO timestamp" }
       },
       "required": ["userId", "grade", "subject", "question", "answer"]
+    },
+    "SiteStats": {
+      "title": "SiteStats",
+      "description": "Aggregate website visitor count and engagement analytics metrics",
+      "type": "object",
+      "properties": {
+        "totalVisits": { "type": "number", "description": "Total cumulative page view count" },
+        "uniqueVisitors": { "type": "number", "description": "Total unique visitor count" },
+        "totalSessions": { "type": "number", "description": "Total browsing session count" },
+        "todayVisits": { "type": "number", "description": "Visitor count recorded today" },
+        "lastResetDate": { "type": "string", "description": "Date string (YYYY-MM-DD) for daily stats reset" },
+        "mobileVisits": { "type": "number", "description": "Count of visits from mobile devices" },
+        "desktopVisits": { "type": "number", "description": "Count of visits from desktop/laptop devices" },
+        "updatedAt": { "type": "string", "description": "Last increment timestamp" }
+      },
+      "required": ["totalVisits", "uniqueVisitors"]
+    },
+    "VisitorLog": {
+      "title": "VisitorLog",
+      "description": "Anonymized log of academic visitors and page interest",
+      "type": "object",
+      "properties": {
+        "visitorId": { "type": "string", "description": "Anonymized persistent visitor client ID" },
+        "sessionId": { "type": "string", "description": "Session identifier" },
+        "page": { "type": "string", "description": "Visited section or view" },
+        "device": { "type": "string", "description": "Device category (mobile/tablet/desktop)" },
+        "browser": { "type": "string", "description": "Browser client name" },
+        "language": { "type": "string", "description": "Selected language interface" },
+        "referrer": { "type": "string", "description": "Referrer source if any" },
+        "timestamp": { "type": "string", "description": "Visit timestamp in ISO format" }
+      },
+      "required": ["visitorId", "timestamp"]
     }
   },
   "firestore": {
@@ -123,6 +155,14 @@
     "/ai_tutor_history/{historyId}": {
       "schema": { "$ref": "#/entities/AiTutorHistory" },
       "description": "AI Tutor questions and response transcripts"
+    },
+    "/site_stats/{statsDocId}": {
+      "schema": { "$ref": "#/entities/SiteStats" },
+      "description": "Aggregate website visitor count and analytics"
+    },
+    "/visitor_logs/{logId}": {
+      "schema": { "$ref": "#/entities/VisitorLog" },
+      "description": "Anonymized real-time visitor activity stream"
     }
   }
 }

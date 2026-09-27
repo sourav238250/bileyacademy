@@ -20,6 +20,8 @@ import { OfficialAdmissionBanner } from './components/OfficialAdmissionBanner';
 import { NoticeTickerBar } from './components/NoticeTickerBar';
 import { Footer } from './components/Footer';
 import { InquiriesInboxModal } from './components/InquiriesInboxModal';
+import { VisitorAnalyticsModal } from './components/VisitorAnalyticsModal';
+import { useVisitorCounter } from './hooks/useVisitorCounter';
 import { GradeCategory, SubjectCurriculum } from './types';
 import { SubjectModal } from './components/SubjectModal';
 import { X, Calendar, Sparkles, MessageCircle, Inbox } from 'lucide-react';
@@ -32,6 +34,14 @@ function AcademyApp() {
   const [inboxModalOpen, setInboxModalOpen] = useState<boolean>(false);
   const [inquirySubject, setInquirySubject] = useState<string | undefined>(undefined);
   const [inspectedSubject, setInspectedSubject] = useState<{ subject: SubjectCurriculum; gradeLabel: string } | null>(null);
+
+  // Live Visitor Counting & Real-time Analytics
+  const { 
+    stats: visitorStats, 
+    isModalOpen: visitorModalOpen, 
+    openModal: openVisitorModal, 
+    closeModal: closeVisitorModal 
+  } = useVisitorCounter('Home');
 
   const handleNavigate = (sectionId: string) => {
     setActiveSection(sectionId);
@@ -60,6 +70,8 @@ function AcademyApp() {
         onNavigate={handleNavigate}
         onOpenDemoModal={() => handleOpenInquiry()}
         onOpenInbox={() => setInboxModalOpen(true)}
+        stats={visitorStats}
+        onOpenVisitorAnalytics={openVisitorModal}
       />
 
       {/* Real-time Scrolling Announcement Ticker Bar */}
@@ -134,6 +146,15 @@ function AcademyApp() {
         onNavigate={handleNavigate}
         onSelectCategory={handleSelectCategory}
         onOpenInbox={() => setInboxModalOpen(true)}
+        stats={visitorStats}
+        onOpenVisitorAnalytics={openVisitorModal}
+      />
+
+      {/* Website Visitor & Live Traffic Analytics Modal */}
+      <VisitorAnalyticsModal
+        isOpen={visitorModalOpen}
+        onClose={closeVisitorModal}
+        stats={visitorStats}
       />
 
       {/* Inquiries & Official Mailbox Inbox Modal */}

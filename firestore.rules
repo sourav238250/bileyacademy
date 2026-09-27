@@ -47,6 +47,17 @@ service cloud.firestore {
       allow update, delete: if isAuthenticated();
     }
 
+    // Website Visitor Stats & Aggregate Counter (Public read and atomic increment for accurate live counter)
+    match /site_stats/{statsDocId} {
+      allow read, write: if true;
+    }
+
+    // Anonymized Visitor Logs (Public create and read for live traffic stream)
+    match /visitor_logs/{logId} {
+      allow read, create: if true;
+      allow update, delete: if isAuthenticated();
+    }
+
     // Default rule for other collections
     match /{document=**} {
       allow read, write: if isAuthenticated();

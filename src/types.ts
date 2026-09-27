@@ -151,3 +151,26 @@ export interface NoticeItem {
   details?: string[];
 }
 
+export interface SiteVisitorStats {
+  totalVisits: number;
+  uniqueVisitors: number;
+  totalSessions: number;
+  todayVisits: number;
+  lastResetDate: string;
+  mobileVisits?: number;
+  desktopVisits?: number;
+  updatedAt?: string;
+}
+
+export interface VisitorLogItem {
+  id?: string;
+  visitorId: string;
+  sessionId?: string;
+  page: string;
+  device: string;
+  browser?: string;
+  language?: string;
+  referrer?: string;
+  timestamp: string;
+}
+
