@@ -237,10 +237,10 @@ export const QuizSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Level & Subject Selector Tabs */}
-        <div className="max-w-4xl mx-auto mb-8 bg-slate-900 p-4 rounded-2xl border border-slate-800 flex flex-wrap items-center justify-between gap-4">
-          {/* Tier Buttons */}
-          <div className="flex flex-wrap gap-2">
+        {/* Level & Subject Selector Tabs with Scroller */}
+        <div className="max-w-4xl mx-auto mb-8 bg-slate-900 p-4 rounded-2xl border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          {/* Tier Buttons Scroller */}
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth flex-nowrap py-1">
             {[
               { id: 'primary', label: 'Primary (Cl 1-4)' },
               { id: 'upper_primary', label: 'Upper Primary (Cl 5-8)' },
@@ -253,9 +253,9 @@ export const QuizSection: React.FC = () => {
                   setSelectedTier(t.id as any);
                   handleResetQuiz();
                 }}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 whitespace-nowrap cursor-pointer ${
                   selectedTier === t.id
-                    ? 'bg-amber-500 text-slate-950 shadow-md'
+                    ? 'bg-amber-500 text-slate-950 shadow-md font-black'
                     : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
                 }`}
               >

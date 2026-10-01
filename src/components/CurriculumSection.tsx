@@ -90,64 +90,66 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
           </p>
         </div>
 
-        {/* 4 Category Navigation Tabs */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
-          {GRADE_CATEGORIES.map((category) => {
-            const isSelected = selectedCategory === category.id;
-            return (
-              <button
-                key={category.id}
-                id={`category-tab-${category.id}`}
-                onClick={() => {
-                  onSelectCategory(category.id);
-                  setActiveGradeIndex(0);
-                  setSearchQuery('');
-                }}
-                className={`p-4 rounded-2xl text-left transition-all border flex flex-col justify-between ${
-                  isSelected 
-                    ? 'bg-slate-900 border-amber-500 shadow-xl shadow-amber-500/10 ring-1 ring-amber-500/50' 
-                    : 'bg-slate-950 border-slate-800 hover:border-slate-700 hover:bg-slate-900/60'
-                }`}
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${
-                      isSelected ? 'bg-amber-500 text-slate-950' : 'bg-slate-800 text-slate-400'
-                    }`}>
-                      {category.classes}
-                    </span>
-                    <span className="text-[10px] text-slate-400">{category.badge}</span>
+        {/* 4 Category Navigation Tabs with Responsive Scroller */}
+        <div className="relative mb-8">
+          <div className="flex md:grid overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory md:grid-cols-2 lg:grid-cols-4 gap-3.5 pb-2 md:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
+            {GRADE_CATEGORIES.map((category) => {
+              const isSelected = selectedCategory === category.id;
+              return (
+                <button
+                  key={category.id}
+                  id={`category-tab-${category.id}`}
+                  onClick={() => {
+                    onSelectCategory(category.id);
+                    setActiveGradeIndex(0);
+                    setSearchQuery('');
+                  }}
+                  className={`p-4 rounded-2xl text-left transition-all border flex flex-col justify-between min-w-[240px] sm:min-w-[260px] md:min-w-0 snap-start shrink-0 md:shrink cursor-pointer ${
+                    isSelected 
+                      ? 'bg-slate-900 border-amber-500 shadow-xl shadow-amber-500/10 ring-1 ring-amber-500/50' 
+                      : 'bg-slate-950 border-slate-800 hover:border-slate-700 hover:bg-slate-900/60'
+                  }`}
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${
+                        isSelected ? 'bg-amber-500 text-slate-950' : 'bg-slate-800 text-slate-400'
+                      }`}>
+                        {category.classes}
+                      </span>
+                      <span className="text-[10px] text-slate-400 font-medium">{category.badge}</span>
+                    </div>
+                    <h3 className={`text-base font-bold ${isSelected ? 'text-amber-400' : 'text-white'}`}>
+                      {category.title}
+                    </h3>
                   </div>
-                  <h3 className={`text-base font-bold ${isSelected ? 'text-amber-400' : 'text-white'}`}>
-                    {category.title}
-                  </h3>
-                </div>
 
-                <div className="mt-3 pt-2 border-t border-slate-800/80 flex flex-wrap gap-1">
-                  {category.subjectsList.slice(0, 3).map((sub, i) => (
-                    <span key={i} className="text-[10px] bg-slate-900 text-slate-400 px-1.5 py-0.5 rounded">
-                      {sub}
-                    </span>
-                  ))}
-                  {category.subjectsList.length > 3 && (
-                    <span className="text-[10px] bg-amber-500/10 text-amber-300 px-1 py-0.5 rounded font-bold">
-                      +{category.subjectsList.length - 3}
-                    </span>
-                  )}
-                </div>
-              </button>
-            );
-          })}
+                  <div className="mt-3 pt-2 border-t border-slate-800/80 flex flex-wrap gap-1">
+                    {category.subjectsList.slice(0, 3).map((sub, i) => (
+                      <span key={i} className="text-[10px] bg-slate-900 text-slate-400 px-1.5 py-0.5 rounded">
+                        {sub}
+                      </span>
+                    ))}
+                    {category.subjectsList.length > 3 && (
+                      <span className="text-[10px] bg-amber-500/10 text-amber-300 px-1 py-0.5 rounded font-bold">
+                        +{category.subjectsList.length - 3}
+                      </span>
+                    )}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Multi-Grade Sub-Selector Pills if category contains multiple grades */}
+        {/* Multi-Grade Sub-Selector Pills with Horizontal Tab Scroller */}
         {filteredGrades.length > 1 && (
-          <div className="flex flex-wrap items-center gap-2 mb-6 bg-slate-900/90 p-2 rounded-2xl border border-slate-800">
-            <span className="text-xs font-bold text-slate-400 px-2 py-1 flex items-center space-x-1.5">
+          <div className="flex items-center gap-2 mb-6 bg-slate-900/90 p-2.5 rounded-2xl border border-slate-800 shadow-sm overflow-hidden">
+            <span className="text-xs font-bold text-slate-400 px-2 py-1 flex items-center space-x-1.5 shrink-0">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-              <span>{isBengali ? 'শ্রেণি নির্বাচন:' : 'Select Target Class:'}</span>
+              <span>{isBengali ? 'শ্রেণি নির্বাচন:' : 'Target Class:'}</span>
             </span>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth flex-nowrap py-0.5 pr-2">
               {filteredGrades.map((grade, idx) => {
                 const isGradeActive = (activeGradeIndex === idx) || (!filteredGrades[activeGradeIndex] && idx === 0);
                 return (
@@ -158,9 +160,9 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
                       setActiveGradeIndex(idx);
                       setSearchQuery('');
                     }}
-                    className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 ${
+                    className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 shrink-0 whitespace-nowrap cursor-pointer ${
                       isGradeActive
-                        ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20 font-black'
+                        ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20 font-black scale-105'
                         : 'bg-slate-950 text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800'
                     }`}
                   >

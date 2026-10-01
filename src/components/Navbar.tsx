@@ -200,6 +200,36 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
+      {/* Horizontal Tab Scroller Navigation Bar for Quick Browsing (Mobile & Tablet) */}
+      <div className="lg:hidden border-t border-slate-800/80 bg-slate-950/90 backdrop-blur-md px-3 py-1.5 overflow-hidden">
+        <div className="flex items-center space-x-1.5 overflow-x-auto no-scrollbar scroll-smooth flex-nowrap py-0.5">
+          {navLinks.map((item) => {
+            const Icon = item.icon;
+            const isActive = activeSection === item.id;
+            return (
+              <button
+                key={`scroll-tab-${item.id}`}
+                id={`scroll-tab-${item.id}`}
+                onClick={() => handleNavClick(item.id)}
+                className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center space-x-1.5 shrink-0 whitespace-nowrap transition-all cursor-pointer ${
+                  isActive
+                    ? 'bg-amber-500 text-slate-950 shadow-md font-bold'
+                    : 'text-slate-300 hover:text-white bg-slate-900/80 hover:bg-slate-850 border border-slate-800'
+                }`}
+              >
+                <Icon className="w-3.5 h-3.5" />
+                <span>{item.label}</span>
+                {item.badge && (
+                  <span className="text-[9px] bg-amber-500 text-slate-950 font-black px-1.5 py-0.2 rounded-full">
+                    {item.badge}
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-slate-800 bg-slate-900/98 px-4 pt-3 pb-6 space-y-2 shadow-2xl animate-in slide-in-from-top duration-200">

@@ -90,31 +90,33 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ onOpenInquiry })
           />
         </div>
 
-        {/* 2. Gallery Category Filter Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
-          {GALLERY_CATEGORIES.map(category => {
-            const isActive = selectedCategory === category.id;
-            return (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id as GalleryCategory)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center space-x-2 ${
-                  isActive
-                    ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20 scale-105'
-                    : 'bg-slate-900 text-slate-300 hover:bg-slate-800 hover:text-white border border-slate-800'
-                }`}
-              >
-                <span>{category.label}</span>
-                <span className={`px-1.5 py-0.5 rounded-md text-[10px] font-black ${
-                  isActive ? 'bg-slate-950 text-amber-300' : 'bg-slate-800 text-slate-400'
-                }`}>
-                  {category.id === 'all' 
-                    ? GALLERY_ITEMS.length 
-                    : GALLERY_ITEMS.filter(i => i.category === category.id).length}
-                </span>
-              </button>
-            );
-          })}
+        {/* 2. Gallery Category Filter Pills with Tab Scroller */}
+        <div className="w-full mb-8">
+          <div className="flex items-center sm:justify-center gap-2 overflow-x-auto no-scrollbar scroll-smooth py-2 px-1 -mx-4 sm:mx-0 px-4 sm:px-0">
+            {GALLERY_CATEGORIES.map(category => {
+              const isActive = selectedCategory === category.id;
+              return (
+                <button
+                  key={category.id}
+                  onClick={() => setSelectedCategory(category.id as GalleryCategory)}
+                  className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center space-x-2 shrink-0 whitespace-nowrap cursor-pointer ${
+                    isActive
+                      ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20 scale-105'
+                      : 'bg-slate-900 text-slate-300 hover:bg-slate-800 hover:text-white border border-slate-800'
+                  }`}
+                >
+                  <span>{category.label}</span>
+                  <span className={`px-1.5 py-0.5 rounded-md text-[10px] font-black ${
+                    isActive ? 'bg-slate-950 text-amber-300' : 'bg-slate-800 text-slate-400'
+                  }`}>
+                    {category.id === 'all' 
+                      ? GALLERY_ITEMS.length 
+                      : GALLERY_ITEMS.filter(i => i.category === category.id).length}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* 3. Photo & Notice Grid */}

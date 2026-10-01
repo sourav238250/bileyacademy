@@ -173,12 +173,12 @@ export const NoticeBoardWidget: React.FC<NoticeBoardWidgetProps> = ({
         </div>
       </div>
 
-      {/* Category Filter Tabs */}
+      {/* Category Filter Tabs with Horizontal Scroller */}
       <div className="px-4 py-2.5 bg-slate-950/70 border-b border-slate-800/80 flex items-center justify-between gap-2 overflow-x-auto no-scrollbar">
-        <div className="flex items-center space-x-1.5 flex-nowrap">
+        <div className="flex items-center space-x-1.5 flex-nowrap shrink-0 py-0.5">
           <button
             onClick={() => setSelectedCategory('all')}
-            className={`px-2.5 py-1 rounded-lg text-xs font-bold whitespace-nowrap transition-all ${
+            className={`px-2.5 py-1 rounded-lg text-xs font-bold whitespace-nowrap shrink-0 transition-all cursor-pointer ${
               selectedCategory === 'all'
                 ? 'bg-amber-500 text-slate-950 shadow-sm'
                 : 'bg-slate-900 text-slate-400 hover:text-slate-200 hover:bg-slate-800'
@@ -189,7 +189,7 @@ export const NoticeBoardWidget: React.FC<NoticeBoardWidgetProps> = ({
 
           <button
             onClick={() => setSelectedCategory('admission')}
-            className={`px-2.5 py-1 rounded-lg text-xs font-bold whitespace-nowrap transition-all ${
+            className={`px-2.5 py-1 rounded-lg text-xs font-bold whitespace-nowrap shrink-0 transition-all cursor-pointer ${
               selectedCategory === 'admission'
                 ? 'bg-emerald-500 text-slate-950 shadow-sm'
                 : 'bg-slate-900 text-slate-400 hover:text-emerald-300 hover:bg-slate-800'
@@ -200,7 +200,7 @@ export const NoticeBoardWidget: React.FC<NoticeBoardWidgetProps> = ({
 
           <button
             onClick={() => setSelectedCategory('examination')}
-            className={`px-2.5 py-1 rounded-lg text-xs font-bold whitespace-nowrap transition-all ${
+            className={`px-2.5 py-1 rounded-lg text-xs font-bold whitespace-nowrap shrink-0 transition-all cursor-pointer ${
               selectedCategory === 'examination'
                 ? 'bg-amber-500 text-slate-950 shadow-sm'
                 : 'bg-slate-900 text-slate-400 hover:text-amber-300 hover:bg-slate-800'
@@ -211,7 +211,7 @@ export const NoticeBoardWidget: React.FC<NoticeBoardWidgetProps> = ({
 
           <button
             onClick={() => setSelectedCategory('news')}
-            className={`px-2.5 py-1 rounded-lg text-xs font-bold whitespace-nowrap transition-all ${
+            className={`px-2.5 py-1 rounded-lg text-xs font-bold whitespace-nowrap shrink-0 transition-all cursor-pointer ${
               selectedCategory === 'news'
                 ? 'bg-blue-500 text-slate-950 shadow-sm'
                 : 'bg-slate-900 text-slate-400 hover:text-blue-300 hover:bg-slate-800'

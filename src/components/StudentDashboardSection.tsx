@@ -252,26 +252,28 @@ export const StudentDashboardSection: React.FC<StudentDashboardSectionProps> = (
               </div>
             </div>
 
-            {/* Quick Profile Selectors & Grade Dropdown */}
-            <div className="flex flex-wrap items-center gap-2.5">
-              <span className="text-xs font-bold text-slate-400 mr-1">Switch Profile:</span>
-              {SAMPLE_STUDENT_PROFILES.map((student, idx) => (
-                <button
-                  key={student.id}
-                  id={`btn-profile-${student.id}`}
-                  onClick={() => handleSelectStudentPreset(idx)}
-                  className={`text-xs px-3 py-1.5 rounded-xl font-bold transition-all border ${
-                    selectedStudentIndex === idx
-                      ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-md shadow-amber-500/20'
-                      : 'bg-slate-950 text-slate-300 border-slate-700 hover:border-slate-600 hover:bg-slate-800'
-                  }`}
-                >
-                  {student.name.split(' ')[0]} ({student.gradeLabel.split(' ')[1]})
-                </button>
-              ))}
+            {/* Quick Profile Selectors & Grade Dropdown with Scroller */}
+            <div className="flex items-center gap-2 max-w-full overflow-x-auto no-scrollbar scroll-smooth flex-nowrap py-1">
+              <span className="text-xs font-bold text-slate-400 mr-1 shrink-0">Switch:</span>
+              <div className="flex items-center gap-2 shrink-0">
+                {SAMPLE_STUDENT_PROFILES.map((student, idx) => (
+                  <button
+                    key={student.id}
+                    id={`btn-profile-${student.id}`}
+                    onClick={() => handleSelectStudentPreset(idx)}
+                    className={`text-xs px-3 py-1.5 rounded-xl font-bold transition-all border shrink-0 whitespace-nowrap cursor-pointer ${
+                      selectedStudentIndex === idx
+                        ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-md shadow-amber-500/20'
+                        : 'bg-slate-950 text-slate-300 border-slate-700 hover:border-slate-600 hover:bg-slate-800'
+                    }`}
+                  >
+                    {student.name.split(' ')[0]} ({student.gradeLabel.split(' ')[1]})
+                  </button>
+                ))}
+              </div>
 
               {/* Class Dropdown for full 1-12 range */}
-              <div className="relative">
+              <div className="relative shrink-0">
                 <select
                   id="select-custom-grade"
                   value={activeGradeNumber}
@@ -284,7 +286,7 @@ export const StudentDashboardSection: React.FC<StudentDashboardSectionProps> = (
                       setSelectedStudentIndex(matchingIdx);
                     }
                   }}
-                  className="bg-slate-950 border border-slate-700 text-amber-300 text-xs font-bold rounded-xl px-3 py-1.5 focus:outline-none focus:border-amber-400"
+                  className="bg-slate-950 border border-slate-700 text-amber-300 text-xs font-bold rounded-xl px-3 py-1.5 focus:outline-none focus:border-amber-400 cursor-pointer"
                 >
                   {ALL_GRADES_DATA.map(g => (
                     <option key={g.gradeNumber} value={g.gradeNumber}>
@@ -512,31 +514,33 @@ export const StudentDashboardSection: React.FC<StudentDashboardSectionProps> = (
               </p>
             </div>
 
-            {/* Filter by subject pill tabs */}
-            <div className="flex flex-wrap items-center gap-1.5">
-              <button
-                onClick={() => setFilterSubject('all')}
-                className={`text-xs px-3 py-1 rounded-xl font-semibold transition-colors ${
-                  filterSubject === 'all'
-                    ? 'bg-amber-500 text-slate-950'
-                    : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
-                }`}
-              >
-                All Subjects ({currentGradeData.subjects.length})
-              </button>
-              {currentGradeData.subjects.map(s => (
+            {/* Filter by subject pill tabs with Horizontal Scroller */}
+            <div className="w-full sm:w-auto overflow-hidden">
+              <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar scroll-smooth flex-nowrap py-1 px-1 -mx-2 sm:mx-0">
                 <button
-                  key={s.id}
-                  onClick={() => setFilterSubject(s.id)}
-                  className={`text-xs px-2.5 py-1 rounded-xl font-semibold transition-colors ${
-                    filterSubject === s.id
-                      ? 'bg-amber-500 text-slate-950'
+                  onClick={() => setFilterSubject('all')}
+                  className={`text-xs px-3 py-1.5 rounded-xl font-semibold transition-all shrink-0 whitespace-nowrap cursor-pointer ${
+                    filterSubject === 'all'
+                      ? 'bg-amber-500 text-slate-950 shadow-sm font-bold'
                       : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
                   }`}
                 >
-                  {s.name}
+                  All Subjects ({currentGradeData.subjects.length})
                 </button>
-              ))}
+                {currentGradeData.subjects.map(s => (
+                  <button
+                    key={s.id}
+                    onClick={() => setFilterSubject(s.id)}
+                    className={`text-xs px-3 py-1.5 rounded-xl font-semibold transition-all shrink-0 whitespace-nowrap cursor-pointer ${
+                      filterSubject === s.id
+                        ? 'bg-amber-500 text-slate-950 shadow-sm font-bold'
+                        : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
+                    }`}
+                  >
+                    {s.name}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
