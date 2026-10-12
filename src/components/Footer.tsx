@@ -6,7 +6,8 @@ import {
   Clock, 
   ArrowUp,
   ShieldCheck,
-  MessageCircle
+  MessageCircle,
+  ExternalLink
 } from 'lucide-react';
 import { Logo } from './Logo';
 import { GradeCategory, SiteVisitorStats } from '../types';
@@ -221,6 +222,15 @@ export const Footer: React.FC<FooterProps> = ({
                   <p className="text-slate-300">
                     {isBengali ? 'যমুনা, পিংলা, পশ্চিম মেদিনীপুর, পিন-৭২১১৪০, পশ্চিমবঙ্গ' : 'Jamna, Pingla, Paschim Medinipur, PIN-721140, West Bengal, India'}
                   </p>
+                  <a 
+                    href="https://maps.app.goo.gl/7nDQ6SVzmUgYzhLR7?g_st=aw"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-[11px] text-amber-300 hover:text-amber-200 font-semibold mt-1.5 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 px-2 py-0.5 rounded-lg transition-colors"
+                  >
+                    <ExternalLink className="w-3 h-3 text-amber-400" />
+                    <span>{isBengali ? 'গুগল ম্যাপে দেখুন' : 'View on Google Maps'}</span>
+                  </a>
                 </div>
               </div>
               <div className="flex items-center space-x-2.5">

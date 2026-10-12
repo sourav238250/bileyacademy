@@ -22,6 +22,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
 import { submitContactMessageToFirestore } from '../lib/firestoreService';
 import { Inbox } from 'lucide-react';
+import { CampusGoogleMap, CAMPUS_LOCATION } from './CampusGoogleMap';
 
 interface ContactSectionProps {
   onOpenInbox?: () => void;
@@ -324,6 +325,27 @@ ${submittedData.message}`;
                   <span className="text-[11px] text-slate-400 block mt-0.5">
                     {isBengali ? 'যমুনা বাস স্ট্যান্ড সংলগ্ন • পিংলা ব্লক শিক্ষাকেন্দ্র' : 'Near Jamna Bus Stand • Pingla Block Educational Hub'}
                   </span>
+                  <div className="flex flex-wrap items-center gap-2 mt-2.5">
+                    <a
+                      href={CAMPUS_LOCATION.googleMapsShareUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-[11px] text-amber-300 hover:text-amber-200 font-bold bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 px-2.5 py-1 rounded-lg transition-colors"
+                    >
+                      <ExternalLink className="w-3 h-3 text-amber-400" />
+                      <span>{isBengali ? 'গুগল ম্যাপে খুলুন' : 'Open in Google Maps'}</span>
+                    </a>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const el = document.getElementById('campus-google-map');
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="inline-flex items-center gap-1 text-[11px] text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-800 border border-slate-700 px-2 py-1 rounded-lg transition-colors cursor-pointer"
+                    >
+                      <span>{isBengali ? 'ম্যাপ দেখুন ↓' : 'View Map ↓'}</span>
+                    </button>
+                  </div>
                 </div>
               </div>
 
@@ -710,6 +732,11 @@ ${submittedData.message}`;
             </div>
           </div>
 
+        </div>
+
+        {/* Interactive Google Maps Campus Locator */}
+        <div id="campus-google-map" className="mt-12 sm:mt-16 pt-10 border-t border-slate-800/80 scroll-mt-24">
+          <CampusGoogleMap />
         </div>
 
       </div>

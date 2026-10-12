@@ -4,7 +4,8 @@ import {
   initializeFirestore, 
   getFirestore,
   persistentLocalCache,
-  persistentMultipleTabManager
+  persistentMultipleTabManager,
+  memoryLocalCache
 } from 'firebase/firestore';
 import firebaseConfig from '../../firebase-applet-config.json';
 
@@ -18,13 +19,14 @@ googleProvider.setCustomParameters({
   prompt: 'select_account'
 });
 
-// Initialize Cloud Firestore database with optimal web/iframe settings and local caching
+// Initialize Cloud Firestore database with forced long-polling to prevent stream timeouts
+// and ensure immediate, seamless communication in web/iframe environments.
 let firestoreDb;
 try {
   firestoreDb = initializeFirestore(
     app,
     {
-      experimentalAutoDetectLongPolling: true,
+      experimentalForceLongPolling: true,
       ignoreUndefinedProperties: true,
       localCache: persistentLocalCache({
         tabManager: persistentMultipleTabManager()
@@ -33,8 +35,20 @@ try {
     firebaseConfig.firestoreDatabaseId
   );
 } catch {
-  // If already initialized, retrieve existing instance
-  firestoreDb = getFirestore(app, firebaseConfig.firestoreDatabaseId);
+  try {
+    firestoreDb = initializeFirestore(
+      app,
+      {
+        experimentalForceLongPolling: true,
+        ignoreUndefinedProperties: true,
+        localCache: memoryLocalCache()
+      },
+      firebaseConfig.firestoreDatabaseId
+    );
+  } catch {
+    // If already initialized, retrieve existing instance
+    firestoreDb = getFirestore(app, firebaseConfig.firestoreDatabaseId);
+  }
 }
 
 export const db = firestoreDb;
