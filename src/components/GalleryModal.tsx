@@ -164,13 +164,13 @@ export const GalleryModal: React.FC<GalleryModalProps> = ({
               )}
 
               <a
-                href="https://wa.me/919732531730?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20your%20campus%20programs."
+                href="https://wa.me/918918807082?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20your%20campus%20programs."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-semibold text-xs border border-emerald-600 transition-colors flex items-center justify-center gap-1.5 shadow-sm"
               >
                 <MessageCircle className="w-3.5 h-3.5" />
-                <span>WhatsApp: 9732531730 (Only)</span>
+                <span>Call & WhatsApp: 8918807082</span>
               </a>
             </div>
 

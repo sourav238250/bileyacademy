@@ -94,30 +94,6 @@ export interface ContactFormErrors {
   message?: string;
 }
 
-export interface StudentProfile {
-  id: string;
-  name: string;
-  rollNumber: string;
-  gradeNumber: number;
-  gradeLabel: string;
-  batchName: string;
-  academicYear: string;
-  targetExam: string;
-  attendanceRate: number;
-  streakDays: number;
-}
-
-export interface SubjectProgressMetric {
-  subjectId: string;
-  subjectName: string;
-  completedChapters: number;
-  totalChapters: number;
-  percentage: number;
-  completedHours: number;
-  totalHours: number;
-  status: 'Ahead' | 'On Track' | 'Needs Attention';
-}
-
 export type GalleryCategory = 'all' | 'banner' | 'classroom' | 'labs' | 'mentorship' | 'events';
 
 export interface GalleryItem {

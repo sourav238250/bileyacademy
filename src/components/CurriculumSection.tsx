@@ -9,33 +9,28 @@ import {
   Dna, 
   BookA, 
   Code, 
-  CheckCircle2, 
   Clock, 
   Layers, 
   Search, 
   ChevronRight, 
   Download,
-  FileCheck2,
-  BarChart3
+  FileCheck2
 } from 'lucide-react';
 import { GRADE_CATEGORIES, ALL_GRADES_DATA } from '../data/curriculumData';
 import { GradeCategory, SubjectCurriculum } from '../types';
 import { SubjectModal } from './SubjectModal';
-import { getCompletedChapterKeys, calculateSubjectMetric, calculateGradeOverallProgress } from '../utils/progressStore';
 import { useLanguage } from '../context/LanguageContext';
 
 interface CurriculumSectionProps {
   selectedCategory: GradeCategory;
   onSelectCategory: (category: GradeCategory) => void;
   onOpenInquiry: (subjectName?: string) => void;
-  onNavigateToDashboard?: () => void;
 }
 
 export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
   selectedCategory,
   onSelectCategory,
-  onOpenInquiry,
-  onNavigateToDashboard
+  onOpenInquiry
 }) => {
   const [selectedSubject, setSelectedSubject] = useState<SubjectCurriculum | null>(null);
   const [activeGradeIndex, setActiveGradeIndex] = useState<number>(0);
@@ -60,10 +55,6 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
   // Get grades corresponding to current active category
   const filteredGrades = ALL_GRADES_DATA.filter(g => g.category === selectedCategory);
   const currentGrade = filteredGrades[activeGradeIndex] || filteredGrades[0] || ALL_GRADES_DATA[0];
-
-  // Current Grade Data & Progress
-  const completedKeys = getCompletedChapterKeys(currentGrade.gradeNumber);
-  const gradeOverallMetric = calculateGradeOverallProgress(currentGrade, completedKeys);
 
   // Subject filtering
   const visibleSubjects = currentGrade.subjects.filter(s => 
@@ -191,9 +182,9 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
               </h3>
             </div>
 
-            {/* Quick Search & Dashboard Link */}
-            <div className="flex items-center space-x-3 w-full md:w-auto">
-              <div className="relative flex-1 md:w-64">
+            {/* Quick Search */}
+            <div className="w-full md:w-72">
+              <div className="relative">
                 <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
@@ -203,37 +194,6 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
                   className="w-full pl-9 pr-3 py-2 text-xs bg-slate-950 border border-slate-700 rounded-xl text-slate-200 focus:outline-none focus:border-amber-400 transition-colors"
                 />
               </div>
-
-              {onNavigateToDashboard && (
-                <button
-                  onClick={onNavigateToDashboard}
-                  className="px-3.5 py-2 rounded-xl text-xs font-bold bg-amber-500/10 hover:bg-amber-500 text-amber-400 hover:text-slate-950 border border-amber-500/30 transition-all shrink-0 flex items-center space-x-1.5"
-                >
-                  <BarChart3 className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">{isBengali ? 'অগ্রগতি দেখুন' : 'Track Progress'}</span>
-                </button>
-              )}
-            </div>
-          </div>
-
-          {/* Curriculum Completion Progress Bar Banner */}
-          <div className="py-4 border-b border-slate-800">
-            <div className="flex items-center justify-between text-xs mb-1.5">
-              <span className="font-bold text-slate-300 flex items-center space-x-1.5">
-                <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                <span>
-                  {currentGrade.gradeLabel} {isBengali ? 'সিলেবাস অগ্রগতি অবস্থা:' : 'Syllabus Completion Status:'}
-                </span>
-              </span>
-              <span className="font-mono font-bold text-amber-400">
-                {gradeOverallMetric.overallPercentage}% {isBengali ? 'সম্পন্ন' : 'Completed'} ({gradeOverallMetric.completedChapters}/{gradeOverallMetric.totalChapters} {isBengali ? 'মডিউল' : 'Modules'})
-              </span>
-            </div>
-            <div className="w-full bg-slate-950 rounded-full h-2.5 p-0.5 border border-slate-800 overflow-hidden">
-              <div 
-                className="h-full rounded-full bg-gradient-to-r from-amber-500 via-amber-400 to-emerald-400 transition-all duration-500"
-                style={{ width: `${Math.max(3, gradeOverallMetric.overallPercentage)}%` }}
-              />
             </div>
           </div>
 
@@ -260,7 +220,6 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {visibleSubjects.map((subject) => {
             const Icon = getSubjectIcon(subject.iconName);
-            const subjMetric = calculateSubjectMetric(subject, completedKeys);
 
             return (
               <div
@@ -292,30 +251,14 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
                     {subject.description}
                   </p>
 
-                  {/* Subject Progress Bar */}
-                  <div className="mt-4 pt-3 border-t border-slate-800">
-                    <div className="flex items-center justify-between text-[11px] mb-1">
-                      <span className="text-slate-400 font-medium">
-                        {isBengali ? 'সিলেবাস অগ্রগতি' : 'Curriculum Progress'}
-                      </span>
-                      <span className="font-bold text-amber-400 font-mono">{subjMetric.percentage}%</span>
-                    </div>
-                    <div className="w-full bg-slate-950 rounded-full h-2 border border-slate-800/80 overflow-hidden">
-                      <div 
-                        className={`h-full rounded-full transition-all duration-500 ${
-                          subjMetric.percentage >= 75
-                            ? 'bg-gradient-to-r from-emerald-500 to-teal-400'
-                            : subjMetric.percentage >= 40
-                            ? 'bg-gradient-to-r from-amber-500 to-orange-400'
-                            : 'bg-gradient-to-r from-blue-500 to-indigo-400'
-                        }`}
-                        style={{ width: `${Math.max(4, subjMetric.percentage)}%` }}
-                      />
-                    </div>
-                    <div className="flex items-center justify-between text-[10px] text-slate-500 mt-1">
-                      <span>{subjMetric.completedChapters} of {subjMetric.totalChapters} {isBengali ? 'অধ্যায়' : 'Chapters'}</span>
-                      <span>{subjMetric.status}</span>
-                    </div>
+                  {/* Modules & Exam Pattern Overview */}
+                  <div className="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
+                    <span className="font-medium">
+                      {isBengali ? 'মোট অধ্যায়:' : 'Total Modules:'} <strong className="text-white">{subject.totalModules}</strong>
+                    </span>
+                    <span className="bg-slate-950 px-2 py-0.5 rounded border border-slate-800 text-amber-400 font-semibold truncate max-w-[150px]">
+                      {subject.examPattern}
+                    </span>
                   </div>
 
                   {/* Syllabus Preview Snippets */}
@@ -324,18 +267,14 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
                       {isBengali ? 'মূল অধ্যায়সমূহ' : 'Core Modules'} ({subject.keyChapters.length}):
                     </div>
                     <div className="space-y-1.5">
-                      {subject.keyChapters.slice(0, 3).map((chapter, cIdx) => {
-                        const isDone = completedKeys.includes(`${subject.id}-ch-${cIdx}`);
-                        return (
-                          <div key={cIdx} className="text-xs flex items-start space-x-2">
-                            <span className={`w-1.5 h-1.5 rounded-full shrink-0 mt-1.5 ${isDone ? 'bg-emerald-400' : 'bg-amber-400'}`} />
-                            <span className={`truncate ${isDone ? 'text-slate-400 line-through' : 'text-slate-300'}`}>
-                              {chapter.title}
-                            </span>
-                            {isDone && <CheckCircle2 className="w-3 h-3 text-emerald-400 shrink-0 mt-0.5 ml-auto" />}
-                          </div>
-                        );
-                      })}
+                      {subject.keyChapters.slice(0, 3).map((chapter, cIdx) => (
+                        <div key={cIdx} className="text-xs flex items-start space-x-2">
+                          <span className="w-1.5 h-1.5 rounded-full shrink-0 mt-1.5 bg-amber-400" />
+                          <span className="truncate text-slate-300">
+                            {chapter.title}
+                          </span>
+                        </div>
+                      ))}
                     </div>
                   </div>
 

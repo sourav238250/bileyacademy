@@ -101,7 +101,7 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
               <div className="flex items-center space-x-2 text-xs sm:text-sm text-slate-200">
                 <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>{t('heroCheck6', 'Parent Monthly Progress')}</span>
+                <span>{t('heroCheck6', 'Monthly Parent Meetings')}</span>
               </div>
             </div>
 

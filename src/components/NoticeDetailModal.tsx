@@ -56,7 +56,7 @@ export const NoticeDetailModal: React.FC<NoticeDetailModalProps> = ({
             <div class="header">
               <div class="logo">BILEY ACADEMY</div>
               <div class="tagline">An Educational Coaching Institute (Since 2026) | "Learn Today, Lead Tomorrow"</div>
-              <div class="ref">Jamna, Pingla, Paschim Medinipur - PIN 721140, W.B. • WhatsApp: +91 9732531730 (WhatsApp Only) • Email: bileyacademy@gmail.com</div>
+              <div class="ref">Jamna, Pingla, Paschim Medinipur - PIN 721140, W.B. • Call & WhatsApp: +91 8918807082 • Email: bileyacademy@gmail.com</div>
             </div>
             <div class="meta">
               <strong>Category:</strong> ${notice.categoryLabel} &nbsp;|&nbsp; 
@@ -74,7 +74,7 @@ export const NoticeDetailModal: React.FC<NoticeDetailModalProps> = ({
               </div>
             ` : ''}
             <div class="footer">
-              <p>For inquiries and registrations, contact via WhatsApp at <strong>9732531730</strong> or Email <strong>bileyacademy@gmail.com</strong>.</p>
+              <p>For inquiries and registrations, contact via Call/WhatsApp at <strong>8918807082</strong> or Email <strong>bileyacademy@gmail.com</strong>.</p>
               <p>© 2026 Biley Academy. All Rights Reserved.</p>
             </div>
           </body>
@@ -192,11 +192,11 @@ export const NoticeDetailModal: React.FC<NoticeDetailModalProps> = ({
 
           <div className="flex items-center space-x-2">
             <a
-              href={`https://wa.me/919732531730?text=${encodeURIComponent(`Hello Biley Academy, I have an inquiry regarding notice: "${notice.title}"`)}`}
+              href={`https://wa.me/918918807082?text=${encodeURIComponent(`Hello Biley Academy, I have an inquiry regarding notice: "${notice.title}"`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-colors shadow-sm"
-              title={isBengali ? 'হোয়াটসঅ্যাপ অনুসন্ধান (শুধুমাত্র হোয়াটসঅ্যাপ)' : 'WhatsApp Inquiry (WhatsApp Only)'}
+              title={isBengali ? 'কল ও হোয়াটসঅ্যাপ অনুসন্ধান: ৮৯১৮৮০৭০৮২' : 'Call & WhatsApp Inquiry: 8918807082'}
             >
               <MessageCircle className="w-4 h-4" />
               <span>{isBengali ? 'হোয়াটসঅ্যাপ বার্তা' : 'WhatsApp Us'}</span>

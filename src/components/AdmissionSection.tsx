@@ -362,7 +362,7 @@ export const AdmissionSection: React.FC<AdmissionSectionProps> = ({ initialSubje
                 </a>
 
                 <a
-                  href={`https://wa.me/919732531730?text=${encodeURIComponent(`Hello Biley Academy,\n*Admission Token:* ${submittedInquiry.id}\n*Student:* ${submittedInquiry.studentName}\n*Class:* ${submittedInquiry.gradeLevel}\n*Subjects:* ${submittedInquiry.subjects.join(', ')}\n*Phone:* ${submittedInquiry.phone}\n*Goal:* ${submittedInquiry.targetGoal}`)}`}
+                  href={`https://wa.me/918918807082?text=${encodeURIComponent(`Hello Biley Academy,\n*Admission Token:* ${submittedInquiry.id}\n*Student:* ${submittedInquiry.studentName}\n*Class:* ${submittedInquiry.gradeLevel}\n*Subjects:* ${submittedInquiry.subjects.join(', ')}\n*Phone:* ${submittedInquiry.phone}\n*Goal:* ${submittedInquiry.targetGoal}`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center space-x-1.5 transition-colors shadow-md"

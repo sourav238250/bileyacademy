@@ -234,15 +234,28 @@ export const Footer: React.FC<FooterProps> = ({
                 </div>
               </div>
               <div className="flex items-center space-x-2.5">
-                <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0" />
-                <a 
-                  href="https://wa.me/919732531730?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20admissions."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-emerald-300 font-bold text-emerald-400"
-                >
-                  +91 97325 31730 <span className="text-[10px] text-slate-400 font-normal">({isBengali ? 'শুধুমাত্র হোয়াটসঅ্যাপ' : 'WhatsApp Only'})</span>
-                </a>
+                <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
+                <div className="flex flex-wrap items-center gap-1.5">
+                  <a 
+                    href="tel:+918918807082"
+                    className="hover:text-emerald-300 font-bold text-emerald-400 transition-colors"
+                  >
+                    +91 89188 07082
+                  </a>
+                  <span className="text-[10px] text-slate-400 font-normal">
+                    ({isBengali ? 'কল ও হোয়াটসঅ্যাপ' : 'Call & WhatsApp'})
+                  </span>
+                  <a
+                    href="https://wa.me/918918807082?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20admissions."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[10px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-1.5 py-0.5 rounded hover:bg-emerald-500/30 transition-colors inline-flex items-center gap-1"
+                    title="WhatsApp"
+                  >
+                    <MessageCircle className="w-2.5 h-2.5" />
+                    WA
+                  </a>
+                </div>
               </div>
               <div className="flex items-center space-x-2.5">
                 <Mail className="w-4 h-4 text-amber-400 shrink-0" />

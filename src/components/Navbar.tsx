@@ -90,14 +90,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
             )}
             <a 
-              href="https://wa.me/919732531730?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20admissions." 
+              href="https://wa.me/918918807082?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20admissions." 
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-1 font-bold hover:underline bg-emerald-950/20 px-2 py-0.5 rounded text-emerald-950"
-              title="Chat with us on WhatsApp"
+              title="Call or WhatsApp: +91 89188 07082"
             >
               <MessageCircle className="w-3.5 h-3.5" />
-              <span>{t('topBannerHelpline', 'WhatsApp: 9732531730 (WhatsApp Only)')}</span>
+              <span>{t('topBannerHelpline', 'Call & WhatsApp: 8918807082')}</span>
             </a>
             <span className="hidden md:inline text-slate-800">|</span>
             <button 
@@ -300,13 +300,13 @@ export const Navbar: React.FC<NavbarProps> = ({
               {t('topBannerBookDemo', 'Book 2 Free Demo Classes')}
             </button>
             <a
-              href="https://wa.me/919732531730?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20admissions."
+              href="https://wa.me/918918807082?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20admissions."
               target="_blank"
               rel="noopener noreferrer"
               className="w-full py-2.5 rounded-xl border border-emerald-600/40 bg-emerald-950/30 text-emerald-300 text-sm font-medium flex items-center justify-center space-x-2 hover:bg-emerald-900/40 transition-colors"
             >
               <MessageCircle className="w-4 h-4 text-emerald-400" />
-              <span>{isBengali ? 'হোয়াটসঅ্যাপ: ৯৭৩২৫৩১৭৩০ (শুধুমাত্র হোয়াটসঅ্যাপ)' : 'WhatsApp: 9732531730 (WhatsApp Only)'}</span>
+              <span>{isBengali ? 'কল ও হোয়াটসঅ্যাপ: ৮৯১৮৮০৭০৮২' : 'Call & WhatsApp: 8918807082'}</span>
             </a>
           </div>
         </div>

@@ -265,29 +265,41 @@ ${submittedData.message}`;
             {/* Direct Contact Cards */}
             <div className="space-y-3">
               
-              {/* WhatsApp Contact Only */}
+              {/* Call & WhatsApp Helpline */}
               <div className="p-4 rounded-2xl bg-emerald-950/20 border border-emerald-500/30 flex items-start space-x-3.5 hover:border-emerald-500/60 transition-colors">
                 <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
-                  <MessageCircle className="w-5 h-5" />
+                  <Phone className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider block">
-                      {isBengali ? 'হোয়াটসঅ্যাপ হেল্পলাইন' : 'WhatsApp Contact'}
+                      {isBengali ? 'কল ও হোয়াটসঅ্যাপ হেল্পলাইন' : 'Call & WhatsApp Helpline'}
                     </span>
                     <span className="text-[9px] font-black bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-1.5 py-0.2 rounded uppercase">
-                      {isBengali ? 'শুধুমাত্র হোয়াটসঅ্যাপ' : 'WhatsApp Only'}
+                      {isBengali ? 'কল ও হোয়াটসঅ্যাপ' : 'Call & WhatsApp'}
                     </span>
                   </div>
-                  <a 
-                    href="https://wa.me/919732531730?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20admissions."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm sm:text-base font-bold text-emerald-300 hover:text-emerald-200 transition-colors block mt-0.5"
-                  >
-                    +91 97325 31730
-                  </a>
-                  <p className="text-[11px] text-slate-400">{isBengali ? 'বার্তা পাঠান (সকাল ৮টা – রাত ৮টা) • ভয়েস কল গ্রহণযোগ্য নয়' : 'Send WhatsApp message (8 AM – 8 PM) • No direct voice calls'}</p>
+                  <div className="flex flex-wrap items-center gap-2.5 mt-1">
+                    <a 
+                      href="tel:+918918807082"
+                      className="text-sm sm:text-base font-bold text-amber-300 hover:text-amber-200 transition-colors inline-flex items-center gap-1.5"
+                      title={isBengali ? 'সরাসরি কল করুন' : 'Call Now'}
+                    >
+                      <Phone className="w-3.5 h-3.5 text-amber-400" />
+                      +91 89188 07082
+                    </a>
+                    <a 
+                      href="https://wa.me/918918807082?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20admissions."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-bold text-emerald-300 hover:text-emerald-200 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 px-2 py-0.5 rounded-lg transition-colors inline-flex items-center gap-1"
+                      title={isBengali ? 'হোয়াটসঅ্যাপ চ্যাট' : 'Chat on WhatsApp'}
+                    >
+                      <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+                      WhatsApp
+                    </a>
+                  </div>
+                  <p className="text-[11px] text-slate-400 mt-1">{isBengali ? 'সরাসরি ফোন কল ও হোয়াটসঅ্যাপ বার্তা (সকাল ৮টা – রাত ৮টা)' : 'Direct phone calls & WhatsApp messages (8 AM – 8 PM)'}</p>
                 </div>
               </div>
 
@@ -687,7 +699,7 @@ ${submittedData.message}`;
 
                     {/* WhatsApp */}
                     <a
-                      href={`https://wa.me/919732531730?text=${encodeURIComponent(`Hello Biley Academy,\n*Ticket:* ${submittedData.id}\n*Name:* ${submittedData.fullName}\n*Email:* ${submittedData.email}\n*Phone:* ${submittedData.phone || 'N/A'}\n*Subject:* ${submittedData.inquiryType}\n*Message:* ${submittedData.message}`)}`}
+                      href={`https://wa.me/918918807082?text=${encodeURIComponent(`Hello Biley Academy,\n*Ticket:* ${submittedData.id}\n*Name:* ${submittedData.fullName}\n*Email:* ${submittedData.email}\n*Phone:* ${submittedData.phone || 'N/A'}\n*Subject:* ${submittedData.inquiryType}\n*Message:* ${submittedData.message}`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold inline-flex items-center space-x-1.5 transition-colors shadow-md"

@@ -49,7 +49,7 @@ export const AuthButton: React.FC = () => {
         <button
           onClick={handleSignIn}
           className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs shadow-md shadow-amber-500/20 transition-all hover:scale-105 active:scale-95"
-          title="Sign in with Google to sync your study progress and quiz scores across devices"
+          title="Sign in with Google to access student quizzes and academy services"
         >
           <svg className="w-3.5 h-3.5" viewBox="0 0 24 24">
             <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />

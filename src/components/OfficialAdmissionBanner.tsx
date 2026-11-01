@@ -41,8 +41,8 @@ export const OfficialAdmissionBanner: React.FC<OfficialAdmissionBannerProps> = (
         await navigator.share({
           title: isBengali ? 'বিলে অ্যাকাডেমি - সরকারি ভর্তি বিজ্ঞপ্তি' : 'Biley Academy - Official Admission Notice',
           text: isBengali 
-            ? 'বিলে অ্যাকাডেমিতে ১ম থেকে ১২শ শ্রেণির ভর্তি চলছে। হোয়াটসঅ্যাপ: ৯৭৩২৫৩১৭৩০ (শুধুমাত্র হোয়াটসঅ্যাপ) • ইমেইল: bileyacademy@gmail.com।' 
-            : 'Admissions open for Classes 1 to 12 at Biley Academy, Jamna, Pingla, Paschim Medinipur. WhatsApp: 9732531730 (WhatsApp Only) • Email: bileyacademy@gmail.com.',
+            ? 'বিলে অ্যাকাডেমিতে ১ম থেকে ১২শ শ্রেণির ভর্তি চলছে। কল ও হোয়াটসঅ্যাপ: ৮৯১৮৮০৭০৮২ • ইমেইল: bileyacademy@gmail.com।' 
+            : 'Admissions open for Classes 1 to 12 at Biley Academy, Jamna, Pingla, Paschim Medinipur. Call & WhatsApp: +91 8918807082 • Email: bileyacademy@gmail.com.',
           url: window.location.href,
         });
       } catch (err) {
@@ -54,7 +54,7 @@ export const OfficialAdmissionBanner: React.FC<OfficialAdmissionBannerProps> = (
   };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(`Biley Academy (Since 2026) - An Educational Coaching Institute for Classes I-XII. WhatsApp: +91 9732531730 (WhatsApp Only) • Email: bileyacademy@gmail.com | Jamna, Pingla, Paschim Medinipur - 721140, W.B.`);
+    navigator.clipboard.writeText(`Biley Academy (Since 2026) - An Educational Coaching Institute for Classes I-XII. Call & WhatsApp: +91 8918807082 • Email: bileyacademy@gmail.com | Jamna, Pingla, Paschim Medinipur - 721140, W.B.`);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
@@ -338,24 +338,39 @@ export const OfficialAdmissionBanner: React.FC<OfficialAdmissionBannerProps> = (
         {/* 3. Bottom Bar */}
         <div className="mt-4 pt-4 border-t border-slate-800/80 grid grid-cols-1 md:grid-cols-12 gap-4 items-center bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
           
-          {/* Direct WhatsApp Contact */}
+          {/* Direct Call & WhatsApp Contact */}
           <div className="md:col-span-4 flex flex-wrap items-center gap-2">
-            <a 
-              href="https://wa.me/919732531730?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20admissions."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 flex items-center space-x-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white px-3.5 py-2.5 rounded-xl text-xs font-bold shadow-md transition-transform hover:scale-[1.02]"
-            >
-              <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center shrink-0">
-                <MessageCircle className="w-4 h-4 text-white" />
-              </div>
-              <div>
-                <div className="text-[9px] uppercase tracking-wider text-emerald-200 font-bold">
-                  {isBengali ? 'হোয়াটসঅ্যাপ হেল্পলাইন (শুধুমাত্র)' : 'WhatsApp Helpline (Only)'}
+            <div className="flex-1 flex items-center justify-between space-x-2 bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-3.5 py-2.5 rounded-xl text-xs font-bold shadow-md">
+              <div className="flex items-center space-x-2.5">
+                <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                  <Phone className="w-4 h-4 text-white" />
                 </div>
-                <div className="text-sm font-black tracking-wide">9732531730</div>
+                <div>
+                  <div className="text-[9px] uppercase tracking-wider text-emerald-200 font-bold">
+                    {isBengali ? 'কল ও হোয়াটসঅ্যাপ হেল্পলাইন' : 'Call & WhatsApp Helpline'}
+                  </div>
+                  <div className="text-sm font-black tracking-wide">8918807082</div>
+                </div>
               </div>
-            </a>
+              <div className="flex items-center space-x-1.5">
+                <a 
+                  href="tel:+918918807082"
+                  className="p-1.5 rounded-lg bg-emerald-700/80 hover:bg-emerald-800 text-white transition-colors"
+                  title={isBengali ? 'কল করুন' : 'Call Now'}
+                >
+                  <Phone className="w-3.5 h-3.5" />
+                </a>
+                <a 
+                  href="https://wa.me/918918807082?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20admissions."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-1.5 rounded-lg bg-white/20 hover:bg-white/30 text-white transition-colors"
+                  title={isBengali ? 'হোয়াটসঅ্যাপ করুন' : 'Chat on WhatsApp'}
+                >
+                  <MessageCircle className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
           </div>
 
           {/* Location Address */}
@@ -408,13 +423,13 @@ export const OfficialAdmissionBanner: React.FC<OfficialAdmissionBannerProps> = (
             </button>
           )}
           <a
-            href="https://wa.me/919732531730?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20admissions."
+            href="https://wa.me/918918807082?text=Hello%20Biley%20Academy,%20I%20would%20like%20to%20inquire%20about%20admissions."
             target="_blank"
             rel="noopener noreferrer"
             className="px-3 py-1.5 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-semibold text-xs border border-emerald-600 transition-colors flex items-center gap-1.5 shadow-sm"
           >
             <MessageCircle className="w-3.5 h-3.5" />
-            <span>{isBengali ? 'হোয়াটসঅ্যাপ: ৯৭৩২৫৩১৭৩০ (শুধুমাত্র)' : 'WhatsApp: 9732531730 (Only)'}</span>
+            <span>{isBengali ? 'কল / হোয়াটসঅ্যাপ: ৮৯১৮৮০৭০৮২' : 'Call & WhatsApp: 8918807082'}</span>
           </a>
         </div>
       </div>

@@ -15,13 +15,6 @@ import {
 import { db } from '../lib/firebase';
 import { AdmissionInquiry, ContactFormData } from '../types';
 
-export interface CloudProgressRecord {
-  userId: string;
-  gradeNumber: number;
-  completedKeys: string[];
-  updatedAt?: any;
-}
-
 export interface QuizAttemptRecord {
   id?: string;
   userId: string;
@@ -46,47 +39,6 @@ export interface AiTutorQueryRecord {
   answer: string;
   createdAt?: any;
 }
-
-// 1. Student Curriculum Progress Services
-export const syncStudentProgressToFirestore = async (
-  userId: string,
-  gradeNumber: number,
-  completedKeys: string[]
-): Promise<void> => {
-  if (!userId) return;
-  try {
-    const docId = `${userId}_grade_${gradeNumber}`;
-    const progressRef = doc(db, 'student_progress', docId);
-    await setDoc(progressRef, {
-      userId,
-      gradeNumber,
-      completedKeys,
-      updatedAt: serverTimestamp()
-    }, { merge: true });
-  } catch (error) {
-    console.error('Error saving progress to Firestore:', error);
-  }
-};
-
-export const fetchStudentProgressFromFirestore = async (
-  userId: string,
-  gradeNumber: number
-): Promise<string[] | null> => {
-  if (!userId) return null;
-  try {
-    const docId = `${userId}_grade_${gradeNumber}`;
-    const progressRef = doc(db, 'student_progress', docId);
-    const snap = await getDoc(progressRef);
-    if (snap.exists()) {
-      const data = snap.data() as CloudProgressRecord;
-      return data.completedKeys || [];
-    }
-    return null;
-  } catch (error) {
-    console.error('Error loading progress from Firestore:', error);
-    return null;
-  }
-};
 
 // 2. Diagnostic Quiz Records
 export const saveQuizAttemptToFirestore = async (

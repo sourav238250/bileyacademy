@@ -1,26 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { 
   X, 
   BookOpen, 
   Clock, 
   CheckCircle2, 
-  Circle,
   FlaskConical, 
   Award, 
   Download, 
-  HelpCircle,
   FileText,
-  Sparkles,
-  Zap,
-  BarChart3
+  Sparkles
 } from 'lucide-react';
 import { SubjectCurriculum } from '../types';
-import { 
-  getCompletedChapterKeys, 
-  toggleChapterCompletionState, 
-  calculateSubjectMetric, 
-  isChapterCompleted 
-} from '../utils/progressStore';
 
 interface SubjectModalProps {
   subject: SubjectCurriculum | null;
@@ -35,26 +25,7 @@ export const SubjectModal: React.FC<SubjectModalProps> = ({
   onClose,
   onOpenInquiry 
 }) => {
-  const [completedKeys, setCompletedKeys] = useState<string[]>([]);
-
-  // Extract grade number from gradeLabel (e.g. "Class 10 (Secondary School)" -> 10)
-  const gradeMatch = gradeLabel.match(/Class\s*(\d+)/i);
-  const gradeNumber = gradeMatch ? parseInt(gradeMatch[1], 10) : 10;
-
-  useEffect(() => {
-    if (subject) {
-      setCompletedKeys(getCompletedChapterKeys(gradeNumber));
-    }
-  }, [subject, gradeNumber]);
-
   if (!subject) return null;
-
-  const metric = calculateSubjectMetric(subject, completedKeys);
-
-  const handleToggle = (chapterIndex: number) => {
-    const { keys } = toggleChapterCompletionState(gradeNumber, subject.id, chapterIndex);
-    setCompletedKeys([...keys]);
-  };
 
   const handlePrintOrDownload = () => {
     window.print();
@@ -102,46 +73,6 @@ export const SubjectModal: React.FC<SubjectModalProps> = ({
         {/* Modal Body - Scrollable */}
         <div className="p-6 overflow-y-auto space-y-6 text-slate-300 text-sm">
           
-          {/* Real-time Subject Curriculum Progress Bar Card */}
-          <div className="p-4 rounded-2xl bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border border-amber-500/30 space-y-2">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <BarChart3 className="w-4 h-4 text-amber-400" />
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-200">
-                  Student Syllabus Progress
-                </span>
-                <span className={`text-[10px] font-bold px-2 py-0.2 rounded-full ${
-                  metric.status === 'Ahead'
-                    ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-                    : 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
-                }`}>
-                  {metric.status}
-                </span>
-              </div>
-              <span className="text-base font-black text-amber-400 font-mono">
-                {metric.percentage}% Completed
-              </span>
-            </div>
-
-            <div className="w-full bg-slate-950 rounded-full h-3 p-0.5 border border-slate-800 overflow-hidden">
-              <div 
-                className={`h-full rounded-full transition-all duration-500 ${
-                  metric.percentage >= 75
-                    ? 'bg-gradient-to-r from-emerald-500 to-teal-400'
-                    : metric.percentage >= 40
-                    ? 'bg-gradient-to-r from-amber-500 to-orange-400'
-                    : 'bg-gradient-to-r from-blue-500 to-indigo-400'
-                }`}
-                style={{ width: `${Math.max(4, metric.percentage)}%` }}
-              />
-            </div>
-
-            <div className="flex items-center justify-between text-xs text-slate-400 pt-0.5">
-              <span>{metric.completedChapters} of {metric.totalChapters} Modules Mastered</span>
-              <span>{metric.completedHours} / {metric.totalHours} Estimated Course Hours Logged</span>
-            </div>
-          </div>
-
           {/* Quick Metrics Bar */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 rounded-2xl bg-slate-950 border border-slate-800">
             <div>
@@ -180,70 +111,46 @@ export const SubjectModal: React.FC<SubjectModalProps> = ({
                 <FileText className="w-4 h-4" />
                 <span>Syllabus Breakdown & Key Modules</span>
               </h4>
-              <span className="text-[11px] text-slate-400">Click circle to toggle completion</span>
+              <span className="text-[11px] text-slate-400">{subject.keyChapters.length} Academic Modules</span>
             </div>
 
             <div className="space-y-3">
-              {subject.keyChapters.map((chapter, idx) => {
-                const isCompleted = isChapterCompleted(completedKeys, subject.id, idx);
-
-                return (
-                  <div 
-                    key={idx} 
-                    className={`p-4 rounded-2xl border transition-all space-y-2 ${
-                      isCompleted 
-                        ? 'bg-emerald-950/20 border-emerald-500/30' 
-                        : 'bg-slate-950 border-slate-800'
-                    }`}
-                  >
-                    <div className="flex flex-wrap items-center justify-between gap-2">
-                      <div className="flex items-center space-x-2.5">
-                        <button
-                          type="button"
-                          onClick={() => handleToggle(idx)}
-                          className="text-slate-400 hover:text-emerald-400 transition-colors"
-                          title="Toggle chapter completion"
-                        >
-                          {isCompleted ? (
-                            <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-                          ) : (
-                            <Circle className="w-5 h-5 text-slate-600 hover:text-amber-400" />
-                          )}
-                        </button>
-                        <h5 className={`font-bold text-sm ${isCompleted ? 'text-emerald-300 line-through' : 'text-white'}`}>
-                          Module {idx + 1}: {chapter.title}
-                        </h5>
-                      </div>
-
-                      <div className="flex items-center space-x-2">
-                        {isCompleted && (
-                          <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/30">
-                            Completed
-                          </span>
-                        )}
-                        {chapter.practicalOrActivity && (
-                          <span className="text-[11px] font-semibold text-emerald-300 bg-emerald-950/40 border border-emerald-500/30 px-2 py-0.5 rounded-full flex items-center space-x-1">
-                            <FlaskConical className="w-3 h-3" />
-                            <span>Lab: {chapter.practicalOrActivity}</span>
-                          </span>
-                        )}
-                      </div>
+              {subject.keyChapters.map((chapter, idx) => (
+                <div 
+                  key={idx} 
+                  className="p-4 rounded-2xl border bg-slate-950 border-slate-800 transition-all space-y-2"
+                >
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div className="flex items-center space-x-2.5">
+                      <span className="w-6 h-6 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center font-bold text-xs">
+                        {idx + 1}
+                      </span>
+                      <h5 className="font-bold text-sm text-white">
+                        Module {idx + 1}: {chapter.title}
+                      </h5>
                     </div>
 
-                    <p className="text-xs text-slate-400 leading-relaxed pl-7">
-                      {chapter.description}
-                    </p>
-
-                    <div className="pt-2 pl-7 flex flex-wrap gap-1.5">
-                      {chapter.subtopics.map((topic, sIdx) => (
-                        <span key={sIdx} className="text-[11px] bg-slate-800/80 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700/60">
-                          • {topic}
-                        </span>
-                      ))}
-                    </div>
+                    {chapter.practicalOrActivity && (
+                      <span className="text-[11px] font-semibold text-emerald-300 bg-emerald-950/40 border border-emerald-500/30 px-2.5 py-0.5 rounded-full flex items-center space-x-1">
+                        <FlaskConical className="w-3 h-3" />
+                        <span>Lab: {chapter.practicalOrActivity}</span>
+                      </span>
+                    )}
                   </div>
-                );
-              })}
+
+                  <p className="text-xs text-slate-400 leading-relaxed pl-8">
+                    {chapter.description}
+                  </p>
+
+                  <div className="pt-2 pl-8 flex flex-wrap gap-1.5">
+                    {chapter.subtopics.map((topic, sIdx) => (
+                      <span key={sIdx} className="text-[11px] bg-slate-800/80 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700/60">
+                        • {topic}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 

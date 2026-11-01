@@ -297,7 +297,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
   en: {
     topBannerAdmissions: "Admissions Open 2026-27",
     topBannerClasses: "Classes 1 to 12 (CBSE • WBBPE / WBBSE / WBCHSE + JEE / WBJEE)",
-    topBannerHelpline: "WhatsApp: 9732531730 (WhatsApp Only)",
+    topBannerHelpline: "Call & WhatsApp: 8918807082",
     topBannerBookDemo: "Book 2 Free Demo Classes",
     academyName: "Biley Academy",
     academyTagline: "Premier Coaching • Class 1 to 12",
@@ -355,7 +355,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     officialBannerFeature2: "Specialized Computer Programming Labs: Scratch, Python, Java & Web Tech",
     officialBannerFeature3: "Dedicated Foundation for Olympiads, JEE (Main + Adv) & WBJEE",
     officialBannerFeature4: "Personalized 1-on-1 Doubt Clearing Clinics with Founder & Senior Faculty",
-    officialBannerCallNow: "Call Helpline: +91 97325 31730",
+    officialBannerCallNow: "Call & WhatsApp: +91 89188 07082",
     officialBannerBookSeat: "Reserve Seat / Free Demo",
     officialBannerLocation: "Campus: Jamna, Pingla, Paschim Medinipur, West Bengal - 721140",
 
@@ -570,7 +570,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
   bn: {
     topBannerAdmissions: "ভর্তি চলছে ২০২৬-২৭ শিক্ষাবর্ষে",
     topBannerClasses: "ক্লাস ১ থেকে ১২ (CBSE • WBBPE / WBBSE / WBCHSE + JEE / WBJEE)",
-    topBannerHelpline: "হোয়াটসঅ্যাপ: ৯৭৩২৫৩১৭৩০ (শুধুমাত্র হোয়াটসঅ্যাপ)",
+    topBannerHelpline: "কল ও হোয়াটসঅ্যাপ: ৮৯১৮৮০৭০৮২",
     topBannerBookDemo: "২টি ফ্রি ডেমো ক্লাস বুক করুন",
     academyName: "বিলে অ্যাকাডেমি",
     academyTagline: "প্রিমিয়ার কোচিং • ক্লাস ১ থেকে ১২",
@@ -628,7 +628,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     officialBannerFeature2: "বিশেষ কম্পিউটার প্রোগ্রামিং ল্যাব: স্ক্র্যাচ, পাইথন, জাভা ও ওয়েব টেকনোলজি",
     officialBannerFeature3: "অলিম্পিয়াড, JEE (মেইন + অ্যাডভান্সড) এবং WBJEE-এর সুদৃঢ় ভিত্তি",
     officialBannerFeature4: "প্রতিষ্ঠাতা ও বরিষ্ঠ শিক্ষকদের সঙ্গে ব্যক্তিগত ১-অন-১ ডাউট ক্লিয়ারিং ক্লিনিক",
-    officialBannerCallNow: "হেল্পলাইন নম্বরে কল করুন: +৯১ ৯৭৩২৫ ৩১৭৩০",
+    officialBannerCallNow: "কল ও হোয়াটসঅ্যাপ: +৯১ ৮৯১৮৮ ০৭০৮২",
     officialBannerBookSeat: "আসন সংরক্ষণ / ফ্রি ডেমো",
     officialBannerLocation: "ক্যাম্পাস: জামনা, পিংলা, পশ্চিম মেদিনীপুর, পশ্চিমবঙ্গ - ৭২১১৪০",
 
