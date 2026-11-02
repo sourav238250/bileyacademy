@@ -192,6 +192,16 @@ export const Footer: React.FC<FooterProps> = ({
                 </button>
               </li>
               <li>
+                <button onClick={() => onNavigate('fees')} className="hover:text-amber-400 transition-colors font-semibold text-emerald-400">
+                  {t('navFees', 'Fee Structure')}
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('admission')} className="hover:text-amber-400 transition-colors">
+                  {t('navAdmission')}
+                </button>
+              </li>
+              <li>
                 <button onClick={() => onNavigate('contact')} className="hover:text-amber-400 transition-colors font-semibold text-amber-400">
                   {t('navContact')}
                 </button>

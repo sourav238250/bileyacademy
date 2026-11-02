@@ -230,6 +230,16 @@ export const AdmissionSection: React.FC<AdmissionSectionProps> = ({ initialSubje
                       <option key={i} value={g}>{g}</option>
                     ))}
                   </select>
+                  <div className="mt-1.5 flex items-center justify-between text-[11px] text-slate-400">
+                    <span className="text-amber-400 font-medium">
+                      {isBengali 
+                        ? 'অফিসিয়াল ফি: ভর্তি ফি মাত্র ₹১০০/₹১৫০ · প্রাথমিক প্যাকেজ ₹৮০০/₹১৫০০ বা বিষয়ভিত্তিক ₹৩০০/₹৭৫০ থেকে শুরু' 
+                        : 'Official Rate: Nominal Admission Fee ₹100 / ₹150 · Monthly from ₹300/sub (WB) & ₹750/sub (CBSE) or primary packages'}
+                    </span>
+                    <a href="#fees" className="text-emerald-400 hover:underline font-bold ml-2 shrink-0">
+                      {isBengali ? 'সম্পূর্ণ ফি তালিকা দেখুন →' : 'View Fee Rates →'}
+                    </a>
+                  </div>
                 </div>
               </div>
 

@@ -13,6 +13,7 @@ import { AiTutorSection } from './components/AiTutorSection';
 import { QuizSection } from './components/QuizSection';
 import { FacultySection } from './components/FacultySection';
 import { BatchScheduleSection } from './components/BatchScheduleSection';
+import { FeesSection } from './components/FeesSection';
 import { AdmissionSection } from './components/AdmissionSection';
 import { ContactSection } from './components/ContactSection';
 import { GallerySection } from './components/GallerySection';
@@ -128,6 +129,11 @@ function AcademyApp() {
 
         <BatchScheduleSection 
           onOpenInquiry={() => handleOpenInquiry()}
+        />
+
+        {/* Official Grade-Wise Fees Structure & Tuition Calculator */}
+        <FeesSection 
+          onOpenInquiry={handleOpenInquiry}
         />
 
         <AdmissionSection 

@@ -24,6 +24,7 @@ export interface Translations {
   navQuiz: string;
   navFaculty: string;
   navBatches: string;
+  navFees: string;
   navAdmission: string;
   navContact: string;
   navBatchRoutineBtn: string;
@@ -314,6 +315,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     navQuiz: "Diagnostic Quiz",
     navFaculty: "Faculty & Results",
     navBatches: "Batch Routine",
+    navFees: "Fee Structure",
     navAdmission: "Admissions",
     navContact: "Contact Us",
     navBatchRoutineBtn: "Batch Routine",
@@ -587,6 +589,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     navQuiz: "যাচাই কুইজ",
     navFaculty: "শিক্ষকমণ্ডলী ও ফলাফল",
     navBatches: "ব্যাচ রুটিন",
+    navFees: "ফি বিবরণী",
     navAdmission: "ভর্তি প্রক্রিয়া",
     navContact: "যোগাযোগ",
     navBatchRoutineBtn: "ব্যাচ রুটিন",

@@ -16,12 +16,12 @@ import {
   BarChart3, 
   Image as ImageIcon, 
   Bell,
-  Inbox
+  Inbox,
+  Receipt
 } from 'lucide-react';
 import { Logo } from './Logo';
 import { ThemeToggle } from './ThemeToggle';
 import { LanguageToggle } from './LanguageToggle';
-import { AuthButton } from './AuthButton';
 import { useLanguage } from '../context/LanguageContext';
 
 interface NavbarProps {
@@ -52,6 +52,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'quiz', label: t('navQuiz', 'Diagnostic Quiz'), icon: HelpCircle },
     { id: 'faculty', label: t('navFaculty', 'Faculty & Results'), icon: Award },
     { id: 'batches', label: t('navBatches', 'Batch Routine'), icon: Clock },
+    { id: 'fees', label: t('navFees', 'Fee Structure'), icon: Receipt, badge: '₹' },
     { id: 'admission', label: t('navAdmission', 'Admissions'), icon: Calendar },
     { id: 'contact', label: t('navContact', 'Contact Us'), icon: MessageSquare }
   ];
@@ -163,10 +164,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             })}
           </nav>
 
-          {/* Action CTA Buttons, Auth, Theme Toggle & Language Toggle */}
+          {/* Action CTA Buttons, Theme Toggle & Language Toggle */}
           <div className="hidden sm:flex items-center space-x-2">
             <ThemeToggle id="navbar-theme-toggle-desktop" />
-            <AuthButton />
             <button
               id="header-cta-schedule"
               onClick={() => handleNavClick('batches')}
@@ -186,7 +186,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Mobile menu trigger & Controls */}
           <div className="lg:hidden flex items-center space-x-2">
-            <AuthButton />
             <ThemeToggle id="navbar-theme-toggle-mobile" className="sm:hidden" />
             <button
               id="mobile-menu-btn"
