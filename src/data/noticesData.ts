@@ -7,7 +7,7 @@ export const ACADEMY_NOTICES: NoticeItem[] = [
     category: 'admission',
     categoryLabel: 'Admission Notice',
     date: 'Aug 24, 2026',
-    description: 'Registration open for Offline Primary Batches (Class 2-5) and Hybrid Secondary & Higher Secondary Batches (Class 6-12) with Engineering/JEE & Board orientation.',
+    description: 'Registration open for Offline Primary Batches (Class 2-4: All Subjects) and Hybrid Secondary & Higher Secondary Batches (Class 5-12) with Engineering/JEE & Board orientation.',
     badge: 'Admissions 2026',
     isNew: true,
     isUrgent: true,
@@ -15,8 +15,8 @@ export const ACADEMY_NOTICES: NoticeItem[] = [
     attachmentName: 'Admission_Prospectus_2026.pdf',
     actionText: 'Apply for Admission',
     details: [
-      'Class II–V: All subjects offline comprehensive foundational coaching with activity learning.',
-      'Class VI–XII: Specialized offline & online classes for Mathematics, Science (Physics & Chemistry), English, Biology, and Computer Science.',
+      'Class II–IV: All subjects offline comprehensive foundational coaching with activity learning.',
+      'Class V–XII: Specialized offline & online classes for Mathematics, Science (Physics & Chemistry), English, Biology, and Computer Science.',
       'Special Board scoring & JEE foundation modules with tricks, speed calculation, and question banks.',
       'Limited batch strength of 15–18 students per batch for focused individual attention.'
     ]

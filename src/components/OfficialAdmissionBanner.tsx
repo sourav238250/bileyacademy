@@ -157,17 +157,17 @@ export const OfficialAdmissionBanner: React.FC<OfficialAdmissionBannerProps> = (
         {/* 2. Main 3-Column Core: Classes I-V | Student Centerpiece | Classes VI-XII */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center py-6">
           
-          {/* Left Column: Classes I - V (Primary) */}
+          {/* Left Column: Classes II - IV (Primary) */}
           <div className="lg:col-span-4 bg-slate-900/90 p-5 rounded-2xl border border-emerald-500/30 shadow-lg relative overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full blur-xl pointer-events-none" />
             
             {/* Green Badge */}
             <div className="text-center mb-4">
               <span className="inline-block bg-emerald-600 text-white font-black text-sm sm:text-base px-5 py-1 rounded-full shadow-md">
-                {isBengali ? '২য় থেকে ৫ম শ্রেণির জন্য' : 'For Classes II - V'}
+                {isBengali ? '২য় থেকে ৪র্থ শ্রেণির জন্য' : 'For Classes II-IV'}
               </span>
               <div className="text-xs font-bold text-emerald-400 mt-1 uppercase tracking-wide">
-                {isBengali ? 'সমস্ত বিষয় [ অফলাইন ব্যাচ ]' : 'All Subjects [ Offline ]'}
+                {isBengali ? 'সমস্ত বিষয় [ অফলাইন ]' : 'All Subjects [Offline]'}
               </div>
             </div>
 
@@ -212,10 +212,10 @@ export const OfficialAdmissionBanner: React.FC<OfficialAdmissionBannerProps> = (
 
             {onOpenInquiry && (
               <button
-                onClick={() => onOpenInquiry('Class 2-5 Primary')}
+                onClick={() => onOpenInquiry('Class 2-4 Primary')}
                 className="mt-4 w-full py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition-colors flex items-center justify-center gap-1.5 shadow-sm"
               >
-                <span>{isBengali ? '২য়-৫ম শ্রেণিতে ভর্তির আবেদন' : 'Enroll in Classes II-V'}</span>
+                <span>{isBengali ? '২য়-৪র্থ শ্রেণিতে ভর্তির আবেদন' : 'Enroll in Classes II-IV'}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             )}
