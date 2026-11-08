@@ -20,7 +20,6 @@ import {
   Receipt
 } from 'lucide-react';
 import { Logo } from './Logo';
-import { ThemeToggle } from './ThemeToggle';
 import { LanguageToggle } from './LanguageToggle';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -164,9 +163,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             })}
           </nav>
 
-          {/* Action CTA Buttons, Theme Toggle & Language Toggle */}
+          {/* Action CTA Buttons & Schedule */}
           <div className="hidden sm:flex items-center space-x-2">
-            <ThemeToggle id="navbar-theme-toggle-desktop" />
             <button
               id="header-cta-schedule"
               onClick={() => handleNavClick('batches')}
@@ -186,7 +184,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Mobile menu trigger & Controls */}
           <div className="lg:hidden flex items-center space-x-2">
-            <ThemeToggle id="navbar-theme-toggle-mobile" className="sm:hidden" />
             <button
               id="mobile-menu-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -271,12 +268,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           <div className="pt-2 border-t border-slate-800 flex flex-col gap-2">
-            <div className="flex items-center justify-between p-2.5 rounded-xl bg-slate-950 border border-slate-800">
-              <span className="text-xs font-bold text-slate-300">
-                {isBengali ? 'থিম / মোড:' : 'Theme Mode:'}
-              </span>
-              <ThemeToggle id="navbar-theme-toggle-drawer" showLabel />
-            </div>
             {onOpenInbox && (
               <button
                 onClick={() => {
