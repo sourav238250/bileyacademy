@@ -191,11 +191,10 @@ export const subscribeAdmissionInquiries = (
         ...d.data()
       })) as SavedAdmissionInquiryDoc[];
       callback(docs);
-    }, (err) => {
-      console.warn('Inquiries subscription notice:', err);
+    }, () => {
+      // Quiet fallback when offline or connecting
     });
-  } catch (e) {
-    console.warn('Failed to subscribe to admission inquiries:', e);
+  } catch {
     return () => {};
   }
 };
@@ -212,11 +211,10 @@ export const subscribeContactMessages = (
         ...d.data()
       })) as SavedContactMessageDoc[];
       callback(docs);
-    }, (err) => {
-      console.warn('Contact messages subscription notice:', err);
+    }, () => {
+      // Quiet fallback when offline or connecting
     });
-  } catch (e) {
-    console.warn('Failed to subscribe to contact messages:', e);
+  } catch {
     return () => {};
   }
 };

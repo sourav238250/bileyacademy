@@ -9,7 +9,7 @@ export const UPPER_PRIMARY_GRADES_DATA: ClassGradeInfo[] = [
     gradeLabel: 'Class 5 (WBBSE & CBSE)',
     category: 'upper_primary',
     ageGroup: '10 - 11 Years',
-    academicFocus: 'Dual-Track Board Foundation: Mathematics (আমার গণিত & Math-Magic), Physical Science (Matter, Energy & Simple Machines), Biology (Human Body, Senses, Nutrition & Environment), English (Butterfly & Marigold), and Computer ICT & Scratch 3.0',
+    academicFocus: 'Dual-Track Board Foundation: Mathematics (আমার গণিত & Math-Magic), Physical Science (Matter, Energy & Simple Machines), Biology (Human Body, Senses, Nutrition & Environment), and English (Butterfly & Marigold)',
     weeklySchedulePreview: { days: 'Mon to Fri', timings: '4:00 PM - 6:30 PM', mode: 'Offline Classroom + Smart Math Lab' },
     subjects: [
       {
@@ -278,64 +278,8 @@ export const UPPER_PRIMARY_GRADES_DATA: ClassGradeInfo[] = [
         ],
         examPattern: 'Summative Evaluations + Oral Reading Aloud & Listening Spoken Assessments',
         practicalAvailable: false
-      },
-      {
-        id: 'c5-comp',
-        name: 'Computer Science & ICT (কম্পিউটার শিক্ষা)',
-        code: 'COMP-UP-5',
-        iconName: 'Laptop',
-        color: 'violet',
-        description: 'Computer systems and ICT foundation for Class 5: Hardware vs software, OS navigation, MS Word formatting, digital drawing, block-based coding in Scratch 3.0, and cyber safety rules.',
-        weeklyHours: 3,
-        totalModules: 8,
-        learningOutcomes: [
-          'Identify computer internal & external components (CPU, ALU, CU, RAM, ROM, HDD/SSD)',
-          'Navigate Windows/Linux desktop, files, folders, and keyboard shortcuts',
-          'Format rich documents in MS Word / Google Docs with tables, shapes, and borders',
-          'Program interactive animations and simple games using Scratch 3.0 blocks',
-          'Practice safe browsing, password protection, and cyber etiquette'
-        ],
-        keyChapters: [
-          {
-            title: 'Computer Fundamentals & OS (কম্পিউটার পরিচিতি ও অপারেটিং সিস্টেম)',
-            description: 'Input, output, CPU components (ALU, CU, MU), storage devices (RAM, ROM, Pen Drive, HDD/SSD), Windows desktop, file management and folder structure.',
-            subtopics: [
-              'Hardware vs Software (System vs Application software)',
-              'Memory units (Bit, Byte, KB, MB, GB)',
-              'File and folder operations: Create, Rename, Copy, Move, Delete',
-              'Touch typing ergonomics and speed shortcuts'
-            ],
-            practicalOrActivity: 'Smart lab folder organization and fast typing drill'
-          },
-          {
-            title: 'Word Processing & Digital Graphics (ওয়ার্ড প্রসেসিং ও ডিজিটাল অঙ্কন)',
-            description: 'MS Word / Google Docs text formatting (font, size, color, alignments, bullets), inserting tables, clipart, page borders; digital drawing in MS Paint / Tux Paint.',
-            subtopics: [
-              'Creating school notices, timetables, and posters',
-              'Table formatting with rows, columns, and cell borders',
-              'Digital painting using geometric shapes and fill tools'
-            ],
-            practicalOrActivity: 'Designing a colorful school event invitation card'
-          },
-          {
-            title: 'Scratch 3.0 Block Coding & Cyber Safety (স্ক্র্যাচ প্রোগ্রামিং ও সাইবার নিরাপত্তা)',
-            description: 'Scratch 3.0 interface: Sprites, Stage, Motion blocks, Looks, Sound, Events, Loops (`repeat`, `forever`); safe internet browsing and password security.',
-            subtopics: [
-              'Sequential block instructions and loop logic',
-              'Creating a cat walk animation and talking sprite dialogue',
-              'Safe search engines, email etiquette, and avoiding suspicious popups'
-            ],
-            practicalOrActivity: 'Building an interactive Scratch Maze Navigation Game'
-          }
-        ],
-        referenceMaterials: [
-          'Biley Smart Coding & ICT Foundation Handbook (Class 5)',
-          'Scratch 3.0 Official Creative Computing Guide',
-          'CBSE Skill Education & WBBSE ICT Curriculum'
-        ],
-        examPattern: 'Hands-on Computer Lab Practical Exam + Coding Project Showcase',
-        practicalAvailable: true
       }
+
     ]
   },
 

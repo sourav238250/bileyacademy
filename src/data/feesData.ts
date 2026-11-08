@@ -21,21 +21,6 @@ export interface FeeStructureItem {
 export const OFFICIAL_FEES_DATA: FeeStructureItem[] = [
   // --- W.B. Board (West Bengal Board - WBBPE / WBBSE / WBCHSE) ---
   {
-    id: 'wb-class-1',
-    classLevel: 'Class 1',
-    gradeNumber: 1,
-    curriculumBoard: 'W.B. Board',
-    streamTrack: 'General',
-    admissionFee: 100,
-    admissionFeeDisplay: '₹100',
-    monthlyTuition: 800,
-    monthlyTuitionDisplay: '₹800/mon All Subjects Package',
-    tuitionType: 'package',
-    tuitionTypeLabel: 'All Subjects Package',
-    academicStage: 'primary',
-    subjectsIncludedDescription: 'All Foundation Subjects (Bengali, English, Arithmetic, Environmental Art)'
-  },
-  {
     id: 'wb-class-2',
     classLevel: 'Class 2',
     gradeNumber: 2,
@@ -203,21 +188,6 @@ export const OFFICIAL_FEES_DATA: FeeStructureItem[] = [
 
   // --- CBSE (Central Board of Secondary Education) ---
   {
-    id: 'cbse-class-1',
-    classLevel: 'Class 1',
-    gradeNumber: 1,
-    curriculumBoard: 'CBSE',
-    streamTrack: 'General',
-    admissionFee: 100,
-    admissionFeeDisplay: '₹100',
-    monthlyTuition: 1500,
-    monthlyTuitionDisplay: '₹1,500/mon All Subjects Package',
-    tuitionType: 'package',
-    tuitionTypeLabel: 'All Subjects Package',
-    academicStage: 'primary',
-    subjectsIncludedDescription: 'NCERT Foundation: English (Mridang), Mathematics (Joyful), Hindi/Bengali, EVS'
-  },
-  {
     id: 'cbse-class-2',
     classLevel: 'Class 2',
     gradeNumber: 2,
@@ -260,7 +230,7 @@ export const OFFICIAL_FEES_DATA: FeeStructureItem[] = [
     tuitionType: 'package',
     tuitionTypeLabel: 'All Subjects Package',
     academicStage: 'primary',
-    subjectsIncludedDescription: 'NCERT: English, Mathematics, Science/EVS, Social Studies & Computer Basics'
+    subjectsIncludedDescription: 'NCERT: English, Mathematics, Science/EVS, and Social Studies'
   },
   {
     id: 'cbse-class-5',
@@ -275,7 +245,7 @@ export const OFFICIAL_FEES_DATA: FeeStructureItem[] = [
     tuitionType: 'per_subject',
     tuitionTypeLabel: 'Monthly per subject',
     academicStage: 'upper_primary',
-    subjectsIncludedDescription: 'NCERT: Mathematics, General Science, English, Social Science, Coding/Computer'
+    subjectsIncludedDescription: 'NCERT: Mathematics, General Science, English, and Social Science'
   },
   {
     id: 'cbse-class-6',
@@ -388,14 +358,14 @@ export const FEE_HIGHLIGHTS = [
   {
     titleEn: 'Nominal One-Time Admission Fee',
     titleBn: 'নামমাত্র একবারের ভর্তি ফি',
-    descEn: 'Only ₹100 for Classes 1–8 and ₹150 for Classes 9–12 across both West Bengal Board and CBSE.',
-    descBn: 'ক্লাস ১ থেকে ৮ পর্যন্ত মাত্র ১০০ টাকা এবং ক্লাস ৯ থেকে ১২ পর্যন্ত মাত্র ১৫০ টাকা।'
+    descEn: 'Only ₹100 for Classes 2–8 and ₹150 for Classes 9–12 across both West Bengal Board and CBSE.',
+    descBn: 'ক্লাস ২ থেকে ৮ পর্যন্ত মাত্র ১০০ টাকা এবং ক্লাস ৯ থেকে ১২ পর্যন্ত মাত্র ১৫০ টাকা।'
   },
   {
-    titleEn: 'All-Subjects Package for Primary',
-    titleBn: 'প্রাথমিক শ্রেণির জন্য সর্ববিষয় প্যাকেজ',
-    descEn: 'Classes 1–4 enjoy comprehensive all-subject coverage (₹800/mon for W.B. Board, ₹1,500/mon for CBSE) with dedicated attention.',
-    descBn: 'ক্লাস ১-৪ এর জন্য সকল বিষয়ের সমন্বিত মাসিক প্যাকেজ (পশ্চিমবঙ্গ বোর্ডে ৮০০ টাকা ও সিবিএসই-তে ১৫০০ টাকা)।'
+    titleEn: 'All-Subjects Package for Primary (Class 2-4)',
+    titleBn: 'প্রাথমিক শ্রেণির জন্য সর্ববিষয় প্যাকেজ (ক্লাস ২-৪)',
+    descEn: 'Classes 2–4 enjoy comprehensive all-subject coverage (₹800/mon for W.B. Board, ₹1,500/mon for CBSE) with dedicated attention.',
+    descBn: 'ক্লাস ২-৪ এর জন্য সকল বিষয়ের সমন্বিত মাসিক প্যাকেজ (পশ্চিমবঙ্গ বোর্ডে ৮০০ টাকা ও সিবিএসই-তে ১৫০০ টাকা)।'
   },
   {
     titleEn: 'Affordable Per-Subject Flexibility',

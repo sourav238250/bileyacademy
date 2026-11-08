@@ -321,7 +321,7 @@ export const CurriculumSection: React.FC<CurriculumSectionProps> = ({
                 {isBengali ? 'বিলে অ্যাকাডেমির অফিসিয়াল প্রসপেক্টাস ২০২৬-২৭' : 'Download Official Biley Academy Academic Prospectus 2026-27'}
               </h4>
               <p className="text-xs text-slate-400">
-                {isBengali ? 'ক্লাস ১ থেকে ১২ এর সিলেবাস, স্কলারশিপ ও অনুষদের সম্পূর্ণ নির্দেশিকা।' : 'Complete syllabus for Class 1 to 12, fee schedule, scholarship criteria & faculty guidelines.'}
+                {isBengali ? 'ক্লাস ২ থেকে ১২ এর সিলেবাস, স্কলারশিপ ও অনুষদের সম্পূর্ণ নির্দেশিকা।' : 'Complete syllabus for Class 2 to 12, fee schedule, scholarship criteria & faculty guidelines.'}
               </p>
             </div>
           </div>

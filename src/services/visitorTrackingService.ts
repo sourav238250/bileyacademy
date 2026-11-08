@@ -88,9 +88,13 @@ export async function trackPageView(pageName: string = 'Home'): Promise<void> {
 
   try {
     const statsDocRef = doc(db, 'site_stats', STATS_DOC_ID);
-    const docSnap = await getDoc(statsDocRef);
+    // Non-blocking timeout race: if Firestore is negotiating or offline, don't stall the browser
+    const docSnap = await Promise.race([
+      getDoc(statsDocRef),
+      new Promise<null>((resolve) => setTimeout(() => resolve(null), 3000))
+    ]);
 
-    if (!docSnap.exists()) {
+    if (!docSnap || !docSnap.exists()) {
       // Initialize site stats document with starter metrics
       await setDoc(statsDocRef, {
         ...INITIAL_STATS,
@@ -158,8 +162,8 @@ export async function trackPageView(pageName: string = 'Home'): Promise<void> {
       // Non-blocking log recording
     }
 
-  } catch (error) {
-    console.warn('Firestore visitor tracking encountered an error; continuing in client fallback mode:', error);
+  } catch {
+    // Non-blocking fallback; client continues seamlessly
   }
 }
 
@@ -169,24 +173,29 @@ export async function trackPageView(pageName: string = 'Home'): Promise<void> {
 export function subscribeToVisitorStats(
   onUpdate: (stats: SiteVisitorStats) => void
 ): () => void {
-  const statsDocRef = doc(db, 'site_stats', STATS_DOC_ID);
+  try {
+    const statsDocRef = doc(db, 'site_stats', STATS_DOC_ID);
 
-  const unsubscribe = onSnapshot(
-    statsDocRef,
-    (snapshot) => {
-      if (snapshot.exists()) {
-        onUpdate(snapshot.data() as SiteVisitorStats);
-      } else {
+    const unsubscribe = onSnapshot(
+      statsDocRef,
+      (snapshot) => {
+        if (snapshot.exists()) {
+          onUpdate(snapshot.data() as SiteVisitorStats);
+        } else {
+          onUpdate(INITIAL_STATS);
+        }
+      },
+      () => {
+        // Fallback to initial statistics without throwing
         onUpdate(INITIAL_STATS);
       }
-    },
-    (error) => {
-      console.warn('Error listening to visitor stats:', error);
-      onUpdate(INITIAL_STATS);
-    }
-  );
+    );
 
-  return unsubscribe;
+    return unsubscribe;
+  } catch {
+    onUpdate(INITIAL_STATS);
+    return () => {};
+  }
 }
 
 /**
@@ -212,8 +221,7 @@ export function subscribeToRecentVisitorLogs(
         }));
         onLogs(logs);
       },
-      (error) => {
-        console.warn('Error fetching recent visitor logs:', error);
+      () => {
         onLogs([]);
       }
     );

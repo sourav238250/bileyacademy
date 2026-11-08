@@ -35,7 +35,7 @@ export const FOUNDER_INFO = {
   tagline: "Inspired by the fearless spirit of Swami Vivekananda (fondly called 'Biley' in his childhood)",
   messageParagraphs: [
     "Welcome to Biley Academy. When we laid the cornerstone of this institution, we had one singular conviction: every child is born with an innate spark of genius, waiting to be ignited by the right catalyst of conceptual clarity, compassionate mentorship, and rigorous practice.",
-    "Named in reverence to the childhood name of Swami Vivekananda—'Biley'—our academy embodies the values of fearless inquiry, unshakeable self-confidence, and a relentless pursuit of knowledge. We do not believe in superficial rote memorization. Whether a student is in Class 1 discovering the joy of numbers, science, and languages, or in Class 11–12 mastering Computer Science, Mathematics, and Physical Sciences for board exams and engineering/higher secondary pathways, our pedagogy focuses on building bedrock foundations.",
+    "Named in reverence to the childhood name of Swami Vivekananda—'Biley'—our academy embodies the values of fearless inquiry, unshakeable self-confidence, and a relentless pursuit of knowledge. We do not believe in superficial rote memorization. Whether a student is in Class 2 discovering the joy of numbers, science, and languages, or in Class 11–12 mastering Computer Science, Mathematics, and Physical Sciences for board exams and engineering/higher secondary pathways, our pedagogy focuses on building bedrock foundations.",
     "With two decades of blended experience across academia and the technology industry, I believe that modern education must combine timeless human values with analytical and computational problem-solving. At Biley Academy, we equip every learner with state-of-the-art computer labs, hands-on science practicals, intimate batch attention, and dedicated 1-on-1 doubt clearing clinics.",
     "I invite parents and aspiring scholars to experience the Biley difference. Let us join hands to shape not just board toppers and future innovators, but confident, compassionate, and visionary leaders for tomorrow."
   ]
@@ -46,7 +46,7 @@ export const MISSION_VISION = {
     title: "Our Mission",
     subtitle: "Empowering Minds Through Conceptual Mastery & Character",
     points: [
-      "Deliver rigorous, concept-centric classroom coaching tailored to the developmental stages from Class 1 through Class 12.",
+      "Deliver rigorous, concept-centric classroom coaching tailored to the developmental stages from Class 2 through Class 12.",
       "Demystify complex subjects—Mathematics, Physical Sciences, Biological Sciences, Computer Programming, and English—through active visualization and lab practicals.",
       "Nurture analytical thinking and problem-solving resilience so students thrive in school board exams, Olympiads, and national competitive benchmarks (JEE / WBJEE / CUET).",
       "Maintain accessible, transparent mentorship where every student receives tailored attention regardless of their starting academic proficiency."
@@ -90,7 +90,7 @@ export const FACULTY_MEMBERS: FacultyMember[] = [
     id: "fac-1",
     name: "Mr. Sourav Dinda",
     role: "Founder & Academic Director (Computer Science & Science Lead)",
-    subjects: ["Computer Science (Class 1-12)", "Python, Java & AI", "Physics & Mathematics (Minor Foundations)"],
+    subjects: ["Computer Science (Class 6-12)", "Python, Java & AI", "Physics & Mathematics (Minor Foundations)"],
     qualification: "M.Phil (Comp. Sc.), M.C.S., B.Sc. (Comp. Sc. with Math & Physics)",
     experience: "20 Years (Academic & Industry)",
     bio: "Visionary educator with 20 years of blended academic and industry leadership, 6 research publications, and 100+ project mentorships.",
@@ -134,10 +134,10 @@ export const FACULTY_MEMBERS: FacultyMember[] = [
     id: "fac-5",
     name: "Shreya Sen",
     role: "Lead - Computer Science & Coding Wing",
-    subjects: ["Computer Science (Class 1-12)", "Python, Java & Web Design"],
+    subjects: ["Computer Science (Class 6-12)", "Python, Java & Web Design"],
     qualification: "B.Tech Computer Science (Jadavpur University)",
     experience: "10+ Years",
-    bio: "Passionate technologist teaching programming from Scratch block coding in primary classes to OOPs, SQL and DSA in Class 12.",
+    bio: "Passionate technologist teaching programming from visual algorithmic problem solving to OOPs, SQL and DSA in Class 12.",
     avatarUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80",
     achievement: "Guided students to win National Coding Olympiads"
   },
@@ -145,7 +145,7 @@ export const FACULTY_MEMBERS: FacultyMember[] = [
     id: "fac-6",
     name: "Debolina Mukherjee",
     role: "Faculty - English Language & Literature",
-    subjects: ["English (Class 1-12)", "Grammar, Comprehension & Public Speaking"],
+    subjects: ["English (Class 2-12)", "Grammar, Comprehension & Public Speaking"],
     qualification: "M.A. English (Calcutta University), Cambridge CELTA",
     experience: "12+ Years",
     bio: "Specialist in transforming students' expressive writing, grammar precision, and confident English elocution.",
@@ -156,7 +156,7 @@ export const FACULTY_MEMBERS: FacultyMember[] = [
 
 export const ACADEMY_STATS = [
   { label: "Years of Academic Heritage", value: "15+", sub: "Since 2011" },
-  { label: "Students Mentored", value: "4,500+", sub: "Class 1 to 12" },
+  { label: "Students Mentored", value: "4,500+", sub: "Class 2 to 12" },
   { label: "Board Exam 90%+ Scorers", value: "96.4%", sub: "CBSE • WBBSE / WBCHSE" },
   { label: "Olympiad & Entrance Selections", value: "850+", sub: "JEE, WBJEE, NTSE" }
 ];
@@ -195,7 +195,7 @@ export const TESTIMONIALS: Testimonial[] = [
     studentName: "Prithwiraj Saha",
     gradeOrAchievement: "Class 4 Primary Math & Science Olympiad Gold",
     year: "Batch 2025",
-    quote: "I love the computer lab and the fun math games at Biley Academy! Shreya ma'am taught me how to make games in Scratch coding and math puzzles.",
+    quote: "I love the fun math games and science activities at Biley Academy! The teachers make every lesson engaging.",
     scoreOrRank: "Olympiad Gold Medalist",
     rating: 5
   }
@@ -208,35 +208,35 @@ export const FAQS = [
   },
   {
     q: "Do you teach students from all major education boards?",
-    a: "Yes! Our curriculum is tailored for CBSE and West Bengal State Boards — WBBPE (Primary Class 1-4), WBBSE (Secondary Class 5-10 / Madhyamik), and WBCHSE (Higher Secondary Class 11-12) syllabi, alongside foundation programs for competitive benchmarks like Science/Math Olympiads, NTSE, WBJEE, and JEE Main & Advanced."
+    a: "Yes! Our curriculum is tailored for CBSE and West Bengal State Boards — WBBPE (Primary Class 2-4), WBBSE (Secondary Class 5-10 / Madhyamik), and WBCHSE (Higher Secondary Class 11-12) syllabi, alongside foundation programs for competitive benchmarks like Science/Math Olympiads, NTSE, WBJEE, and JEE Main & Advanced."
   },
   {
-    q: "How are classes structured for primary grades (Class 1 to 4)?",
-    a: "Primary classes focus on joyous, interactive learning without overwhelming pressure. We combine phonics, mental math abacus techniques, touch-and-learn computing (Scratch/Tux Paint), and live curiosity-driven science experiments."
+    q: "How are classes structured for primary grades (Class 2 to 4)?",
+    a: "Primary classes focus on joyous, interactive learning without overwhelming pressure. We combine phonics, mental math techniques, hands-on environmental discovery, and curiosity-driven science activities."
   },
   {
     q: "Are laboratory practicals included in the coaching?",
-    a: "Absolutely. We have full-fledged in-house laboratories for Physics, Chemistry, Biology, and Computer Science/Application. Every student from Class 5 upwards participates in hands-on experiments, microscope slide preparations, and live coding sessions."
+    a: "Absolutely. We have full-fledged in-house laboratories for Physics, Chemistry, Biology, and Computer Science/Application. Every student from Class 6 upwards participates in hands-on experiments, microscope slide preparations, and live coding sessions."
   },
   {
     q: "How can I enroll or book a free trial demo class?",
-    a: "You can use our online Admission / Demo Booking form on this website, call our admissions helpline (+91 98300 24567), or visit our campus directly between 10:00 AM and 8:00 PM Monday through Saturday."
+    a: "You can use our online Admission / Demo Booking form on this website, call or WhatsApp our admissions helpline (+91 89188 07082), or visit our campus directly between 10:00 AM and 8:00 PM Monday through Saturday."
   }
 ];
 
 export const BATCH_TIMINGS = [
   {
-    category: "Primary Foundation (Class 1 - 4)",
+    category: "Primary Foundation (Class 2 - 4)",
     schedule: "Monday, Wednesday & Friday",
     timings: "3:30 PM – 5:30 PM",
-    subjects: "English, Mathematics, Computer, Science",
+    subjects: "English, Mathematics, Science",
     batchSize: "Max 12 students per batch"
   },
   {
     category: "Upper Primary (Class 5 - 8)",
     schedule: "Tuesday, Thursday & Saturday",
     timings: "4:00 PM – 6:45 PM",
-    subjects: "Math, Science, Biology, English, Computer Science",
+    subjects: "Math, Science, Biology, English, Computer Science (Cl 6-8)",
     batchSize: "Max 16 students per batch"
   },
   {

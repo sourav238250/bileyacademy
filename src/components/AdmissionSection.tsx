@@ -46,7 +46,6 @@ export const AdmissionSection: React.FC<AdmissionSectionProps> = ({ initialSubje
   const [errorMessage, setErrorMessage] = useState('');
 
   const gradeOptions = [
-    'Class 1 (Primary)',
     'Class 2 (Primary)',
     'Class 3 (Primary)',
     'Class 4 (Primary)',

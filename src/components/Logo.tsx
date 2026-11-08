@@ -111,7 +111,7 @@ export const Logo: React.FC<LogoProps> = ({
             </span>
           </div>
           <p className="text-[11px] text-slate-400 font-medium tracking-wide">
-            Premier Coaching • Class 1 to 12
+            Premier Coaching • Class 2 to 12
           </p>
         </div>
       )}

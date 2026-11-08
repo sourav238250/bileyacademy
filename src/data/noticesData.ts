@@ -3,19 +3,19 @@ import { NoticeItem } from '../types';
 export const ACADEMY_NOTICES: NoticeItem[] = [
   {
     id: 'notice-adm-2026-27',
-    title: 'Admissions Open for Academic Session 2026–27 (Classes I to XII)',
+    title: 'Admissions Open for Academic Session 2026–27 (Classes II to XII)',
     category: 'admission',
     categoryLabel: 'Admission Notice',
     date: 'Aug 24, 2026',
-    description: 'Registration open for Offline Primary Batches (Class 1-5) and Hybrid Secondary & Higher Secondary Batches (Class 6-12) with Engineering/JEE & Board orientation.',
+    description: 'Registration open for Offline Primary Batches (Class 2-5) and Hybrid Secondary & Higher Secondary Batches (Class 6-12) with Engineering/JEE & Board orientation.',
     badge: 'Admissions 2026',
     isNew: true,
     isUrgent: true,
-    targetClass: 'Class 1–12 (All Boards)',
+    targetClass: 'Class 2–12 (All Boards)',
     attachmentName: 'Admission_Prospectus_2026.pdf',
     actionText: 'Apply for Admission',
     details: [
-      'Class I–V: All subjects offline comprehensive foundational coaching with activity learning.',
+      'Class II–V: All subjects offline comprehensive foundational coaching with activity learning.',
       'Class VI–XII: Specialized offline & online classes for Mathematics, Science (Physics & Chemistry), English, Biology, and Computer Science.',
       'Special Board scoring & JEE foundation modules with tricks, speed calculation, and question banks.',
       'Limited batch strength of 15–18 students per batch for focused individual attention.'
@@ -101,11 +101,11 @@ export const ACADEMY_NOTICES: NoticeItem[] = [
     category: 'news',
     categoryLabel: 'News & Announcements',
     date: 'Aug 12, 2026',
-    description: 'One-on-one progress review between parents and subject mentors for Classes I through VIII at the Main Academic Wing.',
+    description: 'One-on-one progress review between parents and subject mentors for Classes II through VIII at the Main Academic Wing.',
     badge: 'PTM Notice',
     isNew: false,
     isUrgent: false,
-    targetClass: 'Class 1 to 8',
+    targetClass: 'Class 2 to 8',
     attachmentName: 'PTM_TimeSlot_Allotment.pdf',
     actionText: 'Check Time Slots',
     details: [
@@ -116,7 +116,7 @@ export const ACADEMY_NOTICES: NoticeItem[] = [
 ];
 
 export const NOTICE_TICKER_ITEMS = [
-  '⚡ Admissions Active for Classes 1–12 (Academic Session 2026-27) • Call & WhatsApp: 8918807082',
+  '⚡ Admissions Active for Classes 2–12 (Academic Session 2026-27) • Call & WhatsApp: 8918807082',
   '📢 First Term Board Simulation Mock Test Series commences next week for Classes 9–12',
   '🏆 B-STAT 2026 Scholarship Exam Registrations Open: Up to 100% Tuition Fee Waivers',
   '🔬 New Experiential STEM & Optics Science Laboratory Open at Jamna Campus',

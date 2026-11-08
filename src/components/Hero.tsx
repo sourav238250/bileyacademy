@@ -296,7 +296,7 @@ export const Hero: React.FC<HeroProps> = ({
               {translations.statStudentsLabel}
             </div>
             <div className="text-[10px] text-slate-400">
-              {isBengali ? 'ক্লাস ১ থেকে ১২ পর্যন্ত' : 'Class 1 to 12 Academic Range'}
+              {isBengali ? 'ক্লাস ২ থেকে ১২ পর্যন্ত' : 'Class 2 to 12 Academic Range'}
             </div>
           </div>
 

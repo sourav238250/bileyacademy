@@ -3,11 +3,19 @@ import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { 
   initializeFirestore, 
   getFirestore,
+  setLogLevel,
   persistentLocalCache,
   persistentMultipleTabManager,
   memoryLocalCache
 } from 'firebase/firestore';
 import firebaseConfig from '../../firebase-applet-config.json';
+
+// Silence non-fatal Firestore network transition advisories (like the 10-second backend connection warning)
+try {
+  setLogLevel('silent');
+} catch {
+  // Gracefully continue if environment restricts logging levels
+}
 
 // Initialize or reuse existing Firebase App instance
 const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
@@ -19,14 +27,13 @@ googleProvider.setCustomParameters({
   prompt: 'select_account'
 });
 
-// Initialize Cloud Firestore database with forced long-polling to prevent stream timeouts
-// and ensure immediate, seamless communication in web/iframe environments.
+// Initialize Cloud Firestore database with auto-detect long polling and multi-tab cache
 let firestoreDb;
 try {
   firestoreDb = initializeFirestore(
     app,
     {
-      experimentalForceLongPolling: true,
+      experimentalAutoDetectLongPolling: true,
       ignoreUndefinedProperties: true,
       localCache: persistentLocalCache({
         tabManager: persistentMultipleTabManager()
@@ -39,7 +46,7 @@ try {
     firestoreDb = initializeFirestore(
       app,
       {
-        experimentalForceLongPolling: true,
+        experimentalAutoDetectLongPolling: true,
         ignoreUndefinedProperties: true,
         localCache: memoryLocalCache()
       },

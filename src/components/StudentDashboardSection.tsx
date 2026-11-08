@@ -68,7 +68,7 @@ export const StudentDashboardSection: React.FC<StudentDashboardSectionProps> = (
           <p className="text-sm sm:text-base text-slate-300">
             {isBengali 
               ? 'বিলে অ্যাকাডেমিতে প্রতিটি শিক্ষার্থীর সাপ্তাহিক মক টেস্ট, ধারণাগত স্পষ্টতা, অধ্যায় সমাপ্তি ও রিভিশন সূচক স্বচ্ছতার সাথে পর্যবেক্ষণ করা হয়।' 
-              : 'Monitor chapter completions, weekly test benchmarks, lab practicals, and 1-on-1 mentor feedback across Class 1 to 12.'}
+              : 'Monitor chapter completions, weekly test benchmarks, lab practicals, and 1-on-1 mentor feedback across Class 2 to 12.'}
           </p>
         </div>
 

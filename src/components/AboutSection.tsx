@@ -138,7 +138,7 @@ export const AboutSection: React.FC = () => {
             <div className="p-4 rounded-2xl bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-300">
               <div className="flex items-center space-x-2">
                 <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>{isBengali ? 'ক্লাস ১ থেকে ১২ (সকল বোর্ড)' : 'Class 1 to 12 (All Boards)'}</span>
+                <span>{isBengali ? 'ক্লাস ২ থেকে ১২ (সকল বোর্ড)' : 'Class 2 to 12 (All Boards)'}</span>
               </div>
               <div className="flex items-center space-x-2">
                 <FlaskConical className="w-4 h-4 text-emerald-400 shrink-0" />

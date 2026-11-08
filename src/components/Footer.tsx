@@ -72,9 +72,9 @@ export const Footer: React.FC<FooterProps> = ({
 
             <p className="text-xs text-slate-400 leading-relaxed">
               {isBengali ? (
-                '১ম থেকে ১২শ শ্রেণির শিক্ষার্থীদের গণিত, বিজ্ঞান, কম্পিউটার ও ইংরেজিতে গভীর ভিত্তি গঠনের লক্ষ্যে নিবেদিত অ্যাকাডেমিক প্রতিষ্ঠান।'
+                '২য় থেকে ১২শ শ্রেণির শিক্ষার্থীদের গণিত, বিজ্ঞান ও ইংরেজিতে গভীর ভিত্তি গঠনের লক্ষ্যে নিবেদিত অ্যাকাডেমিক প্রতিষ্ঠান।'
               ) : (
-                'Dedicated coaching institute empowering students from Class 1 through Class 12 with deep conceptual clarity in Mathematics, Physical & Biological Sciences, Computer Science, and English.'
+                'Dedicated coaching institute empowering students from Class 2 through Class 12 with deep conceptual clarity in Mathematics, Physical & Biological Sciences, and English.'
               )}
             </p>
 
@@ -101,7 +101,7 @@ export const Footer: React.FC<FooterProps> = ({
                   }}
                   className="hover:text-amber-400 transition-colors text-left"
                 >
-                  • <strong>{isBengali ? 'প্রাথমিক (১ম-৪র্থ):' : 'Primary (Class 1-4):'}</strong> {isBengali ? 'ইংরেজি, গণিত, কম্পিউটার, বিজ্ঞান' : 'Eng, Math, Comp, Science'}
+                  • <strong>{isBengali ? 'প্রাথমিক (২য়-৪র্থ):' : 'Primary (Class 2-4):'}</strong> {isBengali ? 'ইংরেজি, গণিত, পরিবেশ ও বিজ্ঞান' : 'Eng, Math, Science'}
                 </button>
               </li>
               <li>
@@ -112,7 +112,7 @@ export const Footer: React.FC<FooterProps> = ({
                   }}
                   className="hover:text-amber-400 transition-colors text-left"
                 >
-                  • <strong>{isBengali ? 'উচ্চ প্রাথমিক (৫ম-৮ম):' : 'Upper Primary (Class 5-8):'}</strong> {isBengali ? 'গণিত, বিজ্ঞান, জীববিদ্যা, ইংরেজি' : 'Math, Science, Bio, Eng, Comp'}
+                  • <strong>{isBengali ? 'উচ্চ প্রাথমিক (৫ম-৮ম):' : 'Upper Primary (Class 5-8):'}</strong> {isBengali ? 'গণিত, বিজ্ঞান, জীববিদ্যা, ইংরেজি' : 'Math, Science, Bio, Eng, Comp (Cl 6-8)'}
                 </button>
               </li>
               <li>

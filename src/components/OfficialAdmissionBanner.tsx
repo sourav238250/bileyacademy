@@ -41,8 +41,8 @@ export const OfficialAdmissionBanner: React.FC<OfficialAdmissionBannerProps> = (
         await navigator.share({
           title: isBengali ? 'বিলে অ্যাকাডেমি - সরকারি ভর্তি বিজ্ঞপ্তি' : 'Biley Academy - Official Admission Notice',
           text: isBengali 
-            ? 'বিলে অ্যাকাডেমিতে ১ম থেকে ১২শ শ্রেণির ভর্তি চলছে। কল ও হোয়াটসঅ্যাপ: ৮৯১৮৮০৭০৮২ • ইমেইল: bileyacademy@gmail.com।' 
-            : 'Admissions open for Classes 1 to 12 at Biley Academy, Jamna, Pingla, Paschim Medinipur. Call & WhatsApp: +91 8918807082 • Email: bileyacademy@gmail.com.',
+            ? 'বিলে অ্যাকাডেমিতে ২য় থেকে ১২শ শ্রেণির ভর্তি চলছে। কল ও হোয়াটসঅ্যাপ: ৮৯১৮৮০৭০৮২ • ইমেইল: bileyacademy@gmail.com।' 
+            : 'Admissions open for Classes 2 to 12 at Biley Academy, Jamna, Pingla, Paschim Medinipur. Call & WhatsApp: +91 8918807082 • Email: bileyacademy@gmail.com.',
           url: window.location.href,
         });
       } catch (err) {
@@ -54,7 +54,7 @@ export const OfficialAdmissionBanner: React.FC<OfficialAdmissionBannerProps> = (
   };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(`Biley Academy (Since 2026) - An Educational Coaching Institute for Classes I-XII. Call & WhatsApp: +91 8918807082 • Email: bileyacademy@gmail.com | Jamna, Pingla, Paschim Medinipur - 721140, W.B.`);
+    navigator.clipboard.writeText(`Biley Academy (Since 2026) - An Educational Coaching Institute for Classes II-XII. Call & WhatsApp: +91 8918807082 • Email: bileyacademy@gmail.com | Jamna, Pingla, Paschim Medinipur - 721140, W.B.`);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
@@ -164,7 +164,7 @@ export const OfficialAdmissionBanner: React.FC<OfficialAdmissionBannerProps> = (
             {/* Green Badge */}
             <div className="text-center mb-4">
               <span className="inline-block bg-emerald-600 text-white font-black text-sm sm:text-base px-5 py-1 rounded-full shadow-md">
-                {isBengali ? '১ম থেকে ৫ম শ্রেণির জন্য' : 'For Classes I - V'}
+                {isBengali ? '২য় থেকে ৫ম শ্রেণির জন্য' : 'For Classes II - V'}
               </span>
               <div className="text-xs font-bold text-emerald-400 mt-1 uppercase tracking-wide">
                 {isBengali ? 'সমস্ত বিষয় [ অফলাইন ব্যাচ ]' : 'All Subjects [ Offline ]'}
@@ -212,10 +212,10 @@ export const OfficialAdmissionBanner: React.FC<OfficialAdmissionBannerProps> = (
 
             {onOpenInquiry && (
               <button
-                onClick={() => onOpenInquiry('Class 1-5 Primary')}
+                onClick={() => onOpenInquiry('Class 2-5 Primary')}
                 className="mt-4 w-full py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition-colors flex items-center justify-center gap-1.5 shadow-sm"
               >
-                <span>{isBengali ? '১ম-৫ম শ্রেণিতে ভর্তির আবেদন' : 'Enroll in Classes I-V'}</span>
+                <span>{isBengali ? '২য়-৫ম শ্রেণিতে ভর্তির আবেদন' : 'Enroll in Classes II-V'}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             )}

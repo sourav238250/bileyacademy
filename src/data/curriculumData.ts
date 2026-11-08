@@ -8,22 +8,22 @@ export const GRADE_CATEGORIES = [
   {
     id: 'primary' as const,
     title: 'Primary Foundation',
-    classes: 'Classes 1 to 4 (WBBPE / CBSE)',
-    badge: 'Ages 6 - 10',
-    description: 'Nurturing curiosity, logical reasoning (WBBPE / CBSE), computational thinking, and language fluency through activity-based learning.',
+    classes: 'Classes 2 to 4 (WBBPE / CBSE)',
+    badge: 'Ages 7 - 10',
+    description: 'Nurturing curiosity, logical reasoning (WBBPE / CBSE), environmental awareness, and language fluency through activity-based learning.',
     icon: 'Sparkles',
     color: 'amber',
-    subjectsList: ['English', 'Mathematics', 'Computer', 'Science']
+    subjectsList: ['English', 'Mathematics', 'Science']
   },
   {
     id: 'upper_primary' as const,
     title: 'Upper Primary',
     classes: 'Classes 5 to 8 (WBBSE / CBSE)',
     badge: 'Ages 10 - 14',
-    description: 'Transitioning to structured conceptual sciences, algebra, biology, programming (WBBSE / CBSE), and strong analytical problem solving.',
+    description: 'Transitioning to structured conceptual sciences, algebra, biology, programming (Classes 6-8), and strong analytical problem solving.',
     icon: 'BookOpen',
     color: 'emerald',
-    subjectsList: ['Mathematics', 'Science', 'Biology', 'English', 'Computer Science / Application']
+    subjectsList: ['Mathematics', 'Science', 'Biology', 'English', 'Computer Science (Cl 6-8)']
   },
   {
     id: 'secondary' as const,

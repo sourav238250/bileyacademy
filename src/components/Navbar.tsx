@@ -45,7 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'about', label: t('navAbout', 'About Us'), icon: BookOpen },
     { id: 'mission-vision', label: t('navMissionVision', 'Mission & Vision'), icon: Award },
     { id: 'founder', label: t('navFounder', 'Founder Message'), icon: GraduationCap },
-    { id: 'curriculum', label: t('navCurriculum', 'Curriculum (Cl 1-12)'), icon: Sparkles, badge: t('navAllGrades', 'All Grades') },
+    { id: 'curriculum', label: t('navCurriculum', 'Curriculum (Cl 2-12)'), icon: Sparkles, badge: t('navAllGrades', 'All Grades') },
     { id: 'student-dashboard', label: t('navStudentDashboard', 'Student Progress'), icon: BarChart3, badge: t('navTracker', 'Tracker') },
     { id: 'gallery', label: t('navGallery', 'Campus Gallery'), icon: ImageIcon, badge: isBengali ? 'ছবি' : 'Photos' },
     { id: 'ai-tutor', label: t('navAiTutor', 'AI Doubt Solver'), icon: Bot, badge: t('navLiveAi', 'Live AI') },
@@ -72,7 +72,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               {t('topBannerAdmissions', 'Admissions Open 2026-27')}
             </span>
             <span className="hidden sm:inline font-semibold">
-              {t('topBannerClasses', 'Classes 1 to 12 (CBSE • WBBPE / WBBSE / WBCHSE + JEE / WBJEE)')}
+              {t('topBannerClasses', 'Classes 2 to 12 (CBSE • WBBPE / WBBSE / WBCHSE + JEE / WBJEE)')}
             </span>
           </div>
           
@@ -131,7 +131,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </span>
               </div>
               <p className="text-[11px] text-slate-400 font-medium tracking-wide">
-                {t('academyTagline', 'Premier Coaching • Class 1 to 12')}
+                {t('academyTagline', 'Premier Coaching • Class 2 to 12')}
               </p>
             </div>
           </div>

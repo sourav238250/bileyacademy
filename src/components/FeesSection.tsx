@@ -187,7 +187,7 @@ export const FeesSection: React.FC<FeesSectionProps> = ({ onOpenInquiry }) => {
                 onChange={(e) => setCalcGrade(Number(e.target.value))}
                 className="w-full py-2.5 px-3 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs font-medium focus:border-amber-400 focus:outline-none"
               >
-                {Array.from({ length: 12 }, (_, i) => i + 1).map((grade) => (
+                {Array.from({ length: 11 }, (_, i) => i + 2).map((grade) => (
                   <option key={grade} value={grade}>
                     Class {grade} {grade <= 4 ? '(Primary Package)' : grade <= 8 ? '(Upper Primary)' : grade <= 10 ? '(Secondary Board)' : '(Science Track)'}
                   </option>
@@ -319,8 +319,8 @@ export const FeesSection: React.FC<FeesSectionProps> = ({ onOpenInquiry }) => {
               </h3>
               <p className="text-xs text-slate-400 mt-0.5">
                 {isBengali 
-                  ? 'পশ্চিমবঙ্গ বোর্ড ও সিবিএসই এর ক্লাস ১ থেকে ১২ পর্যন্ত সম্পূর্ণ প্রাতিষ্ঠানিক হার।' 
-                  : 'Official rates for West Bengal Board & CBSE across Classes 1 to 12.'}
+                  ? 'পশ্চিমবঙ্গ বোর্ড ও সিবিএসই এর ক্লাস ২ থেকে ১২ পর্যন্ত সম্পূর্ণ প্রাতিষ্ঠানিক হার।' 
+                  : 'Official rates for West Bengal Board & CBSE across Classes 2 to 12.'}
               </p>
             </div>
 
@@ -371,8 +371,8 @@ export const FeesSection: React.FC<FeesSectionProps> = ({ onOpenInquiry }) => {
             </span>
 
             {[
-              { id: 'all', labelEn: 'All Classes (1-12)', labelBn: 'সকল শ্রেণি (১-১২)' },
-              { id: 'primary', labelEn: 'Primary (Cl 1-4 Package)', labelBn: 'প্রাথমিক প্যাকেজ (১-৪)' },
+              { id: 'all', labelEn: 'All Classes (2-12)', labelBn: 'সকল শ্রেণি (২-১২)' },
+              { id: 'primary', labelEn: 'Primary (Cl 2-4 Package)', labelBn: 'প্রাথমিক প্যাকেজ (২-৪)' },
               { id: 'upper_primary', labelEn: 'Upper Primary (Cl 5-8)', labelBn: 'উচ্চ প্রাথমিক (৫-৮)' },
               { id: 'secondary', labelEn: 'Secondary Board (Cl 9-10)', labelBn: 'মাধ্যমিক (৯-১০)' },
               { id: 'higher_secondary', labelEn: 'Higher Secondary Science (Cl 11-12)', labelBn: 'উচ্চমাধ্যমিক সায়েন্স (১১-১২)' }
