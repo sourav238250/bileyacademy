@@ -169,6 +169,9 @@ export const OfficialAdmissionBanner: React.FC<OfficialAdmissionBannerProps> = (
               <div className="text-xs font-bold text-emerald-400 mt-1 uppercase tracking-wide">
                 {isBengali ? 'সমস্ত বিষয় [ অফলাইন ]' : 'All Subjects [Offline]'}
               </div>
+              <div className="mt-1 text-[11px] font-semibold text-amber-300 bg-amber-500/10 px-2 py-0.5 rounded-md border border-amber-500/20 inline-block">
+                {isBengali ? 'বাংলা • ইংরেজি • গণিত • পরিবেশ ও বিজ্ঞান' : 'Bengali • English • Math • EVS/Science'}
+              </div>
             </div>
 
             {/* Feature List with Icons */}
@@ -250,17 +253,17 @@ export const OfficialAdmissionBanner: React.FC<OfficialAdmissionBannerProps> = (
             </p>
           </div>
 
-          {/* Right Column: Classes VI - XII (Secondary & Higher Secondary) */}
+          {/* Right Column: Classes V - XII (Secondary & Higher Secondary) */}
           <div className="lg:col-span-4 bg-slate-900/90 p-5 rounded-2xl border border-blue-500/30 shadow-lg relative overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-full blur-xl pointer-events-none" />
             
             {/* Green Badge */}
             <div className="text-center mb-4">
               <span className="inline-block bg-emerald-600 text-white font-black text-sm sm:text-base px-5 py-1 rounded-full shadow-md">
-                {isBengali ? '৬ষ্ঠ থেকে ১২শ শ্রেণির জন্য' : 'For Classes VI–XII'}
+                {isBengali ? '৫ম থেকে ১২শ শ্রেণির জন্য' : 'For Classes V-XII'}
               </span>
               <div className="text-xs font-bold text-blue-400 mt-1 uppercase tracking-wide">
-                {isBengali ? '[ অফলাইন / অনলাইন ]' : '[ Offline / Online ]'}
+                {isBengali ? '[ অফলাইন / অনলাইন ]' : '[Offline/Online]'}
               </div>
             </div>
 
@@ -325,10 +328,10 @@ export const OfficialAdmissionBanner: React.FC<OfficialAdmissionBannerProps> = (
 
             {onOpenInquiry && (
               <button
-                onClick={() => onOpenInquiry('Class 6-12 Secondary & JEE')}
+                onClick={() => onOpenInquiry('Class 5-12 Secondary & JEE')}
                 className="mt-3 w-full py-2 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-500 text-white transition-colors flex items-center justify-center gap-1.5 shadow-sm"
               >
-                <span>{isBengali ? '৬ষ্ঠ-১২শ শ্রেণিতে ভর্তির আবেদন' : 'Enroll in Classes VI-XII'}</span>
+                <span>{isBengali ? '৫ম-১২শ শ্রেণিতে ভর্তির আবেদন' : 'Enroll in Classes V-XII'}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             )}

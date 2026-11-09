@@ -15,7 +15,7 @@ export const ACADEMY_NOTICES: NoticeItem[] = [
     attachmentName: 'Admission_Prospectus_2026.pdf',
     actionText: 'Apply for Admission',
     details: [
-      'Class II–IV: All subjects offline comprehensive foundational coaching with activity learning.',
+      'Class II–IV: All subjects offline comprehensive foundational coaching with activity learning (Bengali, English, Mathematics, and Science & EVS).',
       'Class V–XII: Specialized offline & online classes for Mathematics, Science (Physics & Chemistry), English, Biology, and Computer Science.',
       'Special Board scoring & JEE foundation modules with tricks, speed calculation, and question banks.',
       'Limited batch strength of 15–18 students per batch for focused individual attention.'

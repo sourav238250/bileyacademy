@@ -48,7 +48,7 @@ export const OFFICIAL_FEES_DATA: FeeStructureItem[] = [
     tuitionType: 'package',
     tuitionTypeLabel: 'All Subjects Package',
     academicStage: 'primary',
-    subjectsIncludedDescription: 'All Foundation Subjects (Language I, English, Mathematics, Our Environment)'
+    subjectsIncludedDescription: 'All Foundation Subjects (Bengali, English, Mathematics, Our Environment)'
   },
   {
     id: 'wb-class-4',
@@ -200,7 +200,7 @@ export const OFFICIAL_FEES_DATA: FeeStructureItem[] = [
     tuitionType: 'package',
     tuitionTypeLabel: 'All Subjects Package',
     academicStage: 'primary',
-    subjectsIncludedDescription: 'NCERT Foundation: English, Mathematics, Environmental Studies, Language II'
+    subjectsIncludedDescription: 'NCERT Foundation: Bengali, English, Mathematics, Environmental Studies'
   },
   {
     id: 'cbse-class-3',
@@ -215,7 +215,7 @@ export const OFFICIAL_FEES_DATA: FeeStructureItem[] = [
     tuitionType: 'package',
     tuitionTypeLabel: 'All Subjects Package',
     academicStage: 'primary',
-    subjectsIncludedDescription: 'NCERT: English (Santoor), Mathematics (Mela), EVS (Looking Around), Language II'
+    subjectsIncludedDescription: 'NCERT: Bengali, English, Mathematics, EVS (Looking Around)'
   },
   {
     id: 'cbse-class-4',
@@ -230,7 +230,7 @@ export const OFFICIAL_FEES_DATA: FeeStructureItem[] = [
     tuitionType: 'package',
     tuitionTypeLabel: 'All Subjects Package',
     academicStage: 'primary',
-    subjectsIncludedDescription: 'NCERT: English, Mathematics, Science/EVS, and Social Studies'
+    subjectsIncludedDescription: 'NCERT: Bengali, English, Mathematics, Science/EVS'
   },
   {
     id: 'cbse-class-5',

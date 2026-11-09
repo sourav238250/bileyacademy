@@ -101,7 +101,7 @@ export const Footer: React.FC<FooterProps> = ({
                   }}
                   className="hover:text-amber-400 transition-colors text-left"
                 >
-                  • <strong>{isBengali ? 'প্রাথমিক (২য়-৪র্থ):' : 'Primary (Class 2-4):'}</strong> {isBengali ? 'ইংরেজি, গণিত, পরিবেশ ও বিজ্ঞান' : 'Eng, Math, Science'}
+                  • <strong>{isBengali ? 'প্রাথমিক (২য়-৪র্থ):' : 'Primary (Class 2-4):'}</strong> {isBengali ? 'বাংলা, ইংরেজি, গণিত, পরিবেশ ও বিজ্ঞান' : 'Bengali, English, Math, Science'}
                 </button>
               </li>
               <li>

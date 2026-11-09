@@ -229,7 +229,7 @@ export const BATCH_TIMINGS = [
     category: "Primary Foundation (Class 2 - 4)",
     schedule: "Monday, Wednesday & Friday",
     timings: "3:30 PM – 5:30 PM",
-    subjects: "English, Mathematics, Science",
+    subjects: "Bengali, English, Mathematics, Science",
     batchSize: "Max 12 students per batch"
   },
   {

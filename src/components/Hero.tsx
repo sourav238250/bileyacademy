@@ -192,11 +192,11 @@ export const Hero: React.FC<HeroProps> = ({
                       <div>
                         <div className="flex items-center space-x-1.5">
                           <h3 className="text-xs sm:text-sm font-bold text-white group-hover:text-amber-300">
-                            {isBengali ? 'ক্লাস ১ থেকে ৪ (প্রাথমিক)' : 'Class 1 to 4 (Primary)'}
+                            {isBengali ? 'ক্লাস ২ থেকে ৪ (প্রাথমিক)' : 'Class 2 to 4 (Primary)'}
                           </h3>
                           <span className="text-[9px] text-amber-400 bg-amber-500/10 px-1 rounded">{isBengali ? 'ভিত্তি' : 'Foundation'}</span>
                         </div>
-                        <p className="text-[11px] text-slate-400">{isBengali ? 'ইংরেজি • গণিত • কম্পিউটার • বিজ্ঞান' : 'English • Math • Computer • Science'}</p>
+                        <p className="text-[11px] text-slate-400">{isBengali ? 'বাংলা • ইংরেজি • গণিত • পরিবেশ ও বিজ্ঞান' : 'Bengali • English • Math • Science & EVS'}</p>
                       </div>
                     </div>
                     <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-amber-400 group-hover:translate-x-1 transition-all" />

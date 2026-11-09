@@ -9,7 +9,7 @@ export const PRIMARY_GRADES_DATA: ClassGradeInfo[] = [
     gradeLabel: 'Class 2 (WBBPE & CBSE)',
     category: 'primary',
     ageGroup: '7 - 8 Years',
-    academicFocus: 'Conceptual Arithmetic, Environmental Discovery & Language Fluency: Math (আমার গণিত & Math-Magic 2), Science / EVS (আমাদের পরিবেশ & Looking Around 2), and English (Butterfly / Wings & Mridang/Marigold 2)',
+    academicFocus: 'Conceptual Arithmetic, Environmental Discovery & Language Fluency: Bengali (আমার বই ২য় পর্ব ও সহজ পাঠ), Math (আমার গণিত & Math-Magic 2), Science / EVS (আমাদের পরিবেশ & Looking Around 2), and English (Butterfly / Wings & Mridang/Marigold 2)',
     weeklySchedulePreview: { days: 'Mon, Tue, Thu', timings: '3:30 PM - 5:45 PM', mode: 'Offline Classroom + Smart Lab' },
     subjects: [
       {
@@ -235,8 +235,78 @@ export const PRIMARY_GRADES_DATA: ClassGradeInfo[] = [
         ],
         examPattern: 'Grammar Worksheets, Unseen Reading Comprehension, Spelling & Dictation, Creative Paragraph Assessments',
         practicalAvailable: true
+      },
+      {
+        id: 'c2-beng',
+        name: 'Bengali Language & Literature (বাংলা সাহিত্য ও ভাষা)',
+        code: 'BENG-PRM-2',
+        iconName: 'BookA',
+        color: 'rose',
+        description: 'Class 2 Bengali Language & Foundational Literature aligning WBBPE (আমার বই ২য় পর্ব / সহজ পাঠ ২য় ভাগ) and First/Second Language standards: বর্ণপরিচয় ও যুক্তাক্ষর (Conjunctive consonants), শব্দ ও বাক্য গঠন, সহজ পাঠ ও শিশু কবিতা (রবীন্দ্রনাথ ঠাকুর, যোগীন্দ্রনাথ সরকার), বানান শুদ্ধি ও শ্রুতলিপি, এবং মৌলিক ব্যাকরণ (বিশেষ্য পদ, একবচন-বহুবচন, বিপরীত শব্দ ও ছবি দেখে সহজ অনুচ্ছেদ গঠন)।',
+        weeklyHours: 4,
+        totalModules: 9,
+        learningOutcomes: [
+          'Master Bengali conjunctive letters (যুক্তবর্ণ / যুক্তাক্ষর যেমন: ক্ত, ক্স, গ্দ, ঙ্ক, ঙ্গ, ঞ্চ, ঞ্জ, ট্ট, ত্ত, ন্ত, ন্দ, ব্ব, ম্প, ল্ল, ষ্প, স্ত, স্ন) with proper pronunciation and handwriting',
+          'Read, recite, and comprehend classic prose and poems from Sahaj Path (সহজ পাঠ ২য় ভাগ) and Amar Boi (আমার বই ২য় পর্ব)',
+          'Identify parts of speech foundations: Nouns (বিশেষ্য পদ - ব্যক্তি, বস্তু, স্থান, নদীর নাম) and Pronouns (সর্বনাম পদ - আমি, তুমি, সে, তিনি)',
+          'Form correct sentences with punctuation (দাঁড়ি, কমা, জিজ্ঞাসা চিহ্ন), understand opposites (বিপরীত শব্দ) and singular/plural (একবচন ও বহুবচন)',
+          'Write creative 4-5 line descriptions on familiar objects, family members, seasons, and festivals'
+        ],
+        keyChapters: [
+          {
+            title: 'যুক্তবর্ণ ও বানান শিক্ষা (Conjunctive Consonants & Spelling Mastery)',
+            description: 'WBBPE আমার বই ২য় পর্ব: দুই ও তিন ব্যঞ্জনের যুক্তাক্ষর বিশ্লেষণ, যুক্তাক্ষর যোগে নতুন শব্দ গঠন, বানান শুদ্ধিকরণ এবং নির্ভুল শ্রুতলিপি (Dictation).',
+            subtopics: [
+              'ক-বর্গ ও চ-বর্গের যুক্তবর্ণ (ঙ্ক, ঙ্গ, ঞ্চ, ঞ্জ, চ্ছ)',
+              'ট-বর্গ, ত-বর্গ ও প-বর্গের যুক্তবর্ণ (ন্ট, ন্থ, ন্দ, ম্প, ম্ফ, ল্প, ল্ট)',
+              'য-ফলা (্য), র-ফলা (্র), রেফ (র্), ব-ফলা (্ব) ও ণত্ব/ষত্ব বিধির প্রাথমিক ধারণা',
+              'যুক্তবর্ণযুক্ত শব্দের অর্থ ও সমোচ্চারিত শব্দের ব্যবহার'
+            ],
+            practicalOrActivity: 'যুক্তবর্ণ ফ্ল্যাশ কার্ড মেলা এবং আনন্দপাঠ শব্দ-ছক ধাঁধা'
+          },
+          {
+            title: 'সহজ পাঠ ও শিশু সাহিত্য (Literature, Rhymes & Moral Stories)',
+            description: 'রবীন্দ্রনাথ ঠাকুরের সহজ পাঠ ২য় ভাগ এবং আমার বই থেকে নির্বাচিত গল্প ও কবিতা: "আলো হয় গেল রোগ", "বাঁশ বনে বক", "হাট" কবিতা ও শিশুতোষ নীতিগল্প।',
+            subtopics: [
+              'স্পষ্ট উচ্চারণে বিশুদ্ধভাবে কবিতা আবৃত্তি ও রসাস্বাদন',
+              'গল্পের কেন্দ্রীয় ভাব, চরিত্র অনুধাবন ও শিক্ষামূলক বার্তা',
+              'পাঠ্যাংশের প্রশ্নোত্তর: এক কথায় উত্তর ও পূর্ণবাক্যে উত্তর লিখন',
+              'কঠিন শব্দের সহজার্থ ও স্বরচিত বাক্যে প্রয়োগ'
+            ],
+            practicalOrActivity: 'সহজ পাঠ আবৃত্তি প্রতিযোগিতা ও চরিত্রাভিনয় (Role play)'
+          },
+          {
+            title: 'প্রাথমিক ব্যাকরণ ও বাক্য গঠন (Primary Bengali Grammar & Sentence Building)',
+            description: 'মৌলিক ব্যাকরণ পাঠ: শব্দ ও বাক্য পরিচয়, পদের ধারণা (বিশেষ্য ও সর্বনাম পদ), বিপরীতার্থক শব্দ, লিঙ্গ পরিবর্তন (পুংলিঙ্গ ও স্ত্রীলিঙ্গ) এবং একবচন-বহুবচন।',
+            subtopics: [
+              'শব্দ থেকে বাক্য গঠন এবং অর্থপূর্ণ বাক্যের ক্রমবিন্যাস',
+              'বিশেষ্য পদের পরিচয়: ব্যক্তি, জাতি, স্থান, ফলের নাম চিহ্নিতকরণ',
+              'দৈনন্দিন ব্যবহৃত বিপরীত শব্দ (যেমন: আলো-আঁধার, ভালো-মন্দ, দিন-রাত)',
+              'লিঙ্গ রূপান্তর (বাবা-মা, ভাই-বোন, ছাত্র-ছাত্রী, শিক্ষক-শিক্ষিকা)',
+              'একবচন ও বহুবচন (টি/টা বনাম গুলি/গুলো যোগে রূপান্তর)'
+            ],
+            practicalOrActivity: 'শব্দ-জোড় তাস খেলা (Opposite Word Matching Card Game)'
+          },
+          {
+            title: 'অনুচ্ছেদ ও চিত্রভিত্তিক লিখন (Picture Composition & Creative Writing)',
+            description: 'রচনামূলক ও বোধন দক্ষতা: চিত্র দেখে ৫-৬ বাক্যে বর্ণনা লিখন, চেনা বিষয় নিয়ে অনুচ্ছেদ (আমার বিদ্যালয়, জাতীয় ফুল, প্রিয় ঋতু) এবং সহজ বোধপরীক্ষণ।',
+            subtopics: [
+              'প্রদত্ত ছবি দেখে পর্যবেক্ষণমূলক বাক্য লিখন',
+              'সহজ অনুচ্ছেদ লিখন: "আমাদের বিদ্যালয়", "আমার মা", "বর্ষাকাল"',
+              'অদেখা সহজ অনুচ্ছেদ পড়ে প্রশ্নের সঠিক উত্তর নির্বাচন',
+              'সুন্দর ও পরিচ্ছন্ন বাংলা হাতের লেখা (Handwriting Calligraphy Practice)'
+            ],
+            practicalOrActivity: 'শিশু সাহিত্যিকা: চিত্র অঙ্কন ও তার পাশে ৩টি বর্ণনামূলক বাংলা বাক্য রচনা'
+          }
+        ],
+        referenceMaterials: [
+          'WBBPE পশ্চিমবঙ্গ প্রাথমিক শিক্ষা পর্ষদ: আমার বই ২য় পর্ব (Amar Boi Part 2)',
+          'রবীন্দ্রনাথ ঠাকুর: সহজ পাঠ ২য় ভাগ (Sahaj Path Part 2)',
+          'বিলে অ্যাকাডেমি বাংলা ভাষা ও বানান সহায়িকা ২য় শ্রেণি'
+        ],
+        examPattern: 'শ্রুতলিপি (Dictation), কবিতা আবৃত্তি, বানান শুদ্ধি, ব্যাকরণ ওয়ার্কশিট ও সহজ অনুচ্ছেদ রচনা পরীক্ষা',
+        practicalAvailable: false
       }
-
     ]
   },
 
@@ -248,7 +318,7 @@ export const PRIMARY_GRADES_DATA: ClassGradeInfo[] = [
     gradeLabel: 'Class 3 (WBBPE & CBSE)',
     category: 'primary',
     ageGroup: '8 - 9 Years',
-    academicFocus: 'Multi-Digit Arithmetic, Scientific Inquiry & Language Mastery: Math (আমার গণিত & Math-Magic 3), Science / EVS (আমাদের পরিবেশ & Looking Around 3), and English (Butterfly / Wings & Marigold 3)',
+    academicFocus: 'Multi-Digit Arithmetic, Scientific Inquiry & Language Mastery: Bengali (পাতা বাহার ৩ ও ভাষা পাঠ ৩), Math (আমার গণিত & Math-Magic 3), Science / EVS (আমাদের পরিবেশ & Looking Around 3), and English (Butterfly / Wings & Marigold 3)',
     weeklySchedulePreview: { days: 'Mon to Thu', timings: '4:00 PM - 6:15 PM', mode: 'Offline Classroom + Hybrid Science/Math Lab' },
     subjects: [
       {
@@ -476,8 +546,79 @@ export const PRIMARY_GRADES_DATA: ClassGradeInfo[] = [
         ],
         examPattern: 'Written Grammar Exams, Unseen Comprehension Assessments, Vocabulary & Spelling Bees, and Paragraph/Letter Writing Submissions',
         practicalAvailable: true
+      },
+      {
+        id: 'c3-beng',
+        name: 'Bengali Language & Grammar (বাংলা সাহিত্য ও ব্যাকরণ)',
+        code: 'BENG-PRM-3',
+        iconName: 'BookA',
+        color: 'rose',
+        description: 'Class 3 Bengali Language & Structured Literature aligning WBBPE (পাতা বাহার ৩ ও ভাষা পাঠ ৩) and Language Benchmarks: সাহিত্য পাঠ (উপেন্দ্রকিশোর রায়চৌধুরী, সুকুমার রায়, রবীন্দ্রনাথ ঠাকুর), ব্যাকরণ শিক্ষা (ধ্বনি ও বর্ণ, পদ পরিচয় - বিশেষ্য, সর্বনাম, বিশেষণ ও ক্রিয়া, লিঙ্গ ও বচন, সাধু ও চলিত রূপ), বানানবিধি, অনুচ্ছেদ লিখন এবং বোধপরীক্ষণ।',
+        weeklyHours: 5,
+        totalModules: 11,
+        learningOutcomes: [
+          'Read with fluency, expressiveness, and deep comprehension prose pieces and poems from Pata Bahar 3 (পাতা বাহার ৩)',
+          'Identify and classify grammatical parts of speech: Noun (বিশেষ্য), Pronoun (সর্বনাম), Adjective (বিশেষণ), and Verb (ক্রিয়াপদ)',
+          'Demonstrate correct gender transitions (লিঙ্গ পরিবর্তন), singular/plural rules (বচন পরিবর্তন), and synonym/antonym pairs (সমার্থক ও বিপরীতার্থক শব্দ)',
+          'Convert sentences between Sadhu Bhasha and Chalit Bhasha (সাধু ভাষা ও চলিত ভাষা রূপান্তর)',
+          'Compose 8-10 sentence descriptive paragraphs on everyday topics, moral values, and state heritage',
+          'Solve unseen reading comprehension passages with accurate factual and vocabulary responses'
+        ],
+        keyChapters: [
+          {
+            title: 'পাতা বাহার: নির্বাচিত সাহিত্য পাঠ (Selected Prose & Poetry from Pata Bahar 3)',
+            description: 'WBBPE পাতা বাহার ৩: উপেন্দ্রকিশোর রায়চৌধুরীর "টুনটুনির গল্প", সুকুমার রায়ের কবিতা, সত্যেন্দ্রনাথ দত্তের রচনা, লোককথা ও প্রকৃতিপ্রেমী রচনার পুঙ্খানুপুঙ্খ পাঠ ও ভাবার্থ বিশ্লেষণ।',
+            subtopics: [
+              'গদ্য ও পদ্যের আদর্শ পঠন, উচ্চারণ ও যতিচিহ্নের ব্যবহার',
+              'পাঠ্যভিত্তিক প্রশ্নোত্তর: বহুবিকল্পভিত্তিক (MCQ), সংক্ষিপ্ত ও ব্যাখ্যামূলক উত্তর',
+              'শব্দার্থ, বাক্য রচনা এবং শব্দের বিশেষ অর্থ অনুধাবন',
+              'রচনার নীতিশিক্ষা, মূল সুর ও লেখকের পরিচিতি'
+            ],
+            practicalOrActivity: 'কাব্যপাঠ ও আবৃত্তি কর্মশালা এবং নাট্য সংলাপ পাঠ'
+          },
+          {
+            title: 'ভাষা পাঠ: পদ পরিচয় ও পদ পরিবর্তন (Parts of Speech & Word Transformation)',
+            description: 'WBBPE ভাষা পাঠ ৩: পদের শ্রেণিবিভাগ — বিশেষ্য (নামপদ), সর্বনাম (প্রতিনিধিত্বমূলক পদ), বিশেষণ (গুণ/দোষ/অবস্থা), ক্রিয়াপদ (কাজ সম্পন্ন করা) এবং পদ পরিবর্তনের প্রাথমিক ধারণা।',
+            subtopics: [
+              'বিশেষ্য পদ শনাক্তকরণ এবং এর বিভিন্ন রূপ (ব্যক্তি, জাতি, স্থান, গুণ)',
+              'সর্বনাম পদের প্রকারভেদ (ব্যক্তিবাচক, নির্দেশক, অনির্দেশক)',
+              'বিশেষণ পদের ভূমিকা: বিশেষ্য ও ক্রিয়ার গুণ প্রকাশ',
+              'ক্রিয়াপদ ও কাজের সময় (বর্তমান, অতীত, ভবিষ্যৎ কালের প্রাথমিক ধারণা)',
+              'বিশেষ্য থেকে বিশেষণ ও বিশেষণ থেকে বিশেষ্য পদ পরিবর্তন'
+            ],
+            practicalOrActivity: 'পদ চিহ্নিতকরণ বোর্ড গেম ও ব্যাকরণ ড্রিল চার্ট'
+          },
+          {
+            title: 'শব্দ ভাণ্ডার, লিঙ্গ ও বচন (Vocabulary Enrichment, Gender & Number)',
+            description: 'শব্দের বিভিন্ন রূপভেদ: বিপরীতার্থক শব্দ, সমার্থক শব্দ (প্রতিশব্দ), প্রায় সমোচ্চারিত ভিন্নার্থক শব্দ, পুংলিঙ্গ-স্ত্রীলিঙ্গ-ক্লীবলিঙ্গ এবং একবচন-বহুবচন নিয়মাবলী।',
+            subtopics: [
+              'সমার্থক শব্দ: চাঁদ, সূর্য, জল, আকাশ, বাতাস, পৃথিবী, মা, বাবা, পাখির প্রতিশব্দ',
+              'দৈনন্দিন বিপরীত শব্দ ও বাক্যে তার সঠিক প্রয়োগ',
+              'লিঙ্গ পরিবর্তনের সাধারণ নিয়ম ও অপ্রচলিত রূপ (যেমন: বিদ্বান-বিদুষী, সম্রাট-সম্রাজ্ঞী)',
+              'বচন পরিবর্তনের প্রত্যয় (গণ, বৃন্দ, দল, সকল, দিগ/দের যোগে বহুবচন)'
+            ],
+            practicalOrActivity: 'শব্দ-সন্ধান ক্রসওয়ার্ড (Crossword Puzzle) ও সমার্থক শব্দের গাছ তৈরি'
+          },
+          {
+            title: 'অনুচ্ছেদ রচনা, চিঠি ও বোধপরীক্ষণ (Paragraph Composition & Reading Comprehension)',
+            description: 'সৃজনশীল প্রকাশ ও ধারণাগত দক্ষতা: ৮-১০ বাক্যে অনুচ্ছেদ রচনা (আমাদের পরিবেশ, প্রিয় ঋতু, বিবেকানন্দের বাল্যকাল - বিলে), আমন্ত্রণ ও ছুটির আবেদন পত্র এবং অদেখা অনুচ্ছেদ থেকে বোধপরীক্ষণ।',
+            subtopics: [
+              'অনুচ্ছেদ রচনার নিয়ম: সূচনা, মূল বক্তব্য ও উপসংহার',
+              'অনুচ্ছেদ বিষয়: "আমার গ্রাম/শহর", "গাছ আমাদের বন্ধু", "বইমেলার অভিজ্ঞতা"',
+              'প্রধান শিক্ষকের কাছে ছুটির দরখাস্ত লেখার প্রাথমিক কাঠামো',
+              'অদেখা গদ্যাংশ পড়ে তথ্য বিশ্লেষণ ও সঠিক উত্তর নির্ণয়'
+            ],
+            practicalOrActivity: 'ছোটদের হস্তলিখিত পত্রিকা প্রকাশনা (Junior Hand-written Magazine)'
+          }
+        ],
+        referenceMaterials: [
+          'WBBPE পশ্চিমবঙ্গ প্রাথমিক শিক্ষা পর্ষদ: পাতা বাহার (Class 3)',
+          'WBBPE পশ্চিমবঙ্গ প্রাথমিক শিক্ষা পর্ষদ: ভাষা পাঠ (Class 3)',
+          'বিলে অ্যাকাডেমি আদর্শ বাংলা ব্যাকরণ ও সাহিত্য অনুশীলন ৩য় শ্রেণি'
+        ],
+        examPattern: 'সাহিত্য পাঠভিত্তিক পরীক্ষা, ব্যাকরণ নৈর্ব্যক্তিক ও বর্ণনামূলক প্রশ্ন, অনুচ্ছেদ লিখন ও বোধপরীক্ষণ মূল্যায়ন',
+        practicalAvailable: false
       }
-
     ]
   },
 
@@ -489,7 +630,7 @@ export const PRIMARY_GRADES_DATA: ClassGradeInfo[] = [
     gradeLabel: 'Class 4 (WBBPE & CBSE)',
     category: 'primary',
     ageGroup: '9 - 10 Years',
-    academicFocus: 'Advanced Primary Foundation: Math (আমার গণিত & Math-Magic 4), Science / EVS (আমাদের পরিবেশ & Looking Around 4), and English (Butterfly / Wings & Marigold 4)',
+    academicFocus: 'Advanced Primary Foundation: Bengali (পাতা বাহার ৪ ও ভাষা পাঠ ৪), Math (আমার গণিত & Math-Magic 4), Science / EVS (আমাদের পরিবেশ & Looking Around 4), and English (Butterfly / Wings & Marigold 4)',
     weeklySchedulePreview: { days: 'Mon to Fri', timings: '4:00 PM - 6:30 PM', mode: 'Offline Classroom + Hybrid Science/Coding Lab' },
     subjects: [
       {
@@ -723,8 +864,78 @@ export const PRIMARY_GRADES_DATA: ClassGradeInfo[] = [
         ],
         examPattern: 'Summative Examinations, Unseen Reading Comprehension Tests, Grammar Mechanics Drills, and Formal/Informal Letter Writing Portfolios',
         practicalAvailable: true
+      },
+      {
+        id: 'c4-beng',
+        name: 'Bengali Language & Literature (বাংলা সাহিত্য ও ভাষা পাঠ)',
+        code: 'BENG-PRM-4',
+        iconName: 'BookA',
+        color: 'rose',
+        description: 'Class 4 Advanced Bengali Foundation aligning WBBPE (পাতা বাহার ৪ ও ভাষা পাঠ ৪) and Bengali First Language standards: সাহিত্য পাঠ (জীবনানন্দ দাশ, তারাশঙ্কর বন্দ্যোপাধ্যায়, সুকুমার রায়, লীলা মজুমদার), ভাষা পাঠ ও ব্যাকরণ (সাধু ও চলিত ভাষা, সন্ধি বিচ্ছেদের প্রাথমিক নিয়ম, কারক ও বিভক্তির প্রাথমিক ধারণা, সমোচ্চারিত ভিন্নার্থক শব্দ, বাগধারা ও প্রবাদ), প্রবন্ধ রচনা, পত্র লিখন ও উন্নত বোধপরীক্ষণ।',
+        weeklyHours: 5,
+        totalModules: 12,
+        learningOutcomes: [
+          'Analyze classic stories and poems from Pata Bahar 4 (পাতা বাহার ৪) with critical reasoning, identifying literary metaphors, moral philosophies, and cultural values',
+          'Differentiate and flawlessly convert sentences between Sadhu Bhasha (সাধু ভাষা) and Chalit Bhasha (চলিত ভাষা)',
+          'Understand vowel conjunction rules (স্বরসন্ধি বিচ্ছেদ যেমন: বিদ্যালয় = বিদ্যা + আলয়, সূর্যোদয় = সূর্য + উদয়)',
+          'Recognize introductory Case & Inflexion foundations (কারক ও বিভক্তি: কর্তৃকারক, কর্মকারক, করণকারক)',
+          'Employ popular Bengali idioms (বাগধারা যেমন: আকাশ কুসুম, গোড়ায় গলদ, ব্যাঙের আধুলি) in expressive sentences',
+          'Write coherent 120-150 word essays, formal leave letters, and solve challenging unseen reading comprehension tests'
+        ],
+        keyChapters: [
+          {
+            title: 'পাতা বাহার: সাহিত্যের রসাস্বাদন (Literary Masterpieces from Pata Bahar 4)',
+            description: 'WBBPE পাতা বাহার ৪: জীবনানন্দ দাশ, সুকুমার রায়, যোগীন্দ্রনাথ সরকার ও সুনীতিভূষণ কানুঙ্গোর নির্বাচিত কবিতা ও গল্প; বাংলার প্রকৃতি, দেশপ্রেম ও মানবতাবোধ বিষয়ক সাহিত্য অনুধাবন।',
+            subtopics: [
+              'গল্প ও কবিতার নিবিষ্ট পাঠ, অন্তর্নিহিত অর্থ ও রূপক বিশ্লেষণ',
+              'চরিত্র চিত্রণ: গল্পে চরিত্রসমূহের ভূমিকা ও তাদের বৈশিষ্ট্য',
+              'ব্যাখ্যামূলক প্রশ্নোত্তর লিখন ও প্রসঙ্গ নির্দেশপূর্বক তাৎপর্য ব্যাখ্যা',
+              'উদ্ধৃতিভিত্তিক প্রশ্ন ও স্বরচিত ভাষায় ভাবসম্প্রসারণ'
+            ],
+            practicalOrActivity: 'সাহিত্যের আড্ডা: গল্প বলা ও কবিতা আবৃত্তির বিশেষ প্রদর্শনী'
+          },
+          {
+            title: 'ভাষা পাঠ: ব্যাকরণ ও ভাষা রীতি (Language Mechanics, Sadhu-Chalit & Sandhi)',
+            description: 'WBBPE ভাষা পাঠ ৪: সাধু ও চলিত ভাষার তুলনামূলক পাঠ ও রূপান্তর; স্বরসন্ধির প্রধান সূত্রাবলী ও সন্ধি বিচ্ছেদ; কারক ও বিভক্তির প্রাথমিক পরিচয়; বাক্য রূপান্তর (হ্যাঁ-সূচক ও না-সূচক)।',
+            subtopics: [
+              'সাধু ও চলিত ভাষার বৈশিষ্ট্য এবং ক্রিয়াপদ ও সর্বনাম পদের রূপান্তর',
+              'স্বরসন্ধি বিচ্ছেদ ও সংযোগের প্রধান নিয়মাবলী (অ/আ + অ/আ = আ, ই/ঈ + ই/ঈ = ঈ)',
+              'কারক ও বিভক্তির প্রাথমিক ধারণা: ক্রিয়ার সঙ্গে বিশেষ্য/সর্বনামের সম্পর্ক',
+              'অর্থ অক্ষুণ্ণ রেখে হ্যাঁ-সূচক ও না-সূচক বাক্যের পারস্পরিক রূপান্তর'
+            ],
+            practicalOrActivity: 'সন্ধি ও সাধু-চলিত রূপান্তর কুইজ ম্যাচিং বোর্ড'
+          },
+          {
+            title: 'শব্দ ভাণ্ডার ও বাগধারা (Vocabulary Mastery, Idioms & Antonyms)',
+            description: 'সমোচ্চারিত ভিন্নার্থক শব্দ (যেমন: অন্ন-অন্য, কুল-কূল, দিন-দীন), এককথায় প্রকাশ (বাক্য সংকোচন), পরিচিত বাগধারা ও প্রবচনের প্রয়োগ, এবং বিপরীতার্থক ও সমার্থক শব্দের ভাণ্ডার।',
+            subtopics: [
+              'সমোচ্চারিত ভিন্নার্থক শব্দের নির্ভুল বানান ও বাক্যে প্রয়োগ',
+              'এককথায় প্রকাশ (যেমন: যার মৃত্যু নেই = অমর, যা পূর্বে দেখা যায়নি = অদৃষ্টপূর্ব)',
+              'বাঙালির চিরন্তন বাগধারা (অগাধ জলের মাছ, অকূল পাথার, চোখের মণি)',
+              'বিপরীত ও সমার্থক শব্দের সমৃদ্ধ শব্দকোষ গঠন'
+            ],
+            practicalOrActivity: 'বাগধারা কার্ড ম্যাচিং ও বাক্য রচনা প্রতিযোগিতা'
+          },
+          {
+            title: 'নির্মিতি: প্রবন্ধ, পত্র লিখন ও বোধপরীক্ষণ (Composition, Letter Writing & Comprehension)',
+            description: 'সৃজনশীল লেখনী: ১৫০ শব্দের তথ্যসমৃদ্ধ প্রবন্ধ রচনা (বাংলার উৎসব, পরিবেশ দূষণ ও প্রতিকার, স্বামী বিবেকানন্দ / বিলে), বিদ্যালয়ের প্রধান শিক্ষককে ছুটির আবেদন ও ব্যক্তিগত চিঠি, এবং উচ্চমানের বোধপরীক্ষণ।',
+            subtopics: [
+              'প্রবন্ধ রচনার কাঠামো: ভূমিকা, বিষয়বস্তু বিভাজন, প্যারাগ্রাফিং ও উপসংহার',
+              'প্রবন্ধের বিষয়সমূহ: "একটি গাছের আত্মকথা", "বাংলার ঋতুচক্র", "আমাদের স্বাধীনতা দিবস"',
+              'আনুষ্ঠানিক পত্র (Application to Headmaster / Principal) ও অনানুষ্ঠানিক ব্যক্তিগত পত্র',
+              'অদেখা দীর্ঘ অনুচ্ছেদ পড়ে মূলভাব নিষ্কাশন, সংক্ষিপ্ত প্রশ্নোত্তর ও উপযুক্ত শিরোনাম নির্বাচন'
+            ],
+            practicalOrActivity: 'বিলে অ্যাকাডেমি তরুণ লেখক কর্মশালা: নির্বাচিত প্রবন্ধের বার্ষিক সংকলন প্রকাশ'
+          }
+        ],
+        referenceMaterials: [
+          'WBBPE পশ্চিমবঙ্গ প্রাথমিক শিক্ষা পর্ষদ: পাতা বাহার (Class 4)',
+          'WBBPE পশ্চিমবঙ্গ প্রাথমিক শিক্ষা পর্ষদ: ভাষা পাঠ (Class 4)',
+          'বিলে অ্যাকাডেমি উচ্চ প্রাথমিক বাংলা সাহিত্য ও ব্যাকরণ সংকলন ৪'
+        ],
+        examPattern: 'পূর্ণাঙ্গ ৬০/৫০ নম্বরের সামিটিভ লিখিত পরীক্ষা, ব্যাকরণ ও নির্মিতি মূল্যায়ন, পাঠ্যাংশ ভিত্তিক বিশ্লেষণাত্মক প্রশ্নোত্তর',
+        practicalAvailable: false
       }
-
     ]
   }
 ];

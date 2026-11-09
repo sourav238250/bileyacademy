@@ -10,10 +10,10 @@ export const GRADE_CATEGORIES = [
     title: 'Primary Foundation',
     classes: 'Classes 2 to 4 (WBBPE / CBSE)',
     badge: 'Ages 7 - 10',
-    description: 'Nurturing curiosity, logical reasoning (WBBPE / CBSE), environmental awareness, and language fluency through activity-based learning.',
+    description: 'Nurturing curiosity, logical reasoning (WBBPE / CBSE), environmental awareness, and language fluency in Bengali & English through activity-based learning.',
     icon: 'Sparkles',
     color: 'amber',
-    subjectsList: ['English', 'Mathematics', 'Science']
+    subjectsList: ['Bengali', 'English', 'Mathematics', 'Science']
   },
   {
     id: 'upper_primary' as const,
