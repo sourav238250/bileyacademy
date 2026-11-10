@@ -224,13 +224,101 @@ export const FAQS = [
   }
 ];
 
-export const BATCH_TIMINGS = [
+export interface RoutineSlot {
+  board: 'WBBPE' | 'CBSE';
+  classLevel: string;
+  days: string;
+  timeSlot: string;
+  timingType: 'Morning' | 'Afternoon';
+  note: string;
+}
+
+export interface BatchTimingItem {
+  category: string;
+  categoryBn?: string;
+  schedule: string;
+  scheduleBn?: string;
+  timings: string;
+  timingsBn?: string;
+  subjects: string;
+  subjectsBn?: string;
+  batchSize: string;
+  batchSizeBn?: string;
+  routinePdfUrl?: string;
+  routinePdfName?: string;
+  routinePdfSize?: string;
+  routineTitle?: string;
+  routineTitleBn?: string;
+  routineSlots?: RoutineSlot[];
+}
+
+export const BATCH_TIMINGS: BatchTimingItem[] = [
   {
     category: "Primary Foundation (Class 2 - 4)",
-    schedule: "Monday, Wednesday & Friday",
-    timings: "3:30 PM – 5:30 PM",
-    subjects: "Bengali, English, Mathematics, Science",
-    batchSize: "Max 12 students per batch"
+    categoryBn: "প্রাথমিক ভিত্তি (ক্লাস ২ - ৪)",
+    schedule: "WBBPE: Tue, Wed, Sat, Sun | CBSE: Mon, Tue, Wed, Thu, Fri, Sun",
+    scheduleBn: "WBBPE: মঙ্গল, বুধ, শনি, রবি | CBSE: সোম, মঙ্গল, বুধ, বৃহস্পতি, শুক্র, রবি",
+    timings: "Morning (6:30 AM – 8:00 AM) & Afternoon (4:00 PM – 5:30 PM)",
+    timingsBn: "সকাল (৬:৩০ – ৮:০০) এবং বিকাল (৪:০০ – ৫:৩০)",
+    subjects: "Bengali, English, Mathematics, Science & EVS",
+    subjectsBn: "বাংলা, ইংরেজি, গণিত, পরিবেশ ও বিজ্ঞান",
+    batchSize: "Max 12-15 students per batch",
+    batchSizeBn: "প্রতি ব্যাচে ১২-১৫ জন শিক্ষার্থী",
+    routinePdfUrl: "/assets/aistudio/BA_Routine_Class_2to4_WB_CBSE_2027_258d0f86.pdf",
+    routinePdfName: "BA_Routine_Class_2to4_WB_CBSE_2027.pdf",
+    routinePdfSize: "222 KB PDF",
+    routineTitle: "Provisional Time Table-2027 (Class 2 to 4 WBBPE / CBSE)",
+    routineTitleBn: "প্রোভিশনাল সময়সূচি-২০২৭ (ক্লাস ২ থেকে ৪ WBBPE / CBSE)",
+    routineSlots: [
+      {
+        board: "WBBPE",
+        classLevel: "WB/CLASS-2",
+        days: "Saturday & Tuesday",
+        timeSlot: "6:30 AM – 8:00 AM",
+        timingType: "Morning",
+        note: "All Subjects (1 hr/per subject)"
+      },
+      {
+        board: "WBBPE",
+        classLevel: "WB/CLASS-3",
+        days: "Monday & Wednesday",
+        timeSlot: "6:30 AM – 8:00 AM",
+        timingType: "Morning",
+        note: "All Subjects (1 hr/per subject)"
+      },
+      {
+        board: "WBBPE",
+        classLevel: "WB/CLASS-4",
+        days: "Saturday & Sunday",
+        timeSlot: "4:00 PM – 5:30 PM",
+        timingType: "Afternoon",
+        note: "All Subjects (1 hr/per subject)"
+      },
+      {
+        board: "CBSE",
+        classLevel: "CBSE/CLASS-2",
+        days: "Tuesday & Wednesday",
+        timeSlot: "4:00 PM – 5:30 PM",
+        timingType: "Afternoon",
+        note: "All Subjects (1 hr/per subject)"
+      },
+      {
+        board: "CBSE",
+        classLevel: "CBSE/CLASS-3",
+        days: "Thursday & Friday",
+        timeSlot: "4:00 PM – 5:30 PM",
+        timingType: "Afternoon",
+        note: "All Subjects (1 hr/per subject)"
+      },
+      {
+        board: "CBSE",
+        classLevel: "CBSE/CLASS-4",
+        days: "Monday (4:00–5:30 PM) & Sunday (6:30–8:00 AM)",
+        timeSlot: "Morning & Afternoon Slots",
+        timingType: "Morning",
+        note: "All Subjects (1 hr/per subject)"
+      }
+    ]
   },
   {
     category: "Upper Primary (Class 5 - 8)",
