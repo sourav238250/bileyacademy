@@ -99,33 +99,33 @@ export const FACULTY_MEMBERS: FacultyMember[] = [
   },
   {
     id: "fac-2",
-    name: "Prof. Aniruddha Roy",
+    name: "Mr Buddhadeb Chakraborty",
     role: "Senior Faculty - Mathematics",
-    subjects: ["Mathematics (Class 9-12)", "Higher Secondary Calculus"],
-    qualification: "M.Sc. Pure Mathematics, ISI Associate",
-    experience: "18+ Years",
+    subjects: ["Mathematics (Class 8-12)"],
+    qualification: "M.Sc. Pure Mathematics, B.Ed",
+    experience: "10+ Years",
     bio: "Master of Calculus, Trigonometry and Coordinate Geometry; famous for his rapid mental shortcuts and Olympiad problem sets.",
     avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80",
-    achievement: "Author of 3 best-selling Board Mathematics guides"
+    achievement: "Olympiad Math Specialist & Mental Shortcuts Master"
   },
   {
     id: "fac-3",
-    name: "Dr. Malabika Dasgupta",
-    role: "Senior Faculty - Biological Sciences",
-    subjects: ["Biology (Class 5-12)", "Genetics & Advanced Botany/Zoology"],
-    qualification: "M.Sc. Zoology, Ph.D. in Genetics (CSIR-NET JRF)",
-    experience: "15+ Years",
-    bio: "Brings cell biology and genetics alive through 3D diagram workshops and line-by-line NCERT mastery.",
+    name: "Miss Soumi Bhattacharya",
+    role: "Assistant Faculty - Biology",
+    subjects: ["Biology (Class 5-12)", "Speciality in Human Physiology"],
+    qualification: "M.Sc ongoing (Vidyasagar University), B.Sc. Human Physiology (RNLKWC)",
+    experience: "2+ Years",
+    bio: "Speciality in Human Physiology; brings cell biology, organ systems, and genetics alive through detailed diagrams and line-by-line NCERT mastery.",
     avatarUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80",
-    achievement: "Consistently producing 95%+ Board Scorers in Biological Sciences"
+    achievement: "Specialist in Human Physiology & Biology Foundations"
   },
   {
     id: "fac-4",
-    name: "Prof. Tathagata Ghosh",
-    role: "Senior Faculty - Chemistry",
+    name: "Mr Soumyadip Dinda",
+    role: "Assistant Faculty - Chemistry",
     subjects: ["Chemistry (Class 9-12)", "Organic Reaction Mechanisms"],
-    qualification: "M.Tech Chemical Sciences, GATE Topper",
-    experience: "14+ Years",
+    qualification: "M.Sc. (Chemistry), B.Ed. (Final Year)",
+    experience: "3+ Years",
     bio: "Makes complex organic mechanisms and inorganic crystal fields crystal clear with visual electron flow models.",
     avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80",
     achievement: "Over 90% students score 90+ in Board Chemistry"
@@ -186,7 +186,7 @@ export const TESTIMONIALS: Testimonial[] = [
     studentName: "Riya Roychowdhury",
     gradeOrAchievement: "Class 12 Pure Science Topper (98.4%) & WBJEE Ranker",
     year: "Batch 2024",
-    quote: "The Biology line-by-line NCERT workshops by Dr. Malabika ma'am and weekly science mock drills gave me the conceptual precision needed to secure 98.4% in Board exams and top ranks in WBJEE.",
+    quote: "The Biology line-by-line NCERT workshops by Miss Soumi ma'am and weekly science mock drills gave me the conceptual precision needed to secure 98.4% in Board exams and top ranks in WBJEE.",
     scoreOrRank: "98.4% Board | WBJEE Rank 420",
     rating: 5
   },
