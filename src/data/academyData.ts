@@ -132,25 +132,36 @@ export const FACULTY_MEMBERS: FacultyMember[] = [
   },
   {
     id: "fac-5",
-    name: "Shreya Sen",
-    role: "Lead - Computer Science & Coding Wing",
-    subjects: ["Computer Science (Class 6-12)", "Python, Java & Web Design"],
-    qualification: "B.Tech Computer Science (Jadavpur University)",
-    experience: "10+ Years",
+    name: "Mr. Tanay Mondal",
+    role: "Senior Faculty - Computer Science",
+    subjects: ["Computer Science (Class 6-12)", "Python, Java & Web Design", "Online Mode Only"],
+    qualification: "M.Tech (CSE), B.Tech (CSE) (Calcutta University)",
+    experience: "16+ Years",
     bio: "Passionate technologist teaching programming from visual algorithmic problem solving to OOPs, SQL and DSA in Class 12.",
-    avatarUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80",
-    achievement: "Guided students to win National Coding Olympiads"
+    avatarUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80",
+    achievement: "Available in Online Mode only"
   },
   {
     id: "fac-6",
-    name: "Debolina Mukherjee",
-    role: "Faculty - English Language & Literature",
-    subjects: ["English (Class 2-12)", "Grammar, Comprehension & Public Speaking"],
-    qualification: "M.A. English (Calcutta University), Cambridge CELTA",
-    experience: "12+ Years",
+    name: "Mr Sanjay Dinda",
+    role: "Senior Faculty - English Language & Literature",
+    subjects: ["English (Class 5-12)", "Grammar, Comprehension & Public Speaking"],
+    qualification: "M.A. English",
+    experience: "6+ Years",
     bio: "Specialist in transforming students' expressive writing, grammar precision, and confident English elocution.",
-    avatarUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=80",
-    achievement: "Average English Board score of 94.6% across batches"
+    avatarUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80",
+    achievement: "Average English Board score of 92.6% across batches"
+  },
+  {
+    id: "fac-7",
+    name: "Mr. Sumantra Paul",
+    role: "Senior Faculty - Computer Science",
+    subjects: ["Computer Science (Class 6-12)", "Python, Java & Web Design, AI", "Online Mode Only"],
+    qualification: "M.Tech (IT), M.Sc.(Physics) in Visva-Bharati University",
+    experience: "7+ Years",
+    bio: "Passionate technologist teaching programming from visual algorithmic problem solving to OOPs, SQL and DSA in Class 12.",
+    avatarUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80",
+    achievement: "Available in Online Mode only"
   }
 ];
 
