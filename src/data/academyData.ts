@@ -236,7 +236,7 @@ export const FAQS = [
 ];
 
 export interface RoutineSlot {
-  board: 'WBBPE' | 'CBSE';
+  board: 'WBBPE' | 'WBBSE' | 'CBSE';
   classLevel: string;
   days: string;
   timeSlot: string;
@@ -260,6 +260,8 @@ export interface BatchTimingItem {
   routinePdfSize?: string;
   routineTitle?: string;
   routineTitleBn?: string;
+  routineSubtitle?: string;
+  routineTableLabel?: string;
   routineSlots?: RoutineSlot[];
 }
 
@@ -267,43 +269,45 @@ export const BATCH_TIMINGS: BatchTimingItem[] = [
   {
     category: "Primary Foundation (Class 2 - 4)",
     categoryBn: "প্রাথমিক ভিত্তি (ক্লাস ২ - ৪)",
-    schedule: "WBBPE: Tue, Wed, Sat, Sun | CBSE: Mon, Tue, Wed, Thu, Fri, Sun",
-    scheduleBn: "WBBPE: মঙ্গল, বুধ, শনি, রবি | CBSE: সোম, মঙ্গল, বুধ, বৃহস্পতি, শুক্র, রবি",
-    timings: "Morning (6:30 AM – 8:00 AM) & Afternoon (4:00 PM – 5:30 PM)",
-    timingsBn: "সকাল (৬:৩০ – ৮:০০) এবং বিকাল (৪:০০ – ৫:৩০)",
+    schedule: "WBBPE: Mon, Tue, Wed, Sat, Sun | CBSE: Mon, Tue, Wed, Thu, Fri, Sun",
+    scheduleBn: "WBBPE: সোম, মঙ্গল, বুধ, শনি, রবি | CBSE: সোম, মঙ্গল, বুধ, বৃহস্পতি, শুক্র, রবি",
+    timings: "Morning (6:30 AM – 11:00 AM) & Afternoon/Evening (4:00 PM – 8:30 PM)",
+    timingsBn: "সকাল (৬:৩০ – ১১:০০) এবং বিকাল/সন্ধ্যা (৪:০০ – ৮:৩০)",
     subjects: "Bengali, English, Mathematics, Science & EVS",
     subjectsBn: "বাংলা, ইংরেজি, গণিত, পরিবেশ ও বিজ্ঞান",
     batchSize: "Max 12-15 students per batch",
     batchSizeBn: "প্রতি ব্যাচে ১২-১৫ জন শিক্ষার্থী",
-    routinePdfUrl: "/assets/aistudio/BA_Routine_Class_2to4_WB_CBSE_2027_258d0f86.pdf",
-    routinePdfName: "BA_Routine_Class_2to4_WB_CBSE_2027.pdf",
-    routinePdfSize: "222 KB PDF",
+    routinePdfUrl: "/assets/aistudio/BA_Routine_Class_2_to_4_WB_CBSE_2027_ca117f3d.pdf",
+    routinePdfName: "BA_Routine_Class_2_to_4_WB_CBSE_2027.pdf",
+    routinePdfSize: "217 KB PDF",
     routineTitle: "Provisional Time Table-2027 (Class 2 to 4 WBBPE / CBSE)",
     routineTitleBn: "প্রোভিশনাল সময়সূচি-২০২৭ (ক্লাস ২ থেকে ৪ WBBPE / CBSE)",
+    routineSubtitle: "Jamna • Pingla • WBBPE / CBSE",
+    routineTableLabel: "View Provisional Routine Table (Class 2 to 4)",
     routineSlots: [
       {
         board: "WBBPE",
         classLevel: "WB/CLASS-2",
-        days: "Saturday & Tuesday",
-        timeSlot: "6:30 AM – 8:00 AM",
+        days: "Tuesday & Saturday",
+        timeSlot: "6:30 AM – 9:30 AM",
         timingType: "Morning",
-        note: "All Subjects (1 hr/per subject)"
+        note: "All Subjects (1 hr./per subject)"
       },
       {
         board: "WBBPE",
         classLevel: "WB/CLASS-3",
         days: "Monday & Wednesday",
-        timeSlot: "6:30 AM – 8:00 AM",
+        timeSlot: "6:30 AM – 9:30 AM",
         timingType: "Morning",
-        note: "All Subjects (1 hr/per subject)"
+        note: "All Subjects (1 hr./per subject)"
       },
       {
         board: "WBBPE",
         classLevel: "WB/CLASS-4",
         days: "Saturday & Sunday",
-        timeSlot: "4:00 PM – 5:30 PM",
+        timeSlot: "4:00 PM – 8:30 PM",
         timingType: "Afternoon",
-        note: "All Subjects (1 hr/per subject)"
+        note: "All Subjects (1 hr./per subject)"
       },
       {
         board: "CBSE",
@@ -311,7 +315,7 @@ export const BATCH_TIMINGS: BatchTimingItem[] = [
         days: "Tuesday & Wednesday",
         timeSlot: "4:00 PM – 5:30 PM",
         timingType: "Afternoon",
-        note: "All Subjects (1 hr/per subject)"
+        note: "All Subjects (1 hr./per subject)"
       },
       {
         board: "CBSE",
@@ -319,24 +323,102 @@ export const BATCH_TIMINGS: BatchTimingItem[] = [
         days: "Thursday & Friday",
         timeSlot: "4:00 PM – 5:30 PM",
         timingType: "Afternoon",
-        note: "All Subjects (1 hr/per subject)"
+        note: "All Subjects (1 hr./per subject)"
       },
       {
         board: "CBSE",
         classLevel: "CBSE/CLASS-4",
-        days: "Monday (4:00–5:30 PM) & Sunday (6:30–8:00 AM)",
-        timeSlot: "Morning & Afternoon Slots",
+        days: "Monday (4:00–8:30 PM) & Sunday (6:30–11:00 AM)",
+        timeSlot: "Morning & Evening Slots",
         timingType: "Morning",
-        note: "All Subjects (1 hr/per subject)"
+        note: "All Subjects (1 hr./per subject)"
       }
     ]
   },
   {
     category: "Upper Primary (Class 5 - 8)",
-    schedule: "Tuesday, Thursday & Saturday",
-    timings: "4:00 PM – 6:45 PM",
+    categoryBn: "উচ্চ প্রাথমিক (ক্লাস ৫ - ৮)",
+    schedule: "WBBSE & CBSE: Mon to Sun (Class & Subject-wise Slots)",
+    scheduleBn: "WBBSE ও CBSE: সোম থেকে রবি (শ্রেণি ও বিষয়ভিত্তিক স্লট)",
+    timings: "Morning (6:30 AM – 11:00 AM) & Afternoon/Evening (3:00 PM – 9:30 PM)",
+    timingsBn: "সকাল (৬:৩০ – ১১:০০) এবং বিকাল/সন্ধ্যা (৩:০০ – ৯:৩০)",
     subjects: "Math, Science, Biology, English, Computer Science (Cl 6-8)",
-    batchSize: "Max 16 students per batch"
+    subjectsBn: "গণিত, বিজ্ঞান, জীববিজ্ঞান, ইংরেজি, কম্পিউটার সায়েন্স (৬ষ্ঠ-৮ম)",
+    batchSize: "Max 16 students per batch",
+    batchSizeBn: "প্রতি ব্যাচে ১৬ জন শিক্ষার্থী",
+    routinePdfUrl: "/assets/aistudio/BA_Routine_Class_5_to_8_WB_CBSE_2027_ffd8a990.pdf",
+    routinePdfName: "BA_Routine_Class_5_to_8_WB_CBSE_2027.pdf",
+    routinePdfSize: "200 KB PDF",
+    routineTitle: "Provisional Time Table-2027 (Class 5 to 8 WBBSE / CBSE)",
+    routineTitleBn: "প্রোভিশনাল সময়সূচি-২০২৭ (ক্লাস ৫ থেকে ৮ WBBSE / CBSE)",
+    routineSubtitle: "Jamna • Pingla • WBBSE / CBSE",
+    routineTableLabel: "View Provisional Routine Table (Class 5 to 8)",
+    routineSlots: [
+      {
+        board: "WBBSE",
+        classLevel: "WB/CLASS-5",
+        days: "Wed, Fri (AM) • Sat, Sun (PM)",
+        timeSlot: "6:30–9:30 AM / 3:00–8:30 PM",
+        timingType: "Morning",
+        note: "Prakriti Parichay, Amar Ganit, Amader Poribesh, English"
+      },
+      {
+        board: "CBSE",
+        classLevel: "CBSE/CLASS-5",
+        days: "Mon, Tue & Thu",
+        timeSlot: "3:00 PM – 8:30 PM",
+        timingType: "Afternoon",
+        note: "Life Science, Mathematics, EVS & Science, English"
+      },
+      {
+        board: "WBBSE",
+        classLevel: "WB/CLASS-6",
+        days: "Mon, Tue & Thu",
+        timeSlot: "6:30–9:30 AM & 5:30–8:30 PM",
+        timingType: "Morning",
+        note: "Ganit Prabha, Poribesh o Bigyan (Phy/Life), English, ICT Computer"
+      },
+      {
+        board: "CBSE",
+        classLevel: "CBSE/CLASS-6",
+        days: "Mon, Tue, Thu & Fri",
+        timeSlot: "4:00 PM – 9:30 PM",
+        timingType: "Afternoon",
+        note: "Math, Physical & Bio Science, English, Computer (Online)"
+      },
+      {
+        board: "WBBSE",
+        classLevel: "WB/CLASS-7",
+        days: "Thu, Fri, Sat & Sun",
+        timeSlot: "4:00 PM – 9:30 PM",
+        timingType: "Afternoon",
+        note: "Ganit Prabha, Physical & Life Science, English, ICT Computer"
+      },
+      {
+        board: "CBSE",
+        classLevel: "CBSE/CLASS-7",
+        days: "Tue to Sun",
+        timeSlot: "4:00 PM – 8:30 PM",
+        timingType: "Afternoon",
+        note: "Physical Science, Biology & EVS, Math, English, Computer"
+      },
+      {
+        board: "WBBSE",
+        classLevel: "WB/CLASS-8",
+        days: "Sat, Sun (AM) • Mon–Wed, Sun (PM)",
+        timeSlot: "6:30–9:30 AM / 5:30–9:30 PM",
+        timingType: "Morning",
+        note: "Ganit Prabha, Physical & Life Science, English, Computer"
+      },
+      {
+        board: "CBSE",
+        classLevel: "CBSE/CLASS-8",
+        days: "Sun (AM) • Mon, Tue, Thu, Sat, Sun (PM)",
+        timeSlot: "6:30–11:00 AM / 4:00–8:30 PM",
+        timingType: "Afternoon",
+        note: "Math, Phy/Chem, Biology, English, Computer Applications"
+      }
+    ]
   },
   {
     category: "Secondary (Class 9 & 10 Board Special)",

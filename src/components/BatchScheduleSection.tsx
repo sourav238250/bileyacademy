@@ -125,7 +125,7 @@ export const BatchScheduleSection: React.FC<BatchScheduleSectionProps> = ({ onOp
                               {isBengali && batch.routineTitleBn ? batch.routineTitleBn : batch.routineTitle}
                             </div>
                             <div className="text-[11px] text-amber-400/90 flex items-center gap-1.5 font-medium mt-0.5">
-                              <span>Jamna • Pingla • WBBPE / CBSE</span>
+                              <span>{batch.routineSubtitle || 'Jamna • Pingla • WB / CBSE'}</span>
                               <span>•</span>
                               <span>{batch.routinePdfSize || 'PDF'}</span>
                             </div>
@@ -135,9 +135,9 @@ export const BatchScheduleSection: React.FC<BatchScheduleSectionProps> = ({ onOp
                         {/* Direct Download & View Links */}
                         <div className="flex items-center gap-2 w-full sm:w-auto">
                           <a
-                            id="download-primary-routine-btn"
+                            id={`download-routine-btn-${index}`}
                             href={batch.routinePdfUrl}
-                            download={batch.routinePdfName || 'BA_Routine_Class_2to4_WB_CBSE_2027.pdf'}
+                            download={batch.routinePdfName || 'BA_Routine_2027.pdf'}
                             className="flex-1 sm:flex-none px-3.5 py-2 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 flex items-center justify-center gap-1.5 shadow-md shadow-amber-500/20 transition-all hover:-translate-y-0.5 active:translate-y-0"
                             title={isBengali ? 'রুটিন ফাইল ডাউনলোড করুন' : 'Download Routine PDF'}
                           >
@@ -146,7 +146,7 @@ export const BatchScheduleSection: React.FC<BatchScheduleSectionProps> = ({ onOp
                           </a>
 
                           <a
-                            id="view-primary-routine-btn"
+                            id={`view-routine-btn-${index}`}
                             href={batch.routinePdfUrl}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -169,7 +169,7 @@ export const BatchScheduleSection: React.FC<BatchScheduleSectionProps> = ({ onOp
                           >
                             <span className="flex items-center gap-1.5">
                               <Table className="w-3.5 h-3.5 text-emerald-400" />
-                              <span>{isBengali ? 'সম্পূর্ণ সময়সূচি টেবিল দেখুন' : 'View Provisional Routine Table (Class 2 to 4)'}</span>
+                              <span>{isBengali ? 'সম্পূর্ণ সময়সূচি টেবিল দেখুন' : (batch.routineTableLabel || 'View Provisional Routine Table')}</span>
                             </span>
                             <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform ${isTableExpanded ? 'rotate-180 text-amber-400' : ''}`} />
                           </button>
@@ -189,11 +189,11 @@ export const BatchScheduleSection: React.FC<BatchScheduleSectionProps> = ({ onOp
                                   {batch.routineSlots.map((slot, sIdx) => (
                                     <tr 
                                       key={sIdx}
-                                      className={slot.board === 'WBBPE' ? 'hover:bg-emerald-950/20' : 'hover:bg-blue-950/20'}
+                                      className={slot.board === 'CBSE' ? 'hover:bg-blue-950/20' : 'hover:bg-emerald-950/20'}
                                     >
                                       <td className="p-2.5 font-bold text-white flex items-center gap-1.5">
                                         <span className={`text-[9px] font-extrabold px-1.5 py-0.5 rounded ${
-                                          slot.board === 'WBBPE' ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
+                                          slot.board === 'CBSE' ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
                                         }`}>
                                           {slot.board}
                                         </span>
