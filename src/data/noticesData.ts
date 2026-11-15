@@ -60,24 +60,6 @@ export const ACADEMY_NOTICES: NoticeItem[] = [
     ]
   },
   {
-    id: 'notice-news-stem-lab',
-    title: 'New Optics & Robotics Practical Lab Inaugurated at Jamna Center',
-    category: 'news',
-    categoryLabel: 'News & Announcements',
-    date: 'Aug 18, 2026',
-    description: 'Dedicated experiential learning lab equipped with optical benches, compound microscopes, and micro-controllers opened for student practical sessions.',
-    badge: 'Campus Update',
-    isNew: false,
-    isUrgent: false,
-    targetClass: 'Class 6 to 12',
-    attachmentName: 'Lab_Safety_Guidelines.pdf',
-    actionText: 'Learn More',
-    details: [
-      'Weekly supervised practical experiments mapped directly to CBSE, WBBSE, and WBCHSE lab syllabi.',
-      'Computer laboratory updated with Python and Java programming environments for Class 9–12 Computer Science students.'
-    ]
-  },
-  {
     id: 'notice-exam-jee-series',
     title: 'Sunday Super-30 JEE Main & Board Booster Practice Drills',
     category: 'examination',
@@ -119,7 +101,6 @@ export const NOTICE_TICKER_ITEMS = [
   '⚡ Admissions Active for Classes 2–12 (Academic Session 2026-27) • Call & WhatsApp: 8918807082',
   '📢 First Term Board Simulation Mock Test Series commences next week for Classes 9–12',
   '🏆 B-STAT 2026 Scholarship Exam Registrations Open: Up to 100% Tuition Fee Waivers',
-  '🔬 New Experiential STEM & Optics Science Laboratory Open at Jamna Campus',
   '🎯 Sunday Super-30 JEE Main & Board Rapid Speed & Tricks Drills every Sunday 9 AM',
   '📍 Campus Location: Jamna, Pingla, Paschim Medinipur - PIN 721140 (Adjacent to Jamna Bus Stand)'
 ];
