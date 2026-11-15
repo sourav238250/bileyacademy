@@ -236,7 +236,7 @@ export const FAQS = [
 ];
 
 export interface RoutineSlot {
-  board: 'WBBPE' | 'WBBSE' | 'CBSE';
+  board: 'WBBPE' | 'WBBSE' | 'WBCHSE' | 'CBSE';
   classLevel: string;
   days: string;
   timeSlot: string;
@@ -346,7 +346,7 @@ export const BATCH_TIMINGS: BatchTimingItem[] = [
     subjectsBn: "গণিত, বিজ্ঞান, জীববিজ্ঞান, ইংরেজি, কম্পিউটার সায়েন্স (৬ষ্ঠ-৮ম)",
     batchSize: "Max 16 students per batch",
     batchSizeBn: "প্রতি ব্যাচে ১৬ জন শিক্ষার্থী",
-    routinePdfUrl: "/assets/aistudio/BA_Routine_Class_5_to_8_WB_CBSE_2027_ffd8a990.pdf",
+    routinePdfUrl: "/assets/aistudio/BA_Routine_Class_5_to_8_WB_CBSE_2027_a628221c.pdf",
     routinePdfName: "BA_Routine_Class_5_to_8_WB_CBSE_2027.pdf",
     routinePdfSize: "200 KB PDF",
     routineTitle: "Provisional Time Table-2027 (Class 5 to 8 WBBSE / CBSE)",
@@ -422,16 +422,92 @@ export const BATCH_TIMINGS: BatchTimingItem[] = [
   },
   {
     category: "Secondary (Class 9 & 10 Board Special)",
-    schedule: "Monday to Saturday (6 Days)",
-    timings: "4:30 PM – 7:45 PM",
-    subjects: "Math, Physics-Chemistry, Biology, English, Computer Science / App",
-    batchSize: "Max 18 students per batch + Sunday Mock Tests"
+    categoryBn: "মাধ্যমিক স্তর (ক্লাস ৯ ও ১০ বোর্ড স্পেশাল)",
+    schedule: "WBBSE & CBSE: Mon to Sun (Morning & Evening Board Batches)",
+    scheduleBn: "WBBSE ও CBSE: সোম থেকে রবি (সকাল ও সন্ধ্যার বোর্ড ব্যাচ)",
+    timings: "Morning (6:30 AM – 11:00 AM) & Evening (4:00 PM – 8:30 PM)",
+    timingsBn: "সকাল (৬:৩০ – ১১:০০) এবং বিকাল/সন্ধ্যা (৪:০০ – ৮:৩০)",
+    subjects: "Math, Physics-Chemistry, Biology, English, Computer Applications",
+    subjectsBn: "গণিত, ভৌতবিজ্ঞান/পদার্থ-রসায়ন, জীবনবিজ্ঞান, ইংরেজি, কম্পিউটার অ্যাপ্লিকেশন",
+    batchSize: "Max 18 students per batch + Sunday Mock Tests",
+    batchSizeBn: "প্রতি ব্যাচে সর্বোচ্চ ১৮ জন + সানডে মক টেস্ট",
+    routinePdfUrl: "/assets/aistudio/BA_Routine_Class_9_to_10_WB_CBSE_2027_60faf289.pdf",
+    routinePdfName: "BA_Routine_Class_9_to_10_WB_CBSE_2027.pdf",
+    routinePdfSize: "176 KB PDF",
+    routineTitle: "Provisional Time Table-2027 (Class 9 to 10 WBBSE / CBSE)",
+    routineTitleBn: "প্রোভিশনাল সময়সূচি-২০২৭ (ক্লাস ৯ ও ১০ WBBSE / CBSE)",
+    routineSubtitle: "Jamna • Pingla • WBBSE / CBSE",
+    routineTableLabel: "View Provisional Routine Table (Class 9 & 10)",
+    routineSlots: [
+      {
+        board: "WBBSE",
+        classLevel: "WB/CLASS-9",
+        days: "Mon, Tue, Sat, Sun (AM) • Tue, Wed, Sat, Sun (PM)",
+        timeSlot: "6:30–9:30 AM / 4:00–8:30 PM",
+        timingType: "Morning",
+        note: "Ganit Prakash (Buddhadev Sir), Bhouta Bigyan (Soumyadip Sir), Jibon Bigyan (Ayan Sir), English (Sanjay Sir), Computer"
+      },
+      {
+        board: "CBSE",
+        classLevel: "CBSE/CLASS-9",
+        days: "Sun (AM) • Mon, Sat, Sun (PM)",
+        timeSlot: "9:30–11:00 AM / 4:00–8:30 PM",
+        timingType: "Afternoon",
+        note: "Math (041), Science Phy/Chem (086), Bio (086), English (184), Computer Applications"
+      },
+      {
+        board: "WBBSE",
+        classLevel: "WB/CLASS-10",
+        days: "Mon, Tue (AM) • Mon, Wed, Thu, Fri (PM)",
+        timeSlot: "6:30–9:30 AM / 5:30–8:30 PM",
+        timingType: "Morning",
+        note: "Ganit Prakash (Buddhadev Sir), Bhouta Bigyan (PKB), Jibon Bigyan (Ayan Sir), English (Sanjay Sir), Computer"
+      },
+      {
+        board: "CBSE",
+        classLevel: "CBSE/CLASS-10",
+        days: "Sun (AM) • Mon, Tue, Wed, Sat, Sun (PM)",
+        timeSlot: "8:00–11:00 AM / 4:00–8:30 PM",
+        timingType: "Afternoon",
+        note: "Math Std/Basic (041/241), Phy/Chem (PKB), Biology (Ayan Sir), English (184), Computer"
+      }
+    ]
   },
   {
     category: "Higher Secondary (Class 11 & 12 Board + Entrance)",
-    schedule: "Monday to Saturday (6 Days)",
-    timings: "3:00 PM – 8:30 PM (Flexible Stream Slots)",
-    subjects: "Math, Physics, Chemistry, Biology, English, Computer Science / App",
-    batchSize: "Max 20 students + Weekly All-India Level Diagnostic Tests"
+    categoryBn: "উচ্চ মাধ্যমিক (ক্লাস ১১ ও ১২ বোর্ড + এন্ট্রান্স)",
+    schedule: "WBCHSE / CBSE: Mon to Sun (Offline + 8:30 PM Online Slots)",
+    scheduleBn: "WBCHSE / CBSE: সোম থেকে রবি (অফলাইন ও রাত ৮:৩০ অনলাইন স্লট)",
+    timings: "Morning (6:30 AM – 11:00 AM), Afternoon (4:00–7:00 PM) & Online (8:30–9:30 PM)",
+    timingsBn: "সকাল (৬:৩০ – ১১:০০), বিকাল (৪:০০–৭:০০) এবং অনলাইন (৮:৩০–৯:৩০)",
+    subjects: "Math, Physics, Chemistry, Biology, English, COMS / COMA",
+    subjectsBn: "গণিত, পদার্থবিদ্যা, রসায়ন, জীববিজ্ঞান, ইংরেজি, COMS / COMA",
+    batchSize: "Max 20 students + Weekly All-India Level Diagnostic Tests",
+    batchSizeBn: "সর্বোচ্চ ২০ জন শিক্ষার্থী + সাপ্তাহিক ডায়াগনস্টিক টেস্ট",
+    routinePdfUrl: "/assets/aistudio/BA_Routine_Class_11_to_12_WB_CBSE_2027_df4effb7.pdf",
+    routinePdfName: "BA_Routine_Class_11_to_12_WB_CBSE_2027.pdf",
+    routinePdfSize: "160 KB PDF",
+    routineTitle: "Provisional Time Table-2027 (Class 11 to 12 WBCHSE / CBSE)",
+    routineTitleBn: "প্রোভিশনাল সময়সূচি-২০২৭ (ক্লাস ১১ ও ১২ WBCHSE / CBSE)",
+    routineSubtitle: "Jamna • Pingla • WBCHSE / CBSE",
+    routineTableLabel: "View Provisional Routine Table (Class 11 & 12)",
+    routineSlots: [
+      {
+        board: "WBCHSE",
+        classLevel: "WB/CLASS-11",
+        days: "Thu, Fri, Sun (AM) • Wed–Fri (PM) • Mon–Thu (8:30 PM Online)",
+        timeSlot: "6:30–9:30 AM / 4:00–7:00 PM / 8:30–9:30 PM",
+        timingType: "Morning",
+        note: "Physics, Math (Buddhadev Sir), Chem (Soumyadip Sir - Online), Bio, English (Sanjay Sir), COMS/COMA (Sourav Sir - Online)"
+      },
+      {
+        board: "WBCHSE",
+        classLevel: "WB/CLASS-12",
+        days: "Tue, Thu, Fri, Sun (AM) • Wed, Fri (PM) • Mon, Wed–Fri (8:30 PM Online)",
+        timeSlot: "6:30–11:00 AM / 4:00–7:00 PM / 8:30–9:30 PM",
+        timingType: "Afternoon",
+        note: "Math (Buddhadev Sir), Physics, Chem (Soumyadip Sir), Bio, English B (Sanjay Sir), COMS/COMA (Sourav Sir - Online)"
+      }
+    ]
   }
 ];
