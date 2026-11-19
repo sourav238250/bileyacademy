@@ -19,6 +19,8 @@ interface FooterProps {
   onSelectCategory: (category: GradeCategory) => void;
   onOpenInbox?: () => void;
   stats?: SiteVisitorStats;
+  visitorLoading?: boolean;
+  visitorIsLive?: boolean;
   onOpenVisitorAnalytics?: () => void;
 }
 
@@ -27,6 +29,8 @@ export const Footer: React.FC<FooterProps> = ({
   onSelectCategory, 
   onOpenInbox,
   stats,
+  visitorLoading = false,
+  visitorIsLive = false,
   onOpenVisitorAnalytics
 }) => {
   const { isBengali, t } = useLanguage();
@@ -287,6 +291,8 @@ export const Footer: React.FC<FooterProps> = ({
           <div className="mt-10 pt-8 border-t border-slate-800/80 w-full">
             <VisitorCounterBadge 
               stats={stats} 
+              loading={visitorLoading}
+              isLive={visitorIsLive}
               onOpenAnalytics={onOpenVisitorAnalytics} 
               variant="footer" 
             />

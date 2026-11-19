@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Users, Eye, Sparkles, Activity, Globe, ArrowUpRight, TrendingUp } from 'lucide-react';
+import { Users, Eye, Activity, ArrowUpRight, TrendingUp } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { SiteVisitorStats } from '../types';
 
 interface VisitorCounterBadgeProps {
   stats: SiteVisitorStats;
   loading?: boolean;
+  isLive?: boolean;
   onOpenAnalytics: () => void;
   variant?: 'footer' | 'card';
 }
@@ -13,55 +14,67 @@ interface VisitorCounterBadgeProps {
 export const VisitorCounterBadge: React.FC<VisitorCounterBadgeProps> = ({
   stats,
   loading = false,
-  onOpenAnalytics,
-  variant = 'footer'
+  isLive = false,
+  onOpenAnalytics
 }) => {
   const { isBengali } = useLanguage();
-  const [displayCount, setDisplayCount] = useState<number>(stats.totalVisits || 1420);
+  const targetVisits = stats.totalVisits ?? 1420;
+  const [displayCount, setDisplayCount] = useState<number>(targetVisits);
 
-  // Smooth animated count transition when count updates
+  // Smooth animated count transition when target updates
   useEffect(() => {
-    const target = stats.totalVisits || 1420;
-    if (target === displayCount) return;
-
-    const diff = target - displayCount;
-    const step = Math.ceil(Math.abs(diff) / 10);
     const interval = setInterval(() => {
       setDisplayCount((prev) => {
-        if (Math.abs(target - prev) <= step) {
+        if (prev === targetVisits) {
           clearInterval(interval);
-          return target;
+          return prev;
+        }
+        const diff = targetVisits - prev;
+        const step = Math.max(1, Math.ceil(Math.abs(diff) / 8));
+        if (Math.abs(diff) <= step) {
+          clearInterval(interval);
+          return targetVisits;
         }
         return prev + (diff > 0 ? step : -step);
       });
-    }, 40);
+    }, 35);
 
     return () => clearInterval(interval);
-  }, [stats.totalVisits]);
+  }, [targetVisits]);
 
   const formattedVisits = Number(displayCount).toLocaleString();
-  const formattedUniques = Number(stats.uniqueVisitors || 685).toLocaleString();
-  const formattedToday = Number(stats.todayVisits || 48).toLocaleString();
+  const formattedUniques = Number(stats.uniqueVisitors ?? 685).toLocaleString();
+  const formattedToday = Number(stats.todayVisits ?? 0).toLocaleString();
+
+  const statusLabel = loading
+    ? (isBengali ? 'সিঙ্ক হচ্ছে...' : 'Syncing...')
+    : isLive
+      ? (isBengali ? 'রিয়েল-টাইম' : 'Firestore Live')
+      : (isBengali ? 'ক্যাশ সক্রিয়' : 'Cached Sync');
 
   return (
     <div className="w-full max-w-full rounded-2xl bg-slate-950/90 border border-amber-500/30 shadow-2xl p-4 sm:p-5 backdrop-blur-md">
       
       {/* Top Row: Live Indicator, Title & Count */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3.5 border-b border-slate-850">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3.5 border-b border-slate-800">
         
         {/* Left: Indicator & Headline */}
         <div className="flex items-center space-x-3">
           <div className="relative flex h-3 w-3 shrink-0">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+            <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${isLive ? 'bg-emerald-400' : 'bg-amber-400'}`}></span>
+            <span className={`relative inline-flex rounded-full h-3 w-3 ${isLive ? 'bg-emerald-500' : 'bg-amber-500'}`}></span>
           </div>
           <div>
             <div className="flex items-center space-x-2">
               <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
                 {isBengali ? 'ওয়েবসাইট পরিদর্শন কাউন্টার' : 'Official Website Visitor Counter'}
               </span>
-              <span className="text-[10px] bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 px-2 py-0.2 rounded-full font-semibold">
-                Live
+              <span className={`text-[10px] px-2 py-0.2 rounded-full font-semibold border ${
+                isLive 
+                  ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400' 
+                  : 'bg-amber-500/10 border-amber-500/30 text-amber-400'
+              }`}>
+                {loading ? 'Syncing' : isLive ? 'Live' : 'Local'}
               </span>
             </div>
             <p className="text-[11px] text-slate-400">
@@ -118,7 +131,7 @@ export const VisitorCounterBadge: React.FC<VisitorCounterBadgeProps> = ({
             </div>
           </div>
 
-          {/* Cloud Sync Status (spans 2 cols on very narrow screens if needed, or 1 col) */}
+          {/* Cloud Sync Status */}
           <div className="col-span-2 sm:col-span-1 bg-slate-900/60 border border-slate-800/80 rounded-xl p-2.5 flex items-center space-x-2.5">
             <div className="w-7 h-7 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0">
               <Activity className="w-3.5 h-3.5 text-amber-400" />
@@ -128,7 +141,7 @@ export const VisitorCounterBadge: React.FC<VisitorCounterBadgeProps> = ({
                 {isBengali ? 'ক্লাউড স্ট্যাটাস' : 'Cloud Counter'}
               </div>
               <div className="text-[11px] font-bold text-amber-300 truncate">
-                {isBengali ? 'রিয়েল-টাইম' : 'Firestore Live'}
+                {statusLabel}
               </div>
             </div>
           </div>
@@ -148,4 +161,3 @@ export const VisitorCounterBadge: React.FC<VisitorCounterBadgeProps> = ({
     </div>
   );
 };
-

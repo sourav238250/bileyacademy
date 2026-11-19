@@ -1,41 +1,53 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { SiteVisitorStats } from '../types';
 import { 
+  INITIAL_VISITOR_STATS,
   trackPageView, 
-  subscribeToVisitorStats 
+  subscribeToVisitorStats,
+  fetchVisitorStatsOnce
 } from '../services/visitorTrackingService';
 
 export function useVisitorCounter(currentPage: string = 'Home') {
-  const [stats, setStats] = useState<SiteVisitorStats>({
-    totalVisits: 1420,
-    uniqueVisitors: 685,
-    totalSessions: 940,
-    todayVisits: 48,
-    lastResetDate: new Date().toISOString().split('T')[0],
-    mobileVisits: 890,
-    desktopVisits: 530,
-  });
+  const [stats, setStats] = useState<SiteVisitorStats>(INITIAL_VISITOR_STATS);
   const [loading, setLoading] = useState(true);
+  const [isLive, setIsLive] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    // Record page view on load
-    trackPageView(currentPage);
+    // Subscribe to live Firestore counter updates first
+    const unsubscribe = subscribeToVisitorStats(
+      (updatedStats, serverSynced) => {
+        setStats(updatedStats);
+        setIsLive(serverSynced);
+        setLoading(false);
+      },
+      () => {
+        setIsLive(false);
+        setLoading(false);
+      }
+    );
 
-    // Subscribe to live Firestore counter updates
-    const unsubscribe = subscribeToVisitorStats((updatedStats) => {
-      setStats(updatedStats);
-      setLoading(false);
-    });
+    // Record page view on load (deduplicated internally for StrictMode)
+    trackPageView(currentPage);
 
     return () => unsubscribe();
   }, [currentPage]);
 
+  const refreshStats = useCallback(async () => {
+    const fresh = await fetchVisitorStatsOnce();
+    if (fresh) {
+      setStats(fresh);
+      setIsLive(true);
+    }
+  }, []);
+
   return {
     stats,
     loading,
+    isLive,
     isModalOpen,
     openModal: () => setIsModalOpen(true),
-    closeModal: () => setIsModalOpen(false)
+    closeModal: () => setIsModalOpen(false),
+    refreshStats
   };
 }

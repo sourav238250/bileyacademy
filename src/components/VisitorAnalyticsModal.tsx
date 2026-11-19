@@ -15,42 +15,55 @@ import {
   Compass
 } from 'lucide-react';
 import { SiteVisitorStats, VisitorLogItem } from '../types';
-import { subscribeToRecentVisitorLogs } from '../services/visitorTrackingService';
+import { subscribeToRecentVisitorLogs, fetchRecentVisitorLogsOnce } from '../services/visitorTrackingService';
 import { useLanguage } from '../context/LanguageContext';
 
 interface VisitorAnalyticsModalProps {
   isOpen: boolean;
   onClose: () => void;
   stats: SiteVisitorStats;
+  isLive?: boolean;
+  onRefresh?: () => Promise<void>;
 }
 
 export const VisitorAnalyticsModal: React.FC<VisitorAnalyticsModalProps> = ({
   isOpen,
   onClose,
-  stats
+  stats,
+  isLive = false,
+  onRefresh
 }) => {
   const { isBengali } = useLanguage();
   const [logs, setLogs] = useState<VisitorLogItem[]>([]);
+  const [logsLoading, setLogsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   useEffect(() => {
     if (!isOpen) return;
+    setLogsLoading(true);
 
-    const unsubscribe = subscribeToRecentVisitorLogs((newLogs) => {
-      setLogs(newLogs);
-    }, 12);
+    const unsubscribe = subscribeToRecentVisitorLogs(
+      (newLogs) => {
+        setLogs(newLogs);
+        setLogsLoading(false);
+      },
+      12,
+      () => {
+        setLogsLoading(false);
+      }
+    );
 
     return () => unsubscribe();
   }, [isOpen]);
 
   if (!isOpen) return null;
 
-  const totalVisits = stats.totalVisits || 1420;
-  const uniqueVisitors = stats.uniqueVisitors || 685;
-  const totalSessions = stats.totalSessions || 940;
-  const todayVisits = stats.todayVisits || 48;
-  const mobileCount = stats.mobileVisits || 890;
-  const desktopCount = stats.desktopVisits || 530;
+  const totalVisits = stats.totalVisits ?? 1420;
+  const uniqueVisitors = stats.uniqueVisitors ?? 685;
+  const totalSessions = stats.totalSessions ?? 940;
+  const todayVisits = stats.todayVisits ?? 0;
+  const mobileCount = stats.mobileVisits ?? 890;
+  const desktopCount = stats.desktopVisits ?? 530;
   const totalDeviceTracked = (mobileCount + desktopCount) || 1;
   const mobilePercent = Math.round((mobileCount / totalDeviceTracked) * 100);
   const desktopPercent = 100 - mobilePercent;
@@ -69,9 +82,20 @@ export const VisitorAnalyticsModal: React.FC<VisitorAnalyticsModalProps> = ({
     }
   };
 
-  const handleRefresh = () => {
+  const handleRefresh = async () => {
     setIsRefreshing(true);
-    setTimeout(() => setIsRefreshing(false), 600);
+    try {
+      await Promise.all([
+        onRefresh?.(),
+        fetchRecentVisitorLogsOnce(12).then((freshLogs) => {
+          if (freshLogs.length > 0) {
+            setLogs(freshLogs);
+          }
+        })
+      ]);
+    } finally {
+      setIsRefreshing(false);
+    }
   };
 
   return (
@@ -232,9 +256,13 @@ export const VisitorAnalyticsModal: React.FC<VisitorAnalyticsModalProps> = ({
                   {isBengali ? 'সাম্প্রতিক লাইভ ভিজিটর অ্যাক্টিভিটি' : 'Real-time Visitor Activity Stream'}
                 </h4>
               </div>
-              <span className="text-[11px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full font-semibold flex items-center space-x-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>Live Cloud</span>
+              <span className={`text-[11px] px-2.5 py-0.5 rounded-full font-semibold flex items-center space-x-1 border ${
+                isLive 
+                  ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' 
+                  : 'text-amber-400 bg-amber-500/10 border-amber-500/20'
+              }`}>
+                <span className={`h-1.5 w-1.5 rounded-full animate-pulse ${isLive ? 'bg-emerald-400' : 'bg-amber-400'}`}></span>
+                <span>{isLive ? 'Live Cloud' : 'Local Cache'}</span>
               </span>
             </div>
 
@@ -272,10 +300,15 @@ export const VisitorAnalyticsModal: React.FC<VisitorAnalyticsModalProps> = ({
                   </div>
                 ))}
               </div>
-            ) : (
+            ) : logsLoading ? (
               <div className="text-center py-6 text-slate-400 text-xs">
                 <Activity className="w-6 h-6 mx-auto mb-2 text-slate-600 animate-pulse" />
                 <span>{isBengali ? 'লাইভ ভিজিটর স্ট্রিম সিঙ্ক হচ্ছে...' : 'Streaming live visitor engagement events...'}</span>
+              </div>
+            ) : (
+              <div className="text-center py-6 text-slate-400 text-xs">
+                <Activity className="w-6 h-6 mx-auto mb-2 text-slate-600" />
+                <span>{isBengali ? 'সাম্প্রতিক কোনো ভিজিটর লগ পাওয়া যায়নি।' : 'No recent visitor activity recorded yet.'}</span>
               </div>
             )}
           </div>

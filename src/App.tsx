@@ -39,9 +39,12 @@ function AcademyApp() {
   // Live Visitor Counting & Real-time Analytics
   const { 
     stats: visitorStats, 
+    loading: visitorLoading,
+    isLive: visitorIsLive,
     isModalOpen: visitorModalOpen, 
     openModal: openVisitorModal, 
-    closeModal: closeVisitorModal 
+    closeModal: closeVisitorModal,
+    refreshStats: refreshVisitorStats
   } = useVisitorCounter('Home');
 
   const handleNavigate = (sectionId: string) => {
@@ -151,6 +154,8 @@ function AcademyApp() {
         onSelectCategory={handleSelectCategory}
         onOpenInbox={() => setInboxModalOpen(true)}
         stats={visitorStats}
+        visitorLoading={visitorLoading}
+        visitorIsLive={visitorIsLive}
         onOpenVisitorAnalytics={openVisitorModal}
       />
 
@@ -159,6 +164,8 @@ function AcademyApp() {
         isOpen={visitorModalOpen}
         onClose={closeVisitorModal}
         stats={visitorStats}
+        isLive={visitorIsLive}
+        onRefresh={refreshVisitorStats}
       />
 
       {/* Inquiries & Official Mailbox Inbox Modal */}
